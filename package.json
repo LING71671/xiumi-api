@@ -1,0 +1,49 @@
+{
+  "name": "xiumi-api",
+  "version": "1.0.0",
+  "description": "秀米（xiumi.us）非官方 API 客户端与接口文档 —— 零依赖，Node 18+",
+  "type": "module",
+  "license": "Apache-2.0",
+  "author": "LING71671",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LING71671/xiumi-api.git"
+  },
+  "homepage": "https://github.com/LING71671/xiumi-api#readme",
+  "bugs": {
+    "url": "https://github.com/LING71671/xiumi-api/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "exports": {
+    ".": "./client/xiumi.mjs"
+  },
+  "files": [
+    "client/",
+    "docs/",
+    "data/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "scan": "python scripts/misc/secret_scan.py",
+    "gen-docs": "node scripts/gen_docs.mjs"
+  },
+  "peerDependencies": {
+    "playwright-core": ">=1.40"
+  },
+  "peerDependenciesMeta": {
+    "playwright-core": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "xiumi",
+    "秀米",
+    "api",
+    "client",
+    "reverse-engineering",
+    "unofficial"
+  ]
+}

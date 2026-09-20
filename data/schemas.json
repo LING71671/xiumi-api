@@ -1,0 +1,4125 @@
+{
+  "source": "实时流量样本反推的字段字典",
+  "count": 649,
+  "fields": [
+    {
+      "field": "BODY  POST /api/assets/type/image/tagsorder · order",
+      "type": "body",
+      "samples": []
+    },
+    {
+      "field": "BODY  POST /api/fragments/v5/booklet/page/tagsorder · order",
+      "type": "body",
+      "samples": []
+    },
+    {
+      "field": "BODY  POST /api/fragments/v5/paper/comp/tagsorder · order",
+      "type": "body",
+      "samples": []
+    },
+    {
+      "field": "BODY  POST /api/show_goods_favorite_tags/paper/order · order",
+      "type": "body",
+      "samples": []
+    },
+    {
+      "field": "BODY  POST /api/user_home/tag/order · order",
+      "type": "body",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/auth/login-captcha ? area_code",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/auth/login-captcha ? username",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/contacts/list ? limit",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/contacts/list ? reverse",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/help/recommended ? type",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/invoices/available ? include",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/messages ? limit",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/messages ? page",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/messages ? state",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/orders ? limit",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/orders ? offset",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/publisher/identity ? team_id",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods_favorites ? limit",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods_favorites ? page",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods_favorites ? search",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods_favorites ? show_type",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/goodses ? by_nearest",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/goodses ? limit",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/goodses ? page",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/goodses ? price_scope",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/goodses ? search",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/goodses ? show_type",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/goodses ? showgoods_type",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/goodses ? tag_id",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/goodses ? tag_name",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/goodses ? tpl_flag",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/my/incomes/goodses ? limit",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/my/incomes/goodses ? page",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/my/incomes/goodses ? payedOnly",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/my/incomes/goodses ? scopeType",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/my/incomes/goodses ? state",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/my/purchased/goodses ? limit",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/my/purchased/goodses ? page",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/my/purchased/goodses ? show_type",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/tags_tree ? show_goods",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/tags_tree ? show_type",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/tags_tree ? tag_level_from",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/show_goods/tags_tree ? tag_level_to",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/shows/count ? show_type",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/shows/count ? version",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/shows/deleted/shows ? limit",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/shows/deleted/shows ? page",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/shows/deleted/shows ? show_type",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/shows/deleted/shows ? version",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates ? limit",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates ? match_level",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates ? page",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates ? q",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates ? sort",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates ? tag_category",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates ? tag_ids",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates ? template_category",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates/items ? atom_tpl_id",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates/tags_tree ? tag_category",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates/tags_tree ? tag_level_from",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates/tags_tree ? tag_level_to",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/templates/tags_tree ? template",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/user_home/published/user/{hash}/exhibits/on_mypage ? limit",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/user_home/published/user/{hash}/exhibits/on_mypage ? page",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/user/info ? include",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/wallet/bills ? limit",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "QUERY GET /api/wallet/bills ? page",
+      "type": "query",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/apikey → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/apikey → data.apiKeys",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/apikey → data.availableCount",
+      "type": "number",
+      "samples": [
+        2
+      ]
+    },
+    {
+      "field": "RESP GET /api/apikey → data.capability",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/apikey → data.capability.message",
+      "type": "string",
+      "samples": [
+        "您的 API Key 功能已被管理员禁用"
+      ]
+    },
+    {
+      "field": "RESP GET /api/apikey → data.capability.prohibited",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/apikey → data.currentCount",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/apikey → data.totalCount",
+      "type": "number",
+      "samples": [
+        2
+      ]
+    },
+    {
+      "field": "RESP GET /api/auth/login-captcha → data",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/auth/partner/ownerpartnerapp → data",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/auth/partner/partnerappbindlist → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/auth/partner/partnerappbindlist → data.BIND_PARTNER_DOCUMENT_SERVICE",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/auth/partner/partnerappbindlist → data.BIND_PARTNER_DOCUMENT_SERVICE.sendArticleUrl",
+      "type": "string",
+      "samples": [
+        "https://xmapi.xiumi.us/article/postpartnerarticles"
+      ]
+    },
+    {
+      "field": "RESP GET /api/auth/partner/partnerappbindlist → data.BIND_PARTNER_DOCUMENT_SERVICE.sendAssetUrl",
+      "type": "string",
+      "samples": [
+        "https://xmapi.xiumi.us/resource/postpartnerresource"
+      ]
+    },
+    {
+      "field": "RESP GET /api/auth/partner/partnerappbindlist → data.BIND_PARTNER_DOCUMENT_SERVICE.taurusLoginApi",
+      "type": "string",
+      "samples": [
+        "https://xmapi.xiumi.us/user/login"
+      ]
+    },
+    {
+      "field": "RESP GET /api/auth/partner/partnerappbindlist → data.binds",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/contacts/list → data",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/help/recommended → data",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/help/recommended → data.[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/help/recommended → data.[].created_at",
+      "type": "string",
+      "samples": [
+        "2019-07-29T02:15:00.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/help/recommended → data.[].recommended_help_id",
+      "type": "number",
+      "samples": [
+        3
+      ]
+    },
+    {
+      "field": "RESP GET /api/help/recommended → data.[].title",
+      "type": "string",
+      "samples": [
+        "快捷键"
+      ]
+    },
+    {
+      "field": "RESP GET /api/help/recommended → data.[].type",
+      "type": "number",
+      "samples": [
+        2
+      ]
+    },
+    {
+      "field": "RESP GET /api/help/recommended → data.[].type_text",
+      "type": "string",
+      "samples": [
+        "article"
+      ]
+    },
+    {
+      "field": "RESP GET /api/help/recommended → data.[].updated_at",
+      "type": "string",
+      "samples": [
+        "2019-08-14T02:10:44.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/help/recommended → data.[].URL",
+      "type": "string",
+      "samples": [
+        "https://v.xiumi.us/board/v5/2a5va/16979151"
+      ]
+    },
+    {
+      "field": "RESP GET /api/home_slogans → data",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/home_slogans → data.[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/home_slogans → data.[].bg_color",
+      "type": "string",
+      "samples": [
+        ""
+      ]
+    },
+    {
+      "field": "RESP GET /api/home_slogans → data.[].bg_uri",
+      "type": "string",
+      "samples": [
+        ""
+      ]
+    },
+    {
+      "field": "RESP GET /api/home_slogans → data.[].created_at",
+      "type": "string",
+      "samples": [
+        "2017-08-30T10:55:41.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/home_slogans → data.[].slogan_id",
+      "type": "number",
+      "samples": [
+        42
+      ]
+    },
+    {
+      "field": "RESP GET /api/home_slogans → data.[].state",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/home_slogans → data.[].target_uri",
+      "type": "string",
+      "samples": [
+        "https://v.xiumi.us/board/v5/2a5va/390085751"
+      ]
+    },
+    {
+      "field": "RESP GET /api/home_slogans → data.[].thumb_uri",
+      "type": "string",
+      "samples": [
+        "//statics.xiumi.us/stc/images/slogan/practices.jpg"
+      ]
+    },
+    {
+      "field": "RESP GET /api/home_slogans → data.[].updated_at",
+      "type": "string",
+      "samples": [
+        "2017-08-30T10:55:46.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/invoices/available → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/invoices/available → data.available_invoice",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/invoices/available → data.min_invoice",
+      "type": "number",
+      "samples": [
+        0.01
+      ]
+    },
+    {
+      "field": "RESP GET /api/invoices/available → data.total_paid",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/invoices/count → data",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/invoices/lastinvoice → data",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/messages → data",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/messages/settings/ → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/messages/settings/ → data.mute_be_saved_to",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/messages/settings/ → data.mute_invitation",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/messages/settings/ → data.mute_new_show",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/messages/settings/ → data.user_id",
+      "type": "number",
+      "samples": [
+        28745337
+      ]
+    },
+    {
+      "field": "RESP GET /api/messages/status → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/messages/status → data.importanCount",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/messages/status → data.totalCount",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/messages/status → data.unreadCount",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/notify → data",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders → data.count",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders → data.orders",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.payment_list",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.payment_list[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.payment_list[].amount",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.payment_list[].api",
+      "type": "string",
+      "samples": [
+        "/api/orders/for/level_upgrading"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.payment_list[].level",
+      "type": "number",
+      "samples": [
+        4
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.payment_list[].remainLife",
+      "type": "number",
+      "samples": [
+        30
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.agreement_access",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.area_code",
+      "type": "number",
+      "samples": [
+        86
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.avatar_url",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.brand_name",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.email",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.hasPassword",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.isBindApple",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.isBindQQ",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.isBindWeibo",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.isBindWx",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.level",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.level_remain_life",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.articleLimit",
+      "type": "number",
+      "samples": [
+        30
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.articlePageLimit",
+      "type": "number",
+      "samples": [
+        1000
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.formDataCountLimit",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.fragmentLimit",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.showLimit",
+      "type": "number",
+      "samples": [
+        30
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.showPageLimit",
+      "type": "number",
+      "samples": [
+        300
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.teamCountLimit",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.teamMemCountLimit",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.upAudioNumLimit",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.upAudioSizeLimit",
+      "type": "number",
+      "samples": [
+        10485760
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.upImageNumLimit",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.upImageSizeLimit",
+      "type": "number",
+      "samples": [
+        10485760
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.upVideoNumLimit",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.upVideoSizeLimit",
+      "type": "number",
+      "samples": [
+        20971520
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.levelLimit.version",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.location",
+      "type": "string",
+      "samples": [
+        "示例地区"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.nickname",
+      "type": "string",
+      "samples": [
+        "示例用户24e4"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.partner_uid",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.phone",
+      "type": "string",
+      "samples": [
+        "13800000000"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.qq_qd_uin",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.sub_account",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.unique_uid",
+      "type": "string",
+      "samples": [
+        "0123456789abcdef0123456789abcdef"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.user_sid",
+      "type": "string",
+      "samples": [
+        "l0TvI"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/level/upgrading → data.target_user.userpage_url",
+      "type": "string",
+      "samples": [
+        "https://v.xiumius.cn/u/l0TvI"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.payment_list",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.payment_list[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.payment_list[].amount",
+      "type": "number",
+      "samples": [
+        20
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.payment_list[].api",
+      "type": "string",
+      "samples": [
+        "/api/orders/for/templated_membership"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.payment_list[].level",
+      "type": "string",
+      "samples": [
+        "1m"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.payment_list[].remainLife",
+      "type": "number",
+      "samples": [
+        30
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.agreement_access",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.area_code",
+      "type": "number",
+      "samples": [
+        86
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.avatar_url",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.brand_name",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.email",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.hasPassword",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.isBindApple",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.isBindQQ",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.isBindWeibo",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.isBindWx",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.level",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.level_remain_life",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.articleLimit",
+      "type": "number",
+      "samples": [
+        30
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.articlePageLimit",
+      "type": "number",
+      "samples": [
+        1000
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.formDataCountLimit",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.fragmentLimit",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.showLimit",
+      "type": "number",
+      "samples": [
+        30
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.showPageLimit",
+      "type": "number",
+      "samples": [
+        300
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.teamCountLimit",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.teamMemCountLimit",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.upAudioNumLimit",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.upAudioSizeLimit",
+      "type": "number",
+      "samples": [
+        10485760
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.upImageNumLimit",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.upImageSizeLimit",
+      "type": "number",
+      "samples": [
+        10485760
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.upVideoNumLimit",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.upVideoSizeLimit",
+      "type": "number",
+      "samples": [
+        20971520
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.levelLimit.version",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.location",
+      "type": "string",
+      "samples": [
+        "示例地区"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.nickname",
+      "type": "string",
+      "samples": [
+        "示例用户24e4"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.partner_uid",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.phone",
+      "type": "string",
+      "samples": [
+        "13800000000"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.qq_qd_uin",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.sub_account",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.unique_uid",
+      "type": "string",
+      "samples": [
+        "0123456789abcdef0123456789abcdef"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.user_sid",
+      "type": "string",
+      "samples": [
+        "l0TvI"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/templated_membership/upgrading → data.target_user.userpage_url",
+      "type": "string",
+      "samples": [
+        "https://v.xiumius.cn/u/l0TvI"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.payment_list",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.payment_list[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.payment_list[].allow",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.payment_list[].amount",
+      "type": "number",
+      "samples": [
+        5
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.payment_list[].api",
+      "type": "string",
+      "samples": [
+        "/api/orders/for/traffic_package"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.payment_list[].level",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.payment_list[].remainLife",
+      "type": "number",
+      "samples": [
+        1000
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.agreement_access",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.area_code",
+      "type": "number",
+      "samples": [
+        86
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.avatar_url",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.brand_name",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.email",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.hasPassword",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.isBindApple",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.isBindQQ",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.isBindWeibo",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.isBindWx",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.level",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.level_remain_life",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.articleLimit",
+      "type": "number",
+      "samples": [
+        30
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.articlePageLimit",
+      "type": "number",
+      "samples": [
+        1000
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.formDataCountLimit",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.fragmentLimit",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.showLimit",
+      "type": "number",
+      "samples": [
+        30
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.showPageLimit",
+      "type": "number",
+      "samples": [
+        300
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.teamCountLimit",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.teamMemCountLimit",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.upAudioNumLimit",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.upAudioSizeLimit",
+      "type": "number",
+      "samples": [
+        10485760
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.upImageNumLimit",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.upImageSizeLimit",
+      "type": "number",
+      "samples": [
+        10485760
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.upVideoNumLimit",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.upVideoSizeLimit",
+      "type": "number",
+      "samples": [
+        20971520
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.levelLimit.version",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.location",
+      "type": "string",
+      "samples": [
+        "示例地区"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.nickname",
+      "type": "string",
+      "samples": [
+        "示例用户24e4"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.partner_uid",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.phone",
+      "type": "string",
+      "samples": [
+        "13800000000"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.qq_qd_uin",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.sub_account",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.unique_uid",
+      "type": "string",
+      "samples": [
+        "0123456789abcdef0123456789abcdef"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.user_sid",
+      "type": "string",
+      "samples": [
+        "l0TvI"
+      ]
+    },
+    {
+      "field": "RESP GET /api/orders/tariff/for/traffic_package → data.target_user.userpage_url",
+      "type": "string",
+      "samples": [
+        "https://v.xiumius.cn/u/l0TvI"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods_favorite_tags/paper/tagorder → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods_favorite_tags/paper/tagorder → data.tags",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods_favorite_tags/paper/tagorder → data.tagsOrder",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods_favorites → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods_favorites → data.count",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods_favorites → data.goodses",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/author/state → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/author/state → data.state",
+      "type": "string",
+      "samples": [
+        "never-apply"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.count",
+      "type": "number",
+      "samples": [
+        96453
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].allowApplyChange",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].collected_number",
+      "type": "number",
+      "samples": [
+        172
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].copy_number",
+      "type": "number",
+      "samples": [
+        67
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].created_at",
+      "type": "string",
+      "samples": [
+        "2026-09-18T08:52:04.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].free_copy_number",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].price",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].priority",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].seller",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].seller.avatar_url",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].seller.brand_name",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].seller.level",
+      "type": "number",
+      "samples": [
+        3
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].seller.location",
+      "type": "string",
+      "samples": [
+        "示例地区"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].seller.nickname",
+      "type": "string",
+      "samples": [
+        "示例用户90fe"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].seller.sub_account",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].seller.unique_uid",
+      "type": "string",
+      "samples": [
+        "bb11cc22dd33ee44ff55667788990011"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].seller.user_sid",
+      "type": "string",
+      "samples": [
+        "KMfsh"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].seller.userpage_url",
+      "type": "string",
+      "samples": [
+        "https://v.xiumius.cn/u/KMfsh"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show_goods_id",
+      "type": "number",
+      "samples": [
+        159063
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show_id",
+      "type": "number",
+      "samples": [
+        726575728
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show_type",
+      "type": "number",
+      "samples": [
+        2
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.cover",
+      "type": "string",
+      "samples": [
+        "//img.xiumi.us/xmi/ua/tTTlJ/i/f939fa3d5601fe57f25fa864def..."
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.created_at",
+      "type": "string",
+      "samples": [
+        "2026-09-18T08:52:03.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.cur_hits",
+      "type": "number",
+      "samples": [
+        2311
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.desc",
+      "type": "string",
+      "samples": [
+        "中秋国庆放假通知校园卡通"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.edit_url",
+      "type": "string",
+      "samples": [
+        "/studio/v5#/paper/for/726575728"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.exif",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.exif.canvasInformation",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.exif.viewport",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.exif.viewport.FONT_SIZE",
+      "type": "number",
+      "samples": [
+        16
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.exif.viewport.STAGE_SIZE",
+      "type": "string",
+      "samples": [
+        "flow_scroll"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.exif.viewport.WIDTH",
+      "type": "number",
+      "samples": [
+        415
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.history_hits",
+      "type": "number",
+      "samples": [
+        1814
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.hit_count",
+      "type": "number",
+      "samples": [
+        4125
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.loading_icon",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.mask_no_modification",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.mask_on_locking",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.mask_pattern_fragment",
+      "type": "number",
+      "samples": [
+        5
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.pattern_fragment_texts",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.pattern_fragment_texts[]",
+      "type": "string",
+      "samples": [
+        "pattern"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.points",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.release_applied_at",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.release_at",
+      "type": "string",
+      "samples": [
+        "2026-09-18T08:52:03.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.right_access_privilege",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.right_form_closed",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.right_freeshow",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.right_no_advert",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.right_vip_host",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.saved_at",
+      "type": "string",
+      "samples": [
+        "2026-09-18T08:52:03.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.show_id",
+      "type": "number",
+      "samples": [
+        726575728
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.show_url",
+      "type": "string",
+      "samples": [
+        "https://v.xiumius.cn/board/v5/VuWGi/726575728"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.title",
+      "type": "string",
+      "samples": [
+        "国庆节|中秋国庆放假通知|中秋节|校园|幼儿园|红色"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.traffic",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.type",
+      "type": "number",
+      "samples": [
+        2
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.type_text",
+      "type": "string",
+      "samples": [
+        "paper"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.updated_at",
+      "type": "string",
+      "samples": [
+        "2026-09-19T19:38:47.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.usage_scenario",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.version",
+      "type": "number",
+      "samples": [
+        5
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].show.wechat_no_share",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].state",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].state_text",
+      "type": "string",
+      "samples": [
+        "on_sale"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].template_membership_flag",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].tpl_copy_number",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].updated_at",
+      "type": "string",
+      "samples": [
+        "2026-09-20T12:57:52.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].waitingDays",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/goodses → data.goodses[].weight",
+      "type": "number",
+      "samples": [
+        824676
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/my/incomes/goodses → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/my/incomes/goodses → data.count",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/my/incomes/goodses → data.goodses",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/my/incomes/goodses → data.recentDay",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/my/purchased/goodses → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/my/purchased/goodses → data.count",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/my/purchased/goodses → data.goodses",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].childTags",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].childTags[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].childTags[].created_at",
+      "type": "string",
+      "samples": [
+        "2018-04-26T22:59:56.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].childTags[].show_type",
+      "type": "number",
+      "samples": [
+        2
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].childTags[].show_type_text",
+      "type": "string",
+      "samples": [
+        "paper"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].childTags[].tag_id",
+      "type": "number",
+      "samples": [
+        92
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].childTags[].tag_level",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].childTags[].tag_name",
+      "type": "string",
+      "samples": [
+        "邀请函"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].childTags[].updated_at",
+      "type": "string",
+      "samples": [
+        "2018-04-26T22:59:56.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].created_at",
+      "type": "string",
+      "samples": [
+        "2018-04-24T02:16:12.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].show_type",
+      "type": "number",
+      "samples": [
+        2
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].show_type_text",
+      "type": "string",
+      "samples": [
+        "paper"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].tag_id",
+      "type": "number",
+      "samples": [
+        12
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].tag_level",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].tag_name",
+      "type": "string",
+      "samples": [
+        "用途"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].childTags[].updated_at",
+      "type": "string",
+      "samples": [
+        "2018-04-24T02:16:12.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].created_at",
+      "type": "string",
+      "samples": [
+        "2018-04-20T14:15:49.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].show_type",
+      "type": "number",
+      "samples": [
+        2
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].show_type_text",
+      "type": "string",
+      "samples": [
+        "paper"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].tag_id",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].tag_level",
+      "type": "number",
+      "samples": [
+        2
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].tag_name",
+      "type": "string",
+      "samples": [
+        "paper_root"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tags_tree → data.[].updated_at",
+      "type": "string",
+      "samples": [
+        "2018-04-20T14:15:51.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/show_goods/tpl_goods/count → data",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/shows/count → data",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/shows/deleted/shows → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/shows/deleted/shows → data.count",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/shows/deleted/shows → data.deletedShows",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.assetUpload",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.assetUpload.cdnHost",
+      "type": "string",
+      "samples": [
+        "https://upload.xiumius.cn"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.assetUpload.configs",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.assetUpload.configs[]",
+      "type": "string",
+      "samples": [
+        "cdn"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.BIND_PARTNER_DOCUMENT_SERVICE",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.BIND_PARTNER_DOCUMENT_SERVICE.sendArticleUrl",
+      "type": "string",
+      "samples": [
+        "https://xmapi.xiumi.us/article/postpartnerarticles"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.BIND_PARTNER_DOCUMENT_SERVICE.sendAssetUrl",
+      "type": "string",
+      "samples": [
+        "https://xmapi.xiumi.us/resource/postpartnerresource"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.BIND_PARTNER_DOCUMENT_SERVICE.taurusLoginApi",
+      "type": "string",
+      "samples": [
+        "https://xmapi.xiumi.us/user/login"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.browserExtension",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.browserExtension.version",
+      "type": "string",
+      "samples": [
+        "0.0.7"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.cashWithdraw",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.cashWithdraw.brokerageRate",
+      "type": "number",
+      "samples": [
+        0.16
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.cashWithdraw.minAmount",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.cashWithdraw.taxRate",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.cancelWxArticleSendUrl",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/articlesentrecord/cancel"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.deleteResoucesUrl",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/resource/deleteresouces"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.deleteWxArticleUrl",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/article/deletearticles"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.fetchUserListApi",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/authorization/authlist"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.geminiLoginApi",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/user/login"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.geminiTokenApi",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/user/token"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.refreshUserListApi",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/authorization/authlistrefresh"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.removeUserApi",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/authorization/removeauth"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.sendArticleUrl",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/article/postarticles"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.sendAssetUrl",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/resource/postresource"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.sendPreviewApi",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/article/previewarticle"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.sendWxArticlesUrl",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/article/sendarticlestoall"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.wxArticleSentRecordUrl",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/articlesentrecord/list"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.wxauthArticleDataUrl",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/article/weixinarticledata"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.wxauthArticlesUrl",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/article/weixinarticles"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.DOCUMENT_SERVICE.wxauthPublishedArticlesUrl",
+      "type": "string",
+      "samples": [
+        "//wx.xiumius.cn/article/weixinpublisharticles"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.node_env",
+      "type": "string",
+      "samples": [
+        "production"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.PARTNER_DOCUMENT_SERVICE",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.PARTNER_DOCUMENT_SERVICE.importArticleUrl",
+      "type": "string",
+      "samples": [
+        "https://xmapi.xiumi.us/article/partnercontent"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.PARTNER_DOCUMENT_SERVICE.sendArticleUrl",
+      "type": "string",
+      "samples": [
+        "https://xmapi.xiumi.us/article/postarticles"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.PARTNER_DOCUMENT_SERVICE.sendAssetUrl",
+      "type": "string",
+      "samples": [
+        "https://xmapi.xiumi.us/resource/postresource"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.PARTNER_DOCUMENT_SERVICE.sendShowUrl",
+      "type": "string",
+      "samples": [
+        "https://xmapi.xiumi.us/show/postshow"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.psd",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.psd.maxFileSize",
+      "type": "number",
+      "samples": [
+        31457280
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.settings",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.settings.export",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.settings.export.wxCommon",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.settings.export.wxCommon.gifSuffix",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.settings.export.wxCopy",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.settings.export.wxCopy.imageSuffix",
+      "type": "string",
+      "samples": [
+        "style/xmwx"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.settings.export.wxCopy.maxImageSize",
+      "type": "number",
+      "samples": [
+        2048
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.settings.export.wxSync",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.settings.export.wxSync.imageSuffix",
+      "type": "string",
+      "samples": [
+        "style/xmwx"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.settings.export.wxSync.maxImageSize",
+      "type": "number",
+      "samples": [
+        1024
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.settings.xover",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.settings.xover.version",
+      "type": "string",
+      "samples": [
+        "0.0.7"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.version",
+      "type": "string",
+      "samples": [
+        "14.4.2"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.webfont",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.webfont.yzkWebSDKScriptURI",
+      "type": "string",
+      "samples": [
+        "/3rd/yzk-webfont/20200317/h5js.new.min.js"
+      ]
+    },
+    {
+      "field": "RESP GET /api/sys_info → data.webfont.yzkWebSDKServer",
+      "type": "string",
+      "samples": [
+        "webfont.xiumius.cn"
+      ]
+    },
+    {
+      "field": "RESP GET /api/teams → data",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.count",
+      "type": "number",
+      "samples": [
+        21640
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].accessibility",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].accessibility_text",
+      "type": "string",
+      "samples": [
+        "Public"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].atom_tpl_id",
+      "type": "string",
+      "samples": [
+        "paper-cp:2026-9-11/53771"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].category",
+      "type": "number",
+      "samples": [
+        11
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].category_text",
+      "type": "string",
+      "samples": [
+        "paper-cp"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].created_at",
+      "type": "string",
+      "samples": [
+        "2026-09-11T06:56:12.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].display_name",
+      "type": "string",
+      "samples": [
+        "paper-cp:2026-9-11/53771"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].feature_requires",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].feature_requires_text",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].help_content",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].level",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].level_remain_life",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[]._comp",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[]._comp._$uuid",
+      "type": "string",
+      "samples": [
+        "comp-AoXD3YQ4EWKHqqdn"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[]._comp.constraint",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[]._comp.pose",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[]._comp.style",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[]._comp.tplId",
+      "type": "string",
+      "samples": [
+        "paper-cp:layout/row1-r1c5"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col1",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col1.constraint",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col1.items",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col1.style",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col1.type",
+      "type": "string",
+      "samples": [
+        "group"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col2",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col2.constraint",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col2.items",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col2.style",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col2.type",
+      "type": "string",
+      "samples": [
+        "group"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col3",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col3.constraint",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col3.items",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col3.style",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col3.type",
+      "type": "string",
+      "samples": [
+        "group"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col4",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col4.constraint",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col4.items",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col4.style",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col4.type",
+      "type": "string",
+      "samples": [
+        "group"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col5",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col5.constraint",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col5.items",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col5.style",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].matrix[].col5.type",
+      "type": "string",
+      "samples": [
+        "group"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].order_num",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].renderer_accelerate",
+      "type": "string",
+      "samples": [
+        "<div class=\"tn-from-house-paper-cp tn-comp-anim-pin tn-co..."
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].tags",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].tags[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].tags[].tag_category",
+      "type": "number",
+      "samples": [
+        11
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].tags[].tag_category_text",
+      "type": "string",
+      "samples": [
+        "paper-cp"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].tags[].tag_id",
+      "type": "number",
+      "samples": [
+        1279
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].tags[].tag_key",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].tags[].tag_level",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].tags[].tag_name",
+      "type": "string",
+      "samples": [
+        "国庆节"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].template_id",
+      "type": "number",
+      "samples": [
+        87689
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].thumb_uri",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].updated_at",
+      "type": "string",
+      "samples": [
+        "2026-09-17T16:00:00.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].version",
+      "type": "number",
+      "samples": [
+        2
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].visibility",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates → data.templates[].visibility_text",
+      "type": "string",
+      "samples": [
+        "All"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].accessibility",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].accessibility_text",
+      "type": "string",
+      "samples": [
+        "Public"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].atom_tpl_id",
+      "type": "string",
+      "samples": [
+        "booklet-cp:baseware/cimg-only"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].category",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].category_text",
+      "type": "string",
+      "samples": [
+        "booklet-cp"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].created_at",
+      "type": "string",
+      "samples": [
+        "2015-12-17T07:08:43.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].display_name",
+      "type": "string",
+      "samples": [
+        "可裁剪图片"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].feature_requires",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].feature_requires_text",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].help_content",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].level",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].level_remain_life",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix._comp",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix._comp.constraint",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix._comp.constraint.enableFullImage",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix._comp.constraint.opMenu",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix._comp.constraint.opMenu.crop-image-merged",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix._comp.constraint.pose",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix._comp.constraint.pose.aspectRatio",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix._comp.pose",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix._comp.pose.aspectRatio",
+      "type": "string",
+      "samples": [
+        "1.0 origin"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix._comp.pose.width",
+      "type": "number",
+      "samples": [
+        150
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix._comp.style",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix._comp.tplId",
+      "type": "string",
+      "samples": [
+        "booklet-cp:baseware/cimg-only"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix.cimg1",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix.cimg1.constraint",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix.cimg1.constraint.changeViewPort",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix.cimg1.src",
+      "type": "string",
+      "samples": [
+        "//statics.xiumi.us/stc/images/placeholder-img.jpg"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix.cimg1.style",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix.cimg1.style.backgroundPosition",
+      "type": "string",
+      "samples": [
+        "center center"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix.cimg1.style.backgroundRepeat",
+      "type": "string",
+      "samples": [
+        "no-repeat"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix.cimg1.style.backgroundSize",
+      "type": "string",
+      "samples": [
+        "cover"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].matrix.cimg1.type",
+      "type": "string",
+      "samples": [
+        "crop-image"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].order_num",
+      "type": "number",
+      "samples": [
+        2000
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].renderer_accelerate",
+      "type": "string",
+      "samples": [
+        "<div class=\"tn-comp-anim-pin tn-comp tn-from-house-bookle..."
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].template_id",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].thumb_uri",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].updated_at",
+      "type": "string",
+      "samples": [
+        "2020-07-29T06:25:11.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].version",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].visibility",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/items → data.[].visibility_text",
+      "type": "string",
+      "samples": [
+        "All"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[].childTags",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[].childTags[]",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[].childTags[].tag_category",
+      "type": "number",
+      "samples": [
+        11
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[].childTags[].tag_category_text",
+      "type": "string",
+      "samples": [
+        "paper-cp"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[].childTags[].tag_id",
+      "type": "number",
+      "samples": [
+        3242
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[].childTags[].tag_level",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[].childTags[].tag_name",
+      "type": "string",
+      "samples": [
+        "基础标题"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[].tag_category",
+      "type": "number",
+      "samples": [
+        11
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[].tag_category_text",
+      "type": "string",
+      "samples": [
+        "paper-cp"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[].tag_id",
+      "type": "number",
+      "samples": [
+        3227
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[].tag_level",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].childTags[].tag_name",
+      "type": "string",
+      "samples": [
+        "标题"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].tag_category",
+      "type": "number",
+      "samples": [
+        11
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].tag_category_text",
+      "type": "string",
+      "samples": [
+        "paper-cp"
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].tag_id",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].tag_level",
+      "type": "number",
+      "samples": [
+        2
+      ]
+    },
+    {
+      "field": "RESP GET /api/templates/tags_tree → data.[].tag_name",
+      "type": "string",
+      "samples": [
+        "paper-cp_root"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/exhibits/on_mypage → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/exhibits/on_mypage → data.count",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/exhibits/on_mypage → data.exhibits",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/info → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/info → data.avatar_url",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/info → data.brand_name",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/info → data.level",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/info → data.location",
+      "type": "string",
+      "samples": [
+        "示例地区"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/info → data.nickname",
+      "type": "string",
+      "samples": [
+        "示例用户24e4"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/info → data.sub_account",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/info → data.unique_uid",
+      "type": "string",
+      "samples": [
+        "0123456789abcdef0123456789abcdef"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/info → data.user_sid",
+      "type": "string",
+      "samples": [
+        "l0TvI"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user_home/published/user/{hash}/info → data.userpage_url",
+      "type": "string",
+      "samples": [
+        "https://v.xiumius.cn/u/l0TvI"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user_home/tag/tagorder/{hash} → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user_home/tag/tagorder/{hash} → data.tags",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user_home/tag/tagorder/{hash} → data.tagsOrder",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/blacklist → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user/info → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user/info → data.authPhoneNeed",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.requirePhoneBind",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.agreement_access",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.area_code",
+      "type": "number",
+      "samples": [
+        86
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.avatar_url",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.brand_name",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.created_at",
+      "type": "string",
+      "samples": [
+        "2026-09-20T10:29:26.000Z"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.email",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.hasPassword",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.isBindApple",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.isBindQQ",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.isBindWeibo",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.isBindWx",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.level",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.level_remain_life",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.articleLimit",
+      "type": "number",
+      "samples": [
+        30
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.articlePageLimit",
+      "type": "number",
+      "samples": [
+        1000
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.formDataCountLimit",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.fragmentLimit",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.showLimit",
+      "type": "number",
+      "samples": [
+        30
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.showPageLimit",
+      "type": "number",
+      "samples": [
+        300
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.teamCountLimit",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.teamMemCountLimit",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.upAudioNumLimit",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.upAudioSizeLimit",
+      "type": "number",
+      "samples": [
+        10485760
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.upImageNumLimit",
+      "type": "number",
+      "samples": [
+        100
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.upImageSizeLimit",
+      "type": "number",
+      "samples": [
+        10485760
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.upVideoNumLimit",
+      "type": "number",
+      "samples": [
+        10
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.upVideoSizeLimit",
+      "type": "number",
+      "samples": [
+        20971520
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.levelLimit.version",
+      "type": "number",
+      "samples": [
+        1
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.location",
+      "type": "string",
+      "samples": [
+        "示例地区"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.message_count",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.message_count.total",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.message_count.unread",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.nickname",
+      "type": "string",
+      "samples": [
+        "示例用户24e4"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.partner_uid",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.phone",
+      "type": "string",
+      "samples": [
+        "13800000000"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.qq_qd_uin",
+      "type": "null",
+      "samples": [
+        null
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.sub_account",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.unique_uid",
+      "type": "string",
+      "samples": [
+        "0123456789abcdef0123456789abcdef"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.user_setting",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.user_sid",
+      "type": "string",
+      "samples": [
+        "l0TvI"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info → data.user.userpage_url",
+      "type": "string",
+      "samples": [
+        "https://v.xiumius.cn/u/l0TvI"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info/coin → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user/info/coin → data.coinCount",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info/invitation → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user/info/invitation → data.allowInvitation",
+      "type": "boolean",
+      "samples": [
+        true
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info/invitation → data.invitationLink",
+      "type": "string",
+      "samples": [
+        "https://xiumi.us/user/invitation/14GE8-8eGwL"
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/info/invitation → data.invitedCount",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/template_membership → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user/template_membership → data.days",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/template_membership → data.is_member",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/traffic_package_info → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/user/traffic_package_info → data.hasPackage",
+      "type": "boolean",
+      "samples": [
+        false
+      ]
+    },
+    {
+      "field": "RESP GET /api/user/traffic_package_info → data.traffic",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/wallet/bills → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/wallet/bills → data.count",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/wallet/bills → data.walletBills",
+      "type": "array",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/wallet/my/balance → data",
+      "type": "object",
+      "samples": []
+    },
+    {
+      "field": "RESP GET /api/wallet/my/balance → data.debt",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP GET /api/wallet/my/balance → data.wallet",
+      "type": "number",
+      "samples": [
+        0
+      ]
+    },
+    {
+      "field": "RESP POST /api/assets/type/image/tagsorder → data",
+      "type": "string",
+      "samples": [
+        "OK"
+      ]
+    },
+    {
+      "field": "RESP POST /api/fragments/v5/booklet/page/tagsorder → data",
+      "type": "string",
+      "samples": [
+        "OK"
+      ]
+    },
+    {
+      "field": "RESP POST /api/fragments/v5/paper/comp/tagsorder → data",
+      "type": "string",
+      "samples": [
+        "OK"
+      ]
+    },
+    {
+      "field": "RESP POST /api/show_goods_favorite_tags/paper/order → data",
+      "type": "string",
+      "samples": [
+        "Added"
+      ]
+    },
+    {
+      "field": "RESP POST /api/user_home/tag/order → data",
+      "type": "string",
+      "samples": [
+        "Added"
+      ]
+    }
+  ]
+}

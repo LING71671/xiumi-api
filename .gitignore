@@ -1,0 +1,31 @@
+# —— 凭据（绝不可提交）
+scripts/account.local.json
+scripts/desensitize.map.local.json
+scripts/desensitize.state.local.json
+.env
+.env.*
+*.local.json
+
+# —— 会话与抓包数据（含真实目标标识、通讯录、作品内容）
+capture/
+logs/
+exports/
+.audit/
+
+# —— 运行产物
+*.log
+cache/
+dist/
+build/
+
+# —— 依赖
+node_modules/
+__pycache__/
+*.pyc
+
+# —— 编辑器与系统垃圾
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

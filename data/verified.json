@@ -1,0 +1,471 @@
+{
+  "summary": {
+    "at": "2026-09-20T13:49:31.126Z",
+    "total": 42,
+    "pass": 42,
+    "groups": {
+      "auth": {
+        "pass": 4,
+        "fail": 0
+      },
+      "wallet": {
+        "pass": 2,
+        "fail": 0
+      },
+      "show": {
+        "pass": 2,
+        "fail": 0
+      },
+      "asset": {
+        "pass": 1,
+        "fail": 0
+      },
+      "template": {
+        "pass": 4,
+        "fail": 0
+      },
+      "team": {
+        "pass": 1,
+        "fail": 0
+      },
+      "msg": {
+        "pass": 1,
+        "fail": 0
+      },
+      "order": {
+        "pass": 1,
+        "fail": 0
+      },
+      "tag": {
+        "pass": 6,
+        "fail": 0
+      },
+      "show-w": {
+        "pass": 12,
+        "fail": 0
+      },
+      "show-r": {
+        "pass": 7,
+        "fail": 0
+      },
+      "show-w-na": {
+        "pass": 1,
+        "fail": 0
+      }
+    }
+  },
+  "results": [
+    {
+      "group": "auth",
+      "name": "me",
+      "method": "GET",
+      "path": "/auth/me",
+      "ok": true,
+      "ms": 500,
+      "expect": "user 对象",
+      "sample": "{user_sid,unique_uid,nickname,avatar_url,brand_name,level,sub_account,userpage_url,location,hasPassword,…}"
+    },
+    {
+      "group": "auth",
+      "name": "userInfo",
+      "method": "GET",
+      "path": "/api/user/info",
+      "ok": true,
+      "ms": 705,
+      "expect": "user 对象",
+      "sample": "{requirePhoneBind,user,authPhoneNeed}"
+    },
+    {
+      "group": "auth",
+      "name": "sysInfo",
+      "method": "GET",
+      "path": "/api/sys_info",
+      "ok": true,
+      "ms": 302,
+      "expect": "配置项",
+      "sample": "{node_env,version,cashWithdraw,psd,webfont,assetUpload,browserExtension,DOCUMENT_SERVICE,PARTNER_DOCUMENT_SERVICE,BIND_PARTNER_DOCUMENT_SERVICE,…}"
+    },
+    {
+      "group": "auth",
+      "name": "apikey",
+      "method": "GET",
+      "path": "/api/apikey",
+      "ok": true,
+      "ms": 214,
+      "expect": "api key",
+      "sample": "{apiKeys,currentCount,availableCount,totalCount,capability}"
+    },
+    {
+      "group": "wallet",
+      "name": "walletBalance",
+      "method": "GET",
+      "path": "/api/wallet/my/balance",
+      "ok": true,
+      "ms": 230,
+      "expect": "余额",
+      "sample": "{wallet,debt}"
+    },
+    {
+      "group": "wallet",
+      "name": "bills",
+      "method": "GET",
+      "path": "/api/wallet/bills",
+      "ok": true,
+      "ms": 504,
+      "expect": "账单",
+      "sample": "{count,walletBills}"
+    },
+    {
+      "group": "show",
+      "name": "listShows",
+      "method": "GET",
+      "path": "/api/shows",
+      "ok": true,
+      "ms": 643,
+      "expect": "作品数组",
+      "sample": "[Array 2]"
+    },
+    {
+      "group": "show",
+      "name": "showsCount",
+      "method": "GET",
+      "path": "/api/shows/count",
+      "ok": true,
+      "ms": 204,
+      "expect": "计数",
+      "sample": 2
+    },
+    {
+      "group": "asset",
+      "name": "listImages",
+      "method": "GET",
+      "path": "/api/assets/list/image",
+      "ok": true,
+      "ms": 201,
+      "expect": "图片数组",
+      "sample": "[Array 0]"
+    },
+    {
+      "group": "template",
+      "name": "listTemplates",
+      "method": "GET",
+      "path": "/api/templates",
+      "ok": true,
+      "ms": 203,
+      "expect": "模板数组",
+      "sample": "{count,templates}"
+    },
+    {
+      "group": "template",
+      "name": "fragmentTagDetails",
+      "method": "GET",
+      "path": "/api/fragments/v5/paper/comp/tags",
+      "ok": true,
+      "ms": 821,
+      "expect": "标签+碎片",
+      "sample": "[Array 0]"
+    },
+    {
+      "group": "template",
+      "name": "fragmentTagsOrder",
+      "method": "GET",
+      "path": "/api/fragments/v5/paper/comp/tagsorder",
+      "ok": true,
+      "ms": 211,
+      "expect": "标签排序",
+      "sample": null
+    },
+    {
+      "group": "template",
+      "name": "usedFragmentsCount",
+      "method": "GET",
+      "path": "/api/fragments/used/paper_cp",
+      "ok": true,
+      "ms": 198,
+      "expect": "额度",
+      "sample": "{used,total}"
+    },
+    {
+      "group": "team",
+      "name": "teams",
+      "method": "GET",
+      "path": "/api/teams",
+      "ok": true,
+      "ms": 206,
+      "expect": "团队数组",
+      "sample": "[Array 0]"
+    },
+    {
+      "group": "msg",
+      "name": "messages",
+      "method": "GET",
+      "path": "/api/messages",
+      "ok": true,
+      "ms": 250,
+      "expect": "消息数组",
+      "sample": "[Array 0]"
+    },
+    {
+      "group": "order",
+      "name": "orders",
+      "method": "GET",
+      "path": "/api/orders",
+      "ok": true,
+      "ms": 250,
+      "expect": "订单数组",
+      "sample": "{count,orders}"
+    },
+    {
+      "group": "tag",
+      "name": "listTags",
+      "method": "GET",
+      "path": "/api/shows/all/tags",
+      "ok": true,
+      "ms": 318,
+      "expect": "标签列表",
+      "sample": "[Array 0]"
+    },
+    {
+      "group": "show-w",
+      "name": "createBlankShow",
+      "method": "POST",
+      "path": "/api/shows/v5/paper",
+      "ok": true,
+      "ms": 1191,
+      "expect": "返回 show_id",
+      "sample": "{show_id,type,version,usage_scenario,title,desc,cover,loading_icon,exif,show_data_name,…}"
+    },
+    {
+      "group": "show-r",
+      "name": "getShow",
+      "method": "GET",
+      "path": "/api/shows/727019201",
+      "ok": true,
+      "ms": 505,
+      "expect": "元信息",
+      "sample": "{show_id,type,version,usage_scenario,title,desc,cover,loading_icon,exif,show_data_name,…}"
+    },
+    {
+      "group": "show-r",
+      "name": "readShowData(published)",
+      "method": "GET",
+      "path": "show_data_url",
+      "ok": true,
+      "ms": 6418,
+      "expect": "作品 JSON",
+      "sample": "{meta,data,status}"
+    },
+    {
+      "group": "show-r",
+      "name": "readShowData(editing)",
+      "method": "GET",
+      "path": "editing_show_data_url",
+      "ok": true,
+      "ms": 1469,
+      "expect": "草稿 JSON",
+      "sample": "{meta,data,status}"
+    },
+    {
+      "group": "show-w",
+      "name": "updateShow(PUT) 改标题",
+      "method": "PUT",
+      "path": "/api/shows/727019201",
+      "ok": true,
+      "ms": 903,
+      "expect": "code=2 Updated",
+      "sample": "{show_id,type,version,usage_scenario,title,desc,cover,loading_icon,exif,show_data_name,…}"
+    },
+    {
+      "group": "show-w",
+      "name": "改标题回读一致",
+      "method": "GET",
+      "path": "/api/shows/727019201",
+      "ok": true,
+      "expect": "title 含 (已改)"
+    },
+    {
+      "group": "tag",
+      "name": "addTag",
+      "method": "POST",
+      "path": "/api/shows/727019201/tags",
+      "ok": true,
+      "ms": 217,
+      "expect": "写入标签",
+      "sample": "Added"
+    },
+    {
+      "group": "tag",
+      "name": "标签写入后可见",
+      "method": "GET",
+      "path": "/api/shows/all/tags",
+      "ok": true,
+      "expect": "包含 apiverify_48866"
+    },
+    {
+      "group": "tag",
+      "name": "renameTag",
+      "method": "POST",
+      "path": "/api/shows/tags/rename",
+      "ok": true,
+      "ms": 369,
+      "expect": "重命名标签",
+      "sample": "OK"
+    },
+    {
+      "group": "tag",
+      "name": "removeTag(DELETE)",
+      "method": "DELETE",
+      "path": "/api/shows/727019201/tags/{tag}",
+      "ok": true,
+      "ms": 227,
+      "expect": "移除标签",
+      "sample": "Deleted"
+    },
+    {
+      "group": "tag",
+      "name": "clearTag(DELETE)",
+      "method": "DELETE",
+      "path": "/api/shows/tags/clear/{tag}",
+      "ok": true,
+      "ms": 519,
+      "expect": "清空标签",
+      "sample": "Deleted"
+    },
+    {
+      "group": "show-w",
+      "name": "setRightAccessPrivilege",
+      "method": "PUT",
+      "path": "/api/shows/727019201/right_access_privilege/{v}",
+      "ok": true,
+      "ms": 218,
+      "expect": "权限位",
+      "sample": "one key share "
+    },
+    {
+      "group": "show-w",
+      "name": "setWechatNoShare(0)",
+      "method": "PUT",
+      "path": "/api/shows/727019201/wechat_no_share/0",
+      "ok": true,
+      "ms": 215,
+      "expect": "关分享屏蔽",
+      "sample": "ok"
+    },
+    {
+      "group": "show-w-na",
+      "name": "setTrafficPackageUsage(0)",
+      "method": "PUT",
+      "path": "/api/shows/727019201/use_traffic_package/0",
+      "ok": true,
+      "ms": 517,
+      "expect": "无流量包时报 Failed_NotFound",
+      "sample": "{_na}"
+    },
+    {
+      "group": "show-r",
+      "name": "trafficPackageUsage",
+      "method": "GET",
+      "path": "/api/shows/727019201/consumed/traffic_package/info",
+      "ok": true,
+      "ms": 557,
+      "expect": "流量信息",
+      "sample": "{state,traffic_consumed,cur_consumed,traffic_remained}"
+    },
+    {
+      "group": "show-r",
+      "name": "showHistories",
+      "method": "GET",
+      "path": "/api/shows/727019201/histories",
+      "ok": true,
+      "ms": 552,
+      "expect": "历史版本",
+      "sample": "[Array 1]"
+    },
+    {
+      "group": "show-r",
+      "name": "previewUri",
+      "method": "GET",
+      "path": "/preview/uri",
+      "ok": true,
+      "ms": 358,
+      "expect": "预览链接",
+      "sample": "{uri,expireTime}"
+    },
+    {
+      "group": "show-w",
+      "name": "copyShow",
+      "method": "POST",
+      "path": "/api/shows/v5/paper?from_show_id=727019201",
+      "ok": true,
+      "ms": 485,
+      "expect": "新副本",
+      "sample": "{show_id,type,version,usage_scenario,title,desc,cover,loading_icon,exif,show_data_name,…}"
+    },
+    {
+      "group": "show-w",
+      "name": "deleteShow(原)",
+      "method": "DELETE",
+      "path": "/api/shows/727019201",
+      "ok": true,
+      "ms": 275,
+      "expect": "code=3 Deleted",
+      "sample": "Deleted"
+    },
+    {
+      "group": "show-w",
+      "name": "deleteShow(副本)",
+      "method": "DELETE",
+      "path": "/api/shows/727019247",
+      "ok": true,
+      "ms": 1880,
+      "expect": "code=3 Deleted",
+      "sample": "Deleted"
+    },
+    {
+      "group": "show-r",
+      "name": "deletedShows",
+      "method": "GET",
+      "path": "/api/shows/deleted/shows",
+      "ok": true,
+      "ms": 339,
+      "expect": "回收站含被删作品",
+      "sample": "[Array 7]"
+    },
+    {
+      "group": "show-w",
+      "name": "删除进入回收站",
+      "method": "GET",
+      "path": "/api/shows/deleted/shows",
+      "ok": true,
+      "expect": "含已删 orig_show_id"
+    },
+    {
+      "group": "show-w",
+      "name": "recoverShow",
+      "method": "POST",
+      "path": "/api/shows/recover/{deleted_show_id}",
+      "ok": true,
+      "ms": 532,
+      "expect": "返回 Recovered",
+      "sample": "Recovered"
+    },
+    {
+      "group": "show-w",
+      "name": "恢复后元信息可读",
+      "method": "GET",
+      "path": "/api/shows/727019201",
+      "ok": true,
+      "expect": "可读"
+    },
+    {
+      "group": "show-w",
+      "name": "deleteShow(二次清理)",
+      "method": "DELETE",
+      "path": "/api/shows/727019201",
+      "ok": true,
+      "ms": 559,
+      "expect": "再次删除",
+      "sample": "Deleted"
+    }
+  ]
+}

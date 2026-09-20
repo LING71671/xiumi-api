@@ -1,0 +1,2559 @@
+{
+  "probedAt": "2026-09-20T13:31:23.044Z",
+  "user": {
+    "user_sid": "l0TvI",
+    "nickname": "示例用户8295",
+    "level": 1
+  },
+  "note": "仅发送 GET 请求，用于验证接口可用性与响应结构；写接口一律未探测。",
+  "results": [
+    {
+      "path": "/api/admin/template/meta",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/admin/template/system/tag/drop",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/admin/template/system/tag/new",
+      "method": "GET",
+      "url": "https://xiumi.us/api/admin/template/system/tag/new",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/apikey",
+      "method": "GET",
+      "url": "https://xiumi.us/api/apikey",
+      "status": 200,
+      "size": 171,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "apiKeys",
+        "currentCount",
+        "availableCount",
+        "totalCount",
+        "capability"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"apiKeys\":[],\"currentCount\":0,\"availableCount\":2,\"totalCount\":2,\"capability\":{\"prohibited\":true,\"message\":\"您的 API Key 功能已被管理员禁用\"}}}"
+    },
+    {
+      "path": "/api/assets",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/assets/audio/file",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/audio/file",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/assets/cert/file",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/clearimages",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/image/cosobj",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/image/data",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/image/file",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/image/fromAnyStorage",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/image/imagedata",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/image/outlink",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/image/qqmap",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/image/svgContent",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/image/wxlink",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/list/audio",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/list/audio",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/assets/list/image",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/list/image",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/assets/list/image/count",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/list/image/count",
+      "status": 200,
+      "size": 41,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "number",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":0}"
+    },
+    {
+      "path": "/api/assets/list/image/used",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/list/image/used",
+      "status": 200,
+      "size": 62,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "used",
+        "total"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"used\":0,\"total\":100}}"
+    },
+    {
+      "path": "/api/assets/list/video",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/list/video",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/assets/list/video/count",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/list/video/count",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/assets/list/video/used",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/list/video/used",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/assets/psd/file",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/psd/file",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/assets/tagsset",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/assets/type/image/tag",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/type/image/tag/assets",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/type/image/tag/assets",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/assets/type/image/tag/rename",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/assets/type/image/tags",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/type/image/tags",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/assets/type/image/tagsorder",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/type/image/tagsorder",
+      "status": 200,
+      "size": 44,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "object",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":null}"
+    },
+    {
+      "path": "/api/assets/type/image/untags",
+      "method": "GET",
+      "url": "https://xiumi.us/api/assets/type/image/untags",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/assets/type/image/untags/clearimages",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/video/cosobj",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/video/file",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/assets/video/ossobj",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/audio/audio_list",
+      "method": "GET",
+      "url": "https://xiumi.us/api/audio/audio_list",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/audio/category_list",
+      "method": "GET",
+      "url": "https://xiumi.us/api/audio/category_list",
+      "status": 200,
+      "size": 641,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 5]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[{\"category_id\":14,\"category_name\":\"动感\",\"created_at\":\"2018-03-27T15:25:29.000Z\",\"updated_at\":\"2018-03-27T15:25:32.000Z\"},{\"category_id\":13,\"category_name\":\"浪漫\",\"created_at\":\"2018-03-27T15:25:04.000Z\",\"updated_at\":\"2018-03-27T15:25:08.000Z\"},{\"category_id\":12,\"category_name\":\"大气\",\"created_at\":\"2018-03-27T15:24:28.000Z\",\"updated_at\":\"2018-03-27T15:24:31.000Z\"},{\"category_id\":11,\"category_name\":\"欢快\",\"created_at\":\"2018-03-27T15:24:16.000Z\",\"updated_at\":\"2018-03-27T15:24:18.000Z\"},{\"category_id\":10,\"category_name\":\"商务\",\"created_at\":\"2018-03-27T15:24:01.000Z\",\"updated_at\":\"2018-03-27T15:24:04.000Z\"}]}"
+    },
+    {
+      "path": "/api/audio/source_list",
+      "method": "GET",
+      "url": "https://xiumi.us/api/audio/source_list",
+      "status": 200,
+      "size": 262,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 1]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[{\"source_id\":1,\"source_name\":\"看见音乐\",\"icon_uri\":\"//statics.xiumi.us/stc/images/partner/ic_approve_2c3cd.png\",\"link_uri\":\"//www.kanjian.com/\",\"created_at\":\"2018-03-27T15:22:14.000Z\",\"updated_at\":\"2018-03-27T15:22:17.000Z\"}]}"
+    },
+    {
+      "path": "/api/auth/email/reset_password",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/auth/login-captcha",
+      "method": "GET",
+      "url": "https://xiumi.us/api/auth/login-captcha",
+      "status": 400,
+      "size": 101,
+      "envelope": {
+        "code": -2,
+        "message": "Common:Failed_InvalidParam"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-2,\"message\":\"Common:Failed_InvalidParam\",\"error\":{\"status\":400,\"code\":-2,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/auth/partner/ownerpartnerapp",
+      "method": "GET",
+      "url": "https://xiumi.us/api/auth/partner/ownerpartnerapp",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/auth/partner/partnerapp",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/auth/partner/partnerapp/applications",
+      "method": "GET",
+      "url": "https://xiumi.us/api/auth/partner/partnerapp/applications",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/auth/partner/partnerapp/ownerpartnerapp",
+      "method": "GET",
+      "url": "https://xiumi.us/api/auth/partner/partnerapp/ownerpartnerapp",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/auth/partner/partnerapp/ownerunbind",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/auth/partner/partnerapp/resetsecret",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/auth/partner/partnerapp/unbind",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/auth/partner/partnerappbind",
+      "method": "GET",
+      "url": "https://xiumi.us/api/auth/partner/partnerappbind",
+      "status": 400,
+      "size": 128,
+      "envelope": {
+        "code": -1,
+        "message": "Common:Failed: PartnerApp:Failed_PartnerUserIdInvalid"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-1,\"message\":\"Common:Failed: PartnerApp:Failed_PartnerUserIdInvalid\",\"error\":{\"status\":400,\"code\":-1,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/auth/partner/partnerappbindlist",
+      "method": "GET",
+      "url": "https://xiumi.us/api/auth/partner/partnerappbindlist",
+      "status": 200,
+      "size": 278,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "binds",
+        "BIND_PARTNER_DOCUMENT_SERVICE"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"binds\":[],\"BIND_PARTNER_DOCUMENT_SERVICE\":{\"taurusLoginApi\":\"https://xmapi.xiumi.us/user/login\",\"sendArticleUrl\":\"https://xmapi.xiumi.us/article/postpartnerarticles\",\"sendAssetUrl\":\"https://xmapi.xiumi.us/resource/postpartnerresource\"}}}"
+    },
+    {
+      "path": "/api/auth/partner/partnerbind",
+      "method": "GET",
+      "url": "https://xiumi.us/api/auth/partner/partnerbind",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/auth/partnerinfo",
+      "method": "GET",
+      "url": "https://xiumi.us/api/auth/partnerinfo",
+      "status": 200,
+      "size": 1312,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "PARTNER_DOCUMENT_SERVICE",
+        "DOCUMENT_SERVICE"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"PARTNER_DOCUMENT_SERVICE\":{\"sendArticleUrl\":\"https://xmapi.xiumi.us/article/postarticles\",\"sendShowUrl\":\"https://xmapi.xiumi.us/show/postshow\",\"sendAssetUrl\":\"https://xmapi.xiumi.us/resource/postresource\",\"importArticleUrl\":\"https://xmapi.xiumi.us/article/partnercontent\"},\"DOCUMENT_SERVICE\":{\"sendArticleUrl\":\"//wx.xiumius.cn/article/postarticles\",\"sendAssetUrl\":\"//wx.xiumius.cn/resource/postresource\",\"geminiLoginApi\":\"//wx.xiumius.cn/user/login\",\"geminiTokenApi\":\"//wx.xiumius.cn/user/token\",\"fetchUserListApi\":\"//wx.xiumius.cn/authorization/authlist\",\"refreshUserListApi\":\"//wx.xiumius.cn/authorization/authlistrefresh\",\"removeUserApi\":\"//wx.xiumius.cn/authorization/removeauth\",\"sendPreviewApi\":\"//wx.xiumius.cn/article/previewarticle\",\"wxauthArticlesUrl\":\"//wx.xiumius.cn/article/weixinarticles\",\"wxauthArticleDataUrl\":\"//wx.xiumius.cn/article/weixinarticledata\",\"wxauthPublishedArticlesUrl\":\"//wx.xiumius.cn/article/weixinpublisharticles\",\"sendWxArticlesUrl\":\"//wx.xiumius.cn/article/sendarticlestoall\",\"wxArticleSentRecordUrl\":\"//wx.xiumius.cn/articlesentrecord/list\",\"cancelWxArticleSendUrl\":\"//wx.xiumius.cn/articlesentrecord/cancel\",\"deleteWxArtic"
+    },
+    {
+      "path": "/api/auth/register_phone",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/auth/reset_password",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/comments",
+      "method": "GET",
+      "url": "https://xiumi.us/api/comments",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/comments/rights",
+      "method": "GET",
+      "url": "https://xiumi.us/api/comments/rights",
+      "status": 403,
+      "size": 101,
+      "envelope": {
+        "code": -7,
+        "message": "Common:Failed_NoPermission"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-7,\"message\":\"Common:Failed_NoPermission\",\"error\":{\"status\":403,\"code\":-7,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/comments/rights/team",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/comments/rights/trash/team",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/comments/rights/trash/user",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/comments/rights/user",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/comments/share/token",
+      "method": "GET",
+      "url": "https://xiumi.us/api/comments/share/token",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/contacts",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/contacts/add",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/contacts/list",
+      "method": "GET",
+      "url": "https://xiumi.us/api/contacts/list",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/contacts/update",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/custom_domains",
+      "method": "GET",
+      "url": "https://xiumi.us/api/custom_domains",
+      "status": 400,
+      "size": 110,
+      "envelope": {
+        "code": -2,
+        "message": "Common:Failed_InvalidParam: team_id"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-2,\"message\":\"Common:Failed_InvalidParam: team_id\",\"error\":{\"status\":400,\"code\":-2,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/custom_domains/for/show",
+      "method": "GET",
+      "url": "https://xiumi.us/api/custom_domains/for/show",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/email/auth",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/email/auth_action",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/email/change_email",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/email/reset_password",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/email/validate_email",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/fonts/youziku/get_batch_woff_font_face",
+      "method": "GET",
+      "url": "https://xiumi.us/api/fonts/youziku/get_batch_woff_font_face",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/forms",
+      "method": "GET",
+      "url": "https://xiumi.us/api/forms",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/forms/count",
+      "method": "GET",
+      "url": "https://xiumi.us/api/forms/count",
+      "status": 404,
+      "size": 97,
+      "envelope": {
+        "code": -4,
+        "message": "Common:Failed_NotFound"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-4,\"message\":\"Common:Failed_NotFound\",\"error\":{\"status\":404,\"code\":-4,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/forms/data/forshow",
+      "method": "GET",
+      "url": "https://xiumi.us/api/forms/data/forshow",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/forms/excel",
+      "method": "GET",
+      "url": "https://xiumi.us/api/forms/excel",
+      "status": 404,
+      "size": 97,
+      "envelope": {
+        "code": -4,
+        "message": "Common:Failed_NotFound"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-4,\"message\":\"Common:Failed_NotFound\",\"error\":{\"status\":404,\"code\":-4,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/forms/export",
+      "method": "GET",
+      "url": "https://xiumi.us/api/forms/export",
+      "status": 404,
+      "size": 97,
+      "envelope": {
+        "code": -4,
+        "message": "Common:Failed_NotFound"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-4,\"message\":\"Common:Failed_NotFound\",\"error\":{\"status\":404,\"code\":-4,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/forms/query/export",
+      "method": "GET",
+      "url": "https://xiumi.us/api/forms/query/export",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/fragment",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/fragments",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/fragments/up",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/fragments/used",
+      "method": "GET",
+      "url": "https://xiumi.us/api/fragments/used",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/fragments/v5",
+      "method": "GET",
+      "url": "https://xiumi.us/api/fragments/v5",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/help",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/help/add",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/help/check",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/help/recommended",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/help/search",
+      "method": "GET",
+      "url": "https://xiumi.us/api/help/search",
+      "status": 400,
+      "size": 141,
+      "envelope": {
+        "code": -1,
+        "message": "Common:Failed: Array.prototype.indexOf called on null or undefined"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-1,\"message\":\"Common:Failed: Array.prototype.indexOf called on null or undefined\",\"error\":{\"status\":400,\"code\":-1,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/home_slogans",
+      "method": "GET",
+      "url": "https://xiumi.us/api/home_slogans",
+      "status": 200,
+      "size": 1093,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 4]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[{\"slogan_id\":42,\"thumb_uri\":\"//statics.xiumi.us/stc/images/slogan/practices.jpg\",\"target_uri\":\"https://v.xiumi.us/board/v5/2a5va/390085751\",\"state\":1,\"bg_color\":\"\",\"bg_uri\":\"\",\"created_at\":\"2017-08-30T10:55:41.000Z\",\"updated_at\":\"2017-08-30T10:55:46.000Z\"},{\"slogan_id\":43,\"thumb_uri\":\"//statics.xiumi.us/stc/images/slogan/xiumi-scenarios-new.jpg\",\"target_uri\":\"https://v.xiumi.us/board/v5/2a5va/506017761\",\"state\":1,\"bg_color\":\"\",\"bg_uri\":\"\",\"created_at\":\"2022-04-20T11:42:22.000Z\",\"updated_at\":\"2022-04-20T11:42:25.000Z\"},{\"slogan_id\":44,\"thumb_uri\":\"//statics.xiumi.us/stc/images/slogan/manuscript-markdown.jpg\",\"target_uri\":\"https://v.xiumi.us/board/v5/2a5va/552598094\",\"state\":1,\"bg_color\":\"\",\"bg_uri\":\"\",\"created_at\":\"2023-05-17T11:30:17.000Z\",\"updated_at\":\"2023-05-17T11:30:20.000Z\"},{\"slogan_id\":46,\"thumb_uri\":\"//statics.xiumi.us/stc/images/slogan/jiegouhua-new.jpg\",\"target_uri\":\"https://v.xiumi.us/board/v5/2a5va/530192417\",\"state\":1,\"bg_color\":\"\",\"bg_uri\":\"\",\"created_at\":\"2019-12-11T13:55:41.000Z\",\"updated_at\":\"2019-12-11T13:55:44.000Z\"}]}"
+    },
+    {
+      "path": "/api/htmlCode/verify",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/invitation",
+      "method": "GET",
+      "url": "https://xiumi.us/api/invitation",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/invoices",
+      "method": "GET",
+      "url": "https://xiumi.us/api/invoices",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/invoices/available",
+      "method": "GET",
+      "url": "https://xiumi.us/api/invoices/available",
+      "status": 200,
+      "size": 100,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "min_invoice",
+        "total_paid",
+        "available_invoice"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"min_invoice\":0.01,\"total_paid\":null,\"available_invoice\":0}}"
+    },
+    {
+      "path": "/api/invoices/count",
+      "method": "GET",
+      "url": "https://xiumi.us/api/invoices/count",
+      "status": 200,
+      "size": 41,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "number",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":0}"
+    },
+    {
+      "path": "/api/invoices/lastinvoice",
+      "method": "GET",
+      "url": "https://xiumi.us/api/invoices/lastinvoice",
+      "status": 200,
+      "size": 44,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "object",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":null}"
+    },
+    {
+      "path": "/api/invoices/list",
+      "method": "GET",
+      "url": "https://xiumi.us/api/invoices/list",
+      "status": 404,
+      "size": 97,
+      "envelope": {
+        "code": -4,
+        "message": "Common:Failed_NotFound"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-4,\"message\":\"Common:Failed_NotFound\",\"error\":{\"status\":404,\"code\":-4,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/invoices/require",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/invoices/revoke",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/issues",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/login_history",
+      "method": "GET",
+      "url": "https://xiumi.us/api/login_history",
+      "status": 200,
+      "size": 665,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 8]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[{\"signin_at\":\"2026-09-20 21:24\",\"ip_address\":\"4.190.168.135\",\"type\":\"signin\"},{\"signin_at\":\"2026-09-20 21:02\",\"ip_address\":\"4.190.168.135\",\"type\":\"signin\"},{\"signin_at\":\"2026-09-20 21:01\",\"ip_address\":\"4.190.168.135\",\"type\":\"signin\"},{\"signin_at\":\"2026-09-20 19:04\",\"ip_address\":\"4.190.168.135\",\"type\":\"signin\"},{\"signin_at\":\"2026-09-20 18:49\",\"ip_address\":\"4.190.168.135\",\"type\":\"signin\"},{\"signin_at\":\"2026-09-20 18:48\",\"ip_address\":\"4.190.168.135\",\"type\":\"signin\"},{\"signin_at\":\"2026-09-20 18:37\",\"ip_address\":\"4.190.168.135\",\"type\":\"signin\"},{\"signin_at\":\"2026-09-20 18:29\",\"ip_address\":\"4.190.168.135\",\"type\":\"signin\"}]}"
+    },
+    {
+      "path": "/api/messages",
+      "method": "GET",
+      "url": "https://xiumi.us/api/messages",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/messages/mute_be_saved_to",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/messages/mute_invitation",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/messages/mute_new_show",
+      "method": "GET",
+      "url": "https://xiumi.us/api/messages/mute_new_show",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/messages/setting/mute_be_saved_to",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/messages/setting/mute_invitation",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/messages/setting/mute_new_show",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/messages/settings",
+      "method": "GET",
+      "url": "https://xiumi.us/api/messages/settings",
+      "status": 200,
+      "size": 119,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "mute_invitation",
+        "mute_be_saved_to",
+        "mute_new_show",
+        "user_id"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"mute_invitation\":0,\"mute_be_saved_to\":0,\"mute_new_show\":0,\"user_id\":28745337}}"
+    },
+    {
+      "path": "/api/messages/status",
+      "method": "GET",
+      "url": "https://xiumi.us/api/messages/status",
+      "status": 200,
+      "size": 90,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "totalCount",
+        "unreadCount",
+        "importanCount"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"totalCount\":0,\"unreadCount\":0,\"importanCount\":0}}"
+    },
+    {
+      "path": "/api/nlp/extract_headings",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/nlp/extract_headings2",
+      "method": "GET",
+      "url": "https://xiumi.us/api/nlp/extract_headings2",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/nlp/extract_headings2/tasks/{param}",
+      "method": "GET",
+      "skipped": "缺少路径参数 param"
+    },
+    {
+      "path": "/api/nlp/extract_headings2/word/{param}",
+      "method": "GET",
+      "skipped": "缺少路径参数 param"
+    },
+    {
+      "path": "/api/notify",
+      "method": "GET",
+      "url": "https://xiumi.us/api/notify",
+      "status": 200,
+      "size": 44,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "object",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":null}"
+    },
+    {
+      "path": "/api/orders",
+      "method": "GET",
+      "url": "https://xiumi.us/api/orders",
+      "status": 200,
+      "size": 63,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "orders"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":0,\"orders\":[]}}"
+    },
+    {
+      "path": "/api/orders/for/create_order",
+      "method": "GET",
+      "url": "https://xiumi.us/api/orders/for/create_order",
+      "status": 200,
+      "size": 44,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "boolean",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":true}"
+    },
+    {
+      "path": "/api/orders/for/enterprise_team",
+      "method": "GET",
+      "url": "https://xiumi.us/api/orders/for/enterprise_team",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/orders/for/order_pay",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/orders/for/show_goods",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/orders/for/special_offer",
+      "method": "GET",
+      "url": "https://xiumi.us/api/orders/for/special_offer",
+      "status": 200,
+      "size": 32,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\"}"
+    },
+    {
+      "path": "/api/orders/for/team_wallet",
+      "method": "GET",
+      "url": "https://xiumi.us/api/orders/for/team_wallet",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/orders/for/team_wallet_detail",
+      "method": "GET",
+      "url": "https://xiumi.us/api/orders/for/team_wallet_detail",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/orders/for/team_wallet_transfer",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/orders/for/tpl_show_goods",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/orders/for/wallet_recharge",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/orders/for/wallet_redeem",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/orders/for/wallet_transfer",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/orders/for/withdraw_cash",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/orders/tariff/for/enterprise_team",
+      "method": "GET",
+      "url": "https://xiumi.us/api/orders/tariff/for/enterprise_team",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/orders/tariff/for/level/upgrading",
+      "method": "GET",
+      "url": "https://xiumi.us/api/orders/tariff/for/level/upgrading",
+      "status": 200,
+      "size": 1086,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "target_user",
+        "payment_list"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"target_user\":{\"user_sid\":\"B4nBt"
+    },
+    {
+      "path": "/api/orders/tariff/for/templated_membership/upgrading",
+      "method": "GET",
+      "url": "https://xiumi.us/api/orders/tariff/for/templated_membership/upgrading",
+      "status": 200,
+      "size": 1111,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "target_user",
+        "payment_list"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"target_user\":{\"user_sid\":\"ogZE9"
+    },
+    {
+      "path": "/api/orders/tariff/for/traffic_package",
+      "method": "GET",
+      "url": "https://xiumi.us/api/orders/tariff/for/traffic_package",
+      "status": 200,
+      "size": 1440,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "target_user",
+        "payment_list"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"target_user\":{\"user_sid\":\"K8Wxu"
+    },
+    {
+      "path": "/api/publisher/identity",
+      "method": "GET",
+      "url": "https://xiumi.us/api/publisher/identity",
+      "status": 200,
+      "size": 32,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\"}"
+    },
+    {
+      "path": "/api/qrimage/progress",
+      "method": "GET",
+      "url": "https://xiumi.us/api/qrimage/progress",
+      "status": 400,
+      "size": 108,
+      "envelope": {
+        "code": -2,
+        "message": "Common:Failed_InvalidParam: token"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-2,\"message\":\"Common:Failed_InvalidParam: token\",\"error\":{\"status\":400,\"code\":-2,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/qrimage/token",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/qrshare/show/save",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/qrshare/show/share",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/renderer/comp/show",
+      "method": "GET",
+      "url": "https://xiumi.us/api/renderer/comp/show",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/renderer/export",
+      "method": "GET",
+      "url": "https://xiumi.us/api/renderer/export",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/renderer/frames/show",
+      "method": "GET",
+      "url": "https://xiumi.us/api/renderer/frames/show",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/renderer/gif/show",
+      "method": "GET",
+      "url": "https://xiumi.us/api/renderer/gif/show",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/renderer/pdf/show",
+      "method": "GET",
+      "url": "https://xiumi.us/api/renderer/pdf/show",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/renderer/screenshot/show",
+      "method": "GET",
+      "url": "https://xiumi.us/api/renderer/screenshot/show",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/renderer/video/show",
+      "method": "GET",
+      "url": "https://xiumi.us/api/renderer/video/show",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/show",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/show_goods_favorite_tags",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods_favorite_tags",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/show_goods_favorite_tags/{param}/{param2}/show_goods",
+      "method": "GET",
+      "skipped": "缺少路径参数 param"
+    },
+    {
+      "path": "/api/show_goods_favorite_tags/{param}/order",
+      "method": "GET",
+      "skipped": "缺少路径参数 param"
+    },
+    {
+      "path": "/api/show_goods_favorite_tags/{param}/tagorder",
+      "method": "GET",
+      "skipped": "缺少路径参数 param"
+    },
+    {
+      "path": "/api/show_goods_favorite_tags/{show_type}/{param}/tags",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/show_goods_favorite_tags/rename",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/show_goods_favorite_tags/show_goods/{show_goods_id}/{show_goods_id2}",
+      "method": "GET",
+      "skipped": "缺少路径参数 show_goods_id"
+    },
+    {
+      "path": "/api/show_goods_favorite_tags/show_goods/{show_goods_id}/{show_goods_id2}/{show_goods_id3}",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/show_goods_favorite_tags/show_type/{param}",
+      "method": "GET",
+      "skipped": "缺少路径参数 param"
+    },
+    {
+      "path": "/api/show_goods_favorite_tags/show_type/{param}/{param2}",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/show_goods_favorite_tags/state/read",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/show_goods_favorites",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods_favorites",
+      "status": 200,
+      "size": 64,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "goodses"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":0,\"goodses\":[]}}"
+    },
+    {
+      "path": "/api/show_goods_favorites/{param}",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/show_goods_favorites/is_favorite/{param}",
+      "method": "GET",
+      "skipped": "缺少路径参数 param"
+    },
+    {
+      "path": "/api/show_goods/application/originality_file_upload",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/application/originality_file_upload",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/show_goods/applications",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/applications",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/show_goods/applications/revoke",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/show_goods/author/applying",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/show_goods/author/state",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/author/state",
+      "status": 200,
+      "size": 63,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "state"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"state\":\"never-apply\"}}"
+    },
+    {
+      "path": "/api/show_goods/expected_income",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/expected_income",
+      "status": 200,
+      "size": 43,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "string",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":\"0\"}"
+    },
+    {
+      "path": "/api/show_goods/goodses",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/goodses",
+      "status": 200,
+      "size": 1785,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "goodses"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":112187,\"goodses\":[{\"show_goods_id\":158557,\"show_id\":725357261,\"price\":10,\"priority\":0,\"state\":0,\"state_text\":\"on_sale\",\"copy_number\":55,\"collected_number\":98,\"weight\":952369,\"created_at\":\"2026-09-14T01:51:30.000Z\",\"updated_at\":\"2026-09-20T12:54:00.000Z\",\"show\":{\"show_id\":725357261,\"type\":2,\"version\":5,\"usage_scenario\":null,\"title\":\"示例标题dab3"
+    },
+    {
+      "path": "/api/show_goods/goodses/assign_tags",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/show_goods/goodses/change_price",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/show_goods/goodses/stopSale",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/show_goods/my/applications",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/my/applications",
+      "status": 200,
+      "size": 69,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "applications"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":0,\"applications\":[]}}"
+    },
+    {
+      "path": "/api/show_goods/my/goodses",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/my/goodses",
+      "status": 200,
+      "size": 64,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "goodses"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":0,\"goodses\":[]}}"
+    },
+    {
+      "path": "/api/show_goods/my/incomes/goodses",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/my/incomes/goodses",
+      "status": 200,
+      "size": 81,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "goodses",
+        "recentDay"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":0,\"goodses\":[],\"recentDay\":null}}"
+    },
+    {
+      "path": "/api/show_goods/my/info",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/my/info",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/show_goods/my/purchased/goodses",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/my/purchased/goodses",
+      "status": 200,
+      "size": 64,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "goodses"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":0,\"goodses\":[]}}"
+    },
+    {
+      "path": "/api/show_goods/my/purchased/state",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/my/purchased/state",
+      "status": 400,
+      "size": 155,
+      "envelope": {
+        "code": -1,
+        "message": "Common:Failed: WHERE parameter \"show_goods_id\" has invalid \"undefined\" value"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-1,\"message\":\"Common:Failed: WHERE parameter \\\"show_goods_id\\\" has invalid \\\"undefined\\\" value\",\"error\":{\"status\":400,\"code\":-1,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/show_goods/official_recommended",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/official_recommended",
+      "status": 200,
+      "size": 5309938,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "goodses"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":2141,\"goodses\":[{\"show_goods_id\":158996,\"show_id\":726455863,\"price\":10,\"priority\":0,\"state\":0,\"state_text\":\"on_sale\",\"copy_number\":5,\"collected_number\":30,\"weight\":832376,\"created_at\":\"2026-09-18T03:34:22.000Z\",\"updated_at\":\"2026-09-20T12:14:45.000Z\",\"show\":{\"show_id\":726455863,\"type\":2,\"version\":5,\"usage_scenario\":null,\"title\":\"示例标题b1d9"
+    },
+    {
+      "path": "/api/show_goods/purchased/goodses",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/show_goods/rank",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/rank",
+      "status": 200,
+      "size": 62,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "items"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":0,\"items\":[]}}"
+    },
+    {
+      "path": "/api/show_goods/tags_tree",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/tags_tree",
+      "status": 400,
+      "size": 112,
+      "envelope": {
+        "code": -2,
+        "message": "Common:Failed_InvalidParam: show_type"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-2,\"message\":\"Common:Failed_InvalidParam: show_type\",\"error\":{\"status\":400,\"code\":-2,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/show_goods/tpl_goods/bought/state",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/tpl_goods/bought/state",
+      "status": 200,
+      "size": 132,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "toDay",
+        "longDay",
+        "maxToday",
+        "maxLongDay",
+        "outOfToday",
+        "outOfLongDay"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"toDay\":0,\"longDay\":0,\"maxToday\":5,\"maxLongDay\":30,\"outOfToday\":false,\"outOfLongDay\":false}}"
+    },
+    {
+      "path": "/api/show_goods/tpl_goods/count",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_goods/tpl_goods/count",
+      "status": 200,
+      "size": 41,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "number",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":0}"
+    },
+    {
+      "path": "/api/show_save_to_records",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_save_to_records",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/show_save_to_records/count",
+      "method": "GET",
+      "url": "https://xiumi.us/api/show_save_to_records/count",
+      "status": 200,
+      "size": 41,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "number",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":0}"
+    },
+    {
+      "path": "/api/show/collect_img/5",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/show/scan_image_infringement/5",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/shows",
+      "method": "GET",
+      "url": "https://xiumi.us/api/shows",
+      "status": 200,
+      "size": 1239,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 1]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[{\"show_id\":727015588,\"type\":2,\"version\":5,\"usage_scenario\":null,\"title\":\"示例标题39ef"
+    },
+    {
+      "path": "/api/shows/{show_id}",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/shows/by/pattfrag-tags",
+      "method": "GET",
+      "url": "https://xiumi.us/api/shows/by/pattfrag-tags",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/shows/by/tags",
+      "method": "GET",
+      "url": "https://xiumi.us/api/shows/by/tags",
+      "status": 200,
+      "size": 68,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "tags",
+        "tagsOrder"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"tags\":[],\"tagsOrder\":null}}"
+    },
+    {
+      "path": "/api/shows/by/untag",
+      "method": "GET",
+      "url": "https://xiumi.us/api/shows/by/untag",
+      "status": 200,
+      "size": 1239,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 1]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[{\"show_id\":727015588,\"type\":2,\"version\":5,\"usage_scenario\":null,\"title\":\"示例标题39ef"
+    },
+    {
+      "path": "/api/shows/consume/traffic_package/shows",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/shows/count",
+      "method": "GET",
+      "url": "https://xiumi.us/api/shows/count",
+      "status": 200,
+      "size": 41,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "number",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":1}"
+    },
+    {
+      "path": "/api/shows/deleted/shows",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/shows/from/official",
+      "method": "GET",
+      "url": "https://xiumi.us/api/shows/from/official",
+      "status": 200,
+      "size": 57213,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 40]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[{\"show_id\":269193629,\"type\":2,\"version\":5,\"usage_scenario\":null,\"title\":\"示例标题c2da"
+    },
+    {
+      "path": "/api/shows/from/official2",
+      "method": "GET",
+      "url": "https://xiumi.us/api/shows/from/official2",
+      "status": 200,
+      "size": 57234,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "shows"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":40,\"shows\":[{\"show_id\":269193629,\"type\":2,\"version\":5,\"usage_scenario\":null,\"title\":\"示例标题f459"
+    },
+    {
+      "path": "/api/shows/from/teams",
+      "method": "GET",
+      "url": "https://xiumi.us/api/shows/from/teams",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/shows/from/teams/count",
+      "method": "GET",
+      "url": "https://xiumi.us/api/shows/from/teams/count",
+      "status": 400,
+      "size": 115,
+      "envelope": {
+        "code": -294,
+        "message": "Camus:Failed_TeamNotFoundOrUserNotIn"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-294,\"message\":\"Camus:Failed_TeamNotFoundOrUserNotIn\",\"error\":{\"status\":400,\"code\":-294,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/shows/getwxarticledata",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/shows/importwxarticle",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/shows/pattfrag-tags/clear",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/shows/pattfrag-tags/order",
+      "method": "GET",
+      "url": "https://xiumi.us/api/shows/pattfrag-tags/order",
+      "status": 200,
+      "size": 44,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "object",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":null}"
+    },
+    {
+      "path": "/api/shows/pattfrag-tags/rename",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/shows/recover",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/shows/recover/{param}",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/shows/send",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/shows/tags/clear",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/shows/tags/order",
+      "method": "GET",
+      "url": "https://xiumi.us/api/shows/tags/order",
+      "status": 200,
+      "size": 44,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "object",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":null}"
+    },
+    {
+      "path": "/api/shows/tags/rename",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/shows/v5",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/shows/validate/teamshow",
+      "method": "GET",
+      "url": "https://xiumi.us/api/shows/validate/teamshow",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/sms/auth_action",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/sms/auth_manual",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/sms/auth_skip",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/sms/change_phone",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/sms/register_user",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/sms/reset_password",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/sms/validate_phone",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/statistics/show",
+      "method": "GET",
+      "url": "https://xiumi.us/api/statistics/show",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/sys_info",
+      "method": "GET",
+      "url": "https://xiumi.us/api/sys_info",
+      "status": 200,
+      "size": 2114,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "node_env",
+        "version",
+        "cashWithdraw",
+        "psd",
+        "webfont",
+        "assetUpload",
+        "browserExtension",
+        "DOCUMENT_SERVICE",
+        "PARTNER_DOCUMENT_SERVICE",
+        "BIND_PARTNER_DOCUMENT_SERVICE",
+        "settings"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"node_env\":\"production\",\"version\":\"14.4.2\",\"cashWithdraw\":{\"minAmount\":10,\"brokerageRate\":0.16,\"taxRate\":0},\"psd\":{\"maxFileSize\":31457280},\"webfont\":{\"yzkWebSDKScriptURI\":\"/3rd/yzk-webfont/20200317/h5js.new.min.js\",\"yzkWebSDKServer\":\"webfont.xiumius.cn\"},\"assetUpload\":{\"configs\":[\"cdn\",\"ecs\",\"cos\"],\"cdnHost\":\"https://upload.xiumius.cn\"},\"browserExtension\":{\"version\":\"0.0.7\"},\"DOCUMENT_SERVICE\":{\"sendArticleUrl\":\"//wx.xiumius.cn/article/postarticles\",\"sendAssetUrl\":\"//wx.xiumius.cn/resource/postresource\",\"geminiLoginApi\":\"//wx.xiumius.cn/user/login\",\"geminiTokenApi\":\"//wx.xiumius.cn/user/token\",\"fetchUserListApi\":\"//wx.xiumius.cn/authorization/authlist\",\"refreshUserListApi\":\"//wx.xiumius.cn/authorization/authlistrefresh\",\"removeUserApi\":\"//wx.xiumius.cn/authorization/removeauth\",\"sendPreviewApi\":\"//wx.xiumius.cn/article/previewarticle\",\"wxauthArticlesUrl\":\"//wx.xiumius.cn/article/weixinarticles\",\"wxauthArticleDataUrl\":\"//wx.xiumius.cn/article/weixinarticledata\",\"wxauthPublishedArticlesUrl\":\"//wx.xiumius.cn/article/weixinpublisharticles\",\"sendWxArticlesUrl\":\"//wx.xiumius.cn/article/sendarticlestoall\",\"wxArticleSentRecordUrl\":\"//wx.xiumius.cn/ar"
+    },
+    {
+      "path": "/api/teams",
+      "method": "GET",
+      "url": "https://xiumi.us/api/teams",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/teams/sub_account",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/templates",
+      "method": "GET",
+      "url": "https://xiumi.us/api/templates",
+      "status": 200,
+      "size": 66,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "templates"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":0,\"templates\":[]}}"
+    },
+    {
+      "path": "/api/templates/allowed",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/templates/items",
+      "method": "GET",
+      "url": "https://xiumi.us/api/templates/items",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/templates/tags",
+      "method": "GET",
+      "url": "https://xiumi.us/api/templates/tags",
+      "status": 400,
+      "size": 115,
+      "envelope": {
+        "code": -2,
+        "message": "Common:Failed_InvalidParam: tag_category"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-2,\"message\":\"Common:Failed_InvalidParam: tag_category\",\"error\":{\"status\":400,\"code\":-2,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/templates/tags_tree",
+      "method": "GET",
+      "url": "https://xiumi.us/api/templates/tags_tree",
+      "status": 400,
+      "size": 115,
+      "envelope": {
+        "code": -2,
+        "message": "Common:Failed_InvalidParam: tag_category"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-2,\"message\":\"Common:Failed_InvalidParam: tag_category\",\"error\":{\"status\":400,\"code\":-2,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/upload-cdn/image/file",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/upload-cdn/token",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/upload/token",
+      "method": "GET",
+      "url": "https://xiumi.us/api/upload/token",
+      "status": 400,
+      "size": 101,
+      "envelope": {
+        "code": -2,
+        "message": "Common:Failed_InvalidParam"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":-2,\"message\":\"Common:Failed_InvalidParam\",\"error\":{\"status\":400,\"code\":-2,\"reportJSON\":true}}"
+    },
+    {
+      "path": "/api/user_home",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user_home",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/user_home/follow",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user_home/follow",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/user_home/followers",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user_home/followers",
+      "status": 200,
+      "size": 61,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "rows"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":0,\"rows\":[]}}"
+    },
+    {
+      "path": "/api/user_home/my/info",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user_home/my/published/exhibits",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user_home/my/published/exhibits/orders",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user_home/published/user",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user_home/published/user",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/user_home/sold/user",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user_home/sold/user",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/user_home/tag",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user_home/tag",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/user_home/tag/add",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/user_home/tag/clear/{param}",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/user_home/tag/order",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user_home/tag/order",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/user_home/tag/remove/{param}/{param2}",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/user_home/tag/rename",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/user_home/tag/shows/{show_id}/{show_id2}",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user_home/tag/tagorder/{param}",
+      "method": "GET",
+      "skipped": "缺少路径参数 param"
+    },
+    {
+      "path": "/api/user_home/tag/tags/{tag_id}/{tag_id2}",
+      "method": "GET",
+      "skipped": "缺少路径参数 tag_id"
+    },
+    {
+      "path": "/api/user_setting",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user_setting",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{}}"
+    },
+    {
+      "path": "/api/user_setting/background",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user_setting/palette",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user_setting/palette",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/user_setting/show-receive-type",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user_setting/watermark",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user_setting/watermark",
+      "status": 200,
+      "size": 74,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "watermarks",
+        "readOnly"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"watermarks\":\"\",\"readOnly\":false}}"
+    },
+    {
+      "path": "/api/user_setting/watermark-all",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user_setting/watermark-all",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/user/avatar/clear",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/user/blacklist",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user/blacklist",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{}}"
+    },
+    {
+      "path": "/api/user/frozen",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/api/user/identity",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user/identity",
+      "status": 200,
+      "size": 32,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\"}"
+    },
+    {
+      "path": "/api/user/info",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user/info",
+      "status": 200,
+      "size": 902,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "requirePhoneBind",
+        "user",
+        "authPhoneNeed"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"requirePhoneBind\":true,\"user\":{\"user_sid\":\"ZEkzG"
+    },
+    {
+      "path": "/api/user/info/avatar",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user/info/bind-phone",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user/info/coin",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user/info/coin",
+      "status": 200,
+      "size": 55,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "coinCount"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"coinCount\":0}}"
+    },
+    {
+      "path": "/api/user/info/email",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user/info/extendlifebycoin",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user/info/invitation",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user/info/invitation",
+      "status": 200,
+      "size": 145,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "allowInvitation",
+        "invitedCount",
+        "invitationLink"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"allowInvitation\":true,\"invitedCount\":0,\"invitationLink\":\"https://xiumi.us/user/invitation/33bsG-5NLpL\"}}"
+    },
+    {
+      "path": "/api/user/info/nickname",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user/info/phone",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user/info/transfercoin",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user/info/upgradebycoin",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user/password",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user/reset-phone",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user/reset-phone",
+      "status": 200,
+      "size": 32,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "undefined",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\"}"
+    },
+    {
+      "path": "/api/user/template_membership",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user/template_membership",
+      "status": 200,
+      "size": 68,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "days",
+        "is_member"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"days\":0,\"is_member\":false}}"
+    },
+    {
+      "path": "/api/user/template_membership_state",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user/template_membership_state",
+      "status": 200,
+      "size": 81,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "membership_state",
+        "expired"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"membership_state\":false,\"expired\":null}}"
+    },
+    {
+      "path": "/api/user/traffic_package_info",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user/traffic_package_info",
+      "status": 200,
+      "size": 72,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "traffic",
+        "hasPackage"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"traffic\":0,\"hasPackage\":false}}"
+    },
+    {
+      "path": "/api/user/traffic_package_list/for",
+      "method": "GET",
+      "url": "https://xiumi.us/api/user/traffic_package_list/for",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/user/unbind_apple",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user/unbind_qq",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user/unbind_wechat",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/user/unbind_weibo",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/api/wallet/bills",
+      "method": "GET",
+      "url": "https://xiumi.us/api/wallet/bills",
+      "status": 200,
+      "size": 68,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "count",
+        "walletBills"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"count\":0,\"walletBills\":[]}}"
+    },
+    {
+      "path": "/api/wallet/my/balance",
+      "method": "GET",
+      "url": "https://xiumi.us/api/wallet/my/balance",
+      "status": 200,
+      "size": 61,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "wallet",
+        "debt"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"wallet\":0,\"debt\":0}}"
+    },
+    {
+      "path": "/api/wallet/team_balance",
+      "method": "GET",
+      "url": "https://xiumi.us/api/wallet/team_balance",
+      "status": 200,
+      "size": 42,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "[array 0]",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":[]}"
+    },
+    {
+      "path": "/api/wallet/team/balance",
+      "method": "GET",
+      "url": "https://xiumi.us/api/wallet/team/balance",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/api/wallet/team/bills",
+      "method": "GET",
+      "url": "https://xiumi.us/api/wallet/team/bills",
+      "status": 404,
+      "size": 5182,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\" tn-launch-app=\"triton.xiumi.general.page\">\n<head>\n    \n<title>出错了！ - 秀米XIUMI</title>\n\n\n<meta charset=\"UTF-8\">\n\n\n<base target=\"_top\"/>\n\n\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">\n<meta name=\"renderer\" content=\"webkit\">\n<meta name=\"viewport\" cont"
+    },
+    {
+      "path": "/auth/agreement/access",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/auth/agreement/reject",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/auth/bind_qq",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/auth/bind_wechat",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/auth/bind_weibo",
+      "method": "GET",
+      "skipped": "非 GET 接口，未探测"
+    },
+    {
+      "path": "/auth/connect/user/access_code",
+      "method": "GET",
+      "url": "https://xiumi.us/auth/connect/user/access_code",
+      "status": 200,
+      "size": 82,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": "string",
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":\"hM7YM53j7C3y04tUCQSmKc4pN6vViDkLJI5uCZZy\"}"
+    },
+    {
+      "path": "/auth/email/login",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/auth/logout",
+      "method": "GET",
+      "skipped": "危险端点（可能改变状态），未探测"
+    },
+    {
+      "path": "/auth/me",
+      "method": "GET",
+      "url": "https://xiumi.us/auth/me",
+      "status": 200,
+      "size": 877,
+      "envelope": {
+        "code": 0,
+        "message": "Common:OK"
+      },
+      "dataKeys": [
+        "user",
+        "requirePhoneBind",
+        "uploadCfgs"
+      ],
+      "sample": "{\"code\":0,\"message\":\"Common:OK\",\"data\":{\"user\":{\"user_sid\":\"PfgiS"
+    },
+    {
+      "path": "/auth/mobile_wechat",
+      "method": "GET",
+      "url": "https://xiumi.us/auth/mobile_wechat",
+      "status": 302,
+      "size": 0,
+      "sample": ""
+    },
+    {
+      "path": "/auth/qq",
+      "method": "GET",
+      "url": "https://xiumi.us/auth/qq",
+      "status": 200,
+      "size": 1675,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\">\n<head>\n    <title>QQ LogIn | 秀米XIUMI</title>\n\n    <meta http-equiv=\"refresh\" content=\"0; url=/auth/qq/login\"/>\n\n    <link rel=\"stylesheet\" href=\"//edt.xiumius.cn/3rd/CDN/twitter-bootstrap/3.2.0/css/bootstrap.min.css\">\n\n    <style>\n        body {\n            backgr"
+    },
+    {
+      "path": "/auth/report/result/failed",
+      "method": "GET",
+      "url": "https://xiumi.us/auth/report/result/failed",
+      "status": 200,
+      "size": 296,
+      "sample": "<!DOCTYPE html>\n<html>\n<head>\n    <title>登录结果 | 秀米XIUMI</title>\n</head>\n<body>\n<script>\n    window.name = \"XIUMI_Auth#Result:\" + 'failed';\n    if (typeof window.parent.tn_auth_sign_in_result === 'function') {\n        window.parent.tn_auth_sign_in_result('failed');\n    }\n</script>\n</body>\n</html>"
+    },
+    {
+      "path": "/auth/report/result/success",
+      "method": "GET",
+      "url": "https://xiumi.us/auth/report/result/success",
+      "status": 200,
+      "size": 298,
+      "sample": "<!DOCTYPE html>\n<html>\n<head>\n    <title>登录结果 | 秀米XIUMI</title>\n</head>\n<body>\n<script>\n    window.name = \"XIUMI_Auth#Result:\" + 'success';\n    if (typeof window.parent.tn_auth_sign_in_result === 'function') {\n        window.parent.tn_auth_sign_in_result('success');\n    }\n</script>\n</body>\n</html>"
+    },
+    {
+      "path": "/auth/wechat",
+      "method": "GET",
+      "url": "https://xiumi.us/auth/wechat",
+      "status": 200,
+      "size": 1683,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\">\n<head>\n    <title>Wechat LogIn | 秀米XIUMI</title>\n\n    <meta http-equiv=\"refresh\" content=\"0; url=/auth/wechat/login\"/>\n\n    <link rel=\"stylesheet\" href=\"//edt.xiumius.cn/3rd/CDN/twitter-bootstrap/3.2.0/css/bootstrap.min.css\">\n\n    <style>\n        body {\n          "
+    },
+    {
+      "path": "/auth/weibo",
+      "method": "GET",
+      "url": "https://xiumi.us/auth/weibo",
+      "status": 200,
+      "size": 1681,
+      "sample": "<!DOCTYPE html>\n<html lang=\"zh-cn\">\n<head>\n    <title>Weibo LogIn | 秀米XIUMI</title>\n\n    <meta http-equiv=\"refresh\" content=\"0; url=/auth/weibo/login\"/>\n\n    <link rel=\"stylesheet\" href=\"//edt.xiumius.cn/3rd/CDN/twitter-bootstrap/3.2.0/css/bootstrap.min.css\">\n\n    <style>\n        body {\n            "
+    }
+  ]
+}
