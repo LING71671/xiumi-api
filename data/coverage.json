@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-09-21T01:44:36.340Z",
+  "verificationUpdatedAt": "2026-09-21T01:32:19.613Z",
+  "total": 399,
+  "byKind": {
+    "read": {
+      "total": 194,
+      "verified": 89,
+      "accepted": 0,
+      "regressed": 0,
+      "failed": 0,
+      "blocked": 8,
+      "declared": 5,
+      "unknown": 92
+    },
+    "write": {
+      "total": 205,
+      "verified": 26,
+      "accepted": 2,
+      "regressed": 0,
+      "failed": 3,
+      "blocked": 14,
+      "declared": 108,
+      "unknown": 52
+    }
+  },
+  "all": {
+    "total": 399,
+    "verified": 115,
+    "accepted": 2,
+    "regressed": 0,
+    "failed": 3,
+    "blocked": 22,
+    "declared": 113,
+    "unknown": 144
+  },
+  "counts": {
+    "verified": 115,
+    "accepted": 2,
+    "regressed": 0,
+    "failed": 3,
+    "blocked": 22,
+    "declared": 113,
+    "unknown": 144
+  }
+}

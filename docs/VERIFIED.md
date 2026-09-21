@@ -1,73 +1,31 @@
-# 写操作验证报告（Verification Report）
+# 写操作验证：机制与闭环说明
 
-> 生成方式：`node scripts/verify_matrix.mjs`
-> 环境：账号 `138****0000`，秀米免费版（`levelLimit` 见 `/api/user/info`）
-> 落盘：`data/verified.json`、`capture/_verify_matrix.log`
+> **数字看 [`COVERAGE.md`](./COVERAGE.md)。** 那份逐方法台账由
+> `node scripts/coverage.mjs` 从 `data/verification.json` 生成，而 `verification.json`
+> 只能由验证脚本回写 —— 也就是说「验过没有」这件事不再由人记。
+>
+> 本文只讲**怎么验的、踩到哪些机制坑**，是那份台账的说明文，不是另一份结论。
+>
+> 跑法：
+> ```bash
+> node scripts/verify_matrix.mjs   # 作品写链路：建 → 改 → 回读 → 删 → 回收站 → 恢复
+> node scripts/verify_ops.mjs      # 只读面 + 素材/标签/偏好设置/消息（可逆、零副作用）
+> node scripts/coverage.mjs        # 重新生成 COVERAGE.md 与 data/coverage.json
+> ```
 
-## 结论
+## 验证纪律（三轮下来沉淀的）
 
-**42 项全部通过。** 已打通「开机密登录 → 读元信息 → 读内容 → 改内容 → 保存 → 回读一致 →
-拷贝 → 删除 → 回收站 → 恢复」的完整闭环，全部通过纯 HTTP（Node 内置 `fetch`）完成，不依赖浏览器。
+1. **写操作必须带回读断言**。`PUT` 返回 `code=2 Updated` 只说明请求被受理，
+   改了没有要看回读。「改完再 `GET` 一次，断言字段真的变了」才算通过。
+2. **一个方法一条记录**，不合并。这样 `verification.json` 里的状态可以直接翻译成
+   「这个方法敢不敢用」。
+3. **做不到可逆的宁可记 ⛔ 也不测**。账号没有团队版、没有消息、要真实资金、
+   或改动不可还原（如把第三方邮箱写进评论白名单后留在黑名单里），一律记「环境受限」
+   并写清原因 —— 假阴性比没数据更糟。
+4. **只读方法的通过标准是「路由 + 鉴权 + 参数形状都通、拿到了值」**，
+   返回值形状写进备注。404 / 400 一律记 ❌，那才是有价值的信号。
+5. **构建新对象再删掉**：一次性作品/素材都在自己的账号里，用完即删并确认消失。
 
-```
-总计 42  通过 42  失败 0
-  auth       pass=4  fail=0
-  wallet     pass=2  fail=0
-  show       pass=2  fail=0
-  asset      pass=1  fail=0
-  template   pass=4  fail=0
-  team       pass=1  fail=0
-  msg        pass=1  fail=0
-  order      pass=1  fail=0
-  tag        pass=6  fail=0
-  show-w     pass=12 fail=0   ← 写操作
-  show-r     pass=7  fail=0   ← 作品读取
-  show-w-na  pass=1  fail=0   ← 功能不可用（非接口缺陷）
-```
-
-## 逐项结果
-
-| 分组 | 用例 | 方法 | 路径 | 结果 |
-|---|---|---|---|---|
-| auth | me | GET | `/auth/me` | 通过 |
-| auth | userInfo | GET | `/api/user/info` | 通过 |
-| auth | sysInfo | GET | `/api/sys_info` | 通过 |
-| auth | apikey | GET | `/api/apikey` | 通过 |
-| wallet | walletBalance | GET | `/api/wallet/my/balance` | 通过 |
-| wallet | bills | GET | `/api/wallet/bills` | 通过 |
-| show | listShows | GET | `/api/shows` | 通过 |
-| show | showsCount | GET | `/api/shows/count` | 通过 |
-| asset | listImages | GET | `/api/assets/list/image` | 通过 |
-| template | listTemplates | GET | `/api/templates` | 通过 |
-| template | fragmentTagDetails | GET | `/api/fragments/v5/paper/comp/tags` | 通过 |
-| template | fragmentTagsOrder | GET | `/api/fragments/v5/paper/comp/tagsorder` | 通过 |
-| template | usedFragmentsCount | GET | `/api/fragments/used/paper_cp` | 通过（返回 `{used:0,total:100}`） |
-| team | teams | GET | `/api/teams` | 通过 |
-| msg | messages | GET | `/api/messages` | 通过 |
-| order | orders | GET | `/api/orders` | 通过 |
-| tag | listTags | GET | `/api/shows/all/tags` | 通过 |
-| **show-w** | createBlankShow | POST | `/api/shows/v5/paper` | 通过（返回 `show_id`），`code=1 Created` |
-| **show-r** | getShow | GET | `/api/shows/{id}` | 通过（含 `saved_at` / `show_data_url` / `editing_show_data_url`） |
-| **show-r** | readShowData(published) | GET | `show_data_url` | 通过（公开 CDN，无需登录态） |
-| **show-r** | readShowData(editing) | GET | `editing_show_data_url` | 通过（需登录态，返回**裸 JSON**，非 envelope） |
-| **show-w** | updateShow（改标题） | PUT | `/api/shows/{id}` | 通过，回读一致，`code=2 Updated` |
-| **show-w** | updateShow（追加一页） | PUT | `/api/shows/{id}` | 通过，发布态页数 1 → 2 |
-| tag | addTag | POST | `/api/shows/{id}/tags` | 通过，写后 `/api/shows/all/tags` 可见 |
-| tag | renameTag | POST | `/api/shows/tags/rename` | 通过 |
-| tag | removeTag | DELETE | `/api/shows/{id}/tags/{tag}` | 通过 |
-| tag | clearTag | DELETE | `/api/shows/tags/clear/{tag}` | 通过 |
-| **show-w** | setRightAccessPrivilege | PUT | `/api/shows/{id}/right_access_privilege/0` | 通过 |
-| **show-w** | setWechatNoShare | PUT | `/api/shows/{id}/wechat_no_share/0` | 通过 |
-| show-w-na | setTrafficPackageUsage | PUT | `/api/shows/{id}/use_traffic_package/0` | 接口存在；本账号无流量包，返回 `Failed_NotFound: package provider missing` |
-| show-r | trafficPackageUsage | GET | `/api/shows/{id}/consumed/traffic_package/info` | 通过 |
-| show-r | showHistories | GET | `/api/shows/{id}/histories` | 通过 |
-| show-r | previewUri | GET | `/preview/uri` | 通过 |
-| **show-w** | copyShow | POST | `/api/shows/v5/paper?from_show_id=` | 通过，生成新 `show_id` |
-| **show-w** | deleteShow | DELETE | `/api/shows/{id}` | 通过，返回 `"Deleted"`，`code=3` |
-| **show-r** | deletedShows | GET | `/api/shows/deleted/shows` | 通过，返回 `{count, deletedShows[]}` |
-| **show-w** | recoverShow | POST | `/api/shows/recover/{deleted_show_id}` | 通过，返回 `"Recovered"`，恢复后可读 |
-
-## 关键机制（实测确认）
 
 ### 1. 三套成功码，不止 `code=0`
 
@@ -172,26 +130,34 @@
   匿名访问不可用；编辑器/预览页带登录态始终可看。
 - 返回的 `show_url` / `edit_url` / `previewUri` 都是**相对路径**，用时补 `https://xiumi.us`。
 
-## 尚未端到端实测的写接口
+## 写接口里「已验证 / 待确认 / 环境受限」的三分
 
-以下接口已在 bundle 中定位到调用点与请求体形状，但未做端到端实测（多为账号无对应
-功能、或需要真实交易/第三方凭证）：
+逐方法明细在 [`COVERAGE.md`](./COVERAGE.md)。这里只留结论性的几类：
 
-| 分组 | 接口 | 阻塞原因 |
+| 类别 | 状态 | 说明 |
 |---|---|---|
-| 支付 | `/api/orders`、`/api/invoices`、`/api/wallet/*` 写路径 | 需要真实支付 |
-| 团队 | `/api/teams/{id}` 成员/权限管理 | 当前账号无团队 |
-| 素材 | `/api/upload-cdn/token` + COS 直传 + `/api/assets/image/cosobj` | 需走 COS 签名，未实测 |
-| 发布 | `/api/shows/{id}/release/application` | 免费版无发布权限 |
-| 渲染 | `/api/renderer/*` | 需渲染队列，未实测 |
+| 作品写链路（建/改/标签/开关/拷贝/删/回收站/恢复/改名） | ✅ | 回读断言齐全，见 `verify_matrix.mjs` |
+| 素材库（外链收录 / 打标签 / 改标签名 / 删标签 / 删素材 / base64 上传） | ✅ | 建自己的素材再删，见 `verify_ops.mjs` |
+| 偏好设置（作品接收类型 / 背景 / 水印） | ✅ | 写当前值或写「无」，随后回读 userSetting 出现对应键 |
+| 消息静音三开关 | ✅ | 0→1 回读、1→0 回读，全可逆 |
+| 纯校验类（HTML 代码校验） | ✅ | 无状态 |
+| `setPalette` | ❌ | 路径存在但 body 契约未解：服务端报 `"undefined" is not valid JSON` |
+| `updateUserSetting` | ❌ | `POST /api/user_setting` 实测 404（试过 5 种路径变体） |
+| `addFragmentTag` | ❌ | 创建碎片标签的入口没找到（`paper/tags` → Failed_NotFound，补 category → 404） |
+| 团队 / 商城交易 / 微信绑定 / 评论白名单 / 关注他人 | ⛔ | 账号能力或边界所限，见 COVERAGE 的「环境受限」清单与原因 |
 
 ## 复现方式
 
 ```bash
 cd <repo>
-node scripts/verify_matrix.mjs        # 42 项可逆写验证（会自建自删一次性作品）
-node scripts/e2e_roundtrip.mjs        # 指定作品的读写往返
-node scripts/probe_write.mjs <id>     # 单作品的写链路隔离排查
-node scripts/probe_trash.mjs          # 删除/回收站语义
-node scripts/probe_recover.mjs        # 恢复用哪个 id
+node scripts/verify_matrix.mjs         # 作品写链路（会自建自删一次性作品）
+node scripts/verify_ops.mjs            # 只读面 + 可逆写面（会自建自删一次性素材）
+node scripts/coverage.mjs              # 由 data/verification.json 生成 COVERAGE.md
+node scripts/e2e_roundtrip.mjs         # 指定作品的读写往返
+node scripts/probe_write.mjs <id>      # 单作品的写链路隔离排查
+node scripts/probe_trash.mjs           # 删除/回收站语义
+node scripts/probe_recover.mjs         # 恢复用哪个 id
 ```
+
+> 探针脚本（`scripts/probes/`）是**取证**用的，只打印不结论；结论一律进
+> `data/verification.json`，再由 `coverage.mjs` 渲染。两者不要混。

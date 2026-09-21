@@ -25,99 +25,25 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { ROOT, SESSION_FILE, BASE, launchOptions, contextOptions } from './cfg.mjs';
+import { loadMeta as parseMeta, riskTag } from './lib/methodmeta.mjs';
+import { loadStore, statusOf, summarize, summaryLine, MARK } from './lib/verification.mjs';
 
 const CLIENT = path.join(ROOT, 'client', 'xiumi.mjs');
 const CLIENT_URL = pathToFileURL(CLIENT).href;
 
-// ---------------------------------------------------------------- 方法元数据
-
-/** 命名启发式：仅用于提示，不参与任何拦截 */
-const RISK_RULES = [
-  [/^(delete|clear|remove|reset|destroy)/i, '删除/清空'],
-  [/(withdraw|pay|recharge|transfer|refund|brokerage)/i, '资金'],
-  [/(password|unbind|bind[A-Z]|apikey|secret|phone|email)/i, '账号凭据'],
-  [/^(set|update|change)/, '修改'],
-];
-
-const HTTP_WRITE = /this\.request\(\s*['"](POST|PUT|DELETE|PATCH)['"]/;
-
-/** 剥掉注释，避免注释里举例的 `this.request('POST', ...)` 被当成真实调用 */
-function stripComments(code) {
-  return code.replace(/^\s*\/\/[^\n]*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '');
-}
-
-/** 静态解析源码，产出 方法名 → {args, doc, write, risks} */
-function parseSource() {
-  const src = fs.readFileSync(CLIENT, 'utf8');
-  // 参数串用非贪婪 `[\s\S]*?` 而不是 `[^)]*`：签名里可能嵌函数调用
-  // （如 `comments(show_id, { ver = Date.now(), ...rest } = {})`），
-  // `[^)]*` 会在 `Date.now()` 的右括号处断掉，整条方法就漏了。
-  // 访问器 `get get()` / `set foo()` 必须单独识别，否则它们的代码会落进
-  // 上一个方法的切片，把上一个方法误判成写操作。
-  const re = /^  (?:(static)\s+)?(?:(async)\s+)?(?:(get|set)\s+)?([a-zA-Z_$][\w$]*)\s*\(([\s\S]*?)\)\s*\{/gm;
-  const raw = [];
-  let m;
-  while ((m = re.exec(src))) {
-    raw.push({
-      name: m[4],
-      isStatic: !!m[1],
-      accessor: m[3] || null,
-      args: m[5].replace(/\s+/g, ' ').trim(),
-      start: m.index,
-      sigEnd: re.lastIndex,
-    });
-  }
-  const out = new Map();
-  raw.forEach((h, i) => {
-    const end = i + 1 < raw.length ? raw[i + 1].start : src.length;
-    let body = src.slice(h.sigEnd, end);
-    // 下一个方法的 JSDoc 落在本块尾部，里面常写着 `put("/api/...")` 之类，
-    // 不裁掉会把上一个方法误判成写操作。
-    const tailDoc = body.search(/\/\*\*[\s\S]*?\*\/\s*$/);
-    if (tailDoc >= 0) body = body.slice(0, tailDoc);
-
-    // JSDoc 必须**紧贴**签名（中间只有空白）。`[\s\S]*` 贪婪是为了让 `\/\*\*`
-    // 落在最靠后的那个，否则会从更早的 `/**` 一路吞到签名前，把上一个方法的
-    // 文档甚至代码当成这一条的说明。
-    const before = src.slice(Math.max(0, h.start - 4000), h.start);
-    const dm = before.match(/[\s\S]*\/\*\*([\s\S]*?)\*\/\s*$/);
-    out.set(h.name, {
-      name: h.name,
-      isStatic: h.isStatic,
-      accessor: h.accessor,
-      args: h.args,
-      doc: (dm ? dm[1] : '').replace(/^\s*\*s?/gm, ' ').replace(/\s+/g, ' ').trim(),
-      write: HTTP_WRITE.test(stripComments(body)),
-    });
-  });
-  return out;
-}
-
-/**
- * 方法全集以**运行时自省**为准，静态解析只负责补签名与注释。
- * 反过来做会漏方法（简写助手、getter、正则覆盖不到的写法），
- * 而「全都做」的前提是目录必须完整。
- */
+/** 元数据 + 验证状态合并成一张表（状态只读 data/verification.json） */
 async function loadMeta() {
   const Xiumi = await getClient();
-  const names = [
-    ...Object.getOwnPropertyNames(Xiumi.prototype).filter(
-      (n) => n !== 'constructor' && typeof Xiumi.prototype[n] === 'function'
-    ),
-    ...Object.getOwnPropertyNames(Xiumi).filter((n) => typeof Xiumi[n] === 'function'),
-  ];
-  const parsed = parseSource();
-  return [...new Set(names)].map((name) => {
-    const meta = parsed.get(name) || { name, isStatic: false, accessor: null, args: '', doc: '', write: false };
-    meta.risks = RISK_RULES.filter(([rx]) => rx.test(name)).map(([, label]) => label);
-    return meta;
-  });
+  const store = loadStore();
+  return (await parseMeta(Xiumi)).map((m) => ({ ...m, status: statusOf(m, store) }));
 }
 
-function riskTag(m) {
-  const parts = [m.write ? '写' : '读', ...m.risks];
-  return parts.join(' · ');
-}
+// ---------------------------------------------------------------- 方法元数据
+//
+// 元数据（签名 / 注释 / 读还是写）与验证状态（跑没跑通）是两码事，分开放：
+//   元数据   -> scripts/lib/methodmeta.mjs（静态解析 + 运行时自省）
+//   验证状态 -> data/verification.json（只由验证脚本回写，见 scripts/lib/verification.mjs）
+
 
 // ---------------------------------------------------------------- 参数解析
 
@@ -293,18 +219,19 @@ async function main() {
     const meta = (await loadMeta()).filter((m) => (flags.write ? m.write : true));
 
     if (flags.md) {
-      const brief = (d) => (d ? d.split(/。|\.\s/)[0].slice(0, 72) : '');
+      const brief = (d) => (d ? d.split(/。|\.\s/)[0].replace(/^\[[^\]]*\]\s*/, '').slice(0, 72) : '');
       const cell = (s) => String(s).replace(/\|/g, '\\|');
       const table = (ms) => {
         const rows = ms
           .slice()
           .sort((a, b) => a.name.localeCompare(b.name))
-          .map((m) => `| \`${m.name}\` | \`${cell(m.args) || '—'}\` | ${riskTag(m)} | ${cell(brief(m.doc))} |`);
-        return ['| 方法 | 签名 | 类型 | 说明 |', '|---|---|---|---|', ...rows].join('\n');
+          .map((m) => `| \`${m.name}\` | \`${cell(m.args) || '—'}\` | ${riskTag(m)} | ${m.status.label} | ${cell(brief(m.doc))} |`);
+        return ['| 方法 | 签名 | 类型 | 验证状态 | 说明 |', '|---|---|---|---|---|', ...rows].join('\n');
       };
       const statics = meta.filter((m) => m.isStatic);
       const reads = meta.filter((m) => !m.isStatic && !m.write);
       const writes = meta.filter((m) => !m.isStatic && m.write);
+      const sum = summarize(meta, loadStore());
       console.log(
         [
           '# 全站方法目录',
@@ -314,6 +241,11 @@ async function main() {
           '>',
           '> 「类型」由源码静态推断：**读** / **写**。「删除/清空」「资金」「账号凭据」「修改」',
           '> 是命名启发式标注，**只作提示**——哪些操作代价高由你自己判断，工具不做任何拦截。',
+          '>',
+          '> 「验证状态」只读 `data/verification.json`，**由验证脚本回写**，不由人记：',
+          `> ${summaryLine(sum)}`,
+          '> `✅`=语义已验证（写后有回读断言） `🟡`=调用被服务端受理但无可观测回读字段。',
+          '> 逐方法证据链见 [`COVERAGE.md`](./COVERAGE.md)。',
           '>',
           '> 调用方式见 [`../README.md`](../README.md)：`xiumi call <方法> [参数...]`。',
           '',
@@ -347,11 +279,13 @@ async function main() {
       groups.get(g).push(m);
     }
     console.log(`${meta.length} 个方法${flags.write ? '（仅写操作）' : ''}\n`);
+    const sum = summarize(meta, loadStore());
+    console.log(`验证状态：${summaryLine(sum)}\n`);
     for (const g of ['读', '写', '其它']) {
       const ms = groups.get(g);
       if (!ms) continue;
       console.log(`--- ${g}（${ms.length}）`);
-      for (const m of ms) console.log(`  ${m.name.padEnd(34)} ${riskTag(m)}`);
+      for (const m of ms) console.log(`  ${m.name.padEnd(34)} ${riskTag(m).padEnd(22)} ${m.status.label}`);
       console.log('');
     }
     console.log('详情：xiumi describe <方法名>');
@@ -374,6 +308,16 @@ async function main() {
     console.log('─'.repeat(60));
     console.log(`签名   ${m.args || '(无参数)'}`);
     console.log(`类型   ${riskTag(m)}`);
+    console.log(`状态   ${m.status.label}`);
+    const ev = m.status.entry?.last;
+    if (ev) {
+      console.log(`        证据 ${ev.script} · ${ev.case} · ${ev.at}${ev.ms != null ? ` · ${ev.ms}ms` : ''}`);
+      if (ev.note) console.log(`        备注 ${ev.note}`);
+      if (ev.error) console.log(`        错误 ${ev.error}`);
+      if (m.status.entry.everVerified && !ev.ok) console.log(`        历史上通过于 ${m.status.entry.firstVerifiedAt}`);
+    } else if (m.hintUntested) {
+      console.log('        仅源码声明未实测，无脚本证据 —— 状态由 scripts/ 下的验证脚本回写');
+    }
     if (m.doc) console.log(`说明   ${m.doc.slice(0, 400)}`);
     console.log('─'.repeat(60));
     const sample = positional.slice(1);

@@ -1,0 +1,6837 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-09-21T01:32:19.613Z",
+  "methods": {
+    "me": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:24.057Z",
+          "script": "verify_matrix.mjs",
+          "case": "me",
+          "ok": true,
+          "ms": 232,
+          "note": "期望：当前用户对象"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:24.057Z",
+      "last": {
+        "at": "2026-09-21T01:07:24.057Z",
+        "script": "verify_matrix.mjs",
+        "case": "me",
+        "ok": true,
+        "ms": 232,
+        "note": "期望：当前用户对象"
+      }
+    },
+    "userInfo": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:24.310Z",
+          "script": "verify_matrix.mjs",
+          "case": "userInfo",
+          "ok": true,
+          "ms": 253,
+          "note": "期望：user 对象"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:24.310Z",
+      "last": {
+        "at": "2026-09-21T01:07:24.310Z",
+        "script": "verify_matrix.mjs",
+        "case": "userInfo",
+        "ok": true,
+        "ms": 253,
+        "note": "期望：user 对象"
+      }
+    },
+    "sysInfo": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:24.573Z",
+          "script": "verify_matrix.mjs",
+          "case": "sysInfo",
+          "ok": true,
+          "ms": 263,
+          "note": "期望：站点配置项"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:24.573Z",
+      "last": {
+        "at": "2026-09-21T01:07:24.573Z",
+        "script": "verify_matrix.mjs",
+        "case": "sysInfo",
+        "ok": true,
+        "ms": 263,
+        "note": "期望：站点配置项"
+      }
+    },
+    "apiKey": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:24.806Z",
+          "script": "verify_matrix.mjs",
+          "case": "apiKey",
+          "ok": true,
+          "ms": 233,
+          "note": "期望：api key 记录"
+        },
+        {
+          "at": "2026-09-21T01:25:06.413Z",
+          "script": "verify_ops.mjs",
+          "case": "apiKey",
+          "ok": true,
+          "ms": 229,
+          "note": "回读 {apiKeys,currentCount,availableCount,totalCount,capability}"
+        },
+        {
+          "at": "2026-09-21T01:28:09.422Z",
+          "script": "verify_ops.mjs",
+          "case": "apiKey",
+          "ok": true,
+          "ms": 225,
+          "note": "回读 {apiKeys,currentCount,availableCount,totalCount,capability}"
+        },
+        {
+          "at": "2026-09-21T01:30:09.185Z",
+          "script": "verify_ops.mjs",
+          "case": "apiKey",
+          "ok": true,
+          "ms": 233,
+          "note": "回读 {apiKeys,currentCount,availableCount,totalCount,capability}"
+        },
+        {
+          "at": "2026-09-21T01:31:50.755Z",
+          "script": "verify_ops.mjs",
+          "case": "apiKey",
+          "ok": true,
+          "ms": 250,
+          "note": "回读 {apiKeys,currentCount,availableCount,totalCount,capability}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:24.806Z",
+      "last": {
+        "at": "2026-09-21T01:31:50.755Z",
+        "script": "verify_ops.mjs",
+        "case": "apiKey",
+        "ok": true,
+        "ms": 250,
+        "note": "回读 {apiKeys,currentCount,availableCount,totalCount,capability}"
+      }
+    },
+    "walletBalance": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:25.043Z",
+          "script": "verify_matrix.mjs",
+          "case": "walletBalance",
+          "ok": true,
+          "ms": 237,
+          "note": "期望：余额字段"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:25.043Z",
+      "last": {
+        "at": "2026-09-21T01:07:25.043Z",
+        "script": "verify_matrix.mjs",
+        "case": "walletBalance",
+        "ok": true,
+        "ms": 237,
+        "note": "期望：余额字段"
+      }
+    },
+    "bills": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:25.279Z",
+          "script": "verify_matrix.mjs",
+          "case": "bills",
+          "ok": true,
+          "ms": 236,
+          "note": "期望：账单数组"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:25.279Z",
+      "last": {
+        "at": "2026-09-21T01:07:25.279Z",
+        "script": "verify_matrix.mjs",
+        "case": "bills",
+        "ok": true,
+        "ms": 236,
+        "note": "期望：账单数组"
+      }
+    },
+    "listShows": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:25.518Z",
+          "script": "verify_matrix.mjs",
+          "case": "listShows",
+          "ok": true,
+          "ms": 239,
+          "note": "期望：作品数组"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:25.518Z",
+      "last": {
+        "at": "2026-09-21T01:07:25.518Z",
+        "script": "verify_matrix.mjs",
+        "case": "listShows",
+        "ok": true,
+        "ms": 239,
+        "note": "期望：作品数组"
+      }
+    },
+    "showsCount": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:25.777Z",
+          "script": "verify_matrix.mjs",
+          "case": "showsCount",
+          "ok": true,
+          "ms": 259,
+          "note": "期望：计数"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:25.777Z",
+      "last": {
+        "at": "2026-09-21T01:07:25.777Z",
+        "script": "verify_matrix.mjs",
+        "case": "showsCount",
+        "ok": true,
+        "ms": 259,
+        "note": "期望：计数"
+      }
+    },
+    "listImages": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:26.302Z",
+          "script": "verify_matrix.mjs",
+          "case": "listImages",
+          "ok": true,
+          "ms": 525,
+          "note": "期望：图片数组"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:26.302Z",
+      "last": {
+        "at": "2026-09-21T01:07:26.302Z",
+        "script": "verify_matrix.mjs",
+        "case": "listImages",
+        "ok": true,
+        "ms": 525,
+        "note": "期望：图片数组"
+      }
+    },
+    "listTemplates": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:26.696Z",
+          "script": "verify_matrix.mjs",
+          "case": "listTemplates",
+          "ok": true,
+          "ms": 394,
+          "note": "期望：模板数组"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:26.696Z",
+      "last": {
+        "at": "2026-09-21T01:07:26.696Z",
+        "script": "verify_matrix.mjs",
+        "case": "listTemplates",
+        "ok": true,
+        "ms": 394,
+        "note": "期望：模板数组"
+      }
+    },
+    "fragmentTagDetails": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:26.945Z",
+          "script": "verify_matrix.mjs",
+          "case": "fragmentTagDetails",
+          "ok": true,
+          "ms": 249,
+          "note": "期望：标签 + 碎片"
+        },
+        {
+          "at": "2026-09-21T01:17:53.315Z",
+          "script": "verify_ops.mjs",
+          "case": "fragmentTagDetails",
+          "ok": true,
+          "ms": 224,
+          "note": "期望：碎片标签明细"
+        },
+        {
+          "at": "2026-09-21T01:24:58.034Z",
+          "script": "verify_ops.mjs",
+          "case": "fragmentTagDetails",
+          "ok": true,
+          "ms": 540,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:27:58.407Z",
+          "script": "verify_ops.mjs",
+          "case": "fragmentTagDetails",
+          "ok": true,
+          "ms": 238,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:30:01.720Z",
+          "script": "verify_ops.mjs",
+          "case": "fragmentTagDetails",
+          "ok": true,
+          "ms": 209,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:41.707Z",
+          "script": "verify_ops.mjs",
+          "case": "fragmentTagDetails",
+          "ok": true,
+          "ms": 234,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:26.945Z",
+      "last": {
+        "at": "2026-09-21T01:31:41.707Z",
+        "script": "verify_ops.mjs",
+        "case": "fragmentTagDetails",
+        "ok": true,
+        "ms": 234,
+        "note": "回读 Array(0)"
+      }
+    },
+    "fragmentTagsOrder": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:27.185Z",
+          "script": "verify_matrix.mjs",
+          "case": "fragmentTagsOrder",
+          "ok": true,
+          "ms": 240,
+          "note": "期望：标签排序"
+        },
+        {
+          "at": "2026-09-21T01:17:53.536Z",
+          "script": "verify_ops.mjs",
+          "case": "fragmentTagsOrder",
+          "ok": true,
+          "ms": 221,
+          "note": "期望：碎片标签顺序"
+        },
+        {
+          "at": "2026-09-21T01:24:58.254Z",
+          "script": "verify_ops.mjs",
+          "case": "fragmentTagsOrder",
+          "ok": true,
+          "ms": 220,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:27:58.929Z",
+          "script": "verify_ops.mjs",
+          "case": "fragmentTagsOrder",
+          "ok": true,
+          "ms": 522,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:30:01.927Z",
+          "script": "verify_ops.mjs",
+          "case": "fragmentTagsOrder",
+          "ok": true,
+          "ms": 207,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:31:41.957Z",
+          "script": "verify_ops.mjs",
+          "case": "fragmentTagsOrder",
+          "ok": true,
+          "ms": 250,
+          "note": "回读 null"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:27.185Z",
+      "last": {
+        "at": "2026-09-21T01:31:41.957Z",
+        "script": "verify_ops.mjs",
+        "case": "fragmentTagsOrder",
+        "ok": true,
+        "ms": 250,
+        "note": "回读 null"
+      }
+    },
+    "usedFragmentsCount": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:27.416Z",
+          "script": "verify_matrix.mjs",
+          "case": "usedFragmentsCount",
+          "ok": true,
+          "ms": 231,
+          "note": "期望：额度"
+        },
+        {
+          "at": "2026-09-21T01:17:55.040Z",
+          "script": "verify_ops.mjs",
+          "case": "usedFragmentsCount",
+          "ok": true,
+          "ms": 218,
+          "note": "期望：碎片额度"
+        },
+        {
+          "at": "2026-09-21T01:25:00.175Z",
+          "script": "verify_ops.mjs",
+          "case": "usedFragmentsCount",
+          "ok": true,
+          "ms": 377,
+          "note": "回读 {used,total}"
+        },
+        {
+          "at": "2026-09-21T01:28:00.434Z",
+          "script": "verify_ops.mjs",
+          "case": "usedFragmentsCount",
+          "ok": true,
+          "ms": 206,
+          "note": "回读 {used,total}"
+        },
+        {
+          "at": "2026-09-21T01:30:03.763Z",
+          "script": "verify_ops.mjs",
+          "case": "usedFragmentsCount",
+          "ok": true,
+          "ms": 334,
+          "note": "回读 {used,total}"
+        },
+        {
+          "at": "2026-09-21T01:31:44.452Z",
+          "script": "verify_ops.mjs",
+          "case": "usedFragmentsCount",
+          "ok": true,
+          "ms": 239,
+          "note": "回读 {used,total}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:27.416Z",
+      "last": {
+        "at": "2026-09-21T01:31:44.452Z",
+        "script": "verify_ops.mjs",
+        "case": "usedFragmentsCount",
+        "ok": true,
+        "ms": 239,
+        "note": "回读 {used,total}"
+      }
+    },
+    "teams": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:27.666Z",
+          "script": "verify_matrix.mjs",
+          "case": "teams",
+          "ok": true,
+          "ms": 250,
+          "note": "期望：团队数组（普通账号可能为空）"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:27.666Z",
+      "last": {
+        "at": "2026-09-21T01:07:27.666Z",
+        "script": "verify_matrix.mjs",
+        "case": "teams",
+        "ok": true,
+        "ms": 250,
+        "note": "期望：团队数组（普通账号可能为空）"
+      }
+    },
+    "messages": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:27.907Z",
+          "script": "verify_matrix.mjs",
+          "case": "messages",
+          "ok": true,
+          "ms": 241,
+          "note": "期望：消息数组"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:27.907Z",
+      "last": {
+        "at": "2026-09-21T01:07:27.907Z",
+        "script": "verify_matrix.mjs",
+        "case": "messages",
+        "ok": true,
+        "ms": 241,
+        "note": "期望：消息数组"
+      }
+    },
+    "orders": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:28.174Z",
+          "script": "verify_matrix.mjs",
+          "case": "orders",
+          "ok": true,
+          "ms": 267,
+          "note": "期望：订单数组"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:28.174Z",
+      "last": {
+        "at": "2026-09-21T01:07:28.174Z",
+        "script": "verify_matrix.mjs",
+        "case": "orders",
+        "ok": true,
+        "ms": 267,
+        "note": "期望：订单数组"
+      }
+    },
+    "listTags": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:28.398Z",
+          "script": "verify_matrix.mjs",
+          "case": "listTags",
+          "ok": true,
+          "ms": 224,
+          "note": "期望：我的标签列表"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:28.398Z",
+      "last": {
+        "at": "2026-09-21T01:07:28.398Z",
+        "script": "verify_matrix.mjs",
+        "case": "listTags",
+        "ok": true,
+        "ms": 224,
+        "note": "期望：我的标签列表"
+      }
+    },
+    "createBlankShow": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:29.158Z",
+          "script": "verify_matrix.mjs",
+          "case": "createBlankShow",
+          "ok": true,
+          "ms": 760,
+          "note": "期望：返回 show_id"
+        },
+        {
+          "at": "2026-09-21T01:18:19.951Z",
+          "script": "verify_ops.mjs",
+          "case": "createBlankShow(ops)",
+          "ok": true,
+          "ms": 1311,
+          "note": "期望：返回 show_id"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:29.158Z",
+      "last": {
+        "at": "2026-09-21T01:18:19.951Z",
+        "script": "verify_ops.mjs",
+        "case": "createBlankShow(ops)",
+        "ok": true,
+        "ms": 1311,
+        "note": "期望：返回 show_id"
+      }
+    },
+    "getShow": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:29.407Z",
+          "script": "verify_matrix.mjs",
+          "case": "getShow",
+          "ok": true,
+          "ms": 249,
+          "note": "期望：元信息且 show_id 一致"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:29.407Z",
+      "last": {
+        "at": "2026-09-21T01:07:29.407Z",
+        "script": "verify_matrix.mjs",
+        "case": "getShow",
+        "ok": true,
+        "ms": 249,
+        "note": "期望：元信息且 show_id 一致"
+      }
+    },
+    "readShowData": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:30.616Z",
+          "script": "verify_matrix.mjs",
+          "case": "readShowData",
+          "ok": true,
+          "ms": 980,
+          "note": "期望：作品内容 JSON"
+        },
+        {
+          "at": "2026-09-21T01:07:30.878Z",
+          "script": "verify_matrix.mjs",
+          "case": "readShowData(editing)",
+          "ok": true,
+          "note": "草稿版本可读"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:30.616Z",
+      "last": {
+        "at": "2026-09-21T01:07:30.878Z",
+        "script": "verify_matrix.mjs",
+        "case": "readShowData(editing)",
+        "ok": true,
+        "note": "草稿版本可读"
+      }
+    },
+    "updateShow": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:32.658Z",
+          "script": "verify_matrix.mjs",
+          "case": "updateShow",
+          "ok": true,
+          "ms": 1780,
+          "note": "期望：PUT 后回读 title 变化"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:32.658Z",
+      "last": {
+        "at": "2026-09-21T01:07:32.658Z",
+        "script": "verify_matrix.mjs",
+        "case": "updateShow",
+        "ok": true,
+        "ms": 1780,
+        "note": "期望：PUT 后回读 title 变化"
+      }
+    },
+    "addTag": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:33.944Z",
+          "script": "verify_matrix.mjs",
+          "case": "addTag",
+          "ok": true,
+          "ms": 1286,
+          "note": "期望：标签写入后可从 listTags 回读"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:33.944Z",
+      "last": {
+        "at": "2026-09-21T01:07:33.944Z",
+        "script": "verify_matrix.mjs",
+        "case": "addTag",
+        "ok": true,
+        "ms": 1286,
+        "note": "期望：标签写入后可从 listTags 回读"
+      }
+    },
+    "renameTag": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:34.870Z",
+          "script": "verify_matrix.mjs",
+          "case": "renameTag",
+          "ok": true,
+          "ms": 926,
+          "note": "期望：重命名后旧名消失新名出现"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:34.870Z",
+      "last": {
+        "at": "2026-09-21T01:07:34.870Z",
+        "script": "verify_matrix.mjs",
+        "case": "renameTag",
+        "ok": true,
+        "ms": 926,
+        "note": "期望：重命名后旧名消失新名出现"
+      }
+    },
+    "removeTag": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:35.759Z",
+          "script": "verify_matrix.mjs",
+          "case": "removeTag",
+          "ok": true,
+          "ms": 889,
+          "note": "期望：移除后标签列表不再含该标签"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:35.759Z",
+      "last": {
+        "at": "2026-09-21T01:07:35.759Z",
+        "script": "verify_matrix.mjs",
+        "case": "removeTag",
+        "ok": true,
+        "ms": 889,
+        "note": "期望：移除后标签列表不再含该标签"
+      }
+    },
+    "clearTag": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:36.047Z",
+          "script": "verify_matrix.mjs",
+          "case": "clearTag",
+          "ok": true,
+          "ms": 288,
+          "note": "期望：DELETE 成功（此时该标签已无引用）"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:36.047Z",
+      "last": {
+        "at": "2026-09-21T01:07:36.047Z",
+        "script": "verify_matrix.mjs",
+        "case": "clearTag",
+        "ok": true,
+        "ms": 288,
+        "note": "期望：DELETE 成功（此时该标签已无引用）"
+      }
+    },
+    "setRightAccessPrivilege": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:37.378Z",
+          "script": "verify_matrix.mjs",
+          "case": "setRightAccessPrivilege",
+          "ok": true,
+          "ms": 1330,
+          "note": "期望：PUT 后回读权限位变化（随后还原）"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:37.378Z",
+      "last": {
+        "at": "2026-09-21T01:07:37.378Z",
+        "script": "verify_matrix.mjs",
+        "case": "setRightAccessPrivilege",
+        "ok": true,
+        "ms": 1330,
+        "note": "期望：PUT 后回读权限位变化（随后还原）"
+      }
+    },
+    "setWechatNoShare": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:39.469Z",
+          "script": "verify_matrix.mjs",
+          "case": "setWechatNoShare",
+          "ok": true,
+          "ms": 2091,
+          "note": "期望：PUT 后回读 wechat_no_share 变化（随后还原）"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:39.469Z",
+      "last": {
+        "at": "2026-09-21T01:07:39.469Z",
+        "script": "verify_matrix.mjs",
+        "case": "setWechatNoShare",
+        "ok": true,
+        "ms": 2091,
+        "note": "期望：PUT 后回读 wechat_no_share 变化（随后还原）"
+      }
+    },
+    "setTrafficPackageUsage": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:40.243Z",
+          "script": "verify_matrix.mjs",
+          "case": "setTrafficPackageUsage",
+          "ok": false,
+          "blocked": true,
+          "ms": 773,
+          "note": "期望：有流量包时切换成功，否则标 blocked",
+          "error": "账号无流量包：Common:Failed_NotFound: package provider missing"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:07:40.243Z",
+        "script": "verify_matrix.mjs",
+        "case": "setTrafficPackageUsage",
+        "ok": false,
+        "blocked": true,
+        "ms": 773,
+        "note": "期望：有流量包时切换成功，否则标 blocked",
+        "error": "账号无流量包：Common:Failed_NotFound: package provider missing"
+      }
+    },
+    "trafficPackageUsage": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:40.491Z",
+          "script": "verify_matrix.mjs",
+          "case": "trafficPackageUsage",
+          "ok": true,
+          "ms": 248,
+          "note": "期望：流量信息对象"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:40.491Z",
+      "last": {
+        "at": "2026-09-21T01:07:40.491Z",
+        "script": "verify_matrix.mjs",
+        "case": "trafficPackageUsage",
+        "ok": true,
+        "ms": 248,
+        "note": "期望：流量信息对象"
+      }
+    },
+    "showHistories": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:40.777Z",
+          "script": "verify_matrix.mjs",
+          "case": "showHistories",
+          "ok": true,
+          "ms": 286,
+          "note": "期望：历史版本数组"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:40.777Z",
+      "last": {
+        "at": "2026-09-21T01:07:40.777Z",
+        "script": "verify_matrix.mjs",
+        "case": "showHistories",
+        "ok": true,
+        "ms": 286,
+        "note": "期望：历史版本数组"
+      }
+    },
+    "previewUri": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:41.010Z",
+          "script": "verify_matrix.mjs",
+          "case": "previewUri",
+          "ok": true,
+          "ms": 233,
+          "note": "期望：预览链接非空"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:41.010Z",
+      "last": {
+        "at": "2026-09-21T01:07:41.010Z",
+        "script": "verify_matrix.mjs",
+        "case": "previewUri",
+        "ok": true,
+        "ms": 233,
+        "note": "期望：预览链接非空"
+      }
+    },
+    "copyShow": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:41.676Z",
+          "script": "verify_matrix.mjs",
+          "case": "copyShow",
+          "ok": true,
+          "ms": 422,
+          "note": "期望：产生新的 show_id"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:41.676Z",
+      "last": {
+        "at": "2026-09-21T01:07:41.676Z",
+        "script": "verify_matrix.mjs",
+        "case": "copyShow",
+        "ok": true,
+        "ms": 422,
+        "note": "期望：产生新的 show_id"
+      }
+    },
+    "deleteShow": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:43.431Z",
+          "script": "verify_matrix.mjs",
+          "case": "deleteShow",
+          "ok": true,
+          "ms": 1755,
+          "note": "期望：删除后进入回收站"
+        },
+        {
+          "at": "2026-09-21T01:07:43.770Z",
+          "script": "verify_matrix.mjs",
+          "case": "deleteShow(副本)",
+          "ok": true,
+          "ms": 339,
+          "note": "期望：副本删除成功"
+        },
+        {
+          "at": "2026-09-21T01:07:46.687Z",
+          "script": "verify_matrix.mjs",
+          "case": "deleteShow(二次清理)",
+          "ok": true,
+          "ms": 1060,
+          "note": "期望：再删一次，恢复账号原状"
+        },
+        {
+          "at": "2026-09-21T01:18:23.457Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteShow(ops 清理)",
+          "ok": true,
+          "ms": 359,
+          "note": "期望：清理一次性作品"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteShow(载体清理)",
+          "ok": true,
+          "ms": 200,
+          "note": "期望：清理载体作品；载体作品已删除（进回收站）"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteShow(载体清理)",
+          "ok": true,
+          "ms": 238,
+          "note": "期望：清理载体作品；载体作品已删除（进回收站）"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteShow(载体清理)",
+          "ok": true,
+          "ms": 316,
+          "note": "期望：清理载体作品；载体作品已删除（进回收站）"
+        },
+        {
+          "at": "2026-09-21T01:32:19.612Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteShow(载体清理)",
+          "ok": true,
+          "ms": 259,
+          "note": "期望：清理载体作品；载体作品已删除（进回收站）"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:43.431Z",
+      "last": {
+        "at": "2026-09-21T01:32:19.612Z",
+        "script": "verify_ops.mjs",
+        "case": "deleteShow(载体清理)",
+        "ok": true,
+        "ms": 259,
+        "note": "期望：清理载体作品；载体作品已删除（进回收站）"
+      }
+    },
+    "recoverShow": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:45.374Z",
+          "script": "verify_matrix.mjs",
+          "case": "recoverShow",
+          "ok": true,
+          "ms": 1365,
+          "note": "期望：恢复后元信息可读"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:45.374Z",
+      "last": {
+        "at": "2026-09-21T01:07:45.374Z",
+        "script": "verify_matrix.mjs",
+        "case": "recoverShow",
+        "ok": true,
+        "ms": 1365,
+        "note": "期望：恢复后元信息可读"
+      }
+    },
+    "deletedShows": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:07:45.627Z",
+          "script": "verify_matrix.mjs",
+          "case": "deletedShows",
+          "ok": true,
+          "ms": 253,
+          "note": "期望：回收站数组"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:07:45.627Z",
+      "last": {
+        "at": "2026-09-21T01:07:45.627Z",
+        "script": "verify_matrix.mjs",
+        "case": "deletedShows",
+        "ok": true,
+        "ms": 253,
+        "note": "期望：回收站数组"
+      }
+    },
+    "loginHistory": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:42.407Z",
+          "script": "verify_ops.mjs",
+          "case": "loginHistory",
+          "ok": true,
+          "ms": 241,
+          "note": "期望：登录历史列表"
+        },
+        {
+          "at": "2026-09-21T01:24:48.877Z",
+          "script": "verify_ops.mjs",
+          "case": "loginHistory",
+          "ok": true,
+          "ms": 284,
+          "note": "回读 Array(8)"
+        },
+        {
+          "at": "2026-09-21T01:27:48.788Z",
+          "script": "verify_ops.mjs",
+          "case": "loginHistory",
+          "ok": true,
+          "ms": 232,
+          "note": "回读 Array(8)"
+        },
+        {
+          "at": "2026-09-21T01:29:53.924Z",
+          "script": "verify_ops.mjs",
+          "case": "loginHistory",
+          "ok": true,
+          "ms": 252,
+          "note": "回读 Array(8)"
+        },
+        {
+          "at": "2026-09-21T01:31:30.777Z",
+          "script": "verify_ops.mjs",
+          "case": "loginHistory",
+          "ok": true,
+          "ms": 273,
+          "note": "回读 Array(8)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:42.407Z",
+      "last": {
+        "at": "2026-09-21T01:31:30.777Z",
+        "script": "verify_ops.mjs",
+        "case": "loginHistory",
+        "ok": true,
+        "ms": 273,
+        "note": "回读 Array(8)"
+      }
+    },
+    "notify": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:42.624Z",
+          "script": "verify_ops.mjs",
+          "case": "notify",
+          "ok": false,
+          "ms": 217,
+          "note": "期望：通知设置/列表",
+          "error": "断言失败：通知设置/列表 —— 但拿到 object: null"
+        },
+        {
+          "at": "2026-09-21T01:24:49.099Z",
+          "script": "verify_ops.mjs",
+          "case": "notify",
+          "ok": true,
+          "ms": 222,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:27:48.991Z",
+          "script": "verify_ops.mjs",
+          "case": "notify",
+          "ok": true,
+          "ms": 203,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:29:54.128Z",
+          "script": "verify_ops.mjs",
+          "case": "notify",
+          "ok": true,
+          "ms": 204,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:31:31.019Z",
+          "script": "verify_ops.mjs",
+          "case": "notify",
+          "ok": true,
+          "ms": 241,
+          "note": "回读 null"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:31.019Z",
+        "script": "verify_ops.mjs",
+        "case": "notify",
+        "ok": true,
+        "ms": 241,
+        "note": "回读 null"
+      },
+      "firstVerifiedAt": "2026-09-21T01:24:49.099Z"
+    },
+    "resetPhoneState": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:42.850Z",
+          "script": "verify_ops.mjs",
+          "case": "resetPhoneState",
+          "ok": false,
+          "ms": 226,
+          "note": "期望：换绑手机状态",
+          "error": "断言失败：换绑手机状态 —— 但拿到 undefined: undefined"
+        },
+        {
+          "at": "2026-09-21T01:24:49.409Z",
+          "script": "verify_ops.mjs",
+          "case": "resetPhoneState",
+          "ok": true,
+          "ms": 309,
+          "note": "回读 undefined"
+        },
+        {
+          "at": "2026-09-21T01:27:49.199Z",
+          "script": "verify_ops.mjs",
+          "case": "resetPhoneState",
+          "ok": true,
+          "ms": 208,
+          "note": "回读 undefined"
+        },
+        {
+          "at": "2026-09-21T01:29:54.333Z",
+          "script": "verify_ops.mjs",
+          "case": "resetPhoneState",
+          "ok": true,
+          "ms": 205,
+          "note": "回读 undefined"
+        },
+        {
+          "at": "2026-09-21T01:31:31.300Z",
+          "script": "verify_ops.mjs",
+          "case": "resetPhoneState",
+          "ok": true,
+          "ms": 280,
+          "note": "回读 undefined"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:31.300Z",
+        "script": "verify_ops.mjs",
+        "case": "resetPhoneState",
+        "ok": true,
+        "ms": 280,
+        "note": "回读 undefined"
+      },
+      "firstVerifiedAt": "2026-09-21T01:24:49.409Z"
+    },
+    "templateMembershipState": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:43.073Z",
+          "script": "verify_ops.mjs",
+          "case": "templateMembershipState",
+          "ok": true,
+          "ms": 223,
+          "note": "期望：会员状态"
+        },
+        {
+          "at": "2026-09-21T01:24:49.649Z",
+          "script": "verify_ops.mjs",
+          "case": "templateMembershipState",
+          "ok": true,
+          "ms": 240,
+          "note": "回读 {membership_state,expired}"
+        },
+        {
+          "at": "2026-09-21T01:27:49.704Z",
+          "script": "verify_ops.mjs",
+          "case": "templateMembershipState",
+          "ok": true,
+          "ms": 505,
+          "note": "回读 {membership_state,expired}"
+        },
+        {
+          "at": "2026-09-21T01:29:54.546Z",
+          "script": "verify_ops.mjs",
+          "case": "templateMembershipState",
+          "ok": true,
+          "ms": 213,
+          "note": "回读 {membership_state,expired}"
+        },
+        {
+          "at": "2026-09-21T01:31:31.541Z",
+          "script": "verify_ops.mjs",
+          "case": "templateMembershipState",
+          "ok": true,
+          "ms": 241,
+          "note": "回读 {membership_state,expired}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:43.073Z",
+      "last": {
+        "at": "2026-09-21T01:31:31.541Z",
+        "script": "verify_ops.mjs",
+        "case": "templateMembershipState",
+        "ok": true,
+        "ms": 241,
+        "note": "回读 {membership_state,expired}"
+      }
+    },
+    "blacklist": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:43.283Z",
+          "script": "verify_ops.mjs",
+          "case": "blacklist",
+          "ok": true,
+          "ms": 210,
+          "note": "期望：黑名单"
+        },
+        {
+          "at": "2026-09-21T01:24:49.894Z",
+          "script": "verify_ops.mjs",
+          "case": "blacklist",
+          "ok": true,
+          "ms": 245,
+          "note": "回读 {}"
+        },
+        {
+          "at": "2026-09-21T01:27:49.911Z",
+          "script": "verify_ops.mjs",
+          "case": "blacklist",
+          "ok": true,
+          "ms": 207,
+          "note": "回读 {}"
+        },
+        {
+          "at": "2026-09-21T01:29:54.761Z",
+          "script": "verify_ops.mjs",
+          "case": "blacklist",
+          "ok": true,
+          "ms": 215,
+          "note": "回读 {}"
+        },
+        {
+          "at": "2026-09-21T01:31:31.950Z",
+          "script": "verify_ops.mjs",
+          "case": "blacklist",
+          "ok": true,
+          "ms": 409,
+          "note": "回读 {}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:43.283Z",
+      "last": {
+        "at": "2026-09-21T01:31:31.950Z",
+        "script": "verify_ops.mjs",
+        "case": "blacklist",
+        "ok": true,
+        "ms": 409,
+        "note": "回读 {}"
+      }
+    },
+    "contacts": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:43.522Z",
+          "script": "verify_ops.mjs",
+          "case": "contacts",
+          "ok": true,
+          "ms": 239,
+          "note": "期望：联系人列表"
+        },
+        {
+          "at": "2026-09-21T01:24:50.177Z",
+          "script": "verify_ops.mjs",
+          "case": "contacts",
+          "ok": true,
+          "ms": 283,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:27:50.608Z",
+          "script": "verify_ops.mjs",
+          "case": "contacts",
+          "ok": true,
+          "ms": 696,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:29:54.965Z",
+          "script": "verify_ops.mjs",
+          "case": "contacts",
+          "ok": true,
+          "ms": 203,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:32.196Z",
+          "script": "verify_ops.mjs",
+          "case": "contacts",
+          "ok": true,
+          "ms": 245,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:43.522Z",
+      "last": {
+        "at": "2026-09-21T01:31:32.196Z",
+        "script": "verify_ops.mjs",
+        "case": "contacts",
+        "ok": true,
+        "ms": 245,
+        "note": "回读 Array(0)"
+      }
+    },
+    "templateMembership": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:43.879Z",
+          "script": "verify_ops.mjs",
+          "case": "templateMembership",
+          "ok": true,
+          "ms": 356,
+          "note": "期望：会员权益"
+        },
+        {
+          "at": "2026-09-21T01:24:50.407Z",
+          "script": "verify_ops.mjs",
+          "case": "templateMembership",
+          "ok": true,
+          "ms": 230,
+          "note": "回读 {days,is_member}"
+        },
+        {
+          "at": "2026-09-21T01:27:50.820Z",
+          "script": "verify_ops.mjs",
+          "case": "templateMembership",
+          "ok": true,
+          "ms": 212,
+          "note": "回读 {days,is_member}"
+        },
+        {
+          "at": "2026-09-21T01:29:55.178Z",
+          "script": "verify_ops.mjs",
+          "case": "templateMembership",
+          "ok": true,
+          "ms": 213,
+          "note": "回读 {days,is_member}"
+        },
+        {
+          "at": "2026-09-21T01:31:32.773Z",
+          "script": "verify_ops.mjs",
+          "case": "templateMembership",
+          "ok": true,
+          "ms": 577,
+          "note": "回读 {days,is_member}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:43.879Z",
+      "last": {
+        "at": "2026-09-21T01:31:32.773Z",
+        "script": "verify_ops.mjs",
+        "case": "templateMembership",
+        "ok": true,
+        "ms": 577,
+        "note": "回读 {days,is_member}"
+      }
+    },
+    "trafficPackages": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:44.102Z",
+          "script": "verify_ops.mjs",
+          "case": "trafficPackages",
+          "ok": true,
+          "ms": 222,
+          "note": "期望：流量包"
+        },
+        {
+          "at": "2026-09-21T01:24:50.636Z",
+          "script": "verify_ops.mjs",
+          "case": "trafficPackages",
+          "ok": true,
+          "ms": 229,
+          "note": "回读 {traffic,hasPackage}"
+        },
+        {
+          "at": "2026-09-21T01:27:51.050Z",
+          "script": "verify_ops.mjs",
+          "case": "trafficPackages",
+          "ok": true,
+          "ms": 229,
+          "note": "回读 {traffic,hasPackage}"
+        },
+        {
+          "at": "2026-09-21T01:29:55.397Z",
+          "script": "verify_ops.mjs",
+          "case": "trafficPackages",
+          "ok": true,
+          "ms": 219,
+          "note": "回读 {traffic,hasPackage}"
+        },
+        {
+          "at": "2026-09-21T01:31:33.085Z",
+          "script": "verify_ops.mjs",
+          "case": "trafficPackages",
+          "ok": true,
+          "ms": 312,
+          "note": "回读 {traffic,hasPackage}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:44.102Z",
+      "last": {
+        "at": "2026-09-21T01:31:33.085Z",
+        "script": "verify_ops.mjs",
+        "case": "trafficPackages",
+        "ok": true,
+        "ms": 312,
+        "note": "回读 {traffic,hasPackage}"
+      }
+    },
+    "forms": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:44.326Z",
+          "script": "verify_ops.mjs",
+          "case": "forms",
+          "ok": false,
+          "ms": 224,
+          "note": "期望：表单型作品",
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:24:50.871Z",
+          "script": "verify_ops.mjs",
+          "case": "forms",
+          "ok": true,
+          "ms": 235,
+          "note": "回读 {totalRecords,columns,rows}"
+        },
+        {
+          "at": "2026-09-21T01:27:51.564Z",
+          "script": "verify_ops.mjs",
+          "case": "forms",
+          "ok": true,
+          "ms": 514,
+          "note": "回读 {totalRecords,columns,rows}"
+        },
+        {
+          "at": "2026-09-21T01:29:55.655Z",
+          "script": "verify_ops.mjs",
+          "case": "forms",
+          "ok": true,
+          "ms": 258,
+          "note": "回读 {totalRecords,columns,rows}"
+        },
+        {
+          "at": "2026-09-21T01:31:33.344Z",
+          "script": "verify_ops.mjs",
+          "case": "forms",
+          "ok": true,
+          "ms": 259,
+          "note": "回读 {totalRecords,columns,rows}"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:33.344Z",
+        "script": "verify_ops.mjs",
+        "case": "forms",
+        "ok": true,
+        "ms": 259,
+        "note": "回读 {totalRecords,columns,rows}"
+      },
+      "firstVerifiedAt": "2026-09-21T01:24:50.871Z"
+    },
+    "messagesStatus": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:44.556Z",
+          "script": "verify_ops.mjs",
+          "case": "messagesStatus",
+          "ok": true,
+          "ms": 230,
+          "note": "期望：未读计数"
+        },
+        {
+          "at": "2026-09-21T01:24:51.098Z",
+          "script": "verify_ops.mjs",
+          "case": "messagesStatus",
+          "ok": true,
+          "ms": 227,
+          "note": "回读 {totalCount,unreadCount,importanCount}"
+        },
+        {
+          "at": "2026-09-21T01:27:51.779Z",
+          "script": "verify_ops.mjs",
+          "case": "messagesStatus",
+          "ok": true,
+          "ms": 215,
+          "note": "回读 {totalCount,unreadCount,importanCount}"
+        },
+        {
+          "at": "2026-09-21T01:29:55.866Z",
+          "script": "verify_ops.mjs",
+          "case": "messagesStatus",
+          "ok": true,
+          "ms": 211,
+          "note": "回读 {totalCount,unreadCount,importanCount}"
+        },
+        {
+          "at": "2026-09-21T01:31:33.588Z",
+          "script": "verify_ops.mjs",
+          "case": "messagesStatus",
+          "ok": true,
+          "ms": 243,
+          "note": "回读 {totalCount,unreadCount,importanCount}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:44.556Z",
+      "last": {
+        "at": "2026-09-21T01:31:33.588Z",
+        "script": "verify_ops.mjs",
+        "case": "messagesStatus",
+        "ok": true,
+        "ms": 243,
+        "note": "回读 {totalCount,unreadCount,importanCount}"
+      }
+    },
+    "userSetting": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:44.833Z",
+          "script": "verify_ops.mjs",
+          "case": "userSetting",
+          "ok": true,
+          "ms": 277,
+          "note": "期望：用户设置表"
+        },
+        {
+          "at": "2026-09-21T01:24:51.340Z",
+          "script": "verify_ops.mjs",
+          "case": "userSetting",
+          "ok": true,
+          "ms": 241,
+          "note": "回读 {show.receive.type,studio.appearance.desk.background,studio.asset.images.watermark}"
+        },
+        {
+          "at": "2026-09-21T01:27:52.069Z",
+          "script": "verify_ops.mjs",
+          "case": "userSetting",
+          "ok": true,
+          "ms": 290,
+          "note": "回读 {show.receive.type,studio.appearance.desk.background,studio.asset.images.watermark}"
+        },
+        {
+          "at": "2026-09-21T01:29:56.215Z",
+          "script": "verify_ops.mjs",
+          "case": "userSetting",
+          "ok": true,
+          "ms": 348,
+          "note": "回读 {show.receive.type,studio.appearance.desk.background,studio.asset.images.watermark}"
+        },
+        {
+          "at": "2026-09-21T01:31:33.952Z",
+          "script": "verify_ops.mjs",
+          "case": "userSetting",
+          "ok": true,
+          "ms": 364,
+          "note": "回读 {show.receive.type,studio.appearance.desk.background,studio.asset.images.watermark}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:44.833Z",
+      "last": {
+        "at": "2026-09-21T01:31:33.952Z",
+        "script": "verify_ops.mjs",
+        "case": "userSetting",
+        "ok": true,
+        "ms": 364,
+        "note": "回读 {show.receive.type,studio.appearance.desk.background,studio.asset.images.watermark}"
+      }
+    },
+    "palette": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:45.186Z",
+          "script": "verify_ops.mjs",
+          "case": "palette",
+          "ok": true,
+          "ms": 353,
+          "note": "期望：配色预设"
+        },
+        {
+          "at": "2026-09-21T01:24:51.597Z",
+          "script": "verify_ops.mjs",
+          "case": "palette",
+          "ok": true,
+          "ms": 257,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:27:52.321Z",
+          "script": "verify_ops.mjs",
+          "case": "palette",
+          "ok": true,
+          "ms": 252,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:29:56.461Z",
+          "script": "verify_ops.mjs",
+          "case": "palette",
+          "ok": true,
+          "ms": 246,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:34.300Z",
+          "script": "verify_ops.mjs",
+          "case": "palette",
+          "ok": true,
+          "ms": 347,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:45.186Z",
+      "last": {
+        "at": "2026-09-21T01:31:34.300Z",
+        "script": "verify_ops.mjs",
+        "case": "palette",
+        "ok": true,
+        "ms": 347,
+        "note": "回读 Array(0)"
+      }
+    },
+    "watermark": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:45.485Z",
+          "script": "verify_ops.mjs",
+          "case": "watermark",
+          "ok": true,
+          "ms": 298,
+          "note": "期望：水印配置"
+        },
+        {
+          "at": "2026-09-21T01:24:51.847Z",
+          "script": "verify_ops.mjs",
+          "case": "watermark",
+          "ok": true,
+          "ms": 250,
+          "note": "回读 {watermarks,readOnly}"
+        },
+        {
+          "at": "2026-09-21T01:27:52.562Z",
+          "script": "verify_ops.mjs",
+          "case": "watermark",
+          "ok": true,
+          "ms": 241,
+          "note": "回读 {watermarks,readOnly}"
+        },
+        {
+          "at": "2026-09-21T01:29:56.753Z",
+          "script": "verify_ops.mjs",
+          "case": "watermark",
+          "ok": true,
+          "ms": 292,
+          "note": "回读 {watermarks,readOnly}"
+        },
+        {
+          "at": "2026-09-21T01:31:34.583Z",
+          "script": "verify_ops.mjs",
+          "case": "watermark",
+          "ok": true,
+          "ms": 283,
+          "note": "回读 {watermarks,readOnly}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:45.485Z",
+      "last": {
+        "at": "2026-09-21T01:31:34.583Z",
+        "script": "verify_ops.mjs",
+        "case": "watermark",
+        "ok": true,
+        "ms": 283,
+        "note": "回读 {watermarks,readOnly}"
+      }
+    },
+    "watermarkAll": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:45.955Z",
+          "script": "verify_ops.mjs",
+          "case": "watermarkAll",
+          "ok": true,
+          "ms": 470,
+          "note": "期望：全局水印"
+        },
+        {
+          "at": "2026-09-21T01:24:52.105Z",
+          "script": "verify_ops.mjs",
+          "case": "watermarkAll",
+          "ok": true,
+          "ms": 257,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:27:52.820Z",
+          "script": "verify_ops.mjs",
+          "case": "watermarkAll",
+          "ok": true,
+          "ms": 258,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:29:56.992Z",
+          "script": "verify_ops.mjs",
+          "case": "watermarkAll",
+          "ok": true,
+          "ms": 239,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:34.862Z",
+          "script": "verify_ops.mjs",
+          "case": "watermarkAll",
+          "ok": true,
+          "ms": 278,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:45.955Z",
+      "last": {
+        "at": "2026-09-21T01:31:34.862Z",
+        "script": "verify_ops.mjs",
+        "case": "watermarkAll",
+        "ok": true,
+        "ms": 278,
+        "note": "回读 Array(0)"
+      }
+    },
+    "recommendedHelp": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:46.173Z",
+          "script": "verify_ops.mjs",
+          "case": "recommendedHelp",
+          "ok": true,
+          "ms": 217,
+          "note": "期望：帮助推荐"
+        },
+        {
+          "at": "2026-09-21T01:24:52.339Z",
+          "script": "verify_ops.mjs",
+          "case": "recommendedHelp",
+          "ok": true,
+          "ms": 234,
+          "note": "回读 Array(11)"
+        },
+        {
+          "at": "2026-09-21T01:27:53.043Z",
+          "script": "verify_ops.mjs",
+          "case": "recommendedHelp",
+          "ok": true,
+          "ms": 223,
+          "note": "回读 Array(11)"
+        },
+        {
+          "at": "2026-09-21T01:29:57.201Z",
+          "script": "verify_ops.mjs",
+          "case": "recommendedHelp",
+          "ok": true,
+          "ms": 209,
+          "note": "回读 Array(11)"
+        },
+        {
+          "at": "2026-09-21T01:31:35.206Z",
+          "script": "verify_ops.mjs",
+          "case": "recommendedHelp",
+          "ok": true,
+          "ms": 344,
+          "note": "回读 Array(11)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:46.173Z",
+      "last": {
+        "at": "2026-09-21T01:31:35.206Z",
+        "script": "verify_ops.mjs",
+        "case": "recommendedHelp",
+        "ok": true,
+        "ms": 344,
+        "note": "回读 Array(11)"
+      }
+    },
+    "userIdentity": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:46.402Z",
+          "script": "verify_ops.mjs",
+          "case": "userIdentity",
+          "ok": false,
+          "ms": 229,
+          "note": "期望：实名/资质",
+          "error": "断言失败：实名/资质 —— 但拿到 undefined: undefined"
+        },
+        {
+          "at": "2026-09-21T01:24:52.561Z",
+          "script": "verify_ops.mjs",
+          "case": "userIdentity",
+          "ok": true,
+          "ms": 222,
+          "note": "回读 undefined"
+        },
+        {
+          "at": "2026-09-21T01:27:53.251Z",
+          "script": "verify_ops.mjs",
+          "case": "userIdentity",
+          "ok": true,
+          "ms": 208,
+          "note": "回读 undefined"
+        },
+        {
+          "at": "2026-09-21T01:29:57.410Z",
+          "script": "verify_ops.mjs",
+          "case": "userIdentity",
+          "ok": true,
+          "ms": 209,
+          "note": "回读 undefined"
+        },
+        {
+          "at": "2026-09-21T01:31:35.449Z",
+          "script": "verify_ops.mjs",
+          "case": "userIdentity",
+          "ok": true,
+          "ms": 243,
+          "note": "回读 undefined"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:35.449Z",
+        "script": "verify_ops.mjs",
+        "case": "userIdentity",
+        "ok": true,
+        "ms": 243,
+        "note": "回读 undefined"
+      },
+      "firstVerifiedAt": "2026-09-21T01:24:52.561Z"
+    },
+    "customDomains": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:46.626Z",
+          "script": "verify_ops.mjs",
+          "case": "customDomains",
+          "ok": false,
+          "ms": 224,
+          "note": "期望：自定义域名（普通账号应为空）",
+          "error": "Common:Failed_InvalidParam: team_id"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "customDomains",
+          "ok": false,
+          "blocked": true,
+          "error": "团队版功能，无 team_id 时服务端直接 Failed_InvalidParam"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "customDomains",
+          "ok": false,
+          "blocked": true,
+          "error": "团队版功能，无 team_id 时服务端直接 Failed_InvalidParam"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "customDomains",
+          "ok": false,
+          "blocked": true,
+          "error": "团队版功能，无 team_id 时服务端直接 Failed_InvalidParam"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "customDomains",
+          "ok": false,
+          "blocked": true,
+          "error": "团队版功能，无 team_id 时服务端直接 Failed_InvalidParam"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "customDomains",
+        "ok": false,
+        "blocked": true,
+        "error": "团队版功能，无 team_id 时服务端直接 Failed_InvalidParam"
+      }
+    },
+    "audioCategories": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:47.727Z",
+          "script": "verify_ops.mjs",
+          "case": "audioCategories",
+          "ok": true,
+          "ms": 1101,
+          "note": "期望：音频分类"
+        },
+        {
+          "at": "2026-09-21T01:24:52.785Z",
+          "script": "verify_ops.mjs",
+          "case": "audioCategories",
+          "ok": true,
+          "ms": 224,
+          "note": "回读 Array(5)"
+        },
+        {
+          "at": "2026-09-21T01:27:53.792Z",
+          "script": "verify_ops.mjs",
+          "case": "audioCategories",
+          "ok": true,
+          "ms": 541,
+          "note": "回读 Array(5)"
+        },
+        {
+          "at": "2026-09-21T01:29:57.619Z",
+          "script": "verify_ops.mjs",
+          "case": "audioCategories",
+          "ok": true,
+          "ms": 209,
+          "note": "回读 Array(5)"
+        },
+        {
+          "at": "2026-09-21T01:31:36.007Z",
+          "script": "verify_ops.mjs",
+          "case": "audioCategories",
+          "ok": true,
+          "ms": 558,
+          "note": "回读 Array(5)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:47.727Z",
+      "last": {
+        "at": "2026-09-21T01:31:36.007Z",
+        "script": "verify_ops.mjs",
+        "case": "audioCategories",
+        "ok": true,
+        "ms": 558,
+        "note": "回读 Array(5)"
+      }
+    },
+    "audioSources": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:47.952Z",
+          "script": "verify_ops.mjs",
+          "case": "audioSources",
+          "ok": true,
+          "ms": 225,
+          "note": "期望：音频来源"
+        },
+        {
+          "at": "2026-09-21T01:24:53.059Z",
+          "script": "verify_ops.mjs",
+          "case": "audioSources",
+          "ok": true,
+          "ms": 274,
+          "note": "回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:27:53.998Z",
+          "script": "verify_ops.mjs",
+          "case": "audioSources",
+          "ok": true,
+          "ms": 206,
+          "note": "回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:29:57.827Z",
+          "script": "verify_ops.mjs",
+          "case": "audioSources",
+          "ok": true,
+          "ms": 208,
+          "note": "回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:31:36.253Z",
+          "script": "verify_ops.mjs",
+          "case": "audioSources",
+          "ok": true,
+          "ms": 246,
+          "note": "回读 Array(1)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:47.952Z",
+      "last": {
+        "at": "2026-09-21T01:31:36.253Z",
+        "script": "verify_ops.mjs",
+        "case": "audioSources",
+        "ok": true,
+        "ms": 246,
+        "note": "回读 Array(1)"
+      }
+    },
+    "authorState": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:48.193Z",
+          "script": "verify_ops.mjs",
+          "case": "authorState",
+          "ok": true,
+          "ms": 241,
+          "note": "期望：原创作者状态"
+        },
+        {
+          "at": "2026-09-21T01:24:53.285Z",
+          "script": "verify_ops.mjs",
+          "case": "authorState",
+          "ok": true,
+          "ms": 226,
+          "note": "回读 {state}"
+        },
+        {
+          "at": "2026-09-21T01:27:54.227Z",
+          "script": "verify_ops.mjs",
+          "case": "authorState",
+          "ok": true,
+          "ms": 229,
+          "note": "回读 {state}"
+        },
+        {
+          "at": "2026-09-21T01:29:58.071Z",
+          "script": "verify_ops.mjs",
+          "case": "authorState",
+          "ok": true,
+          "ms": 243,
+          "note": "回读 {state}"
+        },
+        {
+          "at": "2026-09-21T01:31:36.694Z",
+          "script": "verify_ops.mjs",
+          "case": "authorState",
+          "ok": true,
+          "ms": 441,
+          "note": "回读 {state}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:48.193Z",
+      "last": {
+        "at": "2026-09-21T01:31:36.694Z",
+        "script": "verify_ops.mjs",
+        "case": "authorState",
+        "ok": true,
+        "ms": 441,
+        "note": "回读 {state}"
+      }
+    },
+    "myGoodsInfo": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:48.423Z",
+          "script": "verify_ops.mjs",
+          "case": "myGoodsInfo",
+          "ok": false,
+          "ms": 230,
+          "note": "期望：我的商品",
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "myGoodsInfo",
+          "ok": false,
+          "blocked": true,
+          "error": "需要 show_goods_id（商品 id 是路径段）"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "myGoodsInfo",
+          "ok": false,
+          "blocked": true,
+          "error": "需要 show_goods_id（商品 id 是路径段）"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "myGoodsInfo",
+          "ok": false,
+          "blocked": true,
+          "error": "需要 show_goods_id（商品 id 是路径段）"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "myGoodsInfo",
+          "ok": false,
+          "blocked": true,
+          "error": "需要 show_goods_id（商品 id 是路径段）"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "myGoodsInfo",
+        "ok": false,
+        "blocked": true,
+        "error": "需要 show_goods_id（商品 id 是路径段）"
+      }
+    },
+    "goodsFavoriteTags": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:48.694Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTags",
+          "ok": false,
+          "ms": 271,
+          "note": "期望：收藏标签",
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTags",
+          "ok": false,
+          "blocked": true,
+          "error": "裸 GET 基址实测 404，真实入口都带 show_type 维度"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTags",
+          "ok": false,
+          "blocked": true,
+          "error": "裸 GET 基址实测 404，真实入口都带 show_type 维度"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTags",
+          "ok": false,
+          "blocked": true,
+          "error": "裸 GET 基址实测 404，真实入口都带 show_type 维度"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTags",
+          "ok": false,
+          "blocked": true,
+          "error": "裸 GET 基址实测 404，真实入口都带 show_type 维度"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "goodsFavoriteTags",
+        "ok": false,
+        "blocked": true,
+        "error": "裸 GET 基址实测 404，真实入口都带 show_type 维度"
+      }
+    },
+    "goodsFavorites": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:48.921Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavorites",
+          "ok": true,
+          "ms": 227,
+          "note": "期望：收藏作品"
+        },
+        {
+          "at": "2026-09-21T01:24:53.512Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavorites",
+          "ok": true,
+          "ms": 227,
+          "note": "回读 {count,goodses}"
+        },
+        {
+          "at": "2026-09-21T01:27:54.450Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavorites",
+          "ok": true,
+          "ms": 223,
+          "note": "回读 {count,goodses}"
+        },
+        {
+          "at": "2026-09-21T01:29:58.286Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavorites",
+          "ok": true,
+          "ms": 215,
+          "note": "回读 {count,goodses}"
+        },
+        {
+          "at": "2026-09-21T01:31:36.938Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavorites",
+          "ok": true,
+          "ms": 244,
+          "note": "回读 {count,goodses}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:48.921Z",
+      "last": {
+        "at": "2026-09-21T01:31:36.938Z",
+        "script": "verify_ops.mjs",
+        "case": "goodsFavorites",
+        "ok": true,
+        "ms": 244,
+        "note": "回读 {count,goodses}"
+      }
+    },
+    "goodsFavoriteTagState": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:49.194Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagState",
+          "ok": true,
+          "ms": 270,
+          "note": "期望：收藏标签状态"
+        },
+        {
+          "at": "2026-09-21T01:24:53.957Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagState",
+          "ok": true,
+          "ms": 445,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:27:54.660Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagState",
+          "ok": true,
+          "ms": 210,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:29:58.495Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagState",
+          "ok": true,
+          "ms": 209,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:37.219Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagState",
+          "ok": true,
+          "ms": 281,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:49.194Z",
+      "last": {
+        "at": "2026-09-21T01:31:37.219Z",
+        "script": "verify_ops.mjs",
+        "case": "goodsFavoriteTagState",
+        "ok": true,
+        "ms": 281,
+        "note": "回读 Array(0)"
+      }
+    },
+    "goodsFavoriteTagOrder": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:49.412Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagOrder",
+          "ok": false,
+          "ms": 218,
+          "note": "期望：收藏标签顺序",
+          "error": "断言失败：收藏标签顺序 —— 但拿到 object: null"
+        },
+        {
+          "at": "2026-09-21T01:24:54.185Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagOrder",
+          "ok": true,
+          "ms": 228,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:27:54.870Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagOrder",
+          "ok": true,
+          "ms": 210,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:29:58.699Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagOrder",
+          "ok": true,
+          "ms": 204,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:31:37.513Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagOrder",
+          "ok": true,
+          "ms": 294,
+          "note": "回读 null"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:37.513Z",
+        "script": "verify_ops.mjs",
+        "case": "goodsFavoriteTagOrder",
+        "ok": true,
+        "ms": 294,
+        "note": "回读 null"
+      },
+      "firstVerifiedAt": "2026-09-21T01:24:54.185Z"
+    },
+    "goodsFavoriteTagOrderMap": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:49.620Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagOrderMap",
+          "ok": true,
+          "ms": 208,
+          "note": "期望：收藏标签顺序映射"
+        },
+        {
+          "at": "2026-09-21T01:24:54.424Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagOrderMap",
+          "ok": true,
+          "ms": 239,
+          "note": "回读 {tags,tagsOrder}"
+        },
+        {
+          "at": "2026-09-21T01:27:55.079Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagOrderMap",
+          "ok": true,
+          "ms": 208,
+          "note": "回读 {tags,tagsOrder}"
+        },
+        {
+          "at": "2026-09-21T01:29:58.907Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagOrderMap",
+          "ok": true,
+          "ms": 208,
+          "note": "回读 {tags,tagsOrder}"
+        },
+        {
+          "at": "2026-09-21T01:31:37.769Z",
+          "script": "verify_ops.mjs",
+          "case": "goodsFavoriteTagOrderMap",
+          "ok": true,
+          "ms": 255,
+          "note": "回读 {tags,tagsOrder}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:49.620Z",
+      "last": {
+        "at": "2026-09-21T01:31:37.769Z",
+        "script": "verify_ops.mjs",
+        "case": "goodsFavoriteTagOrderMap",
+        "ok": true,
+        "ms": 255,
+        "note": "回读 {tags,tagsOrder}"
+      }
+    },
+    "homeSlogans": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:49.848Z",
+          "script": "verify_ops.mjs",
+          "case": "homeSlogans",
+          "ok": true,
+          "ms": 228,
+          "note": "期望：首页标语"
+        },
+        {
+          "at": "2026-09-21T01:24:54.706Z",
+          "script": "verify_ops.mjs",
+          "case": "homeSlogans",
+          "ok": true,
+          "ms": 282,
+          "note": "回读 Array(4)"
+        },
+        {
+          "at": "2026-09-21T01:27:55.283Z",
+          "script": "verify_ops.mjs",
+          "case": "homeSlogans",
+          "ok": true,
+          "ms": 204,
+          "note": "回读 Array(4)"
+        },
+        {
+          "at": "2026-09-21T01:29:59.118Z",
+          "script": "verify_ops.mjs",
+          "case": "homeSlogans",
+          "ok": true,
+          "ms": 211,
+          "note": "回读 Array(4)"
+        },
+        {
+          "at": "2026-09-21T01:31:38.066Z",
+          "script": "verify_ops.mjs",
+          "case": "homeSlogans",
+          "ok": true,
+          "ms": 296,
+          "note": "回读 Array(4)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:49.848Z",
+      "last": {
+        "at": "2026-09-21T01:31:38.066Z",
+        "script": "verify_ops.mjs",
+        "case": "homeSlogans",
+        "ok": true,
+        "ms": 296,
+        "note": "回读 Array(4)"
+      }
+    },
+    "invitation": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:50.111Z",
+          "script": "verify_ops.mjs",
+          "case": "invitation",
+          "ok": false,
+          "ms": 263,
+          "note": "期望：邀请信息",
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "invitation",
+          "ok": false,
+          "blocked": true,
+          "error": "需要邀请链接里的 salt_code（路径段）"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "invitation",
+          "ok": false,
+          "blocked": true,
+          "error": "需要邀请链接里的 salt_code（路径段）"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "invitation",
+          "ok": false,
+          "blocked": true,
+          "error": "需要邀请链接里的 salt_code（路径段）"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "invitation",
+          "ok": false,
+          "blocked": true,
+          "error": "需要邀请链接里的 salt_code（路径段）"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "invitation",
+        "ok": false,
+        "blocked": true,
+        "error": "需要邀请链接里的 salt_code（路径段）"
+      }
+    },
+    "userCoin": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:50.320Z",
+          "script": "verify_ops.mjs",
+          "case": "userCoin",
+          "ok": true,
+          "ms": 209,
+          "note": "期望：秀点余额"
+        },
+        {
+          "at": "2026-09-21T01:24:54.935Z",
+          "script": "verify_ops.mjs",
+          "case": "userCoin",
+          "ok": true,
+          "ms": 229,
+          "note": "回读 {coinCount}"
+        },
+        {
+          "at": "2026-09-21T01:27:55.488Z",
+          "script": "verify_ops.mjs",
+          "case": "userCoin",
+          "ok": true,
+          "ms": 205,
+          "note": "回读 {coinCount}"
+        },
+        {
+          "at": "2026-09-21T01:29:59.327Z",
+          "script": "verify_ops.mjs",
+          "case": "userCoin",
+          "ok": true,
+          "ms": 209,
+          "note": "回读 {coinCount}"
+        },
+        {
+          "at": "2026-09-21T01:31:38.329Z",
+          "script": "verify_ops.mjs",
+          "case": "userCoin",
+          "ok": true,
+          "ms": 263,
+          "note": "回读 {coinCount}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:50.320Z",
+      "last": {
+        "at": "2026-09-21T01:31:38.329Z",
+        "script": "verify_ops.mjs",
+        "case": "userCoin",
+        "ok": true,
+        "ms": 263,
+        "note": "回读 {coinCount}"
+      }
+    },
+    "userInvitation": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:50.539Z",
+          "script": "verify_ops.mjs",
+          "case": "userInvitation",
+          "ok": true,
+          "ms": 219,
+          "note": "期望：我的邀请"
+        },
+        {
+          "at": "2026-09-21T01:24:55.173Z",
+          "script": "verify_ops.mjs",
+          "case": "userInvitation",
+          "ok": true,
+          "ms": 237,
+          "note": "回读 {allowInvitation,invitedCount,invitationLink}"
+        },
+        {
+          "at": "2026-09-21T01:27:55.694Z",
+          "script": "verify_ops.mjs",
+          "case": "userInvitation",
+          "ok": true,
+          "ms": 206,
+          "note": "回读 {allowInvitation,invitedCount,invitationLink}"
+        },
+        {
+          "at": "2026-09-21T01:29:59.532Z",
+          "script": "verify_ops.mjs",
+          "case": "userInvitation",
+          "ok": true,
+          "ms": 204,
+          "note": "回读 {allowInvitation,invitedCount,invitationLink}"
+        },
+        {
+          "at": "2026-09-21T01:31:38.591Z",
+          "script": "verify_ops.mjs",
+          "case": "userInvitation",
+          "ok": true,
+          "ms": 262,
+          "note": "回读 {allowInvitation,invitedCount,invitationLink}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:50.539Z",
+      "last": {
+        "at": "2026-09-21T01:31:38.591Z",
+        "script": "verify_ops.mjs",
+        "case": "userInvitation",
+        "ok": true,
+        "ms": 262,
+        "note": "回读 {allowInvitation,invitedCount,invitationLink}"
+      }
+    },
+    "invoicesCount": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:50.767Z",
+          "script": "verify_ops.mjs",
+          "case": "invoicesCount",
+          "ok": true,
+          "ms": 228,
+          "note": "期望：发票计数"
+        },
+        {
+          "at": "2026-09-21T01:24:55.400Z",
+          "script": "verify_ops.mjs",
+          "case": "invoicesCount",
+          "ok": true,
+          "ms": 226,
+          "note": "回读 number 0"
+        },
+        {
+          "at": "2026-09-21T01:27:55.899Z",
+          "script": "verify_ops.mjs",
+          "case": "invoicesCount",
+          "ok": true,
+          "ms": 205,
+          "note": "回读 number 0"
+        },
+        {
+          "at": "2026-09-21T01:29:59.743Z",
+          "script": "verify_ops.mjs",
+          "case": "invoicesCount",
+          "ok": true,
+          "ms": 211,
+          "note": "回读 number 0"
+        },
+        {
+          "at": "2026-09-21T01:31:38.827Z",
+          "script": "verify_ops.mjs",
+          "case": "invoicesCount",
+          "ok": true,
+          "ms": 236,
+          "note": "回读 number 0"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:50.767Z",
+      "last": {
+        "at": "2026-09-21T01:31:38.827Z",
+        "script": "verify_ops.mjs",
+        "case": "invoicesCount",
+        "ok": true,
+        "ms": 236,
+        "note": "回读 number 0"
+      }
+    },
+    "invoicesLast": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:50.992Z",
+          "script": "verify_ops.mjs",
+          "case": "invoicesLast",
+          "ok": true,
+          "ms": 225,
+          "note": "期望：最近发票"
+        },
+        {
+          "at": "2026-09-21T01:24:55.635Z",
+          "script": "verify_ops.mjs",
+          "case": "invoicesLast",
+          "ok": true,
+          "ms": 235,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:27:56.111Z",
+          "script": "verify_ops.mjs",
+          "case": "invoicesLast",
+          "ok": true,
+          "ms": 212,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:29:59.948Z",
+          "script": "verify_ops.mjs",
+          "case": "invoicesLast",
+          "ok": true,
+          "ms": 205,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:31:39.265Z",
+          "script": "verify_ops.mjs",
+          "case": "invoicesLast",
+          "ok": true,
+          "ms": 438,
+          "note": "回读 null"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:50.992Z",
+      "last": {
+        "at": "2026-09-21T01:31:39.265Z",
+        "script": "verify_ops.mjs",
+        "case": "invoicesLast",
+        "ok": true,
+        "ms": 438,
+        "note": "回读 null"
+      }
+    },
+    "canCreateOrder": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:51.216Z",
+          "script": "verify_ops.mjs",
+          "case": "canCreateOrder",
+          "ok": true,
+          "ms": 224,
+          "note": "期望：能否下单"
+        },
+        {
+          "at": "2026-09-21T01:24:55.901Z",
+          "script": "verify_ops.mjs",
+          "case": "canCreateOrder",
+          "ok": true,
+          "ms": 266,
+          "note": "回读 boolean true"
+        },
+        {
+          "at": "2026-09-21T01:27:56.640Z",
+          "script": "verify_ops.mjs",
+          "case": "canCreateOrder",
+          "ok": true,
+          "ms": 529,
+          "note": "回读 boolean true"
+        },
+        {
+          "at": "2026-09-21T01:30:00.247Z",
+          "script": "verify_ops.mjs",
+          "case": "canCreateOrder",
+          "ok": true,
+          "ms": 299,
+          "note": "回读 boolean true"
+        },
+        {
+          "at": "2026-09-21T01:31:39.537Z",
+          "script": "verify_ops.mjs",
+          "case": "canCreateOrder",
+          "ok": true,
+          "ms": 272,
+          "note": "回读 boolean true"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:51.216Z",
+      "last": {
+        "at": "2026-09-21T01:31:39.537Z",
+        "script": "verify_ops.mjs",
+        "case": "canCreateOrder",
+        "ok": true,
+        "ms": 272,
+        "note": "回读 boolean true"
+      }
+    },
+    "specialOffer": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:51.480Z",
+          "script": "verify_ops.mjs",
+          "case": "specialOffer",
+          "ok": false,
+          "ms": 264,
+          "note": "期望：特价信息",
+          "error": "断言失败：特价信息 —— 但拿到 undefined: undefined"
+        },
+        {
+          "at": "2026-09-21T01:30:00.469Z",
+          "script": "verify_ops.mjs",
+          "case": "specialOffer",
+          "ok": true,
+          "ms": 222,
+          "note": "回读 undefined"
+        },
+        {
+          "at": "2026-09-21T01:31:40.105Z",
+          "script": "verify_ops.mjs",
+          "case": "specialOffer",
+          "ok": true,
+          "ms": 568,
+          "note": "回读 undefined"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:40.105Z",
+        "script": "verify_ops.mjs",
+        "case": "specialOffer",
+        "ok": true,
+        "ms": 568,
+        "note": "回读 undefined"
+      },
+      "firstVerifiedAt": "2026-09-21T01:30:00.469Z"
+    },
+    "teamWallets": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:51.703Z",
+          "script": "verify_ops.mjs",
+          "case": "teamWallets",
+          "ok": true,
+          "ms": 223,
+          "note": "期望：团队钱包"
+        },
+        {
+          "at": "2026-09-21T01:24:56.120Z",
+          "script": "verify_ops.mjs",
+          "case": "teamWallets",
+          "ok": true,
+          "ms": 218,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:27:56.971Z",
+          "script": "verify_ops.mjs",
+          "case": "teamWallets",
+          "ok": true,
+          "ms": 331,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:30:00.678Z",
+          "script": "verify_ops.mjs",
+          "case": "teamWallets",
+          "ok": true,
+          "ms": 206,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:40.341Z",
+          "script": "verify_ops.mjs",
+          "case": "teamWallets",
+          "ok": true,
+          "ms": 236,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:51.703Z",
+      "last": {
+        "at": "2026-09-21T01:31:40.341Z",
+        "script": "verify_ops.mjs",
+        "case": "teamWallets",
+        "ok": true,
+        "ms": 236,
+        "note": "回读 Array(0)"
+      }
+    },
+    "imageTags": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:52.373Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTags",
+          "ok": true,
+          "ms": 670,
+          "note": "期望：图片标签"
+        },
+        {
+          "at": "2026-09-21T01:24:56.683Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTags",
+          "ok": true,
+          "ms": 562,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:27:57.208Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTags",
+          "ok": true,
+          "ms": 234,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:30:00.885Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTags",
+          "ok": true,
+          "ms": 207,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:40.590Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTags",
+          "ok": true,
+          "ms": 249,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:52.373Z",
+      "last": {
+        "at": "2026-09-21T01:31:40.590Z",
+        "script": "verify_ops.mjs",
+        "case": "imageTags",
+        "ok": true,
+        "ms": 249,
+        "note": "回读 Array(0)"
+      }
+    },
+    "imageTagsOrder": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:52.639Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagsOrder",
+          "ok": true,
+          "ms": 266,
+          "note": "期望：图片标签顺序"
+        },
+        {
+          "at": "2026-09-21T01:24:56.926Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagsOrder",
+          "ok": true,
+          "ms": 243,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:27:57.418Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagsOrder",
+          "ok": true,
+          "ms": 210,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:30:01.089Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagsOrder",
+          "ok": true,
+          "ms": 204,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:31:40.941Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagsOrder",
+          "ok": true,
+          "ms": 351,
+          "note": "回读 null"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:52.639Z",
+      "last": {
+        "at": "2026-09-21T01:31:40.941Z",
+        "script": "verify_ops.mjs",
+        "case": "imageTagsOrder",
+        "ok": true,
+        "ms": 351,
+        "note": "回读 null"
+      }
+    },
+    "imageUntags": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:52.875Z",
+          "script": "verify_ops.mjs",
+          "case": "imageUntags",
+          "ok": true,
+          "ms": 236,
+          "note": "期望：未打标签的图片"
+        },
+        {
+          "at": "2026-09-21T01:24:57.265Z",
+          "script": "verify_ops.mjs",
+          "case": "imageUntags",
+          "ok": true,
+          "ms": 339,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:27:57.629Z",
+          "script": "verify_ops.mjs",
+          "case": "imageUntags",
+          "ok": true,
+          "ms": 211,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:30:01.306Z",
+          "script": "verify_ops.mjs",
+          "case": "imageUntags",
+          "ok": true,
+          "ms": 217,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:41.220Z",
+          "script": "verify_ops.mjs",
+          "case": "imageUntags",
+          "ok": true,
+          "ms": 279,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:52.875Z",
+      "last": {
+        "at": "2026-09-21T01:31:41.220Z",
+        "script": "verify_ops.mjs",
+        "case": "imageUntags",
+        "ok": true,
+        "ms": 279,
+        "note": "回读 Array(0)"
+      }
+    },
+    "imageTagDetails": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:53.091Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagDetails",
+          "ok": true,
+          "ms": 216,
+          "note": "期望：图片标签明细"
+        },
+        {
+          "at": "2026-09-21T01:24:57.494Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagDetails",
+          "ok": true,
+          "ms": 229,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:25:21.456Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagDetails(改名后)",
+          "ok": true,
+          "ms": 194,
+          "note": "期望：读到改名后的标签；回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:27:58.169Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagDetails",
+          "ok": true,
+          "ms": 540,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:28:23.600Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagDetails(改名后)",
+          "ok": true,
+          "ms": 226,
+          "note": "期望：读到改名后的标签；回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:30:01.511Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagDetails",
+          "ok": true,
+          "ms": 205,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:30:24.068Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagDetails(改名后)",
+          "ok": true,
+          "ms": 221,
+          "note": "期望：读到改名后的标签；回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:31:41.473Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagDetails",
+          "ok": true,
+          "ms": 253,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:32:07.285Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagDetails(改名后)",
+          "ok": true,
+          "ms": 254,
+          "note": "期望：读到改名后的标签；回读 Array(1)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:53.091Z",
+      "last": {
+        "at": "2026-09-21T01:32:07.285Z",
+        "script": "verify_ops.mjs",
+        "case": "imageTagDetails(改名后)",
+        "ok": true,
+        "ms": 254,
+        "note": "期望：读到改名后的标签；回读 Array(1)"
+      }
+    },
+    "listPattFragTags": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:53.746Z",
+          "script": "verify_ops.mjs",
+          "case": "listPattFragTags",
+          "ok": true,
+          "ms": 210,
+          "note": "期望：作品素材片段标签"
+        },
+        {
+          "at": "2026-09-21T01:24:58.493Z",
+          "script": "verify_ops.mjs",
+          "case": "listPattFragTags",
+          "ok": true,
+          "ms": 239,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:27:59.161Z",
+          "script": "verify_ops.mjs",
+          "case": "listPattFragTags",
+          "ok": true,
+          "ms": 232,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:30:02.146Z",
+          "script": "verify_ops.mjs",
+          "case": "listPattFragTags",
+          "ok": true,
+          "ms": 219,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:42.231Z",
+          "script": "verify_ops.mjs",
+          "case": "listPattFragTags",
+          "ok": true,
+          "ms": 274,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:53.746Z",
+      "last": {
+        "at": "2026-09-21T01:31:42.231Z",
+        "script": "verify_ops.mjs",
+        "case": "listPattFragTags",
+        "ok": true,
+        "ms": 274,
+        "note": "回读 Array(0)"
+      }
+    },
+    "pattFragTagsOrder": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:53.976Z",
+          "script": "verify_ops.mjs",
+          "case": "pattFragTagsOrder",
+          "ok": true,
+          "ms": 230,
+          "note": "期望：片段标签顺序"
+        },
+        {
+          "at": "2026-09-21T01:24:58.723Z",
+          "script": "verify_ops.mjs",
+          "case": "pattFragTagsOrder",
+          "ok": true,
+          "ms": 229,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:27:59.388Z",
+          "script": "verify_ops.mjs",
+          "case": "pattFragTagsOrder",
+          "ok": true,
+          "ms": 227,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:30:02.356Z",
+          "script": "verify_ops.mjs",
+          "case": "pattFragTagsOrder",
+          "ok": true,
+          "ms": 210,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:31:42.479Z",
+          "script": "verify_ops.mjs",
+          "case": "pattFragTagsOrder",
+          "ok": true,
+          "ms": 248,
+          "note": "回读 null"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:53.976Z",
+      "last": {
+        "at": "2026-09-21T01:31:42.479Z",
+        "script": "verify_ops.mjs",
+        "case": "pattFragTagsOrder",
+        "ok": true,
+        "ms": 248,
+        "note": "回读 null"
+      }
+    },
+    "tagsAndOrder": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:54.233Z",
+          "script": "verify_ops.mjs",
+          "case": "tagsAndOrder",
+          "ok": true,
+          "ms": 257,
+          "note": "期望：标签 + 顺序"
+        },
+        {
+          "at": "2026-09-21T01:24:58.982Z",
+          "script": "verify_ops.mjs",
+          "case": "tagsAndOrder",
+          "ok": true,
+          "ms": 259,
+          "note": "回读 {tags,tagsOrder}"
+        },
+        {
+          "at": "2026-09-21T01:27:59.597Z",
+          "script": "verify_ops.mjs",
+          "case": "tagsAndOrder",
+          "ok": true,
+          "ms": 209,
+          "note": "回读 {tags,tagsOrder}"
+        },
+        {
+          "at": "2026-09-21T01:30:02.568Z",
+          "script": "verify_ops.mjs",
+          "case": "tagsAndOrder",
+          "ok": true,
+          "ms": 212,
+          "note": "回读 {tags,tagsOrder}"
+        },
+        {
+          "at": "2026-09-21T01:31:43.039Z",
+          "script": "verify_ops.mjs",
+          "case": "tagsAndOrder",
+          "ok": true,
+          "ms": 560,
+          "note": "回读 {tags,tagsOrder}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:54.233Z",
+      "last": {
+        "at": "2026-09-21T01:31:43.039Z",
+        "script": "verify_ops.mjs",
+        "case": "tagsAndOrder",
+        "ok": true,
+        "ms": 560,
+        "note": "回读 {tags,tagsOrder}"
+      }
+    },
+    "tagsOrder": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:54.598Z",
+          "script": "verify_ops.mjs",
+          "case": "tagsOrder",
+          "ok": true,
+          "ms": 365,
+          "note": "期望：标签顺序"
+        },
+        {
+          "at": "2026-09-21T01:24:59.216Z",
+          "script": "verify_ops.mjs",
+          "case": "tagsOrder",
+          "ok": true,
+          "ms": 234,
+          "note": "回读 string \"a,b\""
+        },
+        {
+          "at": "2026-09-21T01:27:59.814Z",
+          "script": "verify_ops.mjs",
+          "case": "tagsOrder",
+          "ok": true,
+          "ms": 217,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:30:02.852Z",
+          "script": "verify_ops.mjs",
+          "case": "tagsOrder",
+          "ok": true,
+          "ms": 284,
+          "note": "回读 null"
+        },
+        {
+          "at": "2026-09-21T01:31:43.607Z",
+          "script": "verify_ops.mjs",
+          "case": "tagsOrder",
+          "ok": true,
+          "ms": 568,
+          "note": "回读 null"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:54.598Z",
+      "last": {
+        "at": "2026-09-21T01:31:43.607Z",
+        "script": "verify_ops.mjs",
+        "case": "tagsOrder",
+        "ok": true,
+        "ms": 568,
+        "note": "回读 null"
+      }
+    },
+    "showsUntag": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:54.822Z",
+          "script": "verify_ops.mjs",
+          "case": "showsUntag",
+          "ok": true,
+          "ms": 224,
+          "note": "期望：未打标签的作品"
+        },
+        {
+          "at": "2026-09-21T01:24:59.558Z",
+          "script": "verify_ops.mjs",
+          "case": "showsUntag",
+          "ok": true,
+          "ms": 342,
+          "note": "回读 Array(3)"
+        },
+        {
+          "at": "2026-09-21T01:28:00.019Z",
+          "script": "verify_ops.mjs",
+          "case": "showsUntag",
+          "ok": true,
+          "ms": 205,
+          "note": "回读 Array(3)"
+        },
+        {
+          "at": "2026-09-21T01:30:03.083Z",
+          "script": "verify_ops.mjs",
+          "case": "showsUntag",
+          "ok": true,
+          "ms": 231,
+          "note": "回读 Array(3)"
+        },
+        {
+          "at": "2026-09-21T01:31:43.848Z",
+          "script": "verify_ops.mjs",
+          "case": "showsUntag",
+          "ok": true,
+          "ms": 241,
+          "note": "回读 Array(3)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:54.822Z",
+      "last": {
+        "at": "2026-09-21T01:31:43.848Z",
+        "script": "verify_ops.mjs",
+        "case": "showsUntag",
+        "ok": true,
+        "ms": 241,
+        "note": "回读 Array(3)"
+      }
+    },
+    "usedImagesCount": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:55.381Z",
+          "script": "verify_ops.mjs",
+          "case": "usedImagesCount",
+          "ok": true,
+          "ms": 341,
+          "note": "期望：素材额度"
+        },
+        {
+          "at": "2026-09-21T01:25:00.416Z",
+          "script": "verify_ops.mjs",
+          "case": "usedImagesCount",
+          "ok": true,
+          "ms": 241,
+          "note": "回读 {used,total}"
+        },
+        {
+          "at": "2026-09-21T01:28:00.644Z",
+          "script": "verify_ops.mjs",
+          "case": "usedImagesCount",
+          "ok": true,
+          "ms": 210,
+          "note": "回读 {used,total}"
+        },
+        {
+          "at": "2026-09-21T01:30:04.274Z",
+          "script": "verify_ops.mjs",
+          "case": "usedImagesCount",
+          "ok": true,
+          "ms": 509,
+          "note": "回读 {used,total}"
+        },
+        {
+          "at": "2026-09-21T01:31:44.705Z",
+          "script": "verify_ops.mjs",
+          "case": "usedImagesCount",
+          "ok": true,
+          "ms": 253,
+          "note": "回读 {used,total}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:55.381Z",
+      "last": {
+        "at": "2026-09-21T01:31:44.705Z",
+        "script": "verify_ops.mjs",
+        "case": "usedImagesCount",
+        "ok": true,
+        "ms": 253,
+        "note": "回读 {used,total}"
+      }
+    },
+    "imagesCount": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:55.709Z",
+          "script": "verify_ops.mjs",
+          "case": "imagesCount",
+          "ok": true,
+          "ms": 328,
+          "note": "期望：图片计数"
+        },
+        {
+          "at": "2026-09-21T01:25:00.657Z",
+          "script": "verify_ops.mjs",
+          "case": "imagesCount",
+          "ok": true,
+          "ms": 241,
+          "note": "回读 number 0"
+        },
+        {
+          "at": "2026-09-21T01:28:00.858Z",
+          "script": "verify_ops.mjs",
+          "case": "imagesCount",
+          "ok": true,
+          "ms": 214,
+          "note": "回读 number 0"
+        },
+        {
+          "at": "2026-09-21T01:30:04.490Z",
+          "script": "verify_ops.mjs",
+          "case": "imagesCount",
+          "ok": true,
+          "ms": 216,
+          "note": "回读 number 0"
+        },
+        {
+          "at": "2026-09-21T01:31:44.953Z",
+          "script": "verify_ops.mjs",
+          "case": "imagesCount",
+          "ok": true,
+          "ms": 248,
+          "note": "回读 number 0"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:55.709Z",
+      "last": {
+        "at": "2026-09-21T01:31:44.953Z",
+        "script": "verify_ops.mjs",
+        "case": "imagesCount",
+        "ok": true,
+        "ms": 248,
+        "note": "回读 number 0"
+      }
+    },
+    "listVideos": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:55.918Z",
+          "script": "verify_ops.mjs",
+          "case": "listVideos",
+          "ok": true,
+          "ms": 209,
+          "note": "期望：视频列表"
+        },
+        {
+          "at": "2026-09-21T01:25:00.971Z",
+          "script": "verify_ops.mjs",
+          "case": "listVideos",
+          "ok": true,
+          "ms": 314,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:28:01.062Z",
+          "script": "verify_ops.mjs",
+          "case": "listVideos",
+          "ok": true,
+          "ms": 204,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:30:04.722Z",
+          "script": "verify_ops.mjs",
+          "case": "listVideos",
+          "ok": true,
+          "ms": 232,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:45.190Z",
+          "script": "verify_ops.mjs",
+          "case": "listVideos",
+          "ok": true,
+          "ms": 237,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:55.918Z",
+      "last": {
+        "at": "2026-09-21T01:31:45.190Z",
+        "script": "verify_ops.mjs",
+        "case": "listVideos",
+        "ok": true,
+        "ms": 237,
+        "note": "回读 Array(0)"
+      }
+    },
+    "listAudios": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:56.132Z",
+          "script": "verify_ops.mjs",
+          "case": "listAudios",
+          "ok": true,
+          "ms": 214,
+          "note": "期望：音频列表"
+        },
+        {
+          "at": "2026-09-21T01:25:01.204Z",
+          "script": "verify_ops.mjs",
+          "case": "listAudios",
+          "ok": true,
+          "ms": 233,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:28:01.900Z",
+          "script": "verify_ops.mjs",
+          "case": "listAudios",
+          "ok": true,
+          "ms": 838,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:30:04.928Z",
+          "script": "verify_ops.mjs",
+          "case": "listAudios",
+          "ok": true,
+          "ms": 206,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:45.447Z",
+          "script": "verify_ops.mjs",
+          "case": "listAudios",
+          "ok": true,
+          "ms": 257,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:56.132Z",
+      "last": {
+        "at": "2026-09-21T01:31:45.447Z",
+        "script": "verify_ops.mjs",
+        "case": "listAudios",
+        "ok": true,
+        "ms": 257,
+        "note": "回读 Array(0)"
+      }
+    },
+    "followers": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:56.393Z",
+          "script": "verify_ops.mjs",
+          "case": "followers",
+          "ok": true,
+          "ms": 261,
+          "note": "期望：粉丝列表"
+        },
+        {
+          "at": "2026-09-21T01:25:01.454Z",
+          "script": "verify_ops.mjs",
+          "case": "followers",
+          "ok": true,
+          "ms": 250,
+          "note": "回读 {count,rows}"
+        },
+        {
+          "at": "2026-09-21T01:28:02.408Z",
+          "script": "verify_ops.mjs",
+          "case": "followers",
+          "ok": true,
+          "ms": 508,
+          "note": "回读 {count,rows}"
+        },
+        {
+          "at": "2026-09-21T01:30:05.146Z",
+          "script": "verify_ops.mjs",
+          "case": "followers",
+          "ok": true,
+          "ms": 217,
+          "note": "回读 {count,rows}"
+        },
+        {
+          "at": "2026-09-21T01:31:45.694Z",
+          "script": "verify_ops.mjs",
+          "case": "followers",
+          "ok": true,
+          "ms": 247,
+          "note": "回读 {count,rows}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:56.393Z",
+      "last": {
+        "at": "2026-09-21T01:31:45.694Z",
+        "script": "verify_ops.mjs",
+        "case": "followers",
+        "ok": true,
+        "ms": 247,
+        "note": "回读 {count,rows}"
+      }
+    },
+    "followState": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:56.614Z",
+          "script": "verify_ops.mjs",
+          "case": "followState",
+          "ok": true,
+          "ms": 221,
+          "note": "期望：对某人的关注状态"
+        },
+        {
+          "at": "2026-09-21T01:25:01.684Z",
+          "script": "verify_ops.mjs",
+          "case": "followState",
+          "ok": true,
+          "ms": 230,
+          "note": "回读 {state}"
+        },
+        {
+          "at": "2026-09-21T01:28:02.668Z",
+          "script": "verify_ops.mjs",
+          "case": "followState",
+          "ok": true,
+          "ms": 260,
+          "note": "回读 {state}"
+        },
+        {
+          "at": "2026-09-21T01:30:05.353Z",
+          "script": "verify_ops.mjs",
+          "case": "followState",
+          "ok": true,
+          "ms": 207,
+          "note": "回读 {state}"
+        },
+        {
+          "at": "2026-09-21T01:31:45.965Z",
+          "script": "verify_ops.mjs",
+          "case": "followState",
+          "ok": true,
+          "ms": 271,
+          "note": "回读 {state}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:56.614Z",
+      "last": {
+        "at": "2026-09-21T01:31:45.965Z",
+        "script": "verify_ops.mjs",
+        "case": "followState",
+        "ok": true,
+        "ms": 271,
+        "note": "回读 {state}"
+      }
+    },
+    "homeTags": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:56.823Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTags",
+          "ok": false,
+          "ms": 209,
+          "note": "期望：主页标签",
+          "error": "Common:Failed_NotFound: unique_uid"
+        },
+        {
+          "at": "2026-09-21T01:25:01.917Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTags",
+          "ok": true,
+          "ms": 233,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:28:02.870Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTags",
+          "ok": true,
+          "ms": 202,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:30:05.562Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTags",
+          "ok": true,
+          "ms": 209,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:46.210Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTags",
+          "ok": true,
+          "ms": 245,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:46.210Z",
+        "script": "verify_ops.mjs",
+        "case": "homeTags",
+        "ok": true,
+        "ms": 245,
+        "note": "回读 Array(0)"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:01.917Z"
+    },
+    "homeTagOrderMap": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:57.053Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTagOrderMap",
+          "ok": false,
+          "ms": 230,
+          "note": "期望：主页标签顺序映射",
+          "error": "Common:Failed_NotFound: unique_uid"
+        },
+        {
+          "at": "2026-09-21T01:25:02.149Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTagOrderMap",
+          "ok": true,
+          "ms": 232,
+          "note": "回读 {tags,tagsOrder}"
+        },
+        {
+          "at": "2026-09-21T01:28:03.416Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTagOrderMap",
+          "ok": true,
+          "ms": 546,
+          "note": "回读 {tags,tagsOrder}"
+        },
+        {
+          "at": "2026-09-21T01:30:05.770Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTagOrderMap",
+          "ok": true,
+          "ms": 208,
+          "note": "回读 {tags,tagsOrder}"
+        },
+        {
+          "at": "2026-09-21T01:31:46.568Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTagOrderMap",
+          "ok": true,
+          "ms": 358,
+          "note": "回读 {tags,tagsOrder}"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:46.568Z",
+        "script": "verify_ops.mjs",
+        "case": "homeTagOrderMap",
+        "ok": true,
+        "ms": 358,
+        "note": "回读 {tags,tagsOrder}"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:02.149Z"
+    },
+    "getPublishedUserExhibits": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:57.281Z",
+          "script": "verify_ops.mjs",
+          "case": "getPublishedUserExhibits",
+          "ok": false,
+          "ms": 228,
+          "note": "期望：主页展位",
+          "error": "Common:Failed_NotFound: unique_uid"
+        },
+        {
+          "at": "2026-09-21T01:25:02.390Z",
+          "script": "verify_ops.mjs",
+          "case": "getPublishedUserExhibits",
+          "ok": true,
+          "ms": 241,
+          "note": "回读 {count,exhibits}"
+        },
+        {
+          "at": "2026-09-21T01:28:03.673Z",
+          "script": "verify_ops.mjs",
+          "case": "getPublishedUserExhibits",
+          "ok": true,
+          "ms": 257,
+          "note": "回读 {count,exhibits}"
+        },
+        {
+          "at": "2026-09-21T01:30:05.998Z",
+          "script": "verify_ops.mjs",
+          "case": "getPublishedUserExhibits",
+          "ok": true,
+          "ms": 228,
+          "note": "回读 {count,exhibits}"
+        },
+        {
+          "at": "2026-09-21T01:31:46.822Z",
+          "script": "verify_ops.mjs",
+          "case": "getPublishedUserExhibits",
+          "ok": true,
+          "ms": 254,
+          "note": "回读 {count,exhibits}"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:46.822Z",
+        "script": "verify_ops.mjs",
+        "case": "getPublishedUserExhibits",
+        "ok": true,
+        "ms": 254,
+        "note": "回读 {count,exhibits}"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:02.390Z"
+    },
+    "publishedUserExhibits": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:57.499Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUserExhibits",
+          "ok": false,
+          "ms": 218,
+          "note": "期望：主页作品",
+          "error": "Common:Failed_NotFound: unique_uid"
+        },
+        {
+          "at": "2026-09-21T01:25:02.628Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUserExhibits",
+          "ok": true,
+          "ms": 238,
+          "note": "回读 {count,exhibits}"
+        },
+        {
+          "at": "2026-09-21T01:28:03.887Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUserExhibits",
+          "ok": true,
+          "ms": 214,
+          "note": "回读 {count,exhibits}"
+        },
+        {
+          "at": "2026-09-21T01:30:06.216Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUserExhibits",
+          "ok": true,
+          "ms": 218,
+          "note": "回读 {count,exhibits}"
+        },
+        {
+          "at": "2026-09-21T01:31:47.078Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUserExhibits",
+          "ok": true,
+          "ms": 256,
+          "note": "回读 {count,exhibits}"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:47.078Z",
+        "script": "verify_ops.mjs",
+        "case": "publishedUserExhibits",
+        "ok": true,
+        "ms": 256,
+        "note": "回读 {count,exhibits}"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:02.628Z"
+    },
+    "publishedUserExhibitsOnMyPage": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:57.722Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUserExhibitsOnMyPage",
+          "ok": false,
+          "ms": 223,
+          "note": "期望：主页展示区",
+          "error": "Common:Failed_NotFound: unique_uid"
+        },
+        {
+          "at": "2026-09-21T01:25:02.862Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUserExhibitsOnMyPage",
+          "ok": true,
+          "ms": 234,
+          "note": "回读 {count,exhibits}"
+        },
+        {
+          "at": "2026-09-21T01:28:04.101Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUserExhibitsOnMyPage",
+          "ok": true,
+          "ms": 214,
+          "note": "回读 {count,exhibits}"
+        },
+        {
+          "at": "2026-09-21T01:30:06.425Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUserExhibitsOnMyPage",
+          "ok": true,
+          "ms": 208,
+          "note": "回读 {count,exhibits}"
+        },
+        {
+          "at": "2026-09-21T01:31:47.319Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUserExhibitsOnMyPage",
+          "ok": true,
+          "ms": 241,
+          "note": "回读 {count,exhibits}"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:47.319Z",
+        "script": "verify_ops.mjs",
+        "case": "publishedUserExhibitsOnMyPage",
+        "ok": true,
+        "ms": 241,
+        "note": "回读 {count,exhibits}"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:02.862Z"
+    },
+    "statisticsShow": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:58.187Z",
+          "script": "verify_ops.mjs",
+          "case": "statisticsShow",
+          "ok": false,
+          "ms": 465,
+          "note": "期望：作品统计（另一入口）",
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:25:03.625Z",
+          "script": "verify_ops.mjs",
+          "case": "statisticsShow",
+          "ok": true,
+          "ms": 242,
+          "note": "回读 {show_id,type,version,usage_scenario,title,desc,cover,loading_icon,…}"
+        },
+        {
+          "at": "2026-09-21T01:28:05.319Z",
+          "script": "verify_ops.mjs",
+          "case": "statisticsShow",
+          "ok": true,
+          "ms": 665,
+          "note": "回读 {show_id,type,version,usage_scenario,title,desc,cover,loading_icon,…}"
+        },
+        {
+          "at": "2026-09-21T01:30:07.311Z",
+          "script": "verify_ops.mjs",
+          "case": "statisticsShow",
+          "ok": true,
+          "ms": 213,
+          "note": "回读 {show_id,type,version,usage_scenario,title,desc,cover,loading_icon,…}"
+        },
+        {
+          "at": "2026-09-21T01:31:48.056Z",
+          "script": "verify_ops.mjs",
+          "case": "statisticsShow",
+          "ok": true,
+          "ms": 237,
+          "note": "回读 {show_id,type,version,usage_scenario,title,desc,cover,loading_icon,…}"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:48.056Z",
+        "script": "verify_ops.mjs",
+        "case": "statisticsShow",
+        "ok": true,
+        "ms": 237,
+        "note": "回读 {show_id,type,version,usage_scenario,title,desc,cover,loading_icon,…}"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:03.625Z"
+    },
+    "goodses": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:59.685Z",
+          "script": "verify_ops.mjs",
+          "case": "goodses",
+          "ok": true,
+          "ms": 1498,
+          "note": "期望：商城在售列表"
+        },
+        {
+          "at": "2026-09-21T01:25:03.883Z",
+          "script": "verify_ops.mjs",
+          "case": "goodses",
+          "ok": true,
+          "ms": 258,
+          "note": "回读 {count,goodses}"
+        },
+        {
+          "at": "2026-09-21T01:28:06.929Z",
+          "script": "verify_ops.mjs",
+          "case": "goodses",
+          "ok": true,
+          "ms": 1609,
+          "note": "回读 {count,goodses}"
+        },
+        {
+          "at": "2026-09-21T01:30:07.523Z",
+          "script": "verify_ops.mjs",
+          "case": "goodses",
+          "ok": true,
+          "ms": 212,
+          "note": "回读 {count,goodses}"
+        },
+        {
+          "at": "2026-09-21T01:31:48.723Z",
+          "script": "verify_ops.mjs",
+          "case": "goodses",
+          "ok": true,
+          "ms": 667,
+          "note": "回读 {count,goodses}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:59.685Z",
+      "last": {
+        "at": "2026-09-21T01:31:48.723Z",
+        "script": "verify_ops.mjs",
+        "case": "goodses",
+        "ok": true,
+        "ms": 667,
+        "note": "回读 {count,goodses}"
+      }
+    },
+    "myGoodses": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:17:59.909Z",
+          "script": "verify_ops.mjs",
+          "case": "myGoodses",
+          "ok": true,
+          "ms": 224,
+          "note": "期望：我的商品列表"
+        },
+        {
+          "at": "2026-09-21T01:25:04.158Z",
+          "script": "verify_ops.mjs",
+          "case": "myGoodses",
+          "ok": true,
+          "ms": 275,
+          "note": "回读 {count,goodses}"
+        },
+        {
+          "at": "2026-09-21T01:28:07.448Z",
+          "script": "verify_ops.mjs",
+          "case": "myGoodses",
+          "ok": true,
+          "ms": 518,
+          "note": "回读 {count,goodses}"
+        },
+        {
+          "at": "2026-09-21T01:30:07.728Z",
+          "script": "verify_ops.mjs",
+          "case": "myGoodses",
+          "ok": true,
+          "ms": 205,
+          "note": "回读 {count,goodses}"
+        },
+        {
+          "at": "2026-09-21T01:31:48.970Z",
+          "script": "verify_ops.mjs",
+          "case": "myGoodses",
+          "ok": true,
+          "ms": 247,
+          "note": "回读 {count,goodses}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:17:59.909Z",
+      "last": {
+        "at": "2026-09-21T01:31:48.970Z",
+        "script": "verify_ops.mjs",
+        "case": "myGoodses",
+        "ok": true,
+        "ms": 247,
+        "note": "回读 {count,goodses}"
+      }
+    },
+    "myPurchasedState": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:00.143Z",
+          "script": "verify_ops.mjs",
+          "case": "myPurchasedState",
+          "ok": false,
+          "ms": 233,
+          "note": "期望：我的购买记录",
+          "error": "Common:Failed: WHERE parameter \"show_goods_id\" has invalid \"undefined\" value"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "myPurchasedState",
+          "ok": false,
+          "blocked": true,
+          "error": "需要 show_goods_id 参数"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "myPurchasedState",
+          "ok": false,
+          "blocked": true,
+          "error": "需要 show_goods_id 参数"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "myPurchasedState",
+          "ok": false,
+          "blocked": true,
+          "error": "需要 show_goods_id 参数"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "myPurchasedState",
+          "ok": false,
+          "blocked": true,
+          "error": "需要 show_goods_id 参数"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "myPurchasedState",
+        "ok": false,
+        "blocked": true,
+        "error": "需要 show_goods_id 参数"
+      }
+    },
+    "tplGoodsCount": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:01.285Z",
+          "script": "verify_ops.mjs",
+          "case": "tplGoodsCount",
+          "ok": true,
+          "ms": 1142,
+          "note": "期望：模板商品计数"
+        },
+        {
+          "at": "2026-09-21T01:25:04.381Z",
+          "script": "verify_ops.mjs",
+          "case": "tplGoodsCount",
+          "ok": true,
+          "ms": 223,
+          "note": "回读 number 0"
+        },
+        {
+          "at": "2026-09-21T01:28:08.000Z",
+          "script": "verify_ops.mjs",
+          "case": "tplGoodsCount",
+          "ok": true,
+          "ms": 552,
+          "note": "回读 number 0"
+        },
+        {
+          "at": "2026-09-21T01:30:08.048Z",
+          "script": "verify_ops.mjs",
+          "case": "tplGoodsCount",
+          "ok": true,
+          "ms": 320,
+          "note": "回读 number 0"
+        },
+        {
+          "at": "2026-09-21T01:31:49.219Z",
+          "script": "verify_ops.mjs",
+          "case": "tplGoodsCount",
+          "ok": true,
+          "ms": 249,
+          "note": "回读 number 0"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:18:01.285Z",
+      "last": {
+        "at": "2026-09-21T01:31:49.219Z",
+        "script": "verify_ops.mjs",
+        "case": "tplGoodsCount",
+        "ok": true,
+        "ms": 249,
+        "note": "回读 number 0"
+      }
+    },
+    "tplGoodsBoughtState": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:01.512Z",
+          "script": "verify_ops.mjs",
+          "case": "tplGoodsBoughtState",
+          "ok": true,
+          "ms": 227,
+          "note": "期望：模板购买状态"
+        },
+        {
+          "at": "2026-09-21T01:25:04.653Z",
+          "script": "verify_ops.mjs",
+          "case": "tplGoodsBoughtState",
+          "ok": true,
+          "ms": 272,
+          "note": "回读 {toDay,longDay,maxToday,maxLongDay,outOfToday,outOfLongDay}"
+        },
+        {
+          "at": "2026-09-21T01:28:08.203Z",
+          "script": "verify_ops.mjs",
+          "case": "tplGoodsBoughtState",
+          "ok": true,
+          "ms": 202,
+          "note": "回读 {toDay,longDay,maxToday,maxLongDay,outOfToday,outOfLongDay}"
+        },
+        {
+          "at": "2026-09-21T01:30:08.266Z",
+          "script": "verify_ops.mjs",
+          "case": "tplGoodsBoughtState",
+          "ok": true,
+          "ms": 218,
+          "note": "回读 {toDay,longDay,maxToday,maxLongDay,outOfToday,outOfLongDay}"
+        },
+        {
+          "at": "2026-09-21T01:31:49.603Z",
+          "script": "verify_ops.mjs",
+          "case": "tplGoodsBoughtState",
+          "ok": true,
+          "ms": 384,
+          "note": "回读 {toDay,longDay,maxToday,maxLongDay,outOfToday,outOfLongDay}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:18:01.512Z",
+      "last": {
+        "at": "2026-09-21T01:31:49.603Z",
+        "script": "verify_ops.mjs",
+        "case": "tplGoodsBoughtState",
+        "ok": true,
+        "ms": 384,
+        "note": "回读 {toDay,longDay,maxToday,maxLongDay,outOfToday,outOfLongDay}"
+      }
+    },
+    "showGoodsRank": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:02.033Z",
+          "script": "verify_ops.mjs",
+          "case": "showGoodsRank",
+          "ok": true,
+          "ms": 520,
+          "note": "期望：商品排行"
+        },
+        {
+          "at": "2026-09-21T01:25:04.888Z",
+          "script": "verify_ops.mjs",
+          "case": "showGoodsRank",
+          "ok": true,
+          "ms": 234,
+          "note": "回读 {count,items}"
+        },
+        {
+          "at": "2026-09-21T01:28:08.564Z",
+          "script": "verify_ops.mjs",
+          "case": "showGoodsRank",
+          "ok": true,
+          "ms": 361,
+          "note": "回读 {count,items}"
+        },
+        {
+          "at": "2026-09-21T01:30:08.468Z",
+          "script": "verify_ops.mjs",
+          "case": "showGoodsRank",
+          "ok": true,
+          "ms": 202,
+          "note": "回读 {count,items}"
+        },
+        {
+          "at": "2026-09-21T01:31:49.971Z",
+          "script": "verify_ops.mjs",
+          "case": "showGoodsRank",
+          "ok": true,
+          "ms": 368,
+          "note": "回读 {count,items}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:18:02.033Z",
+      "last": {
+        "at": "2026-09-21T01:31:49.971Z",
+        "script": "verify_ops.mjs",
+        "case": "showGoodsRank",
+        "ok": true,
+        "ms": 368,
+        "note": "回读 {count,items}"
+      }
+    },
+    "showGoodsTagsTree": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:02.281Z",
+          "script": "verify_ops.mjs",
+          "case": "showGoodsTagsTree",
+          "ok": true,
+          "ms": 248,
+          "note": "期望：商品标签树"
+        },
+        {
+          "at": "2026-09-21T01:25:05.125Z",
+          "script": "verify_ops.mjs",
+          "case": "showGoodsTagsTree",
+          "ok": true,
+          "ms": 237,
+          "note": "回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:28:08.795Z",
+          "script": "verify_ops.mjs",
+          "case": "showGoodsTagsTree",
+          "ok": true,
+          "ms": 231,
+          "note": "回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:30:08.700Z",
+          "script": "verify_ops.mjs",
+          "case": "showGoodsTagsTree",
+          "ok": true,
+          "ms": 231,
+          "note": "回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:31:50.218Z",
+          "script": "verify_ops.mjs",
+          "case": "showGoodsTagsTree",
+          "ok": true,
+          "ms": 247,
+          "note": "回读 Array(1)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:18:02.281Z",
+      "last": {
+        "at": "2026-09-21T01:31:50.218Z",
+        "script": "verify_ops.mjs",
+        "case": "showGoodsTagsTree",
+        "ok": true,
+        "ms": 247,
+        "note": "回读 Array(1)"
+      }
+    },
+    "templateTagsTree": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:02.504Z",
+          "script": "verify_ops.mjs",
+          "case": "templateTagsTree",
+          "ok": true,
+          "ms": 223,
+          "note": "期望：模板标签树"
+        },
+        {
+          "at": "2026-09-21T01:25:05.712Z",
+          "script": "verify_ops.mjs",
+          "case": "templateTagsTree",
+          "ok": true,
+          "ms": 587,
+          "note": "回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:28:09.196Z",
+          "script": "verify_ops.mjs",
+          "case": "templateTagsTree",
+          "ok": true,
+          "ms": 401,
+          "note": "回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:30:08.951Z",
+          "script": "verify_ops.mjs",
+          "case": "templateTagsTree",
+          "ok": true,
+          "ms": 251,
+          "note": "回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:31:50.504Z",
+          "script": "verify_ops.mjs",
+          "case": "templateTagsTree",
+          "ok": true,
+          "ms": 286,
+          "note": "回读 Array(1)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:18:02.504Z",
+      "last": {
+        "at": "2026-09-21T01:31:50.504Z",
+        "script": "verify_ops.mjs",
+        "case": "templateTagsTree",
+        "ok": true,
+        "ms": 286,
+        "note": "回读 Array(1)"
+      }
+    },
+    "adminTagDrop": {
+      "kind": "read",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:02.788Z",
+          "script": "verify_ops.mjs",
+          "case": "adminTagDrop",
+          "ok": false,
+          "blocked": true,
+          "ms": 284,
+          "note": "期望：管理端标签（普通账号预期 403）",
+          "error": "管理端接口，普通账号 HTTP403"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:18:02.788Z",
+        "script": "verify_ops.mjs",
+        "case": "adminTagDrop",
+        "ok": false,
+        "blocked": true,
+        "ms": 284,
+        "note": "期望：管理端标签（普通账号预期 403）",
+        "error": "管理端接口，普通账号 HTTP403"
+      }
+    },
+    "adminTagNew": {
+      "kind": "read",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:03.470Z",
+          "script": "verify_ops.mjs",
+          "case": "adminTagNew",
+          "ok": false,
+          "blocked": true,
+          "ms": 682,
+          "note": "期望：管理端标签（普通账号预期 403）",
+          "error": "管理端接口，普通账号 HTTP404"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:18:03.470Z",
+        "script": "verify_ops.mjs",
+        "case": "adminTagNew",
+        "ok": false,
+        "blocked": true,
+        "ms": 682,
+        "note": "期望：管理端标签（普通账号预期 403）",
+        "error": "管理端接口，普通账号 HTTP404"
+      }
+    },
+    "setShowReceiveType": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:04.764Z",
+          "script": "verify_ops.mjs",
+          "case": "setShowReceiveType",
+          "ok": true,
+          "ms": 1294,
+          "note": "期望：原样写回当前值，回读一致（零差异）"
+        },
+        {
+          "at": "2026-09-21T01:25:07.777Z",
+          "script": "verify_ops.mjs",
+          "case": "setShowReceiveType",
+          "ok": true,
+          "ms": 1135,
+          "note": "期望：原样写回当前值，回读一致（零差异）；show.receive.type 写回后回读一致"
+        },
+        {
+          "at": "2026-09-21T01:28:11.015Z",
+          "script": "verify_ops.mjs",
+          "case": "setShowReceiveType",
+          "ok": true,
+          "ms": 1194,
+          "note": "期望：原样写回当前值，回读一致（零差异）；show.receive.type 写回后回读一致"
+        },
+        {
+          "at": "2026-09-21T01:30:10.911Z",
+          "script": "verify_ops.mjs",
+          "case": "setShowReceiveType",
+          "ok": true,
+          "ms": 1514,
+          "note": "期望：原样写回当前值，回读一致（零差异）；show.receive.type 写回后回读一致"
+        },
+        {
+          "at": "2026-09-21T01:31:52.780Z",
+          "script": "verify_ops.mjs",
+          "case": "setShowReceiveType",
+          "ok": true,
+          "ms": 1264,
+          "note": "期望：原样写回当前值，回读一致（零差异）；show.receive.type 写回后回读一致"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:18:04.764Z",
+      "last": {
+        "at": "2026-09-21T01:31:52.780Z",
+        "script": "verify_ops.mjs",
+        "case": "setShowReceiveType",
+        "ok": true,
+        "ms": 1264,
+        "note": "期望：原样写回当前值，回读一致（零差异）；show.receive.type 写回后回读一致"
+      }
+    },
+    "setBackground": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:06.453Z",
+          "script": "verify_ops.mjs",
+          "case": "setBackground",
+          "ok": true,
+          "ms": 1689,
+          "note": "期望：userSetting 出现/保持 studio.appearance.desk.background"
+        },
+        {
+          "at": "2026-09-21T01:25:08.944Z",
+          "script": "verify_ops.mjs",
+          "case": "setBackground",
+          "ok": true,
+          "ms": 1167,
+          "note": "期望：写入「无背景」后 userSetting 出现对应键；studio.appearance.desk.background 已写入"
+        },
+        {
+          "at": "2026-09-21T01:28:12.019Z",
+          "script": "verify_ops.mjs",
+          "case": "setBackground",
+          "ok": true,
+          "ms": 1004,
+          "note": "期望：写入「无背景」后 userSetting 出现对应键；studio.appearance.desk.background 已写入"
+        },
+        {
+          "at": "2026-09-21T01:30:11.820Z",
+          "script": "verify_ops.mjs",
+          "case": "setBackground",
+          "ok": true,
+          "ms": 909,
+          "note": "期望：写入「无背景」后 userSetting 出现对应键；studio.appearance.desk.background 已写入"
+        },
+        {
+          "at": "2026-09-21T01:31:53.690Z",
+          "script": "verify_ops.mjs",
+          "case": "setBackground",
+          "ok": true,
+          "ms": 910,
+          "note": "期望：写入「无背景」后 userSetting 出现对应键；studio.appearance.desk.background 已写入"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:18:06.453Z",
+      "last": {
+        "at": "2026-09-21T01:31:53.690Z",
+        "script": "verify_ops.mjs",
+        "case": "setBackground",
+        "ok": true,
+        "ms": 910,
+        "note": "期望：写入「无背景」后 userSetting 出现对应键；studio.appearance.desk.background 已写入"
+      }
+    },
+    "setWatermark": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:07.947Z",
+          "script": "verify_ops.mjs",
+          "case": "setWatermark",
+          "ok": true,
+          "ms": 1494,
+          "note": "期望：写入 null 水印后 userSetting 出现对应键"
+        },
+        {
+          "at": "2026-09-21T01:25:10.899Z",
+          "script": "verify_ops.mjs",
+          "case": "setWatermark",
+          "ok": true,
+          "ms": 1955,
+          "note": "期望：写入 null 水印后 userSetting 出现对应键；studio.asset.images.watermark 已写入（body 值为 null 时才被接受）"
+        },
+        {
+          "at": "2026-09-21T01:28:13.622Z",
+          "script": "verify_ops.mjs",
+          "case": "setWatermark",
+          "ok": true,
+          "ms": 1603,
+          "note": "期望：写入 null 水印后 userSetting 出现对应键；studio.asset.images.watermark 已写入（body 值为 null 时才被接受）"
+        },
+        {
+          "at": "2026-09-21T01:30:13.485Z",
+          "script": "verify_ops.mjs",
+          "case": "setWatermark",
+          "ok": true,
+          "ms": 1665,
+          "note": "期望：写入 null 水印后 userSetting 出现对应键；studio.asset.images.watermark 已写入（body 值为 null 时才被接受）"
+        },
+        {
+          "at": "2026-09-21T01:31:55.457Z",
+          "script": "verify_ops.mjs",
+          "case": "setWatermark",
+          "ok": true,
+          "ms": 1767,
+          "note": "期望：写入 null 水印后 userSetting 出现对应键；studio.asset.images.watermark 已写入（body 值为 null 时才被接受）"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:18:07.947Z",
+      "last": {
+        "at": "2026-09-21T01:31:55.457Z",
+        "script": "verify_ops.mjs",
+        "case": "setWatermark",
+        "ok": true,
+        "ms": 1767,
+        "note": "期望：写入 null 水印后 userSetting 出现对应键；studio.asset.images.watermark 已写入（body 值为 null 时才被接受）"
+      }
+    },
+    "setPalette": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:08.229Z",
+          "script": "verify_ops.mjs",
+          "case": "setPalette",
+          "ok": false,
+          "ms": 282,
+          "note": "期望：把配色写回空列表",
+          "error": "Common:Failed: \"undefined\" is not valid JSON"
+        },
+        {
+          "at": "2026-09-21T01:25:11.463Z",
+          "script": "verify_ops.mjs",
+          "case": "setPalette",
+          "ok": false,
+          "ms": 564,
+          "note": "期望：把配色写回空列表",
+          "error": "Common:Failed: \"undefined\" is not valid JSON"
+        },
+        {
+          "at": "2026-09-21T01:28:13.823Z",
+          "script": "verify_ops.mjs",
+          "case": "setPalette",
+          "ok": false,
+          "ms": 201,
+          "note": "期望：把配色写回空列表",
+          "error": "Common:Failed: \"undefined\" is not valid JSON"
+        },
+        {
+          "at": "2026-09-21T01:30:13.686Z",
+          "script": "verify_ops.mjs",
+          "case": "setPalette",
+          "ok": false,
+          "ms": 201,
+          "note": "期望：把配色写回空列表",
+          "error": "Common:Failed: \"undefined\" is not valid JSON"
+        },
+        {
+          "at": "2026-09-21T01:31:55.829Z",
+          "script": "verify_ops.mjs",
+          "case": "setPalette",
+          "ok": false,
+          "ms": 371,
+          "note": "期望：把配色写回空列表",
+          "error": "Common:Failed: \"undefined\" is not valid JSON"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:55.829Z",
+        "script": "verify_ops.mjs",
+        "case": "setPalette",
+        "ok": false,
+        "ms": 371,
+        "note": "期望：把配色写回空列表",
+        "error": "Common:Failed: \"undefined\" is not valid JSON"
+      }
+    },
+    "updateUserSetting": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:08.913Z",
+          "script": "verify_ops.mjs",
+          "case": "updateUserSetting",
+          "ok": false,
+          "ms": 684,
+          "note": "期望：整表写回",
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:25:12.439Z",
+          "script": "verify_ops.mjs",
+          "case": "updateUserSetting",
+          "ok": false,
+          "ms": 976,
+          "note": "期望：整表写回",
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:28:15.008Z",
+          "script": "verify_ops.mjs",
+          "case": "updateUserSetting",
+          "ok": false,
+          "ms": 1185,
+          "note": "期望：整表写回",
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:30:15.168Z",
+          "script": "verify_ops.mjs",
+          "case": "updateUserSetting",
+          "ok": false,
+          "ms": 1482,
+          "note": "期望：整表写回",
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:31:56.836Z",
+          "script": "verify_ops.mjs",
+          "case": "updateUserSetting",
+          "ok": false,
+          "ms": 1007,
+          "note": "期望：整表写回",
+          "error": "HTTP 404"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:56.836Z",
+        "script": "verify_ops.mjs",
+        "case": "updateUserSetting",
+        "ok": false,
+        "ms": 1007,
+        "note": "期望：整表写回",
+        "error": "HTTP 404"
+      }
+    },
+    "verifyHtmlCode": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:09.519Z",
+          "script": "verify_ops.mjs",
+          "case": "verifyHtmlCode",
+          "ok": false,
+          "ms": 606,
+          "note": "期望：返回校验/处理后的 HTML",
+          "error": "HTTP 400"
+        },
+        {
+          "at": "2026-09-21T01:25:12.668Z",
+          "script": "verify_ops.mjs",
+          "case": "verifyHtmlCode",
+          "ok": true,
+          "ms": 229,
+          "note": "期望：返回处理后的 HTML（纯校验，无状态）；回读 string \"<p>verify_ops</p>\""
+        },
+        {
+          "at": "2026-09-21T01:28:15.209Z",
+          "script": "verify_ops.mjs",
+          "case": "verifyHtmlCode",
+          "ok": true,
+          "ms": 201,
+          "note": "期望：返回处理后的 HTML（纯校验，无状态）；回读 string \"<p>verify_ops</p>\""
+        },
+        {
+          "at": "2026-09-21T01:30:15.458Z",
+          "script": "verify_ops.mjs",
+          "case": "verifyHtmlCode",
+          "ok": true,
+          "ms": 290,
+          "note": "期望：返回处理后的 HTML（纯校验，无状态）；回读 string \"<p>verify_ops</p>\""
+        },
+        {
+          "at": "2026-09-21T01:31:57.125Z",
+          "script": "verify_ops.mjs",
+          "case": "verifyHtmlCode",
+          "ok": true,
+          "ms": 289,
+          "note": "期望：返回处理后的 HTML（纯校验，无状态）；回读 string \"<p>verify_ops</p>\""
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:31:57.125Z",
+        "script": "verify_ops.mjs",
+        "case": "verifyHtmlCode",
+        "ok": true,
+        "ms": 289,
+        "note": "期望：返回处理后的 HTML（纯校验，无状态）；回读 string \"<p>verify_ops</p>\""
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:12.668Z"
+    },
+    "setMute": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:14.608Z",
+          "script": "verify_ops.mjs",
+          "case": "setMute",
+          "ok": true,
+          "ms": 5089,
+          "note": "期望：三个静音开关切换后回读、再还原回读"
+        },
+        {
+          "at": "2026-09-21T01:25:17.600Z",
+          "script": "verify_ops.mjs",
+          "case": "setMute",
+          "ok": true,
+          "ms": 4641,
+          "note": "期望：三个静音开关 0→1 回读、1→0 回读；3 个开关各切一次并还原"
+        },
+        {
+          "at": "2026-09-21T01:28:19.253Z",
+          "script": "verify_ops.mjs",
+          "case": "setMute",
+          "ok": true,
+          "ms": 3842,
+          "note": "期望：三个静音开关 0→1 回读、1→0 回读；3 个开关各切一次并还原"
+        },
+        {
+          "at": "2026-09-21T01:30:20.426Z",
+          "script": "verify_ops.mjs",
+          "case": "setMute",
+          "ok": true,
+          "ms": 4747,
+          "note": "期望：三个静音开关 0→1 回读、1→0 回读；3 个开关各切一次并还原"
+        },
+        {
+          "at": "2026-09-21T01:32:02.385Z",
+          "script": "verify_ops.mjs",
+          "case": "setMute",
+          "ok": true,
+          "ms": 5017,
+          "note": "期望：三个静音开关 0→1 回读、1→0 回读；3 个开关各切一次并还原"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:18:14.608Z",
+      "last": {
+        "at": "2026-09-21T01:32:02.385Z",
+        "script": "verify_ops.mjs",
+        "case": "setMute",
+        "ok": true,
+        "ms": 5017,
+        "note": "期望：三个静音开关 0→1 回读、1→0 回读；3 个开关各切一次并还原"
+      }
+    },
+    "markMessageRead": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:14.841Z",
+          "script": "verify_ops.mjs",
+          "case": "markMessageRead",
+          "ok": false,
+          "blocked": true,
+          "error": "账号没有消息，无法验证已读标记"
+        },
+        {
+          "at": "2026-09-21T01:18:23.457Z",
+          "script": "verify_ops.mjs",
+          "case": "markMessageRead",
+          "ok": false,
+          "blocked": true,
+          "error": "账号消息列表为空时无法验证已读标记"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "markMessageRead",
+          "ok": false,
+          "blocked": true,
+          "error": "账号消息列表为空，无法构造「未读 → 已读」的可观测变化"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "markMessageRead",
+          "ok": false,
+          "blocked": true,
+          "error": "账号消息列表为空，无法构造「未读 → 已读」的可观测变化"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "markMessageRead",
+          "ok": false,
+          "blocked": true,
+          "error": "账号消息列表为空，无法构造「未读 → 已读」的可观测变化"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "markMessageRead",
+          "ok": false,
+          "blocked": true,
+          "error": "账号消息列表为空，无法构造「未读 → 已读」的可观测变化"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "markMessageRead",
+        "ok": false,
+        "blocked": true,
+        "error": "账号消息列表为空，无法构造「未读 → 已读」的可观测变化"
+      }
+    },
+    "addImageOutlink": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:15.053Z",
+          "script": "verify_ops.mjs",
+          "case": "addImageOutlink",
+          "ok": false,
+          "ms": 211,
+          "note": "期望：外链图片进入自己的图库列表",
+          "error": "Common:Failed_InvalidParam"
+        },
+        {
+          "at": "2026-09-21T01:25:18.594Z",
+          "script": "verify_ops.mjs",
+          "case": "addImageOutlink",
+          "ok": true,
+          "ms": 994,
+          "note": "期望：可被服务端抓取的外链图片进入自己的图库；asset_id=5427372870"
+        },
+        {
+          "at": "2026-09-21T01:28:20.139Z",
+          "script": "verify_ops.mjs",
+          "case": "addImageOutlink",
+          "ok": true,
+          "ms": 886,
+          "note": "期望：可被服务端抓取的外链图片进入自己的图库；asset_id=5427379461"
+        },
+        {
+          "at": "2026-09-21T01:30:21.344Z",
+          "script": "verify_ops.mjs",
+          "case": "addImageOutlink",
+          "ok": true,
+          "ms": 918,
+          "note": "期望：可被服务端抓取的外链图片进入自己的图库；asset_id=5427383692"
+        },
+        {
+          "at": "2026-09-21T01:32:03.406Z",
+          "script": "verify_ops.mjs",
+          "case": "addImageOutlink",
+          "ok": true,
+          "ms": 1021,
+          "note": "期望：可被服务端抓取的外链图片进入自己的图库；asset_id=5427386904"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:03.406Z",
+        "script": "verify_ops.mjs",
+        "case": "addImageOutlink",
+        "ok": true,
+        "ms": 1021,
+        "note": "期望：可被服务端抓取的外链图片进入自己的图库；asset_id=5427386904"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:18.594Z"
+    },
+    "getImageTags": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:15.053Z",
+          "script": "verify_ops.mjs",
+          "case": "getImageTags",
+          "ok": false,
+          "blocked": true,
+          "error": "无法在图库中创建自己的素材（addImageOutlink 未产出 asset_id）"
+        },
+        {
+          "at": "2026-09-21T01:25:18.831Z",
+          "script": "verify_ops.mjs",
+          "case": "getImageTags",
+          "ok": true,
+          "ms": 237,
+          "note": "期望：该素材自身的标签列表；回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:28:20.330Z",
+          "script": "verify_ops.mjs",
+          "case": "getImageTags",
+          "ok": true,
+          "ms": 190,
+          "note": "期望：该素材自身的标签列表；回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:30:21.554Z",
+          "script": "verify_ops.mjs",
+          "case": "getImageTags",
+          "ok": true,
+          "ms": 210,
+          "note": "期望：该素材自身的标签列表；回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:32:03.658Z",
+          "script": "verify_ops.mjs",
+          "case": "getImageTags",
+          "ok": true,
+          "ms": 252,
+          "note": "期望：该素材自身的标签列表；回读 Array(0)"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:03.658Z",
+        "script": "verify_ops.mjs",
+        "case": "getImageTags",
+        "ok": true,
+        "ms": 252,
+        "note": "期望：该素材自身的标签列表；回读 Array(0)"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:18.831Z"
+    },
+    "addImageTag": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:15.053Z",
+          "script": "verify_ops.mjs",
+          "case": "addImageTag",
+          "ok": false,
+          "blocked": true,
+          "error": "无法在图库中创建自己的素材（addImageOutlink 未产出 asset_id）"
+        },
+        {
+          "at": "2026-09-21T01:25:19.705Z",
+          "script": "verify_ops.mjs",
+          "case": "addImageTag",
+          "ok": true,
+          "ms": 874,
+          "note": "期望：打标签后能从该素材回读；素材标签含 vops_17600"
+        },
+        {
+          "at": "2026-09-21T01:28:21.330Z",
+          "script": "verify_ops.mjs",
+          "case": "addImageTag",
+          "ok": true,
+          "ms": 999,
+          "note": "期望：打标签后能从该素材回读；素材标签含 vops_99253"
+        },
+        {
+          "at": "2026-09-21T01:30:22.368Z",
+          "script": "verify_ops.mjs",
+          "case": "addImageTag",
+          "ok": true,
+          "ms": 814,
+          "note": "期望：打标签后能从该素材回读；素材标签含 vops_20426"
+        },
+        {
+          "at": "2026-09-21T01:32:04.838Z",
+          "script": "verify_ops.mjs",
+          "case": "addImageTag",
+          "ok": true,
+          "ms": 1180,
+          "note": "期望：打标签后能从该素材回读；素材标签含 vops_22385"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:04.838Z",
+        "script": "verify_ops.mjs",
+        "case": "addImageTag",
+        "ok": true,
+        "ms": 1180,
+        "note": "期望：打标签后能从该素材回读；素材标签含 vops_22385"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:19.705Z"
+    },
+    "removeImageTag": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:15.053Z",
+          "script": "verify_ops.mjs",
+          "case": "removeImageTag",
+          "ok": false,
+          "blocked": true,
+          "error": "无法在图库中创建自己的素材（addImageOutlink 未产出 asset_id）"
+        },
+        {
+          "at": "2026-09-21T01:25:21.648Z",
+          "script": "verify_ops.mjs",
+          "case": "removeImageTag",
+          "ok": false,
+          "ms": 192,
+          "note": "期望：摘标签后素材标签列表不再含它",
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:28:23.831Z",
+          "script": "verify_ops.mjs",
+          "case": "removeImageTag",
+          "ok": false,
+          "ms": 231,
+          "note": "期望：摘标签后素材标签列表不再含它",
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:30:24.291Z",
+          "script": "verify_ops.mjs",
+          "case": "removeImageTag",
+          "ok": false,
+          "ms": 223,
+          "note": "期望：摘标签后素材标签列表不再含它",
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:32:08.787Z",
+          "script": "verify_ops.mjs",
+          "case": "removeImageTag",
+          "ok": true,
+          "ms": 1502,
+          "note": "期望：摘标签后素材标签列表不再含它；素材标签已摘除"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:08.787Z",
+        "script": "verify_ops.mjs",
+        "case": "removeImageTag",
+        "ok": true,
+        "ms": 1502,
+        "note": "期望：摘标签后素材标签列表不再含它；素材标签已摘除"
+      },
+      "firstVerifiedAt": "2026-09-21T01:32:08.787Z"
+    },
+    "renameImageTag": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:15.053Z",
+          "script": "verify_ops.mjs",
+          "case": "renameImageTag",
+          "ok": false,
+          "blocked": true,
+          "error": "无法在图库中创建自己的素材（addImageOutlink 未产出 asset_id）"
+        },
+        {
+          "at": "2026-09-21T01:25:21.262Z",
+          "script": "verify_ops.mjs",
+          "case": "renameImageTag",
+          "ok": true,
+          "ms": 810,
+          "note": "期望：改名后账号级标签列表出现新名；新名 vops_17600_r 已出现"
+        },
+        {
+          "at": "2026-09-21T01:28:23.374Z",
+          "script": "verify_ops.mjs",
+          "case": "renameImageTag",
+          "ok": true,
+          "ms": 1673,
+          "note": "期望：改名后账号级标签列表出现新名；新名 vops_99253_r 已出现"
+        },
+        {
+          "at": "2026-09-21T01:30:23.847Z",
+          "script": "verify_ops.mjs",
+          "case": "renameImageTag",
+          "ok": true,
+          "ms": 1270,
+          "note": "期望：改名后账号级标签列表出现新名；新名 vops_20426_r 已出现"
+        },
+        {
+          "at": "2026-09-21T01:32:07.031Z",
+          "script": "verify_ops.mjs",
+          "case": "renameImageTag",
+          "ok": true,
+          "ms": 1872,
+          "note": "期望：改名后账号级标签列表出现新名；新名 vops_22385_r 已出现"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:07.031Z",
+        "script": "verify_ops.mjs",
+        "case": "renameImageTag",
+        "ok": true,
+        "ms": 1872,
+        "note": "期望：改名后账号级标签列表出现新名；新名 vops_22385_r 已出现"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:21.262Z"
+    },
+    "deleteImageTag": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:15.053Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteImageTag",
+          "ok": false,
+          "blocked": true,
+          "error": "无法在图库中创建自己的素材（addImageOutlink 未产出 asset_id）"
+        },
+        {
+          "at": "2026-09-21T01:25:22.532Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteImageTag",
+          "ok": true,
+          "ms": 883,
+          "note": "期望：删除后账号级标签列表不再含它；账户级标签已删除"
+        },
+        {
+          "at": "2026-09-21T01:28:24.731Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteImageTag",
+          "ok": true,
+          "ms": 900,
+          "note": "期望：删除后账号级标签列表不再含它；账户级标签已删除"
+        },
+        {
+          "at": "2026-09-21T01:30:25.162Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteImageTag",
+          "ok": true,
+          "ms": 871,
+          "note": "期望：删除后账号级标签列表不再含它；账户级标签已删除"
+        },
+        {
+          "at": "2026-09-21T01:32:09.783Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteImageTag",
+          "ok": true,
+          "ms": 996,
+          "note": "期望：删除后账号级标签列表不再含它；账户级标签已删除"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:09.783Z",
+        "script": "verify_ops.mjs",
+        "case": "deleteImageTag",
+        "ok": true,
+        "ms": 996,
+        "note": "期望：删除后账号级标签列表不再含它；账户级标签已删除"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:22.532Z"
+    },
+    "deleteAsset": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:15.053Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteAsset",
+          "ok": false,
+          "blocked": true,
+          "error": "无法在图库中创建自己的素材（addImageOutlink 未产出 asset_id）"
+        },
+        {
+          "at": "2026-09-21T01:25:24.574Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteAsset",
+          "ok": true,
+          "ms": 1293,
+          "note": "期望：删除后图库列表不再含该素材；asset_id=5427372870 已从图库消失"
+        },
+        {
+          "at": "2026-09-21T01:28:26.530Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteAsset",
+          "ok": true,
+          "ms": 1053,
+          "note": "期望：删除后图库列表不再含该素材；asset_id=5427379461 已从图库消失"
+        },
+        {
+          "at": "2026-09-21T01:30:26.916Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteAsset",
+          "ok": true,
+          "ms": 994,
+          "note": "期望：删除后图库列表不再含该素材；asset_id=5427383692 已从图库消失"
+        },
+        {
+          "at": "2026-09-21T01:32:12.116Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteAsset",
+          "ok": true,
+          "ms": 1436,
+          "note": "期望：删除后图库列表不再含该素材；asset_id=5427386904 已从图库消失"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:12.116Z",
+        "script": "verify_ops.mjs",
+        "case": "deleteAsset",
+        "ok": true,
+        "ms": 1436,
+        "note": "期望：删除后图库列表不再含该素材；asset_id=5427386904 已从图库消失"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:24.574Z"
+    },
+    "uploadImageBase64": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:16.013Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadImageBase64",
+          "ok": true,
+          "ms": 960,
+          "note": "期望：返回 target_uri（asset_type=0，不进图库列表）"
+        },
+        {
+          "at": "2026-09-21T01:25:24.803Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadImageBase64",
+          "ok": true,
+          "ms": 229,
+          "note": "期望：返回 target_uri（asset_type=0，不进图库列表）；target_uri=//img.xiumi.us/xmi/ua/5NATE/i/f829b914fc47cfc9c0747c119c27cf"
+        },
+        {
+          "at": "2026-09-21T01:28:27.257Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadImageBase64",
+          "ok": true,
+          "ms": 727,
+          "note": "期望：返回 target_uri（asset_type=0，不进图库列表）；target_uri=//img.xiumi.us/xmi/ua/5NATE/i/f829b914fc47cfc9c0747c119c27cf"
+        },
+        {
+          "at": "2026-09-21T01:30:27.155Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadImageBase64",
+          "ok": true,
+          "ms": 239,
+          "note": "期望：返回 target_uri（asset_type=0，不进图库列表）；target_uri=//img.xiumi.us/xmi/ua/5NATE/i/f829b914fc47cfc9c0747c119c27cf"
+        },
+        {
+          "at": "2026-09-21T01:32:12.415Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadImageBase64",
+          "ok": true,
+          "ms": 299,
+          "note": "期望：返回 target_uri（asset_type=0，不进图库列表）；target_uri=//img.xiumi.us/xmi/ua/5NATE/i/f829b914fc47cfc9c0747c119c27cf"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:18:16.013Z",
+      "last": {
+        "at": "2026-09-21T01:32:12.415Z",
+        "script": "verify_ops.mjs",
+        "case": "uploadImageBase64",
+        "ok": true,
+        "ms": 299,
+        "note": "期望：返回 target_uri（asset_type=0，不进图库列表）；target_uri=//img.xiumi.us/xmi/ua/5NATE/i/f829b914fc47cfc9c0747c119c27cf"
+      }
+    },
+    "addFragmentTag": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:16.249Z",
+          "script": "verify_ops.mjs",
+          "case": "addFragmentTag",
+          "ok": false,
+          "ms": 236,
+          "note": "期望：新建后能从 fragmentTagDetails 回读",
+          "error": "Common:Failed_NotFound"
+        },
+        {
+          "at": "2026-09-21T01:25:25.557Z",
+          "script": "verify_ops.mjs",
+          "case": "addFragmentTag",
+          "ok": false,
+          "ms": 754,
+          "note": "期望：新建碎片标签后能从 fragmentTagDetails 回读",
+          "error": "Common:Failed_NotFound"
+        },
+        {
+          "at": "2026-09-21T01:28:27.977Z",
+          "script": "verify_ops.mjs",
+          "case": "addFragmentTag",
+          "ok": false,
+          "ms": 720,
+          "note": "期望：新建碎片标签后能从 fragmentTagDetails 回读",
+          "error": "Common:Failed_NotFound"
+        },
+        {
+          "at": "2026-09-21T01:30:28.082Z",
+          "script": "verify_ops.mjs",
+          "case": "addFragmentTag",
+          "ok": false,
+          "ms": 927,
+          "note": "期望：新建碎片标签后能从 fragmentTagDetails 回读",
+          "error": "Common:Failed_NotFound"
+        },
+        {
+          "at": "2026-09-21T01:32:14.155Z",
+          "script": "verify_ops.mjs",
+          "case": "addFragmentTag",
+          "ok": false,
+          "ms": 1740,
+          "note": "期望：新建碎片标签后能从 fragmentTagDetails 回读",
+          "error": "Common:Failed_NotFound"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:14.155Z",
+        "script": "verify_ops.mjs",
+        "case": "addFragmentTag",
+        "ok": false,
+        "ms": 1740,
+        "note": "期望：新建碎片标签后能从 fragmentTagDetails 回读",
+        "error": "Common:Failed_NotFound"
+      }
+    },
+    "renameFragmentTag": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:17.593Z",
+          "script": "verify_ops.mjs",
+          "case": "renameFragmentTag",
+          "ok": false,
+          "ms": 1344,
+          "note": "期望：改名后回读到新名",
+          "error": "断言失败：回读应含改名后的 frag_96013_r"
+        },
+        {
+          "at": "2026-09-21T01:25:25.557Z",
+          "script": "verify_ops.mjs",
+          "case": "renameFragmentTag",
+          "ok": false,
+          "blocked": true,
+          "error": "依赖 addFragmentTag 先建出标签；创建路径未确认（paper/tags → Failed_NotFound，paper/comp/tags → 404）"
+        },
+        {
+          "at": "2026-09-21T01:28:27.977Z",
+          "script": "verify_ops.mjs",
+          "case": "renameFragmentTag",
+          "ok": false,
+          "blocked": true,
+          "error": "依赖 addFragmentTag 先建出标签；创建路径未确认（paper/tags → Failed_NotFound，paper/comp/tags → 404）"
+        },
+        {
+          "at": "2026-09-21T01:30:28.082Z",
+          "script": "verify_ops.mjs",
+          "case": "renameFragmentTag",
+          "ok": false,
+          "blocked": true,
+          "error": "依赖 addFragmentTag 先建出标签；创建路径未确认（paper/tags → Failed_NotFound，paper/comp/tags → 404）"
+        },
+        {
+          "at": "2026-09-21T01:32:14.155Z",
+          "script": "verify_ops.mjs",
+          "case": "renameFragmentTag",
+          "ok": false,
+          "blocked": true,
+          "error": "依赖 addFragmentTag 先建出标签；创建路径未确认（paper/tags → Failed_NotFound，paper/comp/tags → 404）"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:14.155Z",
+        "script": "verify_ops.mjs",
+        "case": "renameFragmentTag",
+        "ok": false,
+        "blocked": true,
+        "error": "依赖 addFragmentTag 先建出标签；创建路径未确认（paper/tags → Failed_NotFound，paper/comp/tags → 404）"
+      }
+    },
+    "deleteFragmentTag": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:18.640Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteFragmentTag",
+          "ok": true,
+          "ms": 1047,
+          "note": "期望：删除后回读不再含该标签"
+        },
+        {
+          "at": "2026-09-21T01:25:25.750Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteFragmentTag",
+          "ok": true,
+          "observed": false,
+          "ms": 193,
+          "note": "期望：DELETE 路径被服务端受理（标签本就不存在，语义未验证）；DELETE /api/fragments/v5/paper/comp/tag/{tag} 返回 200；因创建路径未确认，未验证语义"
+        },
+        {
+          "at": "2026-09-21T01:28:28.202Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteFragmentTag",
+          "ok": true,
+          "observed": false,
+          "ms": 225,
+          "note": "期望：DELETE 路径被服务端受理（标签本就不存在，语义未验证）；DELETE /api/fragments/v5/paper/comp/tag/{tag} 返回 200；因创建路径未确认，未验证语义"
+        },
+        {
+          "at": "2026-09-21T01:30:28.307Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteFragmentTag",
+          "ok": true,
+          "observed": false,
+          "ms": 225,
+          "note": "期望：DELETE 路径被服务端受理（标签本就不存在，语义未验证）；DELETE /api/fragments/v5/paper/comp/tag/{tag} 返回 200；因创建路径未确认，未验证语义"
+        },
+        {
+          "at": "2026-09-21T01:32:14.421Z",
+          "script": "verify_ops.mjs",
+          "case": "deleteFragmentTag",
+          "ok": true,
+          "observed": false,
+          "ms": 266,
+          "note": "期望：DELETE 路径被服务端受理（标签本就不存在，语义未验证）；DELETE /api/fragments/v5/paper/comp/tag/{tag} 返回 200；因创建路径未确认，未验证语义"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:18:18.640Z",
+      "last": {
+        "at": "2026-09-21T01:32:14.421Z",
+        "script": "verify_ops.mjs",
+        "case": "deleteFragmentTag",
+        "ok": true,
+        "observed": false,
+        "ms": 266,
+        "note": "期望：DELETE 路径被服务端受理（标签本就不存在，语义未验证）；DELETE /api/fragments/v5/paper/comp/tag/{tag} 返回 200；因创建路径未确认，未验证语义"
+      }
+    },
+    "renameShow": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:20.164Z",
+          "script": "verify_ops.mjs",
+          "case": "renameShow",
+          "ok": false,
+          "ms": 213,
+          "note": "期望：改名后回读 title 变化",
+          "error": "Common:Failed_DataRejected"
+        },
+        {
+          "at": "2026-09-21T01:25:27.506Z",
+          "script": "verify_ops.mjs",
+          "case": "renameShow",
+          "ok": true,
+          "ms": 1754,
+          "note": "期望：读草稿→改 title→整包 PUT 后回读 title 变化；title=verify_ops 改名 5751"
+        },
+        {
+          "at": "2026-09-21T01:28:30.278Z",
+          "script": "verify_ops.mjs",
+          "case": "renameShow",
+          "ok": true,
+          "ms": 2076,
+          "note": "期望：读草稿→改 title→整包 PUT 后回读 title 变化；title=verify_ops 改名 8202"
+        },
+        {
+          "at": "2026-09-21T01:30:30.255Z",
+          "script": "verify_ops.mjs",
+          "case": "renameShow",
+          "ok": true,
+          "ms": 1948,
+          "note": "期望：读草稿→改 title→整包 PUT 后回读 title 变化；title=verify_ops 改名 8307"
+        },
+        {
+          "at": "2026-09-21T01:32:16.576Z",
+          "script": "verify_ops.mjs",
+          "case": "renameShow",
+          "ok": true,
+          "ms": 2155,
+          "note": "期望：读草稿→改 title→整包 PUT 后回读 title 变化；title=verify_ops 改名 4421"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:16.576Z",
+        "script": "verify_ops.mjs",
+        "case": "renameShow",
+        "ok": true,
+        "ms": 2155,
+        "note": "期望：读草稿→改 title→整包 PUT 后回读 title 变化；title=verify_ops 改名 4421"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:27.506Z"
+    },
+    "setTagsOrder": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:21.189Z",
+          "script": "verify_ops.mjs",
+          "case": "setTagsOrder",
+          "ok": false,
+          "ms": 1025,
+          "note": "期望：按当前顺序原样写回，回读集合一致（零差异）",
+          "error": "Common:Failed: \"arguments[2]\" must be of type \"string | Buffer\", got object instead."
+        },
+        {
+          "at": "2026-09-21T01:25:28.847Z",
+          "script": "verify_ops.mjs",
+          "case": "setTagsOrder",
+          "ok": true,
+          "ms": 1341,
+          "note": "期望：order 以字符串提交、按当前顺序原样写回，回读一致；0 个标签 原样排序"
+        },
+        {
+          "at": "2026-09-21T01:28:31.393Z",
+          "script": "verify_ops.mjs",
+          "case": "setTagsOrder",
+          "ok": true,
+          "ms": 1115,
+          "note": "期望：order 以字符串提交、按当前顺序原样写回，回读一致；0 个标签 原样排序"
+        },
+        {
+          "at": "2026-09-21T01:30:31.450Z",
+          "script": "verify_ops.mjs",
+          "case": "setTagsOrder",
+          "ok": true,
+          "ms": 1195,
+          "note": "期望：order 以字符串提交、按当前顺序原样写回，回读一致；0 个标签 原样排序"
+        },
+        {
+          "at": "2026-09-21T01:32:17.838Z",
+          "script": "verify_ops.mjs",
+          "case": "setTagsOrder",
+          "ok": true,
+          "ms": 1262,
+          "note": "期望：order 以字符串提交、按当前顺序原样写回，回读一致；0 个标签 原样排序"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:17.838Z",
+        "script": "verify_ops.mjs",
+        "case": "setTagsOrder",
+        "ok": true,
+        "ms": 1262,
+        "note": "期望：order 以字符串提交、按当前顺序原样写回，回读一致；0 个标签 原样排序"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:28.847Z"
+    },
+    "sendShow": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:23.098Z",
+          "script": "verify_ops.mjs",
+          "case": "sendShow",
+          "ok": false,
+          "ms": 1909,
+          "note": "期望：发给自己的副本产生新的 show_id（随后删除）",
+          "error": "断言失败：应产生一个发给自己的副本"
+        },
+        {
+          "at": "2026-09-21T01:25:30.051Z",
+          "script": "verify_ops.mjs",
+          "case": "sendShow",
+          "ok": true,
+          "ms": 1204,
+          "note": "期望：发给自己的副本产生新的 show_id（随后删除）；副本 show_id=727059217（已删除）"
+        },
+        {
+          "at": "2026-09-21T01:28:33.055Z",
+          "script": "verify_ops.mjs",
+          "case": "sendShow",
+          "ok": true,
+          "ms": 1662,
+          "note": "期望：发给自己的副本产生新的 show_id（随后删除）；副本 show_id=727060571（已删除）"
+        },
+        {
+          "at": "2026-09-21T01:30:32.721Z",
+          "script": "verify_ops.mjs",
+          "case": "sendShow",
+          "ok": true,
+          "ms": 1271,
+          "note": "期望：发给自己的副本产生新的 show_id（随后删除）；副本 show_id=727061445（已删除）"
+        },
+        {
+          "at": "2026-09-21T01:32:19.353Z",
+          "script": "verify_ops.mjs",
+          "case": "sendShow",
+          "ok": true,
+          "ms": 1515,
+          "note": "期望：发给自己的副本产生新的 show_id（随后删除）；副本 show_id=727062272（已删除）"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.353Z",
+        "script": "verify_ops.mjs",
+        "case": "sendShow",
+        "ok": true,
+        "ms": 1515,
+        "note": "期望：发给自己的副本产生新的 show_id（随后删除）；副本 show_id=727062272（已删除）"
+      },
+      "firstVerifiedAt": "2026-09-21T01:25:30.051Z"
+    },
+    "createTeam": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:23.457Z",
+          "script": "verify_ops.mjs",
+          "case": "createTeam",
+          "ok": false,
+          "blocked": true,
+          "error": "账号非团队版，建团队会改变账号形态，不做"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "createTeam",
+          "ok": false,
+          "blocked": true,
+          "error": "账号非团队版；建团队会改变账号形态（子账号/账单），不做"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "createTeam",
+          "ok": false,
+          "blocked": true,
+          "error": "账号非团队版；建团队会改变账号形态（子账号/账单），不做"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "createTeam",
+          "ok": false,
+          "blocked": true,
+          "error": "账号非团队版；建团队会改变账号形态（子账号/账单），不做"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "createTeam",
+          "ok": false,
+          "blocked": true,
+          "error": "账号非团队版；建团队会改变账号形态（子账号/账单），不做"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "createTeam",
+        "ok": false,
+        "blocked": true,
+        "error": "账号非团队版；建团队会改变账号形态（子账号/账单），不做"
+      }
+    },
+    "addCommentRightUser": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:23.458Z",
+          "script": "verify_ops.mjs",
+          "case": "addCommentRightUser",
+          "ok": false,
+          "blocked": true,
+          "error": "评论白名单指向第三方标识，且进回收站后仍在黑名单里，无干净还原路径"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "addCommentRightUser",
+          "ok": false,
+          "blocked": true,
+          "error": "评论白名单写的是第三方标识；且进回收站后仍留在黑名单里，没有干净的还原路径"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "addCommentRightUser",
+          "ok": false,
+          "blocked": true,
+          "error": "评论白名单写的是第三方标识；且进回收站后仍留在黑名单里，没有干净的还原路径"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "addCommentRightUser",
+          "ok": false,
+          "blocked": true,
+          "error": "评论白名单写的是第三方标识；且进回收站后仍留在黑名单里，没有干净的还原路径"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "addCommentRightUser",
+          "ok": false,
+          "blocked": true,
+          "error": "评论白名单写的是第三方标识；且进回收站后仍留在黑名单里，没有干净的还原路径"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "addCommentRightUser",
+        "ok": false,
+        "blocked": true,
+        "error": "评论白名单写的是第三方标识；且进回收站后仍留在黑名单里，没有干净的还原路径"
+      }
+    },
+    "follow": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:23.458Z",
+          "script": "verify_ops.mjs",
+          "case": "follow",
+          "ok": false,
+          "blocked": true,
+          "error": "关注是写他人账号的关注关系（虽可取关），越出「只动自己的数据」边界"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "follow",
+          "ok": false,
+          "blocked": true,
+          "error": "关注写的是他人账号的粉丝关系，越出「只动自己数据」的边界"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "follow",
+          "ok": false,
+          "blocked": true,
+          "error": "关注写的是他人账号的粉丝关系，越出「只动自己数据」的边界"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "follow",
+          "ok": false,
+          "blocked": true,
+          "error": "关注写的是他人账号的粉丝关系，越出「只动自己数据」的边界"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "follow",
+          "ok": false,
+          "blocked": true,
+          "error": "关注写的是他人账号的粉丝关系，越出「只动自己数据」的边界"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "follow",
+        "ok": false,
+        "blocked": true,
+        "error": "关注写的是他人账号的粉丝关系，越出「只动自己数据」的边界"
+      }
+    },
+    "adminCreateTemplate": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:23.458Z",
+          "script": "verify_ops.mjs",
+          "case": "adminCreateTemplate",
+          "ok": false,
+          "blocked": true,
+          "error": "管理端接口，普通账号预期 403"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "adminCreateTemplate",
+          "ok": false,
+          "blocked": true,
+          "error": "管理端接口，普通账号预期 403"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "adminCreateTemplate",
+          "ok": false,
+          "blocked": true,
+          "error": "管理端接口，普通账号预期 403"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "adminCreateTemplate",
+          "ok": false,
+          "blocked": true,
+          "error": "管理端接口，普通账号预期 403"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "adminCreateTemplate",
+          "ok": false,
+          "blocked": true,
+          "error": "管理端接口，普通账号预期 403"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "adminCreateTemplate",
+        "ok": false,
+        "blocked": true,
+        "error": "管理端接口，普通账号预期 403"
+      }
+    },
+    "purchaseGoods": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:23.458Z",
+          "script": "verify_ops.mjs",
+          "case": "purchaseGoods",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "purchaseGoods",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "purchaseGoods",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "purchaseGoods",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "purchaseGoods",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "purchaseGoods",
+        "ok": false,
+        "blocked": true,
+        "error": "真实资金"
+      }
+    },
+    "uploadImageFile": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:18:23.458Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadImageFile",
+          "ok": false,
+          "blocked": true,
+          "error": "需要构造 multipart 文件体，与 uploadImageBase64 同源路径，暂不重复验证"
+        },
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadImageFile",
+          "ok": false,
+          "blocked": true,
+          "error": "需要构造 multipart 文件体；与 uploadImageBase64 同一落库路径，本轮不重复验证"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadImageFile",
+          "ok": false,
+          "blocked": true,
+          "error": "需要构造 multipart 文件体；与 uploadImageBase64 同一落库路径，本轮不重复验证"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadImageFile",
+          "ok": false,
+          "blocked": true,
+          "error": "需要构造 multipart 文件体；与 uploadImageBase64 同一落库路径，本轮不重复验证"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadImageFile",
+          "ok": false,
+          "blocked": true,
+          "error": "需要构造 multipart 文件体；与 uploadImageBase64 同一落库路径，本轮不重复验证"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "uploadImageFile",
+        "ok": false,
+        "blocked": true,
+        "error": "需要构造 multipart 文件体；与 uploadImageBase64 同一落库路径，本轮不重复验证"
+      }
+    },
+    "showsInTag": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:24:59.797Z",
+          "script": "verify_ops.mjs",
+          "case": "showsInTag",
+          "ok": true,
+          "ms": 239,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:28:00.228Z",
+          "script": "verify_ops.mjs",
+          "case": "showsInTag",
+          "ok": true,
+          "ms": 209,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:30:03.429Z",
+          "script": "verify_ops.mjs",
+          "case": "showsInTag",
+          "ok": true,
+          "ms": 346,
+          "note": "回读 Array(0)"
+        },
+        {
+          "at": "2026-09-21T01:31:44.212Z",
+          "script": "verify_ops.mjs",
+          "case": "showsInTag",
+          "ok": true,
+          "ms": 364,
+          "note": "回读 Array(0)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:24:59.797Z",
+      "last": {
+        "at": "2026-09-21T01:31:44.212Z",
+        "script": "verify_ops.mjs",
+        "case": "showsInTag",
+        "ok": true,
+        "ms": 364,
+        "note": "回读 Array(0)"
+      }
+    },
+    "publishedUser": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:03.098Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUser",
+          "ok": true,
+          "ms": 236,
+          "note": "回读 {user_sid,unique_uid,nickname,avatar_url,brand_name,level,sub_account,userpage_url,…}"
+        },
+        {
+          "at": "2026-09-21T01:28:04.452Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUser",
+          "ok": true,
+          "ms": 351,
+          "note": "回读 {user_sid,unique_uid,nickname,avatar_url,brand_name,level,sub_account,userpage_url,…}"
+        },
+        {
+          "at": "2026-09-21T01:30:06.827Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUser",
+          "ok": true,
+          "ms": 402,
+          "note": "回读 {user_sid,unique_uid,nickname,avatar_url,brand_name,level,sub_account,userpage_url,…}"
+        },
+        {
+          "at": "2026-09-21T01:31:47.564Z",
+          "script": "verify_ops.mjs",
+          "case": "publishedUser",
+          "ok": true,
+          "ms": 245,
+          "note": "回读 {user_sid,unique_uid,nickname,avatar_url,brand_name,level,sub_account,userpage_url,…}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:25:03.098Z",
+      "last": {
+        "at": "2026-09-21T01:31:47.564Z",
+        "script": "verify_ops.mjs",
+        "case": "publishedUser",
+        "ok": true,
+        "ms": 245,
+        "note": "回读 {user_sid,unique_uid,nickname,avatar_url,brand_name,level,sub_account,userpage_url,…}"
+      }
+    },
+    "showStatistics": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:03.383Z",
+          "script": "verify_ops.mjs",
+          "case": "showStatistics",
+          "ok": true,
+          "ms": 285,
+          "note": "回读 {show_id,type,version,usage_scenario,title,desc,cover,loading_icon,…}"
+        },
+        {
+          "at": "2026-09-21T01:28:04.654Z",
+          "script": "verify_ops.mjs",
+          "case": "showStatistics",
+          "ok": true,
+          "ms": 202,
+          "note": "回读 {show_id,type,version,usage_scenario,title,desc,cover,loading_icon,…}"
+        },
+        {
+          "at": "2026-09-21T01:30:07.098Z",
+          "script": "verify_ops.mjs",
+          "case": "showStatistics",
+          "ok": true,
+          "ms": 271,
+          "note": "回读 {show_id,type,version,usage_scenario,title,desc,cover,loading_icon,…}"
+        },
+        {
+          "at": "2026-09-21T01:31:47.819Z",
+          "script": "verify_ops.mjs",
+          "case": "showStatistics",
+          "ok": true,
+          "ms": 255,
+          "note": "回读 {show_id,type,version,usage_scenario,title,desc,cover,loading_icon,…}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:25:03.383Z",
+      "last": {
+        "at": "2026-09-21T01:31:47.819Z",
+        "script": "verify_ops.mjs",
+        "case": "showStatistics",
+        "ok": true,
+        "ms": 255,
+        "note": "回读 {show_id,type,version,usage_scenario,title,desc,cover,loading_icon,…}"
+      }
+    },
+    "formData": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:05.950Z",
+          "script": "verify_ops.mjs",
+          "case": "formData",
+          "ok": false,
+          "ms": 238,
+          "error": "HTTP 404"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "formData",
+          "ok": false,
+          "blocked": true,
+          "error": "需要表单型作品做载体；form 型作品无法由 /api/shows/v5/form 创建（InvalidParam），本轮造不出载体"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "formData",
+          "ok": false,
+          "blocked": true,
+          "error": "需要表单型作品做载体；form 型作品无法由 /api/shows/v5/form 创建（InvalidParam），本轮造不出载体"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "formData",
+          "ok": false,
+          "blocked": true,
+          "error": "需要表单型作品做载体；form 型作品无法由 /api/shows/v5/form 创建（InvalidParam），本轮造不出载体"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "formData",
+        "ok": false,
+        "blocked": true,
+        "error": "需要表单型作品做载体；form 型作品无法由 /api/shows/v5/form 创建（InvalidParam），本轮造不出载体"
+      }
+    },
+    "recoverableShows": {
+      "kind": "read",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:06.183Z",
+          "script": "verify_ops.mjs",
+          "case": "recoverableShows",
+          "ok": false,
+          "ms": 233,
+          "error": "Common:Failed_NotFound"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:25:06.183Z",
+        "script": "verify_ops.mjs",
+        "case": "recoverableShows",
+        "ok": false,
+        "ms": 233,
+        "error": "Common:Failed_NotFound"
+      }
+    },
+    "homeTagShows": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:06.642Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTagShows",
+          "ok": true,
+          "ms": 228,
+          "note": "回读 {count,exhibits}"
+        },
+        {
+          "at": "2026-09-21T01:28:09.821Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTagShows",
+          "ok": true,
+          "ms": 399,
+          "note": "回读 {count,exhibits}"
+        },
+        {
+          "at": "2026-09-21T01:30:09.397Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTagShows",
+          "ok": true,
+          "ms": 212,
+          "note": "回读 {count,exhibits}"
+        },
+        {
+          "at": "2026-09-21T01:31:51.515Z",
+          "script": "verify_ops.mjs",
+          "case": "homeTagShows",
+          "ok": true,
+          "ms": 760,
+          "note": "回读 {count,exhibits}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:25:06.642Z",
+      "last": {
+        "at": "2026-09-21T01:31:51.515Z",
+        "script": "verify_ops.mjs",
+        "case": "homeTagShows",
+        "ok": true,
+        "ms": 760,
+        "note": "回读 {count,exhibits}"
+      }
+    },
+    "messageSettings": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:12.959Z",
+          "script": "verify_ops.mjs",
+          "case": "messageSettings",
+          "ok": true,
+          "ms": 291,
+          "note": "回读 {mute_invitation,mute_be_saved_to,mute_new_show}"
+        },
+        {
+          "at": "2026-09-21T01:28:15.411Z",
+          "script": "verify_ops.mjs",
+          "case": "messageSettings",
+          "ok": true,
+          "ms": 202,
+          "note": "回读 {mute_invitation,mute_be_saved_to,mute_new_show}"
+        },
+        {
+          "at": "2026-09-21T01:30:15.679Z",
+          "script": "verify_ops.mjs",
+          "case": "messageSettings",
+          "ok": true,
+          "ms": 221,
+          "note": "回读 {mute_invitation,mute_be_saved_to,mute_new_show}"
+        },
+        {
+          "at": "2026-09-21T01:31:57.368Z",
+          "script": "verify_ops.mjs",
+          "case": "messageSettings",
+          "ok": true,
+          "ms": 243,
+          "note": "回读 {mute_invitation,mute_be_saved_to,mute_new_show}"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:25:12.959Z",
+      "last": {
+        "at": "2026-09-21T01:31:57.368Z",
+        "script": "verify_ops.mjs",
+        "case": "messageSettings",
+        "ok": true,
+        "ms": 243,
+        "note": "回读 {mute_invitation,mute_be_saved_to,mute_new_show}"
+      }
+    },
+    "imageTagAssets": {
+      "kind": "read",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:20.452Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagAssets",
+          "ok": true,
+          "ms": 747,
+          "note": "期望：按标签反查素材；回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:28:21.701Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagAssets",
+          "ok": true,
+          "ms": 371,
+          "note": "期望：按标签反查素材；回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:30:22.577Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagAssets",
+          "ok": true,
+          "ms": 208,
+          "note": "期望：按标签反查素材；回读 Array(1)"
+        },
+        {
+          "at": "2026-09-21T01:32:05.159Z",
+          "script": "verify_ops.mjs",
+          "case": "imageTagAssets",
+          "ok": true,
+          "ms": 321,
+          "note": "期望：按标签反查素材；回读 Array(1)"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:25:20.452Z",
+      "last": {
+        "at": "2026-09-21T01:32:05.159Z",
+        "script": "verify_ops.mjs",
+        "case": "imageTagAssets",
+        "ok": true,
+        "ms": 321,
+        "note": "期望：按标签反查素材；回读 Array(1)"
+      }
+    },
+    "setImageTagsOrder": {
+      "kind": "write",
+      "everVerified": true,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:23.281Z",
+          "script": "verify_ops.mjs",
+          "case": "setImageTagsOrder",
+          "ok": true,
+          "observed": false,
+          "ms": 749,
+          "note": "期望：order 以字符串形态提交（数组会被服务端拒）；服务端受理；账号无标签，顺序无可观测差异"
+        },
+        {
+          "at": "2026-09-21T01:28:25.476Z",
+          "script": "verify_ops.mjs",
+          "case": "setImageTagsOrder",
+          "ok": true,
+          "observed": false,
+          "ms": 744,
+          "note": "期望：order 以字符串形态提交（实测数组会被服务端拒）；服务端受理；账号无标签，顺序无可观测差异"
+        },
+        {
+          "at": "2026-09-21T01:30:25.922Z",
+          "script": "verify_ops.mjs",
+          "case": "setImageTagsOrder",
+          "ok": true,
+          "observed": false,
+          "ms": 759,
+          "note": "期望：order 以字符串形态提交（实测数组会被服务端拒）；服务端受理；账号无标签，顺序无可观测差异"
+        },
+        {
+          "at": "2026-09-21T01:32:10.680Z",
+          "script": "verify_ops.mjs",
+          "case": "setImageTagsOrder",
+          "ok": true,
+          "observed": false,
+          "ms": 897,
+          "note": "期望：order 以字符串形态提交（实测数组会被服务端拒）；服务端受理；账号无标签，顺序无可观测差异"
+        }
+      ],
+      "firstVerifiedAt": "2026-09-21T01:25:23.281Z",
+      "last": {
+        "at": "2026-09-21T01:32:10.680Z",
+        "script": "verify_ops.mjs",
+        "case": "setImageTagsOrder",
+        "ok": true,
+        "observed": false,
+        "ms": 897,
+        "note": "期望：order 以字符串形态提交（实测数组会被服务端拒）；服务端受理；账号无标签，顺序无可观测差异"
+      }
+    },
+    "orderShowGoods": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "orderShowGoods",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "orderShowGoods",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "orderShowGoods",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "orderShowGoods",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "orderShowGoods",
+        "ok": false,
+        "blocked": true,
+        "error": "真实资金"
+      }
+    },
+    "payOrder": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "payOrder",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "payOrder",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "payOrder",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "payOrder",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "payOrder",
+        "ok": false,
+        "blocked": true,
+        "error": "真实资金"
+      }
+    },
+    "rechargeWallet": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "rechargeWallet",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "rechargeWallet",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "rechargeWallet",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "rechargeWallet",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "rechargeWallet",
+        "ok": false,
+        "blocked": true,
+        "error": "真实资金"
+      }
+    },
+    "withdrawCash": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "withdrawCash",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "withdrawCash",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "withdrawCash",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "withdrawCash",
+          "ok": false,
+          "blocked": true,
+          "error": "真实资金"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "withdrawCash",
+        "ok": false,
+        "blocked": true,
+        "error": "真实资金"
+      }
+    },
+    "uploadVideoFile": {
+      "kind": "write",
+      "everVerified": false,
+      "runs": [
+        {
+          "at": "2026-09-21T01:25:30.251Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadVideoFile",
+          "ok": false,
+          "blocked": true,
+          "error": "同上，且视频素材体积大"
+        },
+        {
+          "at": "2026-09-21T01:28:33.293Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadVideoFile",
+          "ok": false,
+          "blocked": true,
+          "error": "同上，且视频素材体积大"
+        },
+        {
+          "at": "2026-09-21T01:30:33.038Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadVideoFile",
+          "ok": false,
+          "blocked": true,
+          "error": "同上，且视频素材体积大"
+        },
+        {
+          "at": "2026-09-21T01:32:19.613Z",
+          "script": "verify_ops.mjs",
+          "case": "uploadVideoFile",
+          "ok": false,
+          "blocked": true,
+          "error": "同上，且视频素材体积大"
+        }
+      ],
+      "last": {
+        "at": "2026-09-21T01:32:19.613Z",
+        "script": "verify_ops.mjs",
+        "case": "uploadVideoFile",
+        "ok": false,
+        "blocked": true,
+        "error": "同上，且视频素材体积大"
+      }
+    }
+  }
+}

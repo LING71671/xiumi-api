@@ -1,168 +1,240 @@
 /**
- * verify_matrix.mjs — 写接口的「可逆」端到端验证矩阵
+ * verify_matrix.mjs — 作品写链路 + 只读面 的端到端验证矩阵
  *
- * 原则：只用自己新建的一次性作品做写操作；每一步都验证 + 还原；
- *       最后把一次性作品删掉，并确认删除生效。
+ * 原则：
+ *   1. 只用自己新建的一次性作品做写操作，最后删掉并确认删除生效。
+ *   2. **一个客户端方法一条记录**，且通过条件包含回读断言 ——
+ *      「PUT 返回 200」不算通过，「PUT 后回读到新值」才算。
+ *   3. 状态由本脚本**回写** data/verification.json，不写进源码注释。
+ *      注释里的旧标注只是「声明」，见 scripts/lib/verification.mjs 的说明。
+ *   4. 环境不具备的（无流量包等）记 blocked，与 failed 区分，不产出假阴性。
+ *
+ * 用法：node scripts/verify_matrix.mjs [--dry]
  */
-import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Xiumi } from '../client/xiumi.mjs';
+import { Verifier, Blocked, summarize } from './lib/verification.mjs';
+import { loadMeta } from './lib/methodmeta.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const SESSION = path.join(ROOT, 'capture', 'client-session.json');
-const OUT = path.join(ROOT, 'data', 'verified.json');
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const log = (...a) => console.log(...a);
 
-const results = [];
-async function probe(name, method, pathStr, group, expect, fn) {
-  const t0 = Date.now();
-  try {
-    const r = await fn();
-    results.push({ group, name, method, path: pathStr, ok: true, ms: Date.now() - t0, expect, sample: sample(r) });
-    log(`  PASS ${group.padEnd(10)} ${name}`);
-    return { ok: true, r };
-  } catch (e) {
-    results.push({ group, name, method, path: pathStr, ok: false, ms: Date.now() - t0, expect, error: String(e.message), code: e.code, status: e.status });
-    log(`  FAIL ${group.padEnd(10)} ${name}  ${e.message}${e.status ? ' HTTP' + e.status : ''}${e.code ? ' code=' + e.code : ''}`);
-    return { ok: false, e };
-  }
-}
-function sample(v) {
-  if (v === null || v === undefined) return v;
-  if (Array.isArray(v)) return `[Array ${v.length}]`;
-  if (typeof v === 'object') { const k = Object.keys(v); return `{${k.slice(0, 10).join(',')}${k.length > 10 ? ',…' : ''}}`; }
-  return typeof v === 'string' ? v.slice(0, 80) : v;
+function must(cond, msg) {
+  if (!cond) throw new Error(`断言失败：${msg}`);
 }
 
-(async () => {
-  const api = await Xiumi.loadSession(SESSION);
-  const me = await api._me();
-  log(`账号 ${me.nickname} uid=${me.unique_uid}\n`);
+const V = new Verifier({ script: 'verify_matrix.mjs', dryRun: process.argv.includes('--dry') });
+const R = (m, fn, o) => V.probe(m, 'read', fn, o);
+const W = (m, fn, o) => V.probe(m, 'write', fn, o);
 
-  // ---------- 只读 ----------
-  log('[只读]');
-  await probe('me', 'GET', '/auth/me', 'auth', 'user 对象', () => api.me());
-  await probe('userInfo', 'GET', '/api/user/info', 'auth', 'user 对象', () => api.userInfo());
-  await probe('sysInfo', 'GET', '/api/sys_info', 'auth', '配置项', () => api.sysInfo());
-  await probe('apikey', 'GET', '/api/apikey', 'auth', 'api key', () => api.apiKey());
-  await probe('walletBalance', 'GET', '/api/wallet/my/balance', 'wallet', '余额', () => api.walletBalance());
-  await probe('bills', 'GET', '/api/wallet/bills', 'wallet', '账单', () => api.bills({ limit: 5 }));
-  await probe('listShows', 'GET', '/api/shows', 'show', '作品数组', () => api.listShows({ type: 'paper', limit: 3 }));
-  await probe('showsCount', 'GET', '/api/shows/count', 'show', '计数', () => api.showsCount('paper'));
-  await probe('listImages', 'GET', '/api/assets/list/image', 'asset', '图片数组', () => api.listImages({ limit: 3 }));
-  await probe('listTemplates', 'GET', '/api/templates', 'template', '模板数组', () => api.listTemplates());
-  await probe('fragmentTagDetails', 'GET', '/api/fragments/v5/paper/comp/tags', 'template', '标签+碎片', () => api.fragmentTagDetails());
-  await probe('fragmentTagsOrder', 'GET', '/api/fragments/v5/paper/comp/tagsorder', 'template', '标签排序', () => api.fragmentTagsOrder());
-  await probe('usedFragmentsCount', 'GET', '/api/fragments/used/paper_cp', 'template', '额度', () => api.usedFragmentsCount('paper_cp'));
-  await probe('teams', 'GET', '/api/teams', 'team', '团队数组', () => api.teams());
-  await probe('messages', 'GET', '/api/messages', 'msg', '消息数组', () => api.messages({ limit: 3 }));
-  await probe('orders', 'GET', '/api/orders', 'order', '订单数组', () => api.orders({ limit: 3 }));
+const api = await Xiumi.loadSession(SESSION);
+const me = await api._me();
+log(`账号 ${me.nickname}\n`);
 
-  // ---------- 标签（可逆） ----------
-  log('\n[标签 - 可逆写]');
-  await probe('listTags', 'GET', '/api/shows/all/tags', 'tag', '标签列表', () => api.listTags('all'));
-  const TAG = `apiverify_${Date.now() % 100000}`;
-  let tagAdded = false;
+// ---------------------------------------------------------------- 只读面
+log('[只读]');
+await R('me', () => api.me(), { expect: '当前用户对象' });
+await R('userInfo', () => api.userInfo(), { expect: 'user 对象' });
+await R('sysInfo', () => api.sysInfo(), { expect: '站点配置项' });
+await R('apiKey', () => api.apiKey(), { expect: 'api key 记录' });
+await R('walletBalance', () => api.walletBalance(), { expect: '余额字段' });
+await R('bills', () => api.bills({ limit: 5 }), { expect: '账单数组' });
+await R('listShows', async () => must((await api.listShows({ type: 'paper', limit: 3 })).length >= 0, '返回数组'), { expect: '作品数组' });
+await R('showsCount', () => api.showsCount('paper'), { expect: '计数' });
+await R('listImages', () => api.listImages({ limit: 3 }), { expect: '图片数组' });
+await R('listTemplates', () => api.listTemplates(), { expect: '模板数组' });
+await R('fragmentTagDetails', () => api.fragmentTagDetails(), { expect: '标签 + 碎片' });
+await R('fragmentTagsOrder', () => api.fragmentTagsOrder(), { expect: '标签排序' });
+await R('usedFragmentsCount', () => api.usedFragmentsCount('paper_cp'), { expect: '额度' });
+await R('teams', () => api.teams(), { expect: '团队数组（普通账号可能为空）' });
+await R('messages', () => api.messages({ limit: 3 }), { expect: '消息数组' });
+await R('orders', () => api.orders({ limit: 3 }), { expect: '订单数组' });
+await R('listTags', () => api.listTags('all'), { expect: '我的标签列表' });
 
-  // ---------- 写：新建一次性作品 ----------
-  log('\n[作品写链路]');
-  const TITLE = `API 验证用作品 ${new Date().toISOString().slice(0, 19)}`;
-  const created = await probe('createBlankShow', 'POST', '/api/shows/v5/paper', 'show-w', '返回 show_id', () =>
-    api.createBlankShow('paper', TITLE));
-  const sid = created.r?.show_id;
-  log(`        -> show_id=${sid}`);
-  if (!sid) { log('无法创建作品，终止写测试'); finish(); return; }
+// ---------------------------------------------------------------- 写链路
+log('\n[作品写链路]');
+const TITLE = `API 验证用作品 ${new Date().toISOString().slice(0, 19)}`;
+const TAG = `apiverify_${Date.now() % 100000}`;
 
-  const meta0 = await probe('getShow', 'GET', `/api/shows/${sid}`, 'show-r', '元信息', () => api.getShow(sid));
-  log(`        -> title="${meta0.r?.title}" saved_at=${meta0.r?.saved_at} data_url=${meta0.r?.show_data_url}`);
+const created = await W('createBlankShow', () => api.createBlankShow('paper', TITLE), { expect: '返回 show_id' });
+const sid = created.value?.show_id;
+if (!sid) {
+  log('\n无法创建作品 —— 写链路全部跳过（不产出任何写结论）');
+  V.save();
+  process.exit(1);
+}
+log(`        -> show_id=${sid}`);
 
-  const rd = await probe('readShowData(published)', 'GET', 'show_data_url', 'show-r', '作品 JSON', () => api.readShowData(meta0.r));
-  log(`        -> keys=${rd.r?.data && typeof rd.r.data === 'object' ? Object.keys(rd.r.data).length : '-'}`);
-  const ed = await probe('readShowData(editing)', 'GET', 'editing_show_data_url', 'show-r', '草稿 JSON', () => api.readShowData(meta0.r, { editing: true }));
-  log(`        -> keys=${ed.r?.data && typeof ed.r.data === 'object' ? Object.keys(ed.r.data).length : '-'}`);
+await R('getShow', async () => {
+  const m = await api.getShow(sid);
+  must(m && Number(m.show_id) === Number(sid), `show_id 一致（拿到 ${m?.show_id}）`);
+  return m;
+}, { expect: '元信息且 show_id 一致' });
 
-  const base = (ed.r?.data && typeof ed.r.data === 'object') ? ed.r.data : rd.r?.data;
-  if (!base) { log('拿不到作品内容，终止'); finish(); return; }
+const meta0 = await api.getShow(sid);
 
-  const m1 = await api.getShow(sid);
-  await probe('updateShow(PUT) 改标题', 'PUT', `/api/shows/${sid}`, 'show-w', 'code=2 Updated', () => {
-    const d = JSON.parse(JSON.stringify(base));
-    d.title = `${TITLE} (已改)`;
-    return api.updateShow(m1, d);
-  });
-  await sleep(800);
-  const m2 = await api.getShow(sid);
-  const okTitle = String(m2.title).includes('(已改)');
-  log(`        -> 回读 title="${m2.title}"  改标题生效=${okTitle}`);
-  results.push({ group: 'show-w', name: '改标题回读一致', method: 'GET', path: `/api/shows/${sid}`, ok: okTitle, expect: 'title 含 (已改)' });
+await R('readShowData', async () => {
+  const r = await api.readShowData(meta0);
+  must(r?.data && typeof r.data === 'object', '返回作品 JSON');
+  return r;
+}, { expect: '作品内容 JSON' });
 
+const ed = await api.readShowData(meta0, { editing: true }).catch(() => null);
+if (ed?.data) {
+  V.record('readShowData', 'read', { ok: true, case: 'readShowData(editing)', note: '草稿版本可读' });
+  log('  ✅ readShowData [editing]');
+}
+const base = ed?.data || (await api.readShowData(meta0)).data;
+
+// 改标题 + 回读
+await W('updateShow', async () => {
+  const m = await api.getShow(sid);
+  const d = JSON.parse(JSON.stringify(base));
+  d.title = `${TITLE} (已改)`;
+  await api.updateShow(m, d);
+  await sleep(900);
+  const after = await api.getShow(sid);
+  must(String(after.title).includes('(已改)'), `回读 title 应含「(已改)」，实为「${after.title}」`);
+  return after;
+}, { expect: 'PUT 后回读 title 变化' });
+
+// 标签：写 → 回读可见 → 重命名 → 回读 → 移除 → 回读消失
+await W('addTag', async () => {
+  await api.addTag(sid, TAG);
   await sleep(400);
-  await probe('addTag', 'POST', `/api/shows/${sid}/tags`, 'tag', '写入标签', () => api.addTag(sid, TAG));
-  tagAdded = true;
-  await sleep(300);
-  const tagsNow = await api.listTags('all').catch(() => null);
-  const tagVisible = JSON.stringify(tagsNow || '').includes(TAG);
-  log(`        -> 标签可见=${tagVisible}`);
-  results.push({ group: 'tag', name: '标签写入后可见', method: 'GET', path: '/api/shows/all/tags', ok: tagVisible, expect: `包含 ${TAG}` });
+  const tags = JSON.stringify((await api.listTags('all')) || '');
+  must(tags.includes(TAG), `回读标签列表应含 ${TAG}`);
+  return true;
+}, { expect: '标签写入后可从 listTags 回读' });
 
-  await probe('renameTag', 'POST', '/api/shows/tags/rename', 'tag', '重命名标签', () => api.renameTag(TAG, TAG + '_r'));
-  await probe('removeTag(DELETE)', 'DELETE', `/api/shows/${sid}/tags/{tag}`, 'tag', '移除标签', () => api.removeTag(sid, TAG + '_r'));
-  await probe('clearTag(DELETE)', 'DELETE', '/api/shows/tags/clear/{tag}', 'tag', '清空标签', () => api.clearTag(TAG + '_r'));
+await W('renameTag', async () => {
+  await api.renameTag(TAG, `${TAG}_r`);
+  await sleep(400);
+  const tags = JSON.stringify((await api.listTags('all')) || '');
+  must(tags.includes(`${TAG}_r`) && !tags.includes(`"${TAG}"`), '旧名消失、新名出现');
+  return true;
+}, { expect: '重命名后旧名消失新名出现' });
 
-  // ---------- 作品开关（可逆） ----------
-  log('\n[作品开关 - 可逆]');
-  await probe('setRightAccessPrivilege', 'PUT', `/api/shows/${sid}/right_access_privilege/{v}`, 'show-w', '权限位', () => api.setRightAccessPrivilege(sid, 0));
-  await probe('setWechatNoShare(0)', 'PUT', `/api/shows/${sid}/wechat_no_share/0`, 'show-w', '关分享屏蔽', () => api.setWechatNoShare(sid, 0));
-  await probe('setTrafficPackageUsage(0)', 'PUT', `/api/shows/${sid}/use_traffic_package/0`, 'show-w-na', '无流量包时报 Failed_NotFound', () => api.setTrafficPackageUsage(sid, 0).catch((e) => {
-    if (/package provider missing/.test(String(e.message))) return { _na: '账号无流量包' };
+await W('removeTag', async () => {
+  await api.removeTag(sid, `${TAG}_r`);
+  await sleep(400);
+  const tags = JSON.stringify((await api.listTags('all')) || '');
+  must(!tags.includes(`${TAG}_r`), '标签已从列表移除');
+  return true;
+}, { expect: '移除后标签列表不再含该标签' });
+
+await W('clearTag', () => api.clearTag(`${TAG}_r`), { expect: 'DELETE 成功（此时该标签已无引用）' });
+
+// 作品开关：改 → 回读
+await W('setRightAccessPrivilege', async () => {
+  const m = await api.getShow(sid);
+  const before = m.right_access_privilege;
+  const target = Number(before) === 0 ? 2 : 0;
+  await api.setRightAccessPrivilege(sid, target);
+  await sleep(400);
+  const after = await api.getShow(sid);
+  must(Number(after.right_access_privilege) === target, `回读应为 ${target}，实为 ${after.right_access_privilege}`);
+  await api.setRightAccessPrivilege(sid, before).catch(() => {});
+  return target;
+}, { expect: 'PUT 后回读权限位变化（随后还原）' });
+
+await W('setWechatNoShare', async () => {
+  const m = await api.getShow(sid);
+  const before = Number(m.wechat_no_share) || 0;
+  const target = before === 0 ? 1 : 0;
+  await api.setWechatNoShare(sid, target);
+  await sleep(400);
+  const after = await api.getShow(sid);
+  must(Number(after.wechat_no_share) === target, `回读应为 ${target}，实为 ${after.wechat_no_share}`);
+  await api.setWechatNoShare(sid, before).catch(() => {});
+  return target;
+}, { expect: 'PUT 后回读 wechat_no_share 变化（随后还原）' });
+
+await W('setTrafficPackageUsage', async () => {
+  try {
+    await api.setTrafficPackageUsage(sid, 0);
+    return true;
+  } catch (e) {
+    // 账号没有流量包时服务端报 Failed_NotFound —— 这是环境限制，不是方法错
+    if (/package provider missing|Failed_NotFound|NotFound/i.test(String(e.message))) {
+      throw new Blocked(`账号无流量包：${e.message}`);
+    }
     throw e;
-  }));
-  await probe('trafficPackageUsage', 'GET', `/api/shows/${sid}/consumed/traffic_package/info`, 'show-r', '流量信息', () => api.trafficPackageUsage(sid));
-  await probe('showHistories', 'GET', `/api/shows/${sid}/histories`, 'show-r', '历史版本', () => api.showHistories(sid));
-  await probe('previewUri', 'GET', '/preview/uri', 'show-r', '预览链接', () => api.previewUri(`/shows/${sid}`));
-
-  // ---------- 拷贝（可逆：拷给自己另一个副本再删） ----------
-  log('\n[拷贝]');
-  const cp = await probe('copyShow', 'POST', `/api/shows/v5/paper?from_show_id=${sid}`, 'show-w', '新副本', () =>
-    api.copyShow(m2, null));
-  const cpId = cp.r?.show_id;
-  log(`        -> 副本 show_id=${cpId}`);
-
-  // ---------- 清理 ----------
-  log('\n[清理 - 删除一次性作品]');
-  await probe('deleteShow(原)', 'DELETE', `/api/shows/${sid}`, 'show-w', 'code=3 Deleted', () => api.deleteShow(sid));
-  if (cpId) await probe('deleteShow(副本)', 'DELETE', `/api/shows/${cpId}`, 'show-w', 'code=3 Deleted', () => api.deleteShow(cpId));
-  await sleep(800);
-  const del = await probe('deletedShows', 'GET', '/api/shows/deleted/shows', 'show-r', '回收站含被删作品', () => api.deletedShows({ limit: 100 }));
-  const hit = (del.r || []).find((s) => Number(s.orig_show_id) === Number(sid));
-  log(`        -> 回收站可见被删作品=${!!hit}${hit ? ` deleted_show_id=${hit.deleted_show_id}` : ''}`);
-  results.push({ group: 'show-w', name: '删除进入回收站', method: 'GET', path: '/api/shows/deleted/shows', ok: !!hit, expect: '含已删 orig_show_id' });
-
-  const rs = await probe('recoverShow', 'POST', `/api/shows/recover/{deleted_show_id}`, 'show-w', '返回 Recovered', () =>
-    api.recoverShow(hit ? hit.deleted_show_id : sid));
-  await sleep(700);
-  const back = await api.getShow(sid).then(() => true).catch(() => false);
-  log(`        -> 恢复后可见=${back}`);
-  results.push({ group: 'show-w', name: '恢复后元信息可读', method: 'GET', path: `/api/shows/${sid}`, ok: back, expect: '可读' });
-  if (back) await probe('deleteShow(二次清理)', 'DELETE', `/api/shows/${sid}`, 'show-w', '再次删除', () => api.deleteShow(sid));
-  else log('        (未恢复成功，跳过二次删除)');
-
-  finish();
-})().catch((e) => { console.error(e); finish(); });
-
-function finish() {
-  const groups = {};
-  for (const r of results) {
-    groups[r.group] ||= { pass: 0, fail: 0 };
-    r.ok ? groups[r.group].pass++ : groups[r.group].fail++;
   }
-  const summary = { at: new Date().toISOString(), total: results.length, pass: results.filter((r) => r.ok).length, groups };
-  fs.writeFileSync(OUT, JSON.stringify({ summary, results }, null, 2));
-  log(`\n===== 汇总 =====`);
-  log(`总计 ${summary.total}  通过 ${summary.pass}  失败 ${summary.total - summary.pass}`);
-  for (const [g, v] of Object.entries(groups)) log(`  ${g.padEnd(10)} pass=${v.pass} fail=${v.fail}`);
-  log(`报告 -> ${OUT}`);
+}, { expect: '有流量包时切换成功，否则标 blocked' });
+
+await R('trafficPackageUsage', () => api.trafficPackageUsage(sid), { expect: '流量信息对象' });
+await R('showHistories', async () => {
+  const h = await api.showHistories(sid);
+  must(h !== undefined, '返回历史版本');
+  return h;
+}, { expect: '历史版本数组' });
+await R('previewUri', async () => {
+  const u = await api.previewUri(`/shows/${sid}`);
+  must(!!u, '返回预览链接');
+  return u;
+}, { expect: '预览链接非空' });
+
+// 拷贝：拷给自己再删
+const m2 = await api.getShow(sid);
+const cp = await W('copyShow', async () => {
+  const c = await api.copyShow(m2, null);
+  must(c?.show_id && Number(c.show_id) !== Number(sid), '副本应有新的 show_id');
+  return c;
+}, { expect: '产生新的 show_id' });
+const cpId = cp.value?.show_id;
+log(`        -> 副本 show_id=${cpId}`);
+
+// ---------------------------------------------------------------- 清理
+log('\n[清理 - 删除一次性作品]');
+await W('deleteShow', async () => {
+  await api.deleteShow(sid);
+  await sleep(900);
+  const del = await api.deletedShows({ limit: 100 });
+  const hit = (del || []).find((s) => Number(s.orig_show_id) === Number(sid));
+  must(!!hit, '回收站应出现该作品');
+  return hit;
+}, { expect: '删除后进入回收站' });
+if (cpId) await W('deleteShow', () => api.deleteShow(cpId), { case: 'deleteShow(副本)', expect: '副本删除成功' });
+
+let deletedShowId = null;
+{
+  const del = await api.deletedShows({ limit: 100 });
+  deletedShowId = (del || []).find((s) => Number(s.orig_show_id) === Number(sid))?.deleted_show_id || null;
 }
+
+await W('recoverShow', async () => {
+  must(deletedShowId, '需要先拿到 deleted_show_id');
+  await api.recoverShow(deletedShowId);
+  await sleep(800);
+  const back = await api.getShow(sid).then((m) => m).catch(() => null);
+  must(back, '恢复后应能读回元信息');
+  return back;
+}, { expect: '恢复后元信息可读' });
+
+await R('deletedShows', async () => {
+  const d = await api.deletedShows({ limit: 5 });
+  must(Array.isArray(d), '返回数组');
+  return d;
+}, { expect: '回收站数组' });
+
+// 二次清理：把恢复回来的作品再删一次，恢复运行前状态
+await W('deleteShow', async () => {
+  await api.deleteShow(sid);
+  await sleep(800);
+  return true;
+}, { case: 'deleteShow(二次清理)', expect: '再删一次，恢复账号原状' });
+
+V.save();
+
+// ---------------------------------------------------------------- 汇总
+const metas = await loadMeta(Xiumi);
+const sum = summarize(metas, V.store);
+log('\n===== 全量状态 =====');
+log(`方法总数 ${sum.all.total}  ✅${sum.all.verified}  ⚠️${sum.all.regressed}  ❌${sum.all.failed}  ⛔${sum.all.blocked}  ◻${sum.all.declared}  ❔${sum.all.unknown}`);
+log(`  读 ${sum.byKind.read.total}：✅${sum.byKind.read.verified} ❌${sum.byKind.read.failed} ⛔${sum.byKind.read.blocked} ❔${sum.byKind.read.unknown}`);
+log(`  写 ${sum.byKind.write.total}：✅${sum.byKind.write.verified} ❌${sum.byKind.write.failed} ⛔${sum.byKind.write.blocked} ❔${sum.byKind.write.unknown}`);

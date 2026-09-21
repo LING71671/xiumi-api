@@ -30,6 +30,16 @@ function md5(s) {
 /** envelope 中的成功码：0 Common:OK / 1 Common:Created / 2 Common:Updated / 3 Common:Deleted */
 const OK_CODES = new Set([0, 1, 2, 3]);
 
+/**
+ * 排序类接口（tags/order、tagsorder）的 `order` 字段服务端只认**字符串**，
+ * 传数组会报 `Common:Failed: "arguments[2]" must be of type "string | Buffer"`。
+ * 这里统一收口：数组 → JSON 字符串，字符串原样透传。
+ */
+function asOrder(order) {
+  if (order === undefined || order === null) return '';
+  return typeof order === 'string' ? order : JSON.stringify(order);
+}
+
 // ---------------------------------------------------------------- 作品骨架模板
 //
 // 来源：编辑器 bundle 的 `depot/services/showDataGenerator` 工厂。
@@ -532,7 +542,16 @@ export class Xiumi {
   showHistories(show_id) { return this.request('GET', `/api/shows/${show_id}/histories`); }
 
   showPaymentList(show_id) { return this.request('GET', `/api/shows/${show_id}/paymentlist`); }
-  showStatistics(show_id) { return this.request('GET', `/api/statistics/show/${show_id}`); }
+  /**
+   * 作品访问统计。bundle 里真实的两个入口是
+   * `GET /api/statistics/show/{id}/daily` 与 `/ranks`（都带 ?count=）——
+   * 光给 `/api/statistics/show/{id}` 会 404。
+   * @param {number} show_id
+   * @param {'daily'|'ranks'} kind
+   */
+  showStatistics(show_id, kind = 'daily', opts = {}) {
+    return this.request('GET', `/api/statistics/show/${show_id}/${kind}`, { query: opts });
+  }
   trafficPackageUsage(show_id) { return this.request('GET', `/api/shows/${show_id}/consumed/traffic_package/info`); }
   customDomainsForShow(show_id) { return this.request('GET', `/api/custom_domains/for/show/${show_id}`); }
   validateTeamShow(show_id) { return this.request('GET', `/api/shows/validate/teamshow/${show_id}`); }
@@ -754,7 +773,20 @@ export class Xiumi {
 
   // ---- 作品生命周期 ----
 
-  renameShow(show_id, title) { return this.request('PUT', `/api/shows/${show_id}`, { body: { title } }); }
+  /**
+   * 给作品改名。
+   * 注意：`PUT /api/shows/{id}` 只给 `{title}` 会被服务端以 Common:Failed_DataRejected 拒掉
+   * （它要的是完整作品数据，见 `updateShow`）。所以这里走「读草稿 → 改 title → 整包 PUT」，
+   * 这才是编辑器里改名实际发生的事。
+   */
+  async renameShow(show_id, title) {
+    const meta = await this.getShow(show_id);
+    const ed = await this.readShowData(meta, { editing: true }).catch(() => null);
+    const data = ed?.data || (await this.readShowData(meta)).data;
+    data.title = title;
+    const fresh = await this.getShow(show_id);
+    return this.updateShow(fresh, data);
+  }
   /** 删除作品（进回收站）。返回 "Deleted" */
   deleteShow(show_id) { return this.request('DELETE', `/api/shows/${show_id}`); }
   /**
@@ -788,7 +820,14 @@ export class Xiumi {
   }
   tagsAndOrder(type = 'all', { team_id } = {}) { return this.request('GET', `/api/shows/${type || 'all'}/tags`, { query: { team_id } }); }
   tagsOrder({ team_id } = {}) { return this.request('GET', '/api/shows/tags/order', { query: { team_id } }); }
-  setTagsOrder(order, { team_id } = {}) { return this.request('POST', '/api/shows/tags/order', { body: { order, team_id } }); }
+  /**
+   * 作品标签排序。`order` 必须是**字符串**：服务端对数组直接报
+   * `Common:Failed: "arguments[2]" must be of type "string | Buffer"`（实测）。
+   * 传数组会自动 `JSON.stringify`。
+   */
+  setTagsOrder(order, { team_id } = {}) {
+    return this.request('POST', '/api/shows/tags/order', { body: { order: asOrder(order), team_id } });
+  }
   /** 给作品打标签（tag 会被 encodeURIComponent） */
   addTag(show_id, tag) { return this.request('POST', `/api/shows/${show_id}/tags`, { body: { tag: encodeURIComponent(tag) } }); }
   removeTag(show_id, tag) { return this.request('DELETE', `/api/shows/${show_id}/tags/${encodeURIComponent(tag)}`); }
@@ -920,13 +959,20 @@ export class Xiumi {
   fragmentTagDetails(type = 'paper', category = 'comp', { team_id } = {}) {
     return this.request('GET', `/api/fragments/v5/${type}/${category}/tags`, { query: { team_id } });
   }
-  /** 碎片标签排序（与 tag 维度共用，第一段是 show type、第二段是 category） */
+  /** 碎片标签排序（与 tag 维度共用，第一段是 show type、第二段是 category）。order 必须是字符串。 */
   fragmentTagsOrder(type = 'paper', category = 'comp', { team_id } = {}) {
     return this.request('GET', `/api/fragments/v5/${type}/${category}/tagsorder`, { query: { team_id } });
   }
   setFragmentTagsOrder(type, category, order, { team_id } = {}) {
-    return this.request('POST', `/api/fragments/v5/${type}/${category}/tagsorder`, { body: { order, team_id } });
+    return this.request('POST', `/api/fragments/v5/${type}/${category}/tagsorder`, { body: { order: asOrder(order), team_id } });
   }
+  /**
+   * 给碎片打标签。
+   * ⚠️ 这条是**未验证**的：实测 `POST /api/fragments/v5/paper/tags {tag}` 返回
+   * Common:Failed_NotFound，补上 category 段（`/paper/comp/tags`）则是 404。
+   * 创建入口大概率在编辑器 bundle（studio/services/fragmentsAPI）里，本地没抓到那份包。
+   * 删除/改名两条路径是可用的，创建这条在使用前请自行回读确认。
+   */
   addFragmentTag(fragment_id, tag, { type = 'paper' } = {}) {
     return this.request('POST', `/api/fragments/v5/${type}/tags`, { body: { tag: encodeURIComponent(tag) } });
   }
@@ -956,7 +1002,14 @@ export class Xiumi {
 
   formData(show_id, { limit = 50, page = 0 } = {}) { return this.request('GET', `/api/forms/data/forshow/${show_id}`, { query: { limit, page } }); }
   formCount(show_id) { return this.request('GET', `/api/forms/count/${show_id}`); }
-  forms() { return this.request('GET', '/api/forms'); }
+  /**
+   * 表单型作品的提交数据。bundle 的路径**必须带 show_id**：
+   * `GET /api/forms/{show_id}/?page=&per_page=` —— 无参的 `/api/forms` 实测 404。
+   */
+  forms(show_id, { page = 0, per_page = 20 } = {}) {
+    if (show_id === undefined) throw new Error('forms(show_id, …)：表单数据挂在具体作品上，缺少 show_id');
+    return this.request('GET', `/api/forms/${show_id}/`, { query: { page, per_page } });
+  }
 
   // ---------------------------------------------------------------- 团队 / 订单
 
@@ -967,6 +1020,11 @@ export class Xiumi {
   messages({ limit = 20, page = 0, state } = {}) { return this.request('GET', '/api/messages', { query: { limit, page, state } }); }
   messagesStatus() { return this.request('GET', '/api/messages/status'); }
   messageSettings() { return this.request('GET', '/api/messages/settings'); }
+  /**
+   * 静音开关。三个 kind：`mute_new_show` / `mute_invitation` / `mute_be_saved_to`。
+   * bundle：post("/api/messages/setting/mute_new_show/"+v, {})，值在**路径段**上。
+   * 写完用 `messageSettings()` 回读即可确认（实测 0→1→0 可逆）。
+   */
   setMute(kind /* 'mute_new_show' | 'mute_invitation' | 'mute_be_saved_to' */, value) {
     return this.request('POST', `/api/messages/setting/${kind}/${value ? 1 : 0}`, { body: {} });
   }
@@ -991,18 +1049,44 @@ export class Xiumi {
   // 影响编辑器水印与展示样式，创作链路会用。
 
   userSetting() { return this.request('GET', '/api/user_setting'); }
-  /** [未实测] 通用设置写入；字段未枚举，原样透传 */
-  updateUserSetting(body) { return this.request('POST', '/api/user_setting', { body }); }
-  /** [未实测] 发布页背景图 */
-  setBackground(body) { return this.request('POST', '/api/user_setting/background', { body }); }
+  /**
+   * 通用设置写入。bundle 是 `post("/api/user_setting", {settings: r})`，
+   * 其中 r 是「设置键 → 值」的整张表（编辑器把它当整体同步，不是逐键提交）。
+   * @param {Record<string, unknown>} settings
+   */
+  updateUserSetting(settings) { return this.request('POST', '/api/user_setting', { body: { settings } }); }
+  /**
+   * 发布页背景图。bundle：`post("/api/user_setting/background", {background: v})`，
+   * v 取设置里的 `studio.appearance.desk.background`。
+   */
+  setBackground(background) { return this.request('POST', '/api/user_setting/background', { body: { background } }); }
   palette() { return this.request('GET', '/api/user_setting/palette'); }
-  /** [未实测] 调色板（编辑器配色预设） */
-  setPalette(body) { return this.request('POST', '/api/user_setting/palette', { body }); }
-  /** [未实测] 作品接收类型；value 形如 0/1 */
-  setShowReceiveType(value) { return this.request('POST', `/api/user_setting/show-receive-type/${value}`, { body: {} }); }
+  /**
+   * 调色板（编辑器配色预设）。
+   * bundle：`post("/api/user_setting/palette", {palette: encodeURIComponent(toJson(colorGroups)), team_id, user_id})`
+   * —— palette 是**URI 编码后的 JSON 字符串**，不是对象数组。
+   */
+  setPalette(colorGroups, { team_id, user_id } = {}) {
+    const palette = encodeURIComponent(JSON.stringify(colorGroups ?? []));
+    return this.request('POST', '/api/user_setting/palette', { body: { palette, team_id, user_id } });
+  }
+  /**
+   * 作品接收类型。
+   * bundle：`post("/api/user_setting/show-receive-type", {showReceiveType: v})`
+   * —— 值在 **body** 里，不是路径段（早先按路径段写，实测 404）。
+   */
+  setShowReceiveType(value) {
+    return this.request('POST', '/api/user_setting/show-receive-type', { body: { showReceiveType: value } });
+  }
   watermark() { return this.request('GET', '/api/user_setting/watermark'); }
-  /** [未实测] 水印设置 */
-  setWatermark(body) { return this.request('POST', '/api/user_setting/watermark', { body }); }
+  /**
+   * 水印设置。
+   * bundle：`post("/api/user_setting/watermark", e)`，e 含 `watermarks` 列表；
+   * GET 返回 `{watermarks, readOnly}`，`readOnly=true` 时服务端拒绝改写。
+   */
+  setWatermark(watermarks, { team_id } = {}) {
+    return this.request('POST', '/api/user_setting/watermark', { body: { watermarks, team_id } });
+  }
   /** 水印是否对全部作品生效 */
   watermarkAll() { return this.request('GET', '/api/user_setting/watermark-all'); }
 
@@ -1133,7 +1217,8 @@ export class Xiumi {
 
   // ---------------------------------------------------------------- 自定义域名（企业版）
 
-  customDomains() { return this.request('GET', '/api/custom_domains'); }
+  /** 自定义域名列表。bundle 的 `$http` 调用带 `team_id`，个人账号不带会 Failed_InvalidParam。 */
+  customDomains({ team_id } = {}) { return this.request('GET', '/api/custom_domains', { query: { team_id } }); }
   customDomainsForShow(opts = {}) { return this.request('GET', '/api/custom_domains/for/show', { query: opts }); }
   /** [未实测] 新增自定义域名 */
   addCustomDomain(body) { return this.request('POST', '/api/custom_domains', { body }); }
@@ -1199,7 +1284,14 @@ export class Xiumi {
   /** [未实测] 上架作品 */
   putGoodsOnSale(body) { return this.request('POST', '/api/show_goods/my/goodses', { body }); }
   myIncomes(opts = {}) { return this.request('GET', '/api/show_goods/my/incomes/goodses', { query: opts }); }
-  myGoodsInfo() { return this.request('GET', '/api/show_goods/my/info'); }
+  /**
+   * 某个商品的信息。bundle：`GET /api/show_goods/my/info/{show_goods_id}?include=…`
+   * —— 无参的 `/api/show_goods/my/info` 实测 404，商品 id 是路径段。
+   */
+  myGoodsInfo(show_goods_id, { include = [] } = {}) {
+    if (show_goods_id === undefined) throw new Error('myGoodsInfo(show_goods_id, …)：缺少商品 id');
+    return this.request('GET', `/api/show_goods/my/info/${show_goods_id}`, { query: { include: [].concat(include) } });
+  }
   myApplications(opts = {}) { return this.request('GET', '/api/show_goods/my/applications', { query: opts }); }
   myPurchased(opts = {}) { return this.request('GET', '/api/show_goods/my/purchased/goodses', { query: opts }); }
   myPurchasedState(opts = {}) { return this.request('GET', '/api/show_goods/my/purchased/state', { query: opts }); }
@@ -1221,7 +1313,15 @@ export class Xiumi {
 
   // ---- 商城收藏标签 show_goods_favorite_tags
 
-  goodsFavoriteTags() { return this.request('GET', '/api/show_goods_favorite_tags'); }
+  /**
+   * 商城收藏的标签。bundle 的工厂基址是 `/api/show_goods_favorite_tags`，
+   * 但**裸 GET 该基址实测 404** —— 真实入口都带维度，见
+   * `goodsFavoriteTagState` / `goodsFavoriteTagOrder` / `goodsFavoriteTagOrderMap`。
+   * 这里保留 `show_type` 形参以匹配服务端；不带维度时请用上面三个。
+   */
+  goodsFavoriteTags({ show_type } = {}) {
+    return this.request('GET', '/api/show_goods_favorite_tags', { query: { show_type } });
+  }
   goodsFavoriteTagShows(show_type, tag_id, opts = {}) {
     return this.request('GET', `/api/show_goods_favorite_tags/${show_type}/${tag_id}/show_goods`, { query: opts });
   }
@@ -1256,15 +1356,19 @@ export class Xiumi {
   //     getPublishedUserBySid(sid)   → GET /api/user_home/published/user/{sid}/on_page
   //     getPublishedUserExhibits(uid)→ GET /api/user_home/published/user/{uid}/exhibits?limit&page
 
-  /** 他人主页基本信息（uid = unique_uid 或 user_sid） */
+  /**
+   * 他人主页基本信息。`uid` 必须是 **unique_uid**。
+   * 实测：传 user_sid 会 `Common:Failed_NotFound: unique_uid`。
+   * （分享链接那种「用会话看主页」走 `publishedUserBySid`。）
+   */
   publishedUser(uid) { return this.request('GET', `/api/user_home/published/user/${uid}/info`); }
   /** 通过**会话 sid**看主页（分享链接落地用）。注意不是 unique_uid，传 uid 会 400。 */
   publishedUserBySid(user_sid) { return this.request('GET', `/api/user_home/published/user/${user_sid}/on_page`); }
-  /** 他人主页的作品列表 */
+  /** 他人主页的作品列表。uid = unique_uid */
   publishedUserExhibits(uid, { limit, page } = {}) {
     return this.request('GET', `/api/user_home/published/user/${uid}/exhibits`, { query: { limit, page } });
   }
-  /** 他人主页「展示」区作品 */
+  /** 他人主页「展示」区作品。uid = unique_uid */
   publishedUserExhibitsOnMyPage(uid, { limit, page } = {}) {
     return this.request('GET', `/api/user_home/published/user/${uid}/exhibits/on_mypage`, { query: { limit, page } });
   }
@@ -1315,8 +1419,10 @@ export class Xiumi {
   // 主页标签族（depot/services/userExhibitsTagManager，base = /api/user_home/tag）
   // ★ 不存在 `GET /api/user_home/tag`（实测 404）；标签清单走 /tag/tags/{uid}/{tag}。
   /** 某人的主页标签（tag 默认 'all'） */
+  /** 某人的主页标签（tag 默认 'all'）。uid 必须是 **unique_uid**（传 user_sid 会 Failed_NotFound）。 */
   homeTags(uid, tag = 'all') { return this.request('GET', `/api/user_home/tag/tags/${uid}/${encodeURIComponent(tag)}`); }
   /** 某人主页标签的排序映射 */
+  /** 某人主页标签的排序映射。uid = **unique_uid**。 */
   homeTagOrderMap(uid) { return this.request('GET', `/api/user_home/tag/tagorder/${uid}`); }
   /** [未实测] 主页标签排序。bundle：post("/api/user_home/tag/order", {order}) */
   setHomeTagsOrder(order) { return this.request('POST', '/api/user_home/tag/order', { body: { order } }); }
@@ -1353,11 +1459,20 @@ export class Xiumi {
   /** [未实测] 旧版碎片删除 */
   deleteLegacyFragment(body) { return this.request('DELETE', '/api/fragment', { body }); }
   /** [未实测] HTML 代码校验（编辑器自定义 HTML 组件用） */
-  verifyHtmlCode(body) { return this.request('POST', '/api/htmlCode/verify', { body }); }
+  verifyHtmlCode(html) { return this.request('POST', '/api/htmlCode/verify', { body: { html } }); }
   /** 作品统计（另一个入口） */
-  statisticsShow(opts = {}) { return this.request('GET', '/api/statistics/show', { query: opts }); }
+  statisticsShow(show_id, { count = 30 } = {}) {
+    return this.request('GET', `/api/statistics/show/${show_id}/daily`, { query: { count } });
+  }
   homeSlogans() { return this.request('GET', '/api/home_slogans'); }
-  invitation() { return this.request('GET', '/api/invitation'); }
+  /**
+   * 邀请页信息。bundle：`GET /api/invitation/{salt_code}` —— 无参实测 404，邀请码是路径段。
+   * @param {string} salt_code 邀请链接里的 salt_code
+   */
+  invitation(salt_code) {
+    if (!salt_code) throw new Error('invitation(salt_code)：邀请码是路径段，不能省略');
+    return this.request('GET', `/api/invitation/${encodeURIComponent(salt_code)}`);
+  }
   userCoin() { return this.request('GET', '/api/user/info/coin'); }
   userInvitation() { return this.request('GET', '/api/user/info/invitation'); }
   /** [未实测] 提交反馈/工单 */
@@ -1428,16 +1543,44 @@ export class Xiumi {
   /** 图片标签顺序 */
   imageTagsOrder({ team_id } = {}) { return this.request('GET', '/api/assets/type/image/tagsorder', { query: { team_id } }); }
   /** [未实测] 设置图片标签顺序。bundle：post("/api/assets/type/image/tagsorder",{order,team_id}) */
-  setImageTagsOrder(order, { team_id } = {}) { return this.request('POST', '/api/assets/type/image/tagsorder', { body: { order, team_id } }); }
+  /** 图片标签顺序。order 必须是字符串（数组会被服务端拒），这里自动转换。 */
+  setImageTagsOrder(order, { team_id } = {}) {
+    return this.request('POST', '/api/assets/type/image/tagsorder', { body: { order: asOrder(order), team_id } });
+  }
+  /** 某个素材自己身上的标签。bundle：get("/api/assets/"+asset_id+"/tags") */
+  getImageTags(asset_id) { return this.request('GET', `/api/assets/${asset_id}/tags`); }
+  /**
+   * 给某个素材打标签（**标签是挂在素材上的**，不是账号级的）。
+   * bundle：post("/api/assets/"+asset_id+"/tags", {tag: encodeURIComponent(tag)})
+   */
+  addImageTag(asset_id, tag) {
+    return this.request('POST', `/api/assets/${asset_id}/tags`, { body: { tag: encodeURIComponent(tag) } });
+  }
+  /**
+   * 摘掉某个素材上的某个标签。
+   * ⚠️ 不是 `DELETE /api/assets/{id}/tags/{tag}` —— 那条实测 404（bundle 里那么写，
+   * 但服务端没挂）。真实可用的是 **DELETE 到集合路径、tag 放在 query/body 里**：
+   * `DELETE /api/assets/{asset_id}/tags`，实测返回 "Deleted" 且 getImageTags 立刻变空。
+   */
+  removeImageTag(asset_id, tag) {
+    return this.request('DELETE', `/api/assets/${asset_id}/tags`, { body: { tag: encodeURIComponent(tag) } });
+  }
+  /** 账号级标签列表（含每个标签下的素材）。 */
   imageTagDetails({ team_id } = {}) { return this.request('GET', '/api/assets/type/image/tags', { query: { team_id } }); }
-  /** [未实测] 新建图片标签 */
-  addImageTag(body) { return this.request('POST', '/api/assets/type/image/tags', { body }); }
   /** [未实测] 清空全部图片标签 */
   clearImageTags({ team_id } = {}) { return this.request('DELETE', '/api/assets/type/image/tags', { query: { team_id } }); }
-  /** [未实测] 删某个图片标签 */
-  deleteImageTag({ team_id } = {}) { return this.request('DELETE', '/api/assets/type/image/tag', { query: { team_id } }); }
-  /** [未实测] 图片标签重命名 */
-  renameImageTag(body) { return this.request('POST', '/api/assets/type/image/tag/rename', { body }); }
+  /**
+   * 删某个账户级图片标签。
+   * bundle：delete("/api/assets/type/image/tag/"+encodeURIComponent(tag)) —— tag 在**路径段**上，
+   * 不是 query。早先的版本漏了这一段，实测 404。
+   */
+  deleteImageTag(tag, { team_id } = {}) {
+    return this.request('DELETE', `/api/assets/type/image/tag/${encodeURIComponent(tag)}`, { query: { team_id } });
+  }
+  /** 账户级标签重命名。bundle：post("/api/assets/type/image/tag/rename", {old_tag, new_tag, team_id}) */
+  renameImageTag(old_tag, new_tag, { team_id } = {}) {
+    return this.request('POST', '/api/assets/type/image/tag/rename', { body: { old_tag, new_tag, team_id } });
+  }
   imageTagAssets(opts = {}) { return this.request('GET', '/api/assets/type/image/tag/assets', { query: opts }); }
   imageUntags({ team_id } = {}) { return this.request('GET', '/api/assets/type/image/untags', { query: { team_id } }); }
   /** [未实测] 清空未打标签的图片 */
@@ -1451,10 +1594,6 @@ export class Xiumi {
 
   /** [未实测] 标记消息已读。bundle：post("/api/messages/{id}/state/read") */
   markMessageRead(message_id) { return this.request('POST', `/api/messages/${message_id}/state/read`, { body: {} }); }
-  /** [未实测] 旧版静音开关（无 setting 前缀，bundle 里两套并存） */
-  setMuteLegacy(kind /* mute_new_show | mute_invitation | mute_be_saved_to */, value) {
-    return this.request('POST', `/api/messages/${kind}/${value ? 1 : 0}`, { body: {} });
-  }
 
   // ---------------------------------------------------------------- 发票
 
@@ -1550,8 +1689,6 @@ export class Xiumi {
   trafficPackageShows(opts = {}) { return this.request('GET', '/api/shows/consume/traffic_package/shows', { query: opts }); }
   officialShowsLegacy(opts = {}) { return this.request('GET', '/api/shows/from/official', { query: opts }); }
   teamShowsCount(opts = {}) { return this.request('GET', '/api/shows/from/teams/count', { query: opts }); }
-  /** 可恢复的作品（另一个入口） */
-  recoverableShows(opts = {}) { return this.request('GET', '/api/shows/recover', { query: opts }); }
   /** [未实测] 清空某标签下全部作品的标签 */
   clearTagAll(body) { return this.request('POST', '/api/shows/tags/clear', { body }); }
   /** [未实测] 标签重命名（方法原提取为 DELETE，bundle 里是 POST） */

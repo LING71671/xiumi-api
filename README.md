@@ -1,6 +1,6 @@
 # xiumi-api — 秀米（xiumi.us）非官方全站 API 与客户端
 
-对秀米 web 应用的完整接口梳理与客户端封装：**308 个接口 · 649 个字段 · 42 项写操作端到端实测通过**。
+对秀米 web 应用的完整接口梳理与客户端封装：**308 个接口 · 649 个字段 · 399 个客户端方法**。
 拿一份 `sid` 登录态（或直接给账号密码），即可对账号做绝大多数操作：读写作品、编辑内容、
 上传素材、打标签、拷贝/删除/恢复、管理账号与订单（逐项覆盖率见下）。
 
@@ -10,10 +10,17 @@ Playwright 只在"抓包 / 渲染验证"阶段需要，属可选依赖。
 > API 只有一套，全在 `xiumi.us`。`xiumius.cn` 是纯静态着陆页（腾讯 COS 桶），
 > 一行接口都没有 —— 实测证据见 [`docs/SITE-TOPOLOGY.md`](docs/SITE-TOPOLOGY.md)。
 >
-> **接口齐全 ≠ 每一项都验过。** 按「浏览器里能操作的这里都能操作」这个标准逐项对账的结果在
-> [`docs/PARITY.md`](docs/PARITY.md)：85 个页面都有对应方法，但 399 个方法里
-> 只有约 10% 有端到端实测证据，34% 明确未实测，过半是状态不明。
-> 那份文档同时是缺口清单与收口计划。
+> **接口齐全 ≠ 每一项都验过。** 这两件事分开看：
+>
+> - **功能对等**（浏览器里能点的，这里有没有对应方法）：85 个页面都有对应方法 →
+>   [`docs/PARITY.md`](docs/PARITY.md)
+> - **验没验过**（有脚本跑出来的证据吗）：399 个方法里 **115 个 ✅ 端到端实测通过**、
+>   2 个 🟡 调用被受理但语义未观测、3 个 ❌ 实测不通过、22 个 ⛔ 环境受限、
+>   113 个 ◻ 只在源码里声明过「未实测」、144 个 ❔ 无记录 →
+>   [`docs/COVERAGE.md`](docs/COVERAGE.md)
+>
+> `COVERAGE.md` **由脚本生成**：状态只来自 `data/verification.json`，而那份文件只能由
+> `scripts/verify_*.mjs` 回写。人不再手写「这个方法验过没有」。
 
 ---
 
@@ -27,18 +34,23 @@ xiumi-api/
 │   └── lz-string.mjs          ← 自实现 LZ-String（作品数据编解码）
 ├── docs/
 │   ├── API-REFERENCE.md       ← 308 个接口全量清单（按模块分组，含验证状态）
-│   ├── CAPABILITIES.md        ← 399 个客户端方法目录（读/写 + 风险标注，自动生成）
+│   ├── CAPABILITIES.md        ← 399 个客户端方法目录（读/写 + 风险 + 验证状态，自动生成）
+│   ├── COVERAGE.md            ← 验证覆盖率台账（逐方法证据：脚本/用例/时间/结果，自动生成）
 │   ├── PARITY.md              ← 浏览器功能 ↔ API 对等矩阵（85 个页面逐域对账 + 缺口清单）
 │   ├── FIELDS.md              ← 649 个字段字典
 │   ├── AI-CREATION.md         ← AI 内容创作能力清单（能做什么 / 还差什么）
 │   ├── RECIPES.md             ← 内容创作实操配方（新建/改文本/插图/拷贝/删除）
-│   ├── VERIFIED.md            ← 42 项写操作验证报告 + 关键机制说明
+│   ├── VERIFIED.md            ← 验证纪律 + 关键机制说明（数字看 COVERAGE.md）
 │   └── SITE-TOPOLOGY.md       ← xiumius.cn 与 xiumi.us 的域名分工（API 只有一套）
 ├── scripts/
 │   ├── cli.mjs                ← 全站操作 CLI（list / describe / call / raw / login）
+│   ├── verify_matrix.mjs      ← 作品写链路验证（自建自删）
+│   ├── verify_ops.mjs         ← 可逆写面 + 只读面验证
+│   ├── coverage.mjs           ← 由 verification.json 生成 COVERAGE.md
+│   ├── lib/                   ← 方法元数据 + 验证状态存储
 │   ├── cfg.mjs                ← 路径与浏览器解析的唯一来源
 │   ├── misc/                  ← 脱敏与密钥扫描工具（见「提交前检查」）
-│   ├── probes/                ← 一次性探针，保留作方法参考
+│   ├── probes/                ← 一次性探针，只取证不结论
 │   └── *.mjs                  ← 抓包、提取、验证、文档生成
 ├── data/                      ← 结构化产物（endpoints / catalog / schemas / verified）
 │                                 全部经过保形伪名化，见「数据脱敏」
@@ -98,7 +110,7 @@ console.log('编辑器:', 'https://xiumi.us' + created.edit_url);
 
 ```bash
 node scripts/cli.mjs list                    # 399 个方法，按 读 / 写 分组
-node scripts/cli.mjs list --write            # 只看写操作（203 个）
+node scripts/cli.mjs list --write            # 只看写操作（205 个）
 node scripts/cli.mjs list --md               # 输出 Markdown 表格（就是 CAPABILITIES.md）
 node scripts/cli.mjs describe deleteShow     # 签名、注释、风险标注
 node scripts/cli.mjs call getShow 123456     # 调用
@@ -403,19 +415,26 @@ unwrapShowData(encodedData)  wrapShowData(show, uniqueUid)
 | `scripts/analyze_capture.mjs` | 解析流量 → 实测接口 + 字段字典 | 否 |
 | `scripts/api_probe.mjs` | 只读 GET 探测（带危险端点黑名单） | 否 |
 | `scripts/gen_docs.mjs` | 三路合并生成 `docs/API-REFERENCE.md`、`docs/FIELDS.md` | 否 |
-| **`scripts/verify_matrix.mjs`** | **42 项可逆写验证** | 否 |
+| **`scripts/verify_matrix.mjs`** | **作品写链路验证（建→改→回读→删→恢复）** | 否 |
+| **`scripts/verify_ops.mjs`** | **可逆写面 + 只读面验证（自动回写 verification.json）** | 否 |
+| **`scripts/coverage.mjs`** | **由 `data/verification.json` 生成 `docs/COVERAGE.md`** | 否 |
 | `scripts/e2e_roundtrip.mjs` | 单作品读写往返 | 否 |
 | `scripts/misc/secret_scan.py` | **提交前密钥/个人信息扫描** | 否 |
 | `scripts/misc/desensitize.py` | **保形伪名化（幂等）** | 否 |
 
-`scripts/probes/` 下是一次性探针，保留作方法参考：从零构造作品
+`scripts/probes/` 下是一次性探针，**只取证、不结论**：从零构造作品
 （`probe_create_scratch.mjs`）、官方组件库构造（`probe_official_comp.mjs`）、
 改正文文本 + 渲染确认（`probe_textedit.mjs`）、删除/回收站语义
-（`probe_trash.mjs`）、恢复用哪个 id（`probe_recover.mjs`）等。
+（`probe_trash.mjs`）、恢复用哪个 id（`probe_recover.mjs`）、
+设置类写接口的 body 形状取证（`probe_settings*.mjs`）等。
+结论一律进 `data/verification.json`，由 `coverage.mjs` 渲染 —— 两者不要混。
 
 ```bash
-node scripts/gen_docs.mjs          # 重新生成文档
-node scripts/verify_matrix.mjs     # 跑写验证（会自建自删一次性作品）
+node scripts/gen_docs.mjs          # 重新生成 API-REFERENCE / FIELDS
+node scripts/verify_matrix.mjs     # 作品写链路（会自建自删一次性作品）
+node scripts/verify_ops.mjs        # 只读面 + 可逆写面（会自建自删一次性素材）
+node scripts/coverage.mjs          # 重新生成 COVERAGE.md + data/coverage.json
+node scripts/cli.mjs list --md > docs/CAPABILITIES.md
 ```
 
 ---
