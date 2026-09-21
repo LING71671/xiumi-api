@@ -1,6 +1,6 @@
 {
   "name": "xiumi-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "秀米（xiumi.us）非官方 API 客户端与接口文档 —— 零依赖，Node 18+",
   "type": "module",
   "license": "Apache-2.0",
@@ -19,8 +19,12 @@
   "exports": {
     ".": "./client/xiumi.mjs"
   },
+  "bin": {
+    "xiumi": "./scripts/cli.mjs"
+  },
   "files": [
     "client/",
+    "scripts/cli.mjs",
     "docs/",
     "data/",
     "README.md",
@@ -28,7 +32,8 @@
   ],
   "scripts": {
     "scan": "python scripts/misc/secret_scan.py",
-    "gen-docs": "node scripts/gen_docs.mjs"
+    "gen-docs": "node scripts/gen_docs.mjs",
+    "capabilities": "node scripts/cli.mjs list --md > docs/CAPABILITIES.md"
   },
   "peerDependencies": {
     "playwright-core": ">=1.40"

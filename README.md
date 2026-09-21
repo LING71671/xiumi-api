@@ -22,12 +22,14 @@ xiumi-api/
 │   └── lz-string.mjs          ← 自实现 LZ-String（作品数据编解码）
 ├── docs/
 │   ├── API-REFERENCE.md       ← 308 个接口全量清单（按模块分组，含验证状态）
+│   ├── CAPABILITIES.md        ← 399 个客户端方法目录（读/写 + 风险标注，自动生成）
 │   ├── FIELDS.md              ← 649 个字段字典
 │   ├── AI-CREATION.md         ← AI 内容创作能力清单（能做什么 / 还差什么）
 │   ├── RECIPES.md             ← 内容创作实操配方（新建/改文本/插图/拷贝/删除）
 │   ├── VERIFIED.md            ← 42 项写操作验证报告 + 关键机制说明
 │   └── SITE-TOPOLOGY.md       ← xiumius.cn 与 xiumi.us 的域名分工（API 只有一套）
 ├── scripts/
+│   ├── cli.mjs                ← 全站操作 CLI（list / describe / call / raw / login）
 │   ├── cfg.mjs                ← 路径与浏览器解析的唯一来源
 │   ├── misc/                  ← 脱敏与密钥扫描工具（见「提交前检查」）
 │   ├── probes/                ← 一次性探针，保留作方法参考
@@ -81,6 +83,66 @@ console.log('编辑器:', 'https://xiumi.us' + created.edit_url);
 
 > ⚠️ **组件结构只能从站内模板库取**（`GET /api/templates/items` 的 `matrix`）。
 > 手写不存在的 `tplId` 不会报错，只会让编辑器静默渲染成占位图。
+
+---
+
+## 命令行（`xiumi`）
+
+不想写代码就直接用 CLI：客户端的 **399 个方法**全在一个入口下，不设白名单。
+
+```bash
+node scripts/cli.mjs list                    # 399 个方法，按 读 / 写 分组
+node scripts/cli.mjs list --write            # 只看写操作（203 个）
+node scripts/cli.mjs list --md               # 输出 Markdown 表格（就是 CAPABILITIES.md）
+node scripts/cli.mjs describe deleteShow     # 签名、注释、风险标注
+node scripts/cli.mjs call getShow 123456     # 调用
+node scripts/cli.mjs raw GET /api/sys_info   # 任意接口逃生口（客户端没封装的也能打）
+```
+
+方法全集以**运行时自省**为准（`Object.getOwnPropertyNames`），签名与注释由源码静态补齐 ——
+所以目录不会漏方法，新增接口后 `list` 自动跟上。
+
+### 登录：三种方式
+
+```bash
+# 1. 账密（纯 HTTP，不需要浏览器；命中风控会要求验证码）
+node scripts/cli.mjs login --user <账号> --pass <密码>
+
+# 2. 打开浏览器手动登录 —— 扫码 / 短信 / 账密都行，登录成功后自动抓 sid
+node scripts/cli.mjs login --browser
+
+# 3. 直接给 sid（写 - 表示从 stdin 读，避免留在 shell 历史里）
+echo '<sid>' | node scripts/cli.mjs login --sid -
+```
+
+`--browser` 会用 playwright 拉起有头浏览器打开 `https://xiumi.us/auth`，轮询 cookie，
+抓到 `sid` 就落盘并立刻关闭浏览器（只读 cookie，不碰页面内容）。
+没有 playwright 时用另外两种方式；`--login-url` / `--timeout <秒>` 可调。
+
+会话默认写在 `capture/client-session.json`（`sid` 有效期 3 天，可多设备并行），
+用 `--session <路径>` 换位置。三种方式都会保留会话文件里原有的账密，
+所以 `--browser` 或 `--sid` 登录不会把已经存好的账密抹掉。
+
+### 参数怎么传
+
+位置参数逐个尝试 `JSON.parse` —— `123` 得数字、`{"a":1}` 得对象、`标签` 解析失败则原样当字符串。
+多个参数依次写；不确定签名先 `describe`。
+
+```bash
+node scripts/cli.mjs call listShows '{"type":"paper","limit":10}'
+node scripts/cli.mjs call addTag 123456 标签
+node scripts/cli.mjs call deleteShow 123456
+node scripts/cli.mjs call uploadImageBase64 --args '["<base64>","cover.png"]'
+```
+
+### 关于风险标注
+
+`list` / `describe` 会标注 `读` / `写`，以及 `删除/清空` / `资金` / `账号凭据` / `修改`。
+这些是源码静态推断 + 命名启发式，**只作提示，不构成拦截** —— CLI 不会二次确认，
+也不会拦下任何调用。代价不可逆的操作（删除、清空、支付、提现、改密码、解绑）
+请自己核对调用对象。
+
+完整目录见 [`docs/CAPABILITIES.md`](docs/CAPABILITIES.md)。
 
 ---
 
