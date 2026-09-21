@@ -2,6 +2,16 @@
 
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 与 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.1.1] - 2026-09-21
+
+### 变更
+
+- 对外表述统一为「非官方 API 与客户端 / 接口梳理」，不再使用「逆向」措辞：
+  `README.md` 首段、`docs/PARITY.md`、`docs/SITE-TOPOLOGY.md`、仓库描述与话题标签、
+  `package.json` 关键词（`reverse-engineering` → `api-documentation`）
+- 端到端验证脚本的样例作品标题改为 `API 客户端验证样例`，两处需同步：
+  `scripts/editor_create.mjs`（写入方）与 `scripts/probes/probe_textedit.mjs`（假设此为旧文本的断言方）
+
 ## [1.1.0] - 2026-09-21
 
 ### 新增

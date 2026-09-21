@@ -81,7 +81,7 @@ async function fetchText(url) {
     log(`公开页拉取失败: ${e.message}`);
   }
   const renderHit = page.includes(MARK);
-  const renderOld = page.includes('API 逆向验证样例');
+  const renderOld = page.includes('API 客户端验证样例');
   log(`公开页含新标记=${renderHit}  含旧文本=${renderOld}`);
   rec.afterPut1_render_new = renderHit;
   rec.afterPut1_render_old = renderOld;

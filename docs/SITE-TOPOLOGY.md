@@ -1,7 +1,7 @@
 # 域名拓扑：`xiumius.cn` 与 `xiumi.us` 是什么关系
 
 结论先说：**不是「两个站」，是「一套应用 + 域名分工」。API 只有一套，全在 `xiumi.us`。**
-做接口逆向只需要盯着 `xiumi.us`，`xiumius.cn` 一行接口都没有。
+做接口梳理只需要盯着 `xiumi.us`，`xiumius.cn` 一行接口都没有。
 
 ## 一张图
 
@@ -127,7 +127,7 @@ await fetch('/auth/me', { credentials: 'include' })
 
 | 问题 | 答案 |
 |---|---|
-| 要不要分别逆向两套 API？ | **不用**。cn 域名没有 API，只有 `xiumi.us` 一套 |
+| 要不要分别梳理两套 API？ | **不用**。cn 域名没有 API，只有 `xiumi.us` 一套 |
 | 客户端 `BASE` 该填哪个？ | `https://xiumi.us`（现有 `client/xiumi.mjs` 已是这个值，无需改动） |
 | 账号在 cn 站注册的和 us 站是同一个吗？ | 是。cn 站的「登录」按钮就指向 `https://xiumi.us/auth` |
 | 在 us 上创建的作品，cn 站能看到吗？ | 同一份数据。作品公开页域名是 `v.xiumi.us` / `v.xiumius.cn`，数据在 us 的 API |
@@ -135,7 +135,7 @@ await fetch('/auth/me', { credentials: 'include' })
 | `xiumius.cn/user/setting.html` 能用吗？ | 不能，404。功能页全在 us |
 
 **一句话**：cn 域名是「门面和仓库」，us 域名是「唯一的应用机房」。
-逆向只要打 us；找 bundle 要去 cn。
+接口只要打 us；找 bundle 要去 cn。
 
 ## 复现命令
 

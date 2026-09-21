@@ -6,8 +6,8 @@ import path from 'node:path';
 import { CAPTURE_DIR, STATE_FILE, launchOptions, contextOptions } from './cfg.mjs';
 import { Recorder } from './recorder.mjs';
 
-const TITLE = 'API 逆向验证样例';
-const BODY = '这是通过接口逆向验证写入的内容。';
+const TITLE = 'API 客户端验证样例';
+const BODY = '这是通过 API 客户端写入的内容。';
 
 const browser = await chromium.launch(launchOptions);
 const ctx = await browser.newContext({ ...contextOptions, storageState: STATE_FILE });

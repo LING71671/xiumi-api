@@ -1,6 +1,6 @@
 {
   "name": "xiumi-api",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "秀米（xiumi.us）非官方 API 客户端与接口文档 —— 零依赖，Node 18+",
   "type": "module",
   "license": "Apache-2.0",
@@ -48,7 +48,7 @@
     "秀米",
     "api",
     "client",
-    "reverse-engineering",
+    "api-documentation",
     "unofficial"
   ]
 }
