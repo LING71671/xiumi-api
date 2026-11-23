@@ -1,6 +1,6 @@
 # xiumi-api — 秀米（xiumi.us）非官方全站 API 与客户端
 
-对秀米 web 应用的完整接口梳理与客户端封装：**308 个接口 · 649 个字段 · 399 个客户端方法**。
+对秀米 web 应用的完整接口梳理与客户端封装：**308 个接口 · 649 个字段 · 443 个客户端方法**。
 拿一份 `sid` 登录态（或直接给账号密码），即可对账号做绝大多数操作：读写作品、编辑内容、
 上传素材、打标签、拷贝/删除/恢复、管理账号与订单（逐项覆盖率见下）。
 
@@ -14,9 +14,9 @@ Playwright 只在"抓包 / 渲染验证"阶段需要，属可选依赖。
 >
 > - **功能对等**（浏览器里能点的，这里有没有对应方法）：85 个页面都有对应方法 →
 >   [`docs/PARITY.md`](docs/PARITY.md)
-> - **验没验过**（有脚本跑出来的证据吗）：399 个方法里 **115 个 ✅ 端到端实测通过**、
+> - **验没验过**（有脚本跑出来的证据吗）：443 个方法里 **115 个 ✅ 端到端实测通过**、
 >   2 个 🟡 调用被受理但语义未观测、3 个 ❌ 实测不通过、22 个 ⛔ 环境受限、
->   113 个 ◻ 只在源码里声明过「未实测」、144 个 ❔ 无记录 →
+>   162 个 ◻ 只在源码里声明过「未实测」、139 个 ❔ 无记录 →
 >   [`docs/COVERAGE.md`](docs/COVERAGE.md)
 >
 > `COVERAGE.md` **由脚本生成**：状态只来自 `data/verification.json`，而那份文件只能由
@@ -34,7 +34,7 @@ xiumi-api/
 │   └── lz-string.mjs          ← 自实现 LZ-String（作品数据编解码）
 ├── docs/
 │   ├── API-REFERENCE.md       ← 308 个接口全量清单（按模块分组，含验证状态）
-│   ├── CAPABILITIES.md        ← 399 个客户端方法目录（读/写 + 风险 + 验证状态，自动生成）
+│   ├── CAPABILITIES.md        ← 443 个客户端方法目录（读/写 + 风险 + 验证状态，自动生成）
 │   ├── COVERAGE.md            ← 验证覆盖率台账（逐方法证据：脚本/用例/时间/结果，自动生成）
 │   ├── PARITY.md              ← 浏览器功能 ↔ API 对等矩阵（85 个页面逐域对账 + 缺口清单）
 │   ├── FIELDS.md              ← 649 个字段字典
@@ -106,10 +106,10 @@ console.log('编辑器:', 'https://xiumi.us' + created.edit_url);
 
 ## 命令行（`xiumi`）
 
-不想写代码就直接用 CLI：客户端的 **399 个方法**全在一个入口下，不设白名单。
+不想写代码就直接用 CLI：客户端的 **443 个方法**全在一个入口下，不设白名单。
 
 ```bash
-node scripts/cli.mjs list                    # 399 个方法，按 读 / 写 分组
+node scripts/cli.mjs list                    # 443 个方法，按 读 / 写 分组
 node scripts/cli.mjs list --write            # 只看写操作（205 个）
 node scripts/cli.mjs list --md               # 输出 Markdown 表格（就是 CAPABILITIES.md）
 node scripts/cli.mjs describe deleteShow     # 签名、注释、风险标注
@@ -410,8 +410,10 @@ unwrapShowData(encodedData)  wrapShowData(show, uniqueUid)
 | `scripts/smoke.mjs` | 浏览器冒烟 | 是 |
 | `scripts/login.mjs` | 浏览器登录并落盘 storage_state | 是 |
 | `scripts/fetch_assets.mjs` | 递归抓取全站 JS/HTML/CSS | 是 |
+| `scripts/fetch_assets_static.mjs` | 同上，纯 HTTP 抓 bundle（补接口时用） | 否 |
 | `scripts/explore.mjs` | 登录态遍历 38 条路由录制 XHR | 是 |
-| `scripts/extract_endpoints.mjs` | 从 bundle 静态提取接口 | 否 |
+| `scripts/extract_endpoints.mjs` | 从 bundle 静态提取接口（做基址解析，可能张冠李戴） | 否 |
+| **`scripts/diff_endpoints.mjs`** | **bundle 字面量路径 ↔ 客户端已封装路径做段级比对，点名没封装的接口** | 否 |
 | `scripts/analyze_capture.mjs` | 解析流量 → 实测接口 + 字段字典 | 否 |
 | `scripts/api_probe.mjs` | 只读 GET 探测（带危险端点黑名单） | 否 |
 | `scripts/gen_docs.mjs` | 三路合并生成 `docs/API-REFERENCE.md`、`docs/FIELDS.md` | 否 |
@@ -435,7 +437,19 @@ node scripts/verify_matrix.mjs     # 作品写链路（会自建自删一次性�
 node scripts/verify_ops.mjs        # 只读面 + 可逆写面（会自建自删一次性素材）
 node scripts/coverage.mjs          # 重新生成 COVERAGE.md + data/coverage.json
 node scripts/cli.mjs list --md > docs/CAPABILITIES.md
+node scripts/diff_endpoints.mjs    # 补接口：bundle 里有、这里没封装的，直接点名
 ```
+
+### 怎么继续挖新接口
+
+1. `node scripts/fetch_assets_static.mjs`（或走浏览器的 `scripts/fetch_assets.mjs`）把当前前端资源抓到
+   `capture/assets/`；
+2. `node scripts/diff_endpoints.mjs` —— 它只认 bundle 里的**字面量**路径，不做基址变量推断，
+   所以不会把 `/api/teams/{id}/members` 误记成 `/api/shows/members`；
+3. 输出两个清单：`capture/diff_new.json`（未封装）与 `capture/diff_dead.json`
+   （客户端有、本次 bundle 没出现，可能已下线，需人工确认）；
+4. 补方法时照 `client/xiumi.mjs` 末尾「第三轮补全」的写法：一行一个，注释里带 bundle 证据
+   （`getIdentity: get("/api/teams/"+e+"/identity")`），没跑过的一律标 `[未实测]`。
 
 ---
 

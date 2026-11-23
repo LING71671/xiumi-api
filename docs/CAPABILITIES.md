@@ -1,13 +1,13 @@
 # 全站方法目录
 
-> 由 `node scripts/cli.mjs list --md` 生成，共 **399** 个方法
-> （静态 2 / 读 192 / 写 205）。
+> 由 `node scripts/cli.mjs list --md` 生成，共 **443** 个方法
+> （静态 2 / 读 209 / 写 232）。
 >
 > 「类型」由源码静态推断：**读** / **写**。「删除/清空」「资金」「账号凭据」「修改」
 > 是命名启发式标注，**只作提示**——哪些操作代价高由你自己判断，工具不做任何拦截。
 >
 > 「验证状态」只读 `data/verification.json`，**由验证脚本回写**，不由人记：
-> ✅ 实测通过 115 · 🟡 调用被接受 2 · ⚠️ 曾通过/本次失败 0 · ❌ 实测未通过 3 · ⛔ 环境受限 22 · ◻ 声明未实测 113 · ❔ 无记录 144
+> ✅ 实测通过 115 · 🟡 调用被接受 2 · ⚠️ 曾通过/本次失败 0 · ❌ 实测未通过 3 · ⛔ 环境受限 22 · ◻ 声明未实测 162 · ❔ 无记录 139
 > `✅`=语义已验证（写后有回读断言） `🟡`=调用被服务端受理但无可观测回读字段。
 > 逐方法证据链见 [`COVERAGE.md`](./COVERAGE.md)。
 >
@@ -20,11 +20,10 @@
 | `loadSession` | `file, opts = {}` | 读 | ❔ 无记录 |  |
 | `login` | `{ user, password, areaCode = 86, ...rest }` | 读 | ❔ 无记录 | 账密登录 |
 
-## 读操作（192）
+## 读操作（209）
 
 | 方法 | 签名 | 类型 | 验证状态 | 说明 |
 |---|---|---|---|---|
-| `_me` | `—` | 读 | ❔ 无记录 |  |
 | `adminTagDrop` | `opts = {}` | 读 | ⛔ 环境受限 |  |
 | `adminTagNew` | `opts = {}` | 读 | ⛔ 环境受限 |  |
 | `apiKey` | `—` | 读 · 账号凭据 | ✅ 实测通过 |  |
@@ -47,11 +46,13 @@
 | `connectAccessCode` | `opts = {}` | 读 | ❔ 无记录 | 开放连接换取 access_code |
 | `contacts` | `—` | 读 | ✅ 实测通过 |  |
 | `customDomains` | `{ team_id } = {}` | 读 | ⛔ 环境受限 | 自定义域名列表 |
-| `customDomainsForShow` | `opts = {}` | 读 | ❔ 无记录 |  |
+| `customDomainsForShow` | `show_id` | 读 | ❔ 无记录 |  |
 | `deletedShows` | `opts` | 读 · 删除/清空 | ✅ 实测通过 | 回收站条目数组（每项含 deleted_show_id / orig_show_id） |
 | `deletedShowsRaw` | `{ type, version, limit = 16, page = 0, search, enableFullTextSearch } = {}` | 读 · 删除/清空 | ❔ 无记录 | 回收站原始返回 {count, deletedShows:[...]} |
 | `emailLoginSuccess` | `—` | 读 · 账号凭据 | ❔ 无记录 | 邮箱登录后的落地页（OAuth/邮件链接会跳这里） |
+| `enterpriseMemberRemoveCount` | `team_id` | 读 | ◻ 声明未实测 | 还能移除几个企业成员（配额） |
 | `expectedIncome` | `opts = {}` | 读 | ❔ 无记录 |  |
+| `exportFormData` | `show_id, { exportAll = true, exportType, fileType = 'excel', perPage, startPage, endPage } = {}` | 读 | ◻ 声明未实测 | 导出作品收集的表单数据（Excel） |
 | `extractHeadings2` | `opts = {}` | 读 | ◻ 声明未实测 | 第二版提取接口；参数未枚举 |
 | `fansCount` | `uid` | 读 | ❔ 无记录 | 某人的粉丝数 |
 | `fetchJson` | `urlOrPath` | 读 | ❔ 无记录 | 取一段 JSON |
@@ -60,11 +61,12 @@
 | `fontFaces` | `opts = {}` | 读 | ❔ 无记录 | 站内字体：批量取 woff @font-face（原提取结果为「方法未知」，此处按 GET） |
 | `formCount` | `show_id` | 读 | ❔ 无记录 |  |
 | `formData` | `show_id, { limit = 50, page = 0 } = {}` | 读 | ⛔ 环境受限 |  |
+| `formExportProgress` | `job` | 读 | ◻ 声明未实测 | 查导出进度 |
 | `forms` | `show_id, { page = 0, per_page = 20 } = {}` | 读 | ✅ 实测通过 | 表单型作品的提交数据 |
 | `formsCount` | `opts = {}` | 读 | ❔ 无记录 |  |
 | `fragmentTagDetails` | `type = 'paper', category = 'comp', { team_id } = {}` | 读 | ✅ 实测通过 | 碎片标签详情（含每个标签下的碎片） |
 | `fragmentTagsOrder` | `type = 'paper', category = 'comp', { team_id } = {}` | 读 | ✅ 实测通过 | 碎片标签排序（与 tag 维度共用，第一段是 show type、第二段是 category） |
-| `get` | `—` | 读 | ❔ 无记录 |  |
+| `frozenCheck` | `—` | 读 | ◻ 声明未实测 | 能否冻结账号（预检） |
 | `getImageTags` | `asset_id` | 读 | ✅ 实测通过 | 某个素材自己身上的标签 |
 | `getPublishedUser` | `uid` | 读 | ❔ 无记录 |  |
 | `getPublishedUserExhibits` | `uid, opts` | 读 | ✅ 实测通过 |  |
@@ -78,6 +80,9 @@
 | `goodsFavoriteTags` | `{ show_type } = {}` | 读 | ⛔ 环境受限 | 商城收藏的标签 |
 | `goodsFavoriteTagShows` | `show_type, tag_id, opts = {}` | 读 | ❔ 无记录 |  |
 | `goodsFavoriteTagState` | `show_type` | 读 | ✅ 实测通过 |  |
+| `goodsModifyApplication` | `show_goods_id` | 读 | ◻ 声明未实测 | 我的商品的「修改申请」表单 |
+| `goodsPriceChangeDays` | `show_goods_id` | 读 | ◻ 声明未实测 | 距下次可改价的剩余天数 |
+| `goodsTags` | `show_goods_id` | 读 | ◻ 声明未实测 | 某在售商品的标签 |
 | `headingTask` | `task_id` | 读 | ◻ 声明未实测 | 查提取任务状态 |
 | `headingWord` | `word_id` | 读 | ◻ 声明未实测 | 取某个词的处理结果；原提取结果为「方法未知」，此处按 GET |
 | `homeSlogans` | `—` | 读 | ✅ 实测通过 |  |
@@ -107,8 +112,10 @@
 | `listTemplates` | `{ tagCategory = 'paper-cp', tag_ids, q, match_level = 'default', sort = 'DESC', limit = 20, page = 0 } = {}` | 读 | ✅ 实测通过 | 官方组件/模板库（21k+ 条） |
 | `listVideos` | `{ limit = 20, offset = 0, team_id } = {}` | 读 | ✅ 实测通过 |  |
 | `loginHistory` | `—` | 读 | ✅ 实测通过 |  |
+| `loginKey` | `—` | 读 | ◻ 声明未实测 | 取登录/改密的 RSA 公钥 |
 | `loginUrl` | `provider /* 'qq' \| 'wechat' \| 'weibo' */` | 读 | ❔ 无记录 | 未登录态用第三方账号登录（同样只能走浏览器导航） |
 | `me` | `—` | 读 | ✅ 实测通过 |  |
+| `memberShareAuth` | `team_id, member_id` | 读 | ◻ 声明未实测 | 某成员被授予了哪些共享权限 |
 | `messages` | `{ limit = 20, page = 0, state } = {}` | 读 | ✅ 实测通过 |  |
 | `messageSettings` | `—` | 读 | ✅ 实测通过 |  |
 | `messagesStatus` | `—` | 读 | ✅ 实测通过 |  |
@@ -116,11 +123,13 @@
 | `myApplications` | `opts = {}` | 读 | ❔ 无记录 |  |
 | `myGoodses` | `opts = {}` | 读 | ✅ 实测通过 |  |
 | `myGoodsInfo` | `show_goods_id, { include = [] } = {}` | 读 | ⛔ 环境受限 | 某个商品的信息 |
+| `myGoodsTypeSummary` | `—` | 读 | ◻ 声明未实测 | 我的商品按类型汇总 |
 | `myIncomes` | `opts = {}` | 读 | ❔ 无记录 |  |
 | `myPurchased` | `opts = {}` | 读 | ❔ 无记录 |  |
 | `myPurchasedState` | `opts = {}` | 读 | ⛔ 环境受限 |  |
 | `needCaptcha` | `user = this.user` | 读 | ❔ 无记录 | 是否需要验证码（风险控制触发时为 true） |
 | `notify` | `—` | 读 | ✅ 实测通过 |  |
+| `oauthAuthorizations` | `—` | 读 | ◻ 声明未实测 | 我已授权过的第三方应用 |
 | `officialRecommended` | `opts = {}` | 读 | ❔ 无记录 |  |
 | `officialShows` | `{ type = 'paper', version, limit = 16, page = 0, search, patternFragment, sortBy } = {}` | 读 | ❔ 无记录 |  |
 | `officialShowsLegacy` | `opts = {}` | 读 | ❔ 无记录 |  |
@@ -130,7 +139,9 @@
 | `originalityUploadUrl` | `opts = {}` | 读 | ❔ 无记录 | 原创审核材料上传入口（返回上传地址，不是直接传） |
 | `ownerPartnerApp` | `opts = {}` | 读 | ❔ 无记录 | 我作为合作方拥有的应用列表 |
 | `ownerPartnerAppDetail` | `opts = {}` | 读 | ❔ 无记录 |  |
+| `ownerPartnerAppInfo` | `partner_app_id` | 读 | ◻ 声明未实测 | 我拥有的某应用详情 |
 | `palette` | `—` | 读 | ✅ 实测通过 |  |
+| `partnerAppApplicationInfo` | `partner_app_id` | 读 | ◻ 声明未实测 | 某应用详情 |
 | `partnerAppApplications` | `opts = {}` | 读 | ❔ 无记录 |  |
 | `partnerAppBind` | `opts = {}` | 读 | ❔ 无记录 | 合作方应用绑定关系（当前身份是被绑定方） |
 | `partnerAppBindList` | `opts = {}` | 读 · 账号凭据 | ❔ 无记录 |  |
@@ -155,7 +166,7 @@
 | `renderScreenshot` | `show_id, opts = {}` | 读 | ❔ 无记录 |  |
 | `renderVideo` | `show_id, opts = {}` | 读 | ❔ 无记录 |  |
 | `reportResult` | `ok = true` | 读 | ❔ 无记录 | 举报处理结果 |
-| `request` | `method, path, { query, body, form, raw = false, headers = {} } = {}` | 读 | ❔ 无记录 | 调用任意接口 |
+| `request` | `method, path, { query, body, form, raw = false, headers = {}, timeout, retry } = {}` | 读 | ❔ 无记录 | 调用任意接口 |
 | `resetPhoneState` | `—` | 读 · 删除/清空 · 账号凭据 | ✅ 实测通过 |  |
 | `saveSession` | `file` | 读 | ❔ 无记录 |  |
 | `saveToRecords` | `opts = {}` | 读 | ❔ 无记录 |  |
@@ -186,10 +197,16 @@
 | `team` | `team_id` | 读 | ❔ 无记录 |  |
 | `teamBalance` | `team_id` | 读 | ❔ 无记录 | 某团队钱包余额 |
 | `teamBills` | `team_id, { limit = 20, page = 0 } = {}` | 读 | ❔ 无记录 | 某团队钱包流水 |
+| `teamDeletedShows` | `team_id, { type, version, search, enableFullTextSearch, limit, page } = {}` | 读 | ◻ 声明未实测 | 某团队的回收站 |
+| `teamIdentity` | `team_id` | 读 | ◻ 声明未实测 | 团队实名/认证资料 |
+| `teamRenameApplication` | `team_id` | 读 | ◻ 声明未实测 | 团队改名申请状态 |
 | `teams` | `—` | 读 | ✅ 实测通过 |  |
+| `teamSaveToRecords` | `team_id, { search, searchArea, limit = 10, page = 0 } = {}` | 读 | ◻ 声明未实测 | 团队维度的「保存到我的」记录 |
 | `teamShows` | `teamId, { type = 'all', version = 5, limit = 16, page = 0, search, patternFragment, sortBy } = {}` | 读 | ❔ 无记录 |  |
 | `teamShowsCount` | `opts = {}` | 读 | ❔ 无记录 |  |
+| `teamShowsCountFor` | `team_id, { type = 'all', version = 5, search, patternFragment, enableFullTextSearch } = {}` | 读 | ◻ 声明未实测 | 某团队的作品数量 |
 | `teamSubAccounts` | `team_id, opts = {}` | 读 | ❔ 无记录 |  |
+| `teamTrafficPackageInfo` | `team_id` | 读 | ◻ 声明未实测 | 团队流量包信息 |
 | `teamWalletDetail` | `team_id` | 读 | ❔ 无记录 | 团队钱包明细 |
 | `teamWalletOrder` | `team_id, { limit = 10, page = 0 } = {}` | 读 | ❔ 无记录 | 团队钱包订单流水 |
 | `teamWallets` | `—` | 读 | ✅ 实测通过 | 我加入的全部团队及其钱包（bundle：get("/api/wallet/team_balance")） |
@@ -217,7 +234,7 @@
 | `watermark` | `—` | 读 | ✅ 实测通过 |  |
 | `watermarkAll` | `—` | 读 | ✅ 实测通过 | 水印是否对全部作品生效 |
 
-## 写操作（205）
+## 写操作（232）
 
 | 方法 | 签名 | 类型 | 验证状态 | 说明 |
 |---|---|---|---|---|
@@ -234,6 +251,7 @@
 | `addPartnerApp` | `body` | 写 | ◻ 声明未实测 | 申请/绑定合作方应用 |
 | `addPattFragTag` | `show_id, tag` | 写 | ❔ 无记录 |  |
 | `addTag` | `show_id, tag` | 写 | ✅ 实测通过 | 给作品打标签（tag 会被 encodeURIComponent） |
+| `addTeamMember` | `team_id, body = {}` | 写 | ◻ 声明未实测 | 加团队成员 |
 | `adminCreateTemplate` | `body` | 写 | ⛔ 环境受限 | 站内模板管理，普通账号应为 403 |
 | `agreeAccess` | `body = {}` | 写 | ❔ 无记录 | 协议签署状态：同意 |
 | `agreeReject` | `body = {}` | 写 | ❔ 无记录 | 协议签署状态：拒绝 |
@@ -258,11 +276,12 @@
 | `copyShow` | `show, toUser` | 写 | ✅ 实测通过 | 拷贝作品（可拷给自己 / 他人 / 团队） |
 | `createApiKey` | `—` | 写 · 账号凭据 | ◻ 声明未实测 | 新建 API Key，返回新建的 key |
 | `createBlankShow` | `type = 'paper', title = '无标题'` | 写 | ✅ 实测通过 | 仅凭标题新建一个空白作品（等价于编辑器里点了「新建」） |
+| `createDomainHttps` | `custom_domain_id, { cert_url, key_url }` | 写 | ◻ 声明未实测 | 上传自定义域名的 HTTPS 证书 |
 | `createOrder` | `body` | 写 | ◻ 声明未实测 | 通用下单 |
 | `createShow` | `type, payload, { fromShowId, uniqueUid, toUser } = {}` | 写 | ❔ 无记录 | 保存/新建作品（编辑器「保存」的等价动作） |
 | `createShowFromPurchasedGoods` | `id` | 写 | ◻ 声明未实测 | 从已购商品创建自己的作品：POST /api/show_goods/purchased/goodses/{id}/show |
+| `createSubAccount` | `team_id, body` | 写 | ◻ 声明未实测 | 建子账号 |
 | `createTeam` | `body` | 写 | ⛔ 环境受限 | 建团队 |
-| `del` | `—` | 写 | ❔ 无记录 |  |
 | `deleteApiKey` | `id` | 写 · 删除/清空 · 账号凭据 | ◻ 声明未实测 | 删除某把 key |
 | `deleteAsset` | `asset_id` | 写 · 删除/清空 | ✅ 实测通过 |  |
 | `deleteCertFile` | `body = {}` | 写 · 删除/清空 | ◻ 声明未实测 | 删除证件文件 |
@@ -270,6 +289,7 @@
 | `deleteContact` | `body = {}` | 写 · 删除/清空 | ◻ 声明未实测 | 删联系人 |
 | `deleteFormCount` | `body = {}` | 写 · 删除/清空 | ❔ 无记录 |  |
 | `deleteFormData` | `body = {}` | 写 · 删除/清空 | ❔ 无记录 |  |
+| `deleteFormRows` | `show_id, row_ids` | 写 · 删除/清空 | ◻ 声明未实测 | 删除作品收集到的指定表单行 |
 | `deleteFragmentTag` | `type, category, tag, { team_id } = {}` | 写 · 删除/清空 | 🟡 调用被接受 |  |
 | `deleteGoodsFavoriteTag` | `show_type, tag_id` | 写 · 删除/清空 | ◻ 声明未实测 | 商城收藏标签：删标签 |
 | `deleteHelp` | `body` | 写 · 删除/清空 | ◻ 声明未实测 | 路径可疑，可能提取有误 |
@@ -277,8 +297,10 @@
 | `deleteInvoice` | `body = {}` | 写 · 删除/清空 | ❔ 无记录 |  |
 | `deleteLegacyFragment` | `body` | 写 · 删除/清空 | ◻ 声明未实测 | 旧版碎片删除 |
 | `deletePartnerApp` | `body = {}` | 写 · 删除/清空 | ◻ 声明未实测 | 删除合作方应用 |
+| `deletePartnerAppById` | `partner_app_id` | 写 · 删除/清空 | ◻ 声明未实测 | 删应用 |
 | `deleteResetPhone` | `t` | 写 · 删除/清空 · 账号凭据 | ◻ 声明未实测 | 撤销已提交的换绑申请；t 是申请 id（路径段） |
 | `deleteShow` | `show_id` | 写 · 删除/清空 | ✅ 实测通过 | 删除作品（进回收站） |
+| `deleteSubAccount` | `team_id, sub_account_id` | 写 · 删除/清空 | ◻ 声明未实测 | 删子账号 |
 | `disableApiKey` | `id` | 写 · 账号凭据 | ◻ 声明未实测 | 停用某把 key |
 | `emailAuth` | `body` | 写 · 账号凭据 | ❔ 无记录 |  |
 | `emailAuthAction` | `body` | 写 · 账号凭据 | ❔ 无记录 |  |
@@ -297,32 +319,35 @@
 | `imageFromWxLink` | `body` | 写 | ◻ 声明未实测 | 微信图片链接转存 |
 | `importImageFromAnyStorage` | `body` | 写 | ◻ 声明未实测 | 从任意存储导入图片 |
 | `importWxArticle` | `articleurl` | 写 | ❔ 无记录 | 把公众号文章直接导入为一个作品 |
+| `markApplicationModified` | `application_id, body = {}` | 写 | ◻ 声明未实测 | 把某申请置为「已修改」 |
 | `markGoodsFavoriteTagsRead` | `body = {}` | 写 | ◻ 声明未实测 | 标记收藏标签已读 |
 | `markMessageRead` | `message_id` | 写 | ⛔ 环境受限 | 标记消息已读 |
+| `moveExhibit` | `{ moved_id, index, ref_id, position } = {}` | 写 | ◻ 声明未实测 | 拖动展位排序 |
 | `orderEnterpriseTeam` | `team_id, body` | 写 | ◻ 声明未实测 | 企业团队下单 |
 | `orderExhibits` | `ordered_exhibits` | 写 | ◻ 声明未实测 | 展位排序 |
 | `orderShowGoods` | `body` | 写 | ⛔ 环境受限 | 购买商城作品下单 |
 | `orderTplShowGoods` | `body` | 写 | ◻ 声明未实测 | 购买模板商品下单 |
 | `outlinkImage` | `body` | 写 | ◻ 声明未实测 | 外链图片（同 addImageOutlink，保留别名） |
 | `payOrder` | `body` | 写 · 资金 | ⛔ 环境受限 | 支付订单 |
-| `post` | `—` | 写 | ❔ 无记录 |  |
 | `purchaseGoods` | `body` | 写 | ⛔ 环境受限 | 购买作品 |
-| `put` | `—` | 写 | ❔ 无记录 |  |
 | `putGoodsOnSale` | `body` | 写 | ◻ 声明未实测 | 上架作品 |
 | `qrshareSave` | `body` | 写 | ◻ 声明未实测 | 保存二维码分享配置 |
 | `qrshareShare` | `body` | 写 | ◻ 声明未实测 | 发起二维码分享 |
 | `qrToken` | `body` | 写 | ◻ 声明未实测 | 生成二维码 token |
 | `qrTokenRevoke` | `body = {}` | 写 | ◻ 声明未实测 | 撤销二维码 token |
+| `quitTeam` | `team_id` | 写 | ◻ 声明未实测 | 退出团队（⚠️ 不可逆，自己就是成员时请先确认） |
 | `rechargeWallet` | `body` | 写 · 资金 | ⛔ 环境受限 | 钱包充值 |
 | `recommendedHelpAdd` | `body` | 写 | ◻ 声明未实测 | 方法与路径组合可疑，可能提取有误 |
 | `recommendedHelpRemove` | `body` | 写 | ❔ 无记录 |  |
 | `recoverShow` | `deleted_show_id` | 写 | ✅ 实测通过 | 从回收站恢复 |
+| `recycleMemberShareAuth` | `team_id, member_id, { appid, auth_type } = {}` | 写 | ◻ 声明未实测 | 回收成员的共享权限 |
 | `redeemWallet` | `body` | 写 | ◻ 声明未实测 | 兑换码充值 |
 | `registerCosObject` | `{ object_name, team_id, watermark }` | 写 | ❔ 无记录 |  |
 | `registerCosVideo` | `body` | 写 | ◻ 声明未实测 | 登记已直传到 COS 的视频对象 |
 | `registerOssVideo` | `body` | 写 | ◻ 声明未实测 | 登记已直传到 OSS 的视频对象 |
 | `registerPhone` | `body` | 写 · 账号凭据 | ◻ 声明未实测 | 手机号注册（与 sms/register_user 并存的两套入口之一） |
 | `removeCustomDomain` | `body` | 写 · 删除/清空 | ◻ 声明未实测 | 删除自定义域名 |
+| `removeDomainById` | `custom_domain_id` | 写 · 删除/清空 | ◻ 声明未实测 | 删域名 |
 | `removeEmail` | `body = {}` | 写 · 删除/清空 · 账号凭据 | ◻ 声明未实测 | 解绑邮箱 |
 | `removeExhibit` | `show_id` | 写 · 删除/清空 | ◻ 声明未实测 | 下架展位 |
 | `removeFragmentTag` | `fragment_id, tag, { type = 'paper' } = {}` | 写 · 删除/清空 | ❔ 无记录 |  |
@@ -336,6 +361,7 @@
 | `removeShowFromHomeTag` | `uid, tag` | 写 · 删除/清空 | ◻ 声明未实测 | 从主页标签移除作品 |
 | `removeTag` | `show_id, tag` | 写 · 删除/清空 | ✅ 实测通过 |  |
 | `removeTeam` | `body = {}` | 写 · 删除/清空 | ◻ 声明未实测 | 解散团队 |
+| `removeTeamMember` | `team_id, member_id` | 写 · 删除/清空 | ◻ 声明未实测 | 移除团队成员 |
 | `renameFragmentTag` | `type, category, old_tag, new_tag, { team_id } = {}` | 写 | ⛔ 环境受限 |  |
 | `renameGoodsFavoriteTag` | `body` | 写 | ◻ 声明未实测 | 收藏标签重命名 |
 | `renameHomeTag` | `old_tag, new_tag` | 写 | ◻ 声明未实测 | 主页标签改名 |
@@ -347,12 +373,17 @@
 | `requireInvoice` | `body` | 写 | ◻ 声明未实测 | 申请开票 |
 | `resetApiKey` | `id` | 写 · 删除/清空 · 账号凭据 | ◻ 声明未实测 | 重置某把 key 的密钥 |
 | `resetPartnerAppSecret` | `body` | 写 · 删除/清空 · 账号凭据 | ◻ 声明未实测 | 重置 AppSecret |
+| `resetPartnerAppSecretById` | `partner_app_id` | 写 · 删除/清空 · 账号凭据 | ◻ 声明未实测 | 重置某应用的 AppSecret |
 | `resetPassword` | `body` | 写 · 删除/清空 · 账号凭据 | ◻ 声明未实测 | 重置密码（无验证渠道信息的通用入口） |
+| `resetSubAccount` | `team_id, sub_account_id, body` | 写 · 删除/清空 | ◻ 声明未实测 | 重置子账号（改密码） |
 | `restoreShow` | `show_id` | 写 | ❔ 无记录 | 恢复（编辑器 restore 动作，部分账号可用） |
+| `revokeAllAuthorizations` | `—` | 写 | ◻ 声明未实测 | 撤销全部授权（⚠️ 所有应用都要重新授权） |
 | `revokeApplication` | `body` | 写 | ◻ 声明未实测 | 撤回审核申请 |
+| `revokeApplicationById` | `application_id` | 写 | ◻ 声明未实测 | 按 id 撤销申请 |
 | `revokeApplicationDelete` | `body` | 写 | ❔ 无记录 |  |
+| `revokeAuthorization` | `oauth_binding_id` | 写 | ◻ 声明未实测 | 撤销某个应用的授权 |
 | `revokeInvoice` | `body = {}` | 写 | ◻ 声明未实测 | 撤销开票申请 |
-| `save` | `showData, show_id` | 写 | ❔ 无记录 | 一步保存：给了 show_id 就 PUT，否则 POST 新建 |
+| `save` | `showData, show_id, { type } = {}` | 写 | ❔ 无记录 | 一步保存：给了 show_id 就 PUT，否则 POST 新建 |
 | `saveInlineImageData` | `body` | 写 | ◻ 声明未实测 | 保存编辑器内联图片数据 |
 | `saveInvoice` | `body` | 写 | ◻ 声明未实测 | 新建/修改发票信息 |
 | `scanImageInfringement` | `show_id, body = {}` | 写 | ◻ 声明未实测 | 图片侵权扫描 |
@@ -361,25 +392,32 @@
 | `setAvatar` | `avatar_url` | 写 · 修改 | ❔ 无记录 |  |
 | `setBackground` | `background` | 写 · 修改 | ✅ 实测通过 | 发布页背景图 |
 | `setEmail` | `body` | 写 · 账号凭据 · 修改 | ◻ 声明未实测 | 设置/换绑邮箱 |
+| `setEnterpriseMember` | `team_id, member_id, enterprise_member` | 写 · 修改 | ◻ 声明未实测 | 标记/取消企业成员 |
 | `setFollow` | `body` | 写 · 修改 | ◻ 声明未实测 | 关注 / 取关 |
 | `setFragmentTagsOrder` | `type, category, order, { team_id } = {}` | 写 · 修改 | ❔ 无记录 |  |
 | `setGoodsFavoriteTagOrder` | `show_type, order` | 写 · 修改 | ◻ 声明未实测 | 设置收藏标签顺序 |
 | `setGoodsFavoriteTagOrderPaper` | `order` | 写 · 修改 | ◻ 声明未实测 | 商城收藏标签：按 paper 维度设顺序 |
 | `setHomeTagsOrder` | `order` | 写 · 修改 | ◻ 声明未实测 | 主页标签排序 |
 | `setImageTagsOrder` | `order, { team_id } = {}` | 写 · 修改 | 🟡 调用被接受 | 图片标签顺序 |
+| `setMemberVisibility` | `team_id, member_visibility` | 写 · 修改 | ◻ 声明未实测 | 成员可见性开关 |
 | `setMute` | `kind /* 'mute_new_show' \| 'mute_invitation' \| 'mute_be_saved_to' */, value` | 写 · 修改 | ✅ 实测通过 | 静音开关 |
 | `setNickname` | `nickname` | 写 · 修改 | ❔ 无记录 |  |
 | `setPalette` | `colorGroups, { team_id, user_id } = {}` | 写 · 修改 | ❌ 实测未通过 | 调色板（编辑器配色预设） |
+| `setPartnerImageCache` | `partner_app_id, enabled` | 写 · 修改 | ◻ 声明未实测 | 开关某应用的图片缓存 |
 | `setPattFragTagsOrder` | `order, { team_id } = {}` | 写 · 修改 | ❔ 无记录 |  |
 | `setPhone` | `body` | 写 · 账号凭据 · 修改 | ◻ 声明未实测 | 改手机号（另一个入口） |
 | `setPublisherIdentity` | `body` | 写 · 修改 | ◻ 声明未实测 | 提交发布者身份 |
 | `setRightAccessPrivilege` | `show_id, value` | 写 · 修改 | ✅ 实测通过 | 设置作品权限位（right_access_privilege 的位含义见 docs） |
+| `setRightFormClosed` | `show_id, value` | 写 · 修改 | ◻ 声明未实测 | 关闭/开启作品的表单收集 |
 | `setShowReceiveType` | `value` | 写 · 修改 | ✅ 实测通过 | 作品接收类型 |
 | `setTagsOrder` | `order, { team_id } = {}` | 写 · 修改 | ✅ 实测通过 | 作品标签排序 |
+| `setTeamMemberInfo` | `team_id, member_id, info` | 写 · 修改 | ◻ 声明未实测 | 改成员资料 |
+| `setTeamMemberRole` | `team_id, member_id, role` | 写 · 修改 | ◻ 声明未实测 | 改成员角色 |
 | `setTrafficPackageUsage` | `show_id, value` | 写 · 修改 | ⛔ 环境受限 |  |
 | `setUserIdentity` | `body` | 写 · 修改 | ◻ 声明未实测 | 提交实名/资质信息 |
 | `setWatermark` | `watermarks, { team_id } = {}` | 写 · 修改 | ✅ 实测通过 | 水印设置 |
 | `setWechatNoShare` | `show_id, value` | 写 · 修改 | ✅ 实测通过 |  |
+| `shareMemberAuth` | `team_id, member_id, { appid, auth_type, role_type = 1 } = {}` | 写 | ◻ 声明未实测 | 给成员授予共享权限 |
 | `smsAuthAction` | `body` | 写 | ❔ 无记录 | 短信验证码校验 —— 登录二步 / 敏感操作的通用动作入口 |
 | `smsAuthManual` | `body` | 写 | ❔ 无记录 | 人工审核通道 |
 | `smsAuthSkip` | `body` | 写 | ❔ 无记录 | 跳过二次验证（有风控条件） |
@@ -392,15 +430,20 @@
 | `submitIssue` | `body` | 写 | ◻ 声明未实测 | 提交反馈/工单 |
 | `submitReleaseApplication` | `show_id` | 写 | ❔ 无记录 |  |
 | `submitResetPhone` | `body` | 写 · 账号凭据 | ◻ 声明未实测 | 提交换绑手机申请 |
+| `submitTeamIdentity` | `team_id, body` | 写 | ◻ 声明未实测 | 提交团队认证资料 |
+| `submitTeamRenameApplication` | `team_id, body` | 写 | ◻ 声明未实测 | 提交团队改名申请 |
 | `templateAllowed` | `body` | 写 | ◻ 声明未实测 | 模板是否允许被使用 |
 | `transferCoin` | `body` | 写 · 资金 | ◻ 声明未实测 | 转移秀点 |
+| `transferTeamOwner` | `team_id, member_id` | 写 · 资金 | ◻ 声明未实测 | 转让团队所有者 |
 | `transferTeamWallet` | `body` | 写 · 资金 | ◻ 声明未实测 | 团队钱包转账 |
 | `transferWallet` | `body` | 写 · 资金 | ◻ 声明未实测 | 余额转账 |
 | `trashCommentRightTeam` | `show_id, { team_id } = {}` | 写 | ◻ 声明未实测 | 把团队移入评论黑名单 |
 | `trashCommentRightUser` | `show_id, { email, area_code, phone } = {}` | 写 | ◻ 声明未实测 | 把个人移入评论黑名单（回收站） |
 | `unbindApple` | `—` | 写 · 账号凭据 | ❔ 无记录 |  |
 | `unbindOwnerPartnerApp` | `body = {}` | 写 · 账号凭据 | ◻ 声明未实测 | 作为合作方解除对自己应用的绑定 |
+| `unbindOwnerPartnerAppById` | `partner_app_id` | 写 · 账号凭据 | ◻ 声明未实测 | 作为应用所有者解除绑定 |
 | `unbindPartnerApp` | `body = {}` | 写 · 账号凭据 | ◻ 声明未实测 | 解绑合作方应用 |
+| `unbindPartnerAppById` | `partner_app_id` | 写 · 账号凭据 | ◻ 声明未实测 | 解绑某应用 |
 | `unbindQq` | `—` | 写 · 账号凭据 | ❔ 无记录 |  |
 | `unbindWechat` | `—` | 写 · 账号凭据 | ❔ 无记录 |  |
 | `unbindWeibo` | `—` | 写 · 账号凭据 | ❔ 无记录 |  |
@@ -408,6 +451,7 @@
 | `updateApplication` | `body` | 写 · 修改 | ◻ 声明未实测 | 修改审核申请 |
 | `updateContact` | `body` | 写 · 修改 | ◻ 声明未实测 | 改联系人 |
 | `updateCustomDomain` | `body` | 写 · 修改 | ◻ 声明未实测 | 修改自定义域名 |
+| `updateDomainById` | `custom_domain_id, domain_name` | 写 · 修改 | ◻ 声明未实测 | 改域名 |
 | `updateFormCount` | `body` | 写 · 修改 | ❔ 无记录 |  |
 | `updateInvoice` | `body` | 写 · 修改 | ❔ 无记录 |  |
 | `updateMyHomeInfo` | `name, desc` | 写 · 修改 | ◻ 声明未实测 | 改主页信息 |

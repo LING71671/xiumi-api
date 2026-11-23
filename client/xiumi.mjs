@@ -1743,6 +1743,273 @@ export class Xiumi {
   resetPassword(body) { return this.request('POST', '/api/auth/reset_password', { body }); }
   /** [未实测] 邮箱重置密码（auth 命名空间下的另一个入口） */
   emailResetPasswordAuth(body) { return this.request('POST', '/api/auth/email/reset_password', { body }); }
+
+  // ================================================================
+  // 第三轮补全：团队协作 / 表单导出 / 授权应用 / 登录密钥
+  //
+  // 来源：`scripts/diff_endpoints.mjs` 对当前线上 bundle
+  // （edt.xiumius.cn 的 scripts/app/home + scripts/app/auth）的字面量扫描结果。
+  // 依据是 bundle 里的 service 函数名与调用形态，见每条注释。
+  // 这一批**全部 [未实测]** —— 没有跑过的接口不许写成已验证。
+  // 团队相关接口在免费账号上多半是 403 / 无团队可操作，跑验证时按 Blocked 记。
+  // ================================================================
+
+  // ---------------------------------------------------------------- 团队协作（depot/services/teamsManager）
+
+  /** [未实测] 加团队成员。bundle：`addTeamMember: post("/api/teams/"+id+"/members", body)` */
+  addTeamMember(team_id, body = {}) { return this.request('POST', `/api/teams/${team_id}/members`, { body }); }
+  /** [未实测] 移除团队成员。bundle：`deleteTeamMember: delete("/api/teams/"+id+"/members/"+memberId)` */
+  removeTeamMember(team_id, member_id) { return this.request('DELETE', `/api/teams/${team_id}/members/${member_id}`); }
+  /** [未实测] 改成员角色。bundle：`setTeamMemberRole: put(...,{role})` */
+  setTeamMemberRole(team_id, member_id, role) {
+    return this.request('PUT', `/api/teams/${team_id}/members/${member_id}/role`, { body: { role } });
+  }
+  /** [未实测] 改成员资料。bundle：`setTeamMemberInfo: put(...,{info})` */
+  setTeamMemberInfo(team_id, member_id, info) {
+    return this.request('PUT', `/api/teams/${team_id}/members/${member_id}/info`, { body: { info } });
+  }
+  /** [未实测] 标记/取消企业成员。bundle：`setEnterpriseMember: put(...,{enterprise_member})` */
+  setEnterpriseMember(team_id, member_id, enterprise_member) {
+    return this.request('PUT', `/api/teams/${team_id}/members/${member_id}/enterprise`, { body: { enterprise_member } });
+  }
+  /** [未实测] 某成员被授予了哪些共享权限。bundle：`userBeSharedAuth: get(.../members/"+id+"/shareauth")` */
+  memberShareAuth(team_id, member_id) {
+    return this.request('GET', `/api/teams/${team_id}/members/${member_id}/shareauth`);
+  }
+  /**
+   * [未实测] 给成员授予共享权限。
+   * bundle：`shareAuth: post(..., {auth:{appid,auth_type}, role_type})`，role_type 默认 1。
+   */
+  shareMemberAuth(team_id, member_id, { appid, auth_type, role_type = 1 } = {}) {
+    return this.request('POST', `/api/teams/${team_id}/members/${member_id}/shareauth`, {
+      body: { auth: { appid, auth_type }, role_type },
+    });
+  }
+  /** [未实测] 回收成员的共享权限。bundle：`recycleSharedAuth: post(..., {auth:{appid,auth_type}})` */
+  recycleMemberShareAuth(team_id, member_id, { appid, auth_type } = {}) {
+    return this.request('POST', `/api/teams/${team_id}/members/${member_id}/recycleshareauth`, {
+      body: { auth: { appid, auth_type } },
+    });
+  }
+  /** [未实测] 成员可见性开关。bundle：`setMemberVisibility: put(...,{member_visibility})` */
+  setMemberVisibility(team_id, member_visibility) {
+    return this.request('PUT', `/api/teams/${team_id}/member-visibility`, { body: { member_visibility } });
+  }
+  /** [未实测] 退出团队（⚠️ 不可逆，自己就是成员时请先确认）。bundle：`quitTeam: delete("/api/teams/"+id+"/quit")` */
+  quitTeam(team_id) { return this.request('DELETE', `/api/teams/${team_id}/quit`); }
+  /** [未实测] 转让团队所有者。bundle：`transferTeamOwner: post(.../transfer/owner/to/members/"+memberId, {})` */
+  transferTeamOwner(team_id, member_id) {
+    return this.request('POST', `/api/teams/${team_id}/transfer/owner/to/members/${member_id}`, { body: {} });
+  }
+  /** [未实测] 团队实名/认证资料。bundle：`getIdentity: get(.../identity)` */
+  teamIdentity(team_id) { return this.request('GET', `/api/teams/${team_id}/identity`); }
+  /** [未实测] 提交团队认证资料。bundle：`submitIdentity: post(.../identity, body)` */
+  submitTeamIdentity(team_id, body) { return this.request('POST', `/api/teams/${team_id}/identity`, { body }); }
+  /** [未实测] 团队改名申请状态。bundle：`getRenameApplication: get(.../rename_application)` */
+  teamRenameApplication(team_id) { return this.request('GET', `/api/teams/${team_id}/rename_application`); }
+  /** [未实测] 提交团队改名申请。bundle：`submitRenameApplication: post(.../rename_application, body)` */
+  submitTeamRenameApplication(team_id, body) {
+    return this.request('POST', `/api/teams/${team_id}/rename_application`, { body });
+  }
+  /** [未实测] 还能移除几个企业成员（配额）。bundle：`getEnterpriseMemberRemoveCount` */
+  enterpriseMemberRemoveCount(team_id) {
+    return this.request('GET', `/api/teams/${team_id}/enterprise-member/remove-count`);
+  }
+  /** [未实测] 团队流量包信息。bundle：`getTeamTrafficPackageInfo` */
+  teamTrafficPackageInfo(team_id) { return this.request('GET', `/api/teams/${team_id}/traffic_package_info`); }
+  /**
+   * [未实测] 团队维度的「保存到我的」记录。
+   * bundle：`teamSaveToRecords: get("/api/teams/"+id+"/save_to_records?limit&page&search&search_area")`
+   */
+  teamSaveToRecords(team_id, { search, searchArea, limit = 10, page = 0 } = {}) {
+    return this.request('GET', `/api/teams/${team_id}/save_to_records`, {
+      query: { limit, page, search, search_area: searchArea },
+    });
+  }
+
+  // 子账号（与 teamSubAccounts 的读接口配套；创建/重置走 secureSubmit，密码字段是 pw_key_id + pw_cipher）
+  /** [未实测] 建子账号。bundle：`createSubAccount: post("/api/teams/sub_account/"+team_id, body)` */
+  createSubAccount(team_id, body) { return this.request('POST', `/api/teams/sub_account/${team_id}`, { body }); }
+  /** [未实测] 删子账号。bundle：`deleteSubAccount: delete("/api/teams/sub_account/"+team_id+"/"+id)` */
+  deleteSubAccount(team_id, sub_account_id) {
+    return this.request('DELETE', `/api/teams/sub_account/${team_id}/${sub_account_id}`);
+  }
+  /** [未实测] 重置子账号（改密码）。bundle：`resetSubAccount: put("/api/teams/sub_account/"+team_id+"/"+id, body)` */
+  resetSubAccount(team_id, sub_account_id, body) {
+    return this.request('PUT', `/api/teams/sub_account/${team_id}/${sub_account_id}`, { body });
+  }
+
+  // 团队维度作品（注意与 teamShowsCount(opts) 不是一个接口：那个没有 team_id 段）
+  /**
+   * [未实测] 某团队的作品数量。
+   * bundle：`teamShowsCount: new URI("/api/shows/from/teams/"+id+"/count").search({show_type,version,...})`
+   */
+  teamShowsCountFor(team_id, { type = 'all', version = 5, search, patternFragment, enableFullTextSearch } = {}) {
+    return this.request('GET', `/api/shows/from/teams/${team_id}/count`, {
+      query: {
+        show_type: type,
+        version,
+        search,
+        pattern_fragment: patternFragment,
+        enableFullTextSearch: enableFullTextSearch === undefined ? undefined : (enableFullTextSearch ? 1 : 0),
+      },
+    });
+  }
+  /** [未实测] 某团队的回收站。bundle：`getTeamDeletedShows: "/api/shows/from/teams/"+id+"/deleted/shows"` */
+  teamDeletedShows(team_id, { type, version, search, enableFullTextSearch, limit, page } = {}) {
+    return this.request('GET', `/api/shows/from/teams/${team_id}/deleted/shows`, {
+      query: { show_type: type, version, search, enableFullTextSearch, limit, page },
+    });
+  }
+
+  // ---------------------------------------------------------------- 表单数据导出（depot/services/formsManager）
+
+  /**
+   * [未实测] 导出作品收集的表单数据（Excel）。返回一个 job 标识，进度用 formExportProgress 轮询。
+   * bundle：`new URI("/api/forms/export/"+show_id).search({file_type:"excel", export_all, per_page, export_type})`
+   * 非全量导出时传 start_page / end_page。
+   */
+  exportFormData(show_id, { exportAll = true, exportType, fileType = 'excel', perPage, startPage, endPage } = {}) {
+    // 只放**明确给了值**的参数：`undefined` 不进查询串。
+    // （不依赖 request() 对 undefined 的处理——本 PR 与请求层 PR 是两份独立的改动，
+    //   单独合并本 PR 时也必须正确。）
+    const query = { file_type: fileType };
+    if (exportAll) {
+      query.export_all = true;
+    } else {
+      if (startPage !== undefined) query.start_page = startPage;
+      if (endPage !== undefined) query.end_page = endPage;
+    }
+    if (exportType !== undefined) query.export_type = exportType;
+    if (perPage !== undefined) query.per_page = perPage;
+    return this.request('GET', `/api/forms/export/${show_id}`, { query });
+  }
+  /**
+   * [未实测] 查导出进度。bundle 的判据：`progress` 存在则继续等，`exports` 出现则拿到文件，
+   * 超过 10 分钟（6e5 ms）编辑器侧会自行判 Failed_ExportingTimeout。
+   */
+  formExportProgress(job) { return this.request('GET', `/api/forms/query/export/${job}`); }
+
+  // ---------------------------------------------------------------- 第三方应用授权（oauthAuthorizationsController）
+
+  /** [未实测] 我已授权过的第三方应用。bundle：`r.get("/api/oauth/authorizations") → data.authorizations` */
+  oauthAuthorizations() { return this.request('GET', '/api/oauth/authorizations'); }
+  /** [未实测] 撤销某个应用的授权。bundle：`r.delete("/api/oauth/authorizations/"+oauth_binding_id)` */
+  revokeAuthorization(oauth_binding_id) {
+    return this.request('DELETE', `/api/oauth/authorizations/${oauth_binding_id}`);
+  }
+  /** [未实测] 撤销全部授权（⚠️ 所有应用都要重新授权）。bundle：`r.delete("/api/oauth/authorizations")` */
+  revokeAllAuthorizations() { return this.request('DELETE', '/api/oauth/authorizations'); }
+
+  // ---------------------------------------------------------------- 登录密钥（secureSubmit 前置）
+
+  /**
+   * [未实测] 取登录/改密的 RSA 公钥。
+   * bundle：`get("/api/auth/login_key") → {key_id, public_key}`；
+   * 拿它把密码加密后，请求体里用 `pw_key_id` + `pw_cipher` 代替明文 `password`
+   * （`createSubAccount` / `resetSubAccount` 都走这套）。公钥加密部分本客户端未实现。
+   */
+  loginKey() { return this.request('GET', '/api/auth/login_key'); }
+
+  // ---------------------------------------------------------------- 账号冻结校验
+
+  /** [未实测] 能否冻结账号（预检）。bundle：`get("/api/user/frozen/check") → data.eligible / data.reason` */
+  frozenCheck() { return this.request('GET', '/api/user/frozen/check'); }
+
+  // ---------------------------------------------------------------- 个人主页展位拖动
+
+  /**
+   * [未实测] 拖动展位排序。bundle：
+   * `{moved_id, target_index: index}` POST /api/user_home/my/published/exhibits/move
+   */
+  moveExhibit({ moved_id, index, ref_id, position } = {}) {
+    const body = ref_id === undefined && position === undefined
+      ? { moved_id, target_index: index }
+      : { moved_id, ref_id, position };
+    return this.request('POST', '/api/user_home/my/published/exhibits/move', { body });
+  }
+
+  // ---------------------------------------------------------------- 自定义域名（带 id 的写法）
+
+  /** [未实测] 改域名。bundle：`put("/api/custom_domains/"+custom_domain_id,{domain_name})` */
+  updateDomainById(custom_domain_id, domain_name) {
+    return this.request('PUT', `/api/custom_domains/${custom_domain_id}`, { body: { domain_name } });
+  }
+  /** [未实测] 删域名。bundle：`delete("/api/custom_domains/"+custom_domain_id)` */
+  removeDomainById(custom_domain_id) { return this.request('DELETE', `/api/custom_domains/${custom_domain_id}`); }
+  /** [未实测] 上传自定义域名的 HTTPS 证书。bundle：`post(...+"/cert",{cert_url,key_url})` */
+  createDomainHttps(custom_domain_id, { cert_url, key_url }) {
+    return this.request('POST', `/api/custom_domains/${custom_domain_id}/cert`, { body: { cert_url, key_url } });
+  }
+
+  // ---------------------------------------------------------------- 商城 / 作品残余
+
+  /** [未实测] 我的商品按类型汇总。bundle：`myGoodsTypeSummary: get("/api/show_goods/my/goodses/type_summary")` */
+  myGoodsTypeSummary() { return this.request('GET', '/api/show_goods/my/goodses/type_summary'); }
+  /** [未实测] 距下次可改价的剩余天数。bundle：`daysLeftCanChangeMyGoodsPrice` */
+  goodsPriceChangeDays(show_goods_id) {
+    return this.request('GET', `/api/show_goods/goodses/${show_goods_id}/change_price_days`);
+  }
+  /** [未实测] 某在售商品的标签。bundle：`tagsOfGoods: get("/api/show_goods/goodses/"+id+"/tags")` */
+  goodsTags(show_goods_id) { return this.request('GET', `/api/show_goods/goodses/${show_goods_id}/tags`); }
+  /** [未实测] 我的商品的「修改申请」表单。bundle：`applicationSheetByShowGoods` */
+  goodsModifyApplication(show_goods_id) {
+    return this.request('GET', `/api/show_goods/my/goodses/${show_goods_id}/modify_application`);
+  }
+  /** [未实测] 把某申请置为「已修改」。bundle：`put("/api/show_goods/applications/"+id+"/state/modified")` */
+  markApplicationModified(application_id, body = {}) {
+    return this.request('PUT', `/api/show_goods/applications/${application_id}/state/modified`, { body });
+  }
+  /** [未实测] 按 id 撤销申请。bundle：`delete("/api/show_goods/applications/revoke/"+id)` */
+  revokeApplicationById(application_id) {
+    return this.request('DELETE', `/api/show_goods/applications/revoke/${application_id}`);
+  }
+  /** [未实测] 关闭/开启作品的表单收集。bundle：`put("/api/shows/"+id+"/right_form_closed/"+v)` */
+  setRightFormClosed(show_id, value) {
+    return this.request('PUT', `/api/shows/${show_id}/right_form_closed/${value}`);
+  }
+
+  /**
+   * [未实测] 删除作品收集到的指定表单行。
+   * bundle：`delete("/api/forms/data/forshow/"+show_id+"/rows/"+rowIds.join())`
+   * —— 行 id 用逗号拼在路径里（不是 body），传数组即可。
+   */
+  deleteFormRows(show_id, row_ids) {
+    const rows = Array.isArray(row_ids) ? row_ids.join() : String(row_ids);
+    return this.request('DELETE', `/api/forms/data/forshow/${show_id}/rows/${rows}`);
+  }
+
+  // ---------------------------------------------------------------- 合作方应用：带 id 的写法
+  // 上面那批走 body 传参，bundle 里还并存一套把 id 放路径段的写法（区分「我的应用」与「被绑定应用」）。
+
+  /** [未实测] 某应用详情。bundle：`getPartnerAppApplicationInfo: get(.../applications/"+id)` */
+  partnerAppApplicationInfo(partner_app_id) {
+    return this.request('GET', `/api/auth/partner/partnerapp/applications/${partner_app_id}`);
+  }
+  /** [未实测] 我拥有的某应用详情。bundle：`getOwnerPartnerAppInfo: get(.../ownerpartnerapp/"+id)` */
+  ownerPartnerAppInfo(partner_app_id) {
+    return this.request('GET', `/api/auth/partner/partnerapp/ownerpartnerapp/${partner_app_id}`);
+  }
+  /** [未实测] 开关某应用的图片缓存。bundle：`setImageCacheEnabled: put(.../partnerapp/"+id+"/image_cache",{enabled})` */
+  setPartnerImageCache(partner_app_id, enabled) {
+    return this.request('PUT', `/api/auth/partner/partnerapp/${partner_app_id}/image_cache`, { body: { enabled } });
+  }
+  /** [未实测] 删应用。bundle：`delete("/api/auth/partner/partnerapp/"+id)` */
+  deletePartnerAppById(partner_app_id) {
+    return this.request('DELETE', `/api/auth/partner/partnerapp/${partner_app_id}`);
+  }
+  /** [未实测] 重置某应用的 AppSecret。bundle：`resetPartnerBindSecret: put(.../resetsecret/"+partner_app_id)` */
+  resetPartnerAppSecretById(partner_app_id) {
+    return this.request('PUT', `/api/auth/partner/partnerapp/resetsecret/${partner_app_id}`);
+  }
+  /** [未实测] 解绑某应用。bundle：`unbind: delete(.../unbind/"+id)` */
+  unbindPartnerAppById(partner_app_id) {
+    return this.request('DELETE', `/api/auth/partner/partnerapp/unbind/${partner_app_id}`);
+  }
+  /** [未实测] 作为应用所有者解除绑定。bundle：`ownerUnbind: delete(.../ownerunbind/"+id)` */
+  unbindOwnerPartnerAppById(partner_app_id) {
+    return this.request('DELETE', `/api/auth/partner/partnerapp/ownerunbind/${partner_app_id}`);
+  }
 }
 
 export default Xiumi;

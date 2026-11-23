@@ -2,6 +2,70 @@
 
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 与 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.3.0] - 2026-11-23
+
+### 修复
+
+- **`save()` 类型路由错了**（会把作品建成别的类型）。旧实现只看 `scene`，但
+  paper/tablet 共用 `flw.vertical.one-page`、booklet/placard 共用 `fs.vertical.paging`，
+  于是 `save(buildShow('tablet'))` 发到 `/api/shows/v5/paper`、
+  `save(buildShow('placard'))` 发到 `/api/shows/v5/booklet`。现在新增
+  `inferShowType()`，按 `scene + viewport.STAGE_SIZE + targetContext` 三条一起判，
+  `save(show, id, { type })` 也可显式覆盖
+- **会话过期不再静默返回 HTML**。`request()` 的 `redirect:'manual'` 会把 302 放行，
+  旧实现再让 `JSON.parse` 失败回落成 text，于是掉登录态时调用方拿到的是登录页 HTML
+  字符串。现在 302 跳 `/auth`、`code:-102/-101`、200 但 body 是 HTML 都抛
+  `XiumiError`，并置 `err.expired = true`
+- **`customDomainsForShow` 被同名方法静默覆盖**：文件里存在 path 参数式
+  （`/api/custom_domains/for/show/{show_id}`，bundle 证据）与 query 式两个同名实现，
+  后者覆盖前者。已删掉 query 式，并加单测禁止同名方法再次出现
+- **`query` 里 `undefined` 会变成空串参数**（`?team_id=`），把「不筛选」变成「筛空值」。
+  现在 `undefined` 直接跳过，`null` 仍发空值
+
+### 新增
+
+- **请求层**：`timeout`（默认 30s，`AbortSignal.timeout`）+ 幂等请求退避重试
+  （`retry` 默认 2，只对 GET 与 429/5xx 生效 —— 写请求重放可能重复建作品）
+- **`scripts/diff_endpoints.mjs`** —— 只信 bundle 字面量路径的接口比对工具：
+  抓 `capture/assets` 里的 bundle，与客户端已封装路径做段级比对，输出
+  `capture/diff_new.json` / `capture/diff_dead.json`，并单列「已确认覆盖、
+  只是路径形状对不上」的假阳性。比 `extract_endpoints.mjs` 更保守但不会张冠李戴
+  （后者会把 `/api/teams/{id}/members` 误记成 `/api/shows/members`）
+- **`scripts/fetch_assets_static.mjs`** —— 纯 HTTP 抓前端 bundle，补接口时不必为
+  Playwright/Chromium 付代价
+- **49 个新方法**（全部 `[未实测]`，目录 399 → 443）：
+  - 团队协作：`addTeamMember` `removeTeamMember` `setTeamMemberRole`
+    `setTeamMemberInfo` `setEnterpriseMember` `memberShareAuth` `shareMemberAuth`
+    `recycleMemberShareAuth` `setMemberVisibility` `quitTeam` `transferTeamOwner`
+    `teamIdentity` `submitTeamIdentity` `teamRenameApplication`
+    `submitTeamRenameApplication` `enterpriseMemberRemoveCount`
+    `teamTrafficPackageInfo` `teamSaveToRecords` `createSubAccount`
+    `deleteSubAccount` `resetSubAccount` `teamShowsCountFor` `teamDeletedShows`
+  - 表单导出：`exportFormData` `formExportProgress` `deleteFormRows`
+  - 第三方授权：`oauthAuthorizations` `revokeAuthorization` `revokeAllAuthorizations`
+  - 登录密钥：`loginKey`（`secureSubmit` 的 RSA 公钥前置）
+  - 其他：`frozenCheck` `moveExhibit` `updateDomainById` `removeDomainById`
+    `createDomainHttps` `setRightFormClosed` `myGoodsTypeSummary`
+    `goodsPriceChangeDays` `goodsTags` `goodsModifyApplication`
+    `markApplicationModified` `revokeApplicationById` `partnerAppApplicationInfo`
+    `ownerPartnerAppInfo` `setPartnerImageCache` `deletePartnerAppById`
+    `resetPartnerAppSecretById` `unbindPartnerAppById` `unbindOwnerPartnerAppById`
+- **`test/client.test.mjs`** —— 17 个离线单测（`npm test`，零依赖，不联网）：
+  成功码/错误码/302/HTML/`-102` 的语义、重试只对 GET、超时、`save()` 四种类型路由、
+  包体签名形状、lz-string 往返、目录口径、同名方法禁止
+- **`.github/workflows/ci.yml`** —— 覆盖原来的 `secret-scan.yml`：新增 Node 20 跑单测 +
+  `coverage.mjs` 校验台账一致性
+
+### 变更
+
+- **方法目录口径收紧**：剔除 `get`/`post`/`put`/`del` 四个访问器别名（`request()` 的语法糖，
+  不是接口方法）与 `_me`。以前它们混在「399 个方法」里，还顶着「❔ 无记录」占位
+- **`coverage.mjs` 增加反向校验**：`verification.json` 里存着源码已不存在的方法时点名
+  并以非 0 退出（`--prune` 清理）。此前有一条幽灵记录 `recoverableShows`
+  （对应方法早已不存在，`PARITY.md` 却还写着 ✅），导致「台账 4 条失败、报告只显示 3 条」
+- `docs/PARITY.md`：修正三处不存在的方法引用（`recoverableShows`、`setMuteLegacy`、
+  `bindWechat`），总账改为 443 / 57 模块
+
 ## [1.2.0] - 2026-09-21
 
 ### 新增

@@ -2,8 +2,8 @@
 
 > 由 `node scripts/coverage.mjs` 生成 —— **数字与状态全部来自 `data/verification.json`**，
 > 而那份文件只能由 `scripts/verify_matrix.mjs` / `scripts/verify_ops.mjs` 等验证脚本**回写**。
-> 人不再手写「这个方法验过没有」。生成时间：2026-09-21T01:44:36.340Z；
-> 最近一次验证：2026-09-21T01:32:19.613Z。
+> 人不再手写「这个方法验过没有」。生成时间：2026-11-23T13:27:14.330Z；
+> 最近一次验证：2026-11-23T13:13:41.338Z。
 
 ## 这一页在回答什么
 
@@ -32,14 +32,15 @@
 
 | 范围 | 合计 | ✅ 实测通过 | 🟡 调用被接受 | ⚠️ 曾通过/本次失败 | ❌ 实测未通过 | ⛔ 环境受限 | ◻ 声明未实测 | ❔ 无记录 |
 |---|---|---|---|---|---|---|---|---|
-| 全部 | 399 | 115 | 2 | 0 | 3 | 22 | 113 | 144 |
-| 读 | 194 | 89 | 0 | 0 | 0 | 8 | 5 | 92 |
-| 写 | 205 | 26 | 2 | 0 | 3 | 14 | 108 | 52 |
+| 全部 | 443 | 115 | 2 | 0 | 3 | 22 | 162 | 139 |
+| 读 | 211 | 89 | 0 | 0 | 0 | 8 | 24 | 90 |
+| 写 | 232 | 26 | 2 | 0 | 3 | 14 | 138 | 49 |
 
-- **有脚本证据的**：142 / 399
+- **有脚本证据的**：142 / 443
   （其中 ✅115 🟡2 ❌3 ⛔22）
-- **没有任何证据的**：257 / 399
-  （其中源码声明过未实测的 ◻113，完全无记录的 ❔144）
+- **没有任何证据的**：301 / 443
+  （其中源码声明过未实测的 ◻162，完全无记录的 ❔139）
+- **台账一致性**：✅ 无幽灵记录（存量条目与源码方法一一对应）
 
 ## 待修：实测未通过（3）
 
@@ -54,7 +55,7 @@
 
 ## 明细
 
-### 读操作（194）
+### 读操作（211）
 
 | 方法 | 类型 | 状态 | 风险标注 | 证据（脚本 · 用例 · 时间） | 说明 / 错误 |
 |---|---|---|---|---|---|
@@ -67,11 +68,29 @@
 | `myGoodsInfo` | 读 | ⛔ 环境受限 | — | `verify_ops.mjs` · 2026-09-21 01:32 | 需要 show_goods_id（商品 id 是路径段） |
 | `myPurchasedState` | 读 | ⛔ 环境受限 | — | `verify_ops.mjs` · 2026-09-21 01:32 | 需要 show_goods_id 参数 |
 | `audioFile` | 读 | ◻ 声明未实测 | — | — | — |
+| `enterpriseMemberRemoveCount` | 读 | ◻ 声明未实测 | — | — | — |
+| `exportFormData` | 读 | ◻ 声明未实测 | — | — | — |
 | `extractHeadings2` | 读 | ◻ 声明未实测 | — | — | — |
+| `formExportProgress` | 读 | ◻ 声明未实测 | — | — | — |
+| `frozenCheck` | 读 | ◻ 声明未实测 | — | — | — |
+| `goodsModifyApplication` | 读 | ◻ 声明未实测 | — | — | — |
+| `goodsPriceChangeDays` | 读 | ◻ 声明未实测 | — | — | — |
+| `goodsTags` | 读 | ◻ 声明未实测 | — | — | — |
 | `headingTask` | 读 | ◻ 声明未实测 | — | — | — |
 | `headingWord` | 读 | ◻ 声明未实测 | — | — | — |
+| `loginKey` | 读 | ◻ 声明未实测 | — | — | — |
+| `memberShareAuth` | 读 | ◻ 声明未实测 | — | — | — |
+| `myGoodsTypeSummary` | 读 | ◻ 声明未实测 | — | — | — |
+| `oauthAuthorizations` | 读 | ◻ 声明未实测 | — | — | — |
+| `ownerPartnerAppInfo` | 读 | ◻ 声明未实测 | — | — | — |
+| `partnerAppApplicationInfo` | 读 | ◻ 声明未实测 | — | — | — |
 | `psdFile` | 读 | ◻ 声明未实测 | — | — | — |
-| `_me` | 读 | ❔ 无记录 | — | — | — |
+| `teamDeletedShows` | 读 | ◻ 声明未实测 | — | — | — |
+| `teamIdentity` | 读 | ◻ 声明未实测 | — | — | — |
+| `teamRenameApplication` | 读 | ◻ 声明未实测 | — | — | — |
+| `teamSaveToRecords` | 读 | ◻ 声明未实测 | — | — | — |
+| `teamShowsCountFor` | 读 | ◻ 声明未实测 | — | — | — |
+| `teamTrafficPackageInfo` | 读 | ◻ 声明未实测 | — | — | — |
 | `appendPage` | 读 | ❔ 无记录 | — | — | — |
 | `applications` | 读 | ❔ 无记录 | — | — | — |
 | `audioList` | 读 | ❔ 无记录 | — | — | — |
@@ -91,7 +110,6 @@
 | `fontFaces` | 读 | ❔ 无记录 | — | — | — |
 | `formCount` | 读 | ❔ 无记录 | — | — | — |
 | `formsCount` | 读 | ❔ 无记录 | — | — | — |
-| `get` | 读 | ❔ 无记录 | — | — | — |
 | `getPublishedUser` | 读 | ❔ 无记录 | — | — | — |
 | `getShowFull` | 读 | ❔ 无记录 | — | — | — |
 | `goodsFavoriteTagItems` | 读 | ❔ 无记录 | — | — | — |
@@ -253,7 +271,7 @@
 | `watermark` | 读 | ✅ 实测通过 | — | `verify_ops.mjs` · 2026-09-21 01:31 | 回读 {watermarks,readOnly} |
 | `watermarkAll` | 读 | ✅ 实测通过 | — | `verify_ops.mjs` · 2026-09-21 01:31 | 回读 Array(0) |
 
-### 写操作（205）
+### 写操作（232）
 
 | 方法 | 类型 | 状态 | 风险标注 | 证据（脚本 · 用例 · 时间） | 说明 / 错误 |
 |---|---|---|---|---|---|
@@ -282,6 +300,7 @@
 | `addHelp` | 写 | ◻ 声明未实测 | — | — | — |
 | `addHomeTag` | 写 | ◻ 声明未实测 | — | — | — |
 | `addPartnerApp` | 写 | ◻ 声明未实测 | — | — | — |
+| `addTeamMember` | 写 | ◻ 声明未实测 | — | — | — |
 | `applyAuthor` | 写 | ◻ 声明未实测 | — | — | — |
 | `assignGoodsTags` | 写 | ◻ 声明未实测 | — | — | — |
 | `bindPhone` | 写 | ◻ 声明未实测 | 账号凭据 | — | — |
@@ -294,17 +313,22 @@
 | `closeOrder` | 写 | ◻ 声明未实测 | — | — | — |
 | `collectImage` | 写 | ◻ 声明未实测 | — | — | — |
 | `createApiKey` | 写 | ◻ 声明未实测 | 账号凭据 | — | — |
+| `createDomainHttps` | 写 | ◻ 声明未实测 | — | — | — |
 | `createOrder` | 写 | ◻ 声明未实测 | — | — | — |
 | `createShowFromPurchasedGoods` | 写 | ◻ 声明未实测 | — | — | — |
+| `createSubAccount` | 写 | ◻ 声明未实测 | — | — | — |
 | `deleteApiKey` | 写 | ◻ 声明未实测 | 删除/清空 账号凭据 | — | — |
 | `deleteCertFile` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `deleteComments` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `deleteContact` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
+| `deleteFormRows` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `deleteGoodsFavoriteTag` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `deleteHelp` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `deleteLegacyFragment` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `deletePartnerApp` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
+| `deletePartnerAppById` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `deleteResetPhone` | 写 | ◻ 声明未实测 | 删除/清空 账号凭据 | — | — |
+| `deleteSubAccount` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `disableApiKey` | 写 | ◻ 声明未实测 | 账号凭据 | — | — |
 | `emailResetPasswordAuth` | 写 | ◻ 声明未实测 | 账号凭据 | — | — |
 | `enableApiKey` | 写 | ◻ 声明未实测 | 账号凭据 | — | — |
@@ -316,7 +340,9 @@
 | `imageFromQqMap` | 写 | ◻ 声明未实测 | — | — | — |
 | `imageFromWxLink` | 写 | ◻ 声明未实测 | — | — | — |
 | `importImageFromAnyStorage` | 写 | ◻ 声明未实测 | — | — | — |
+| `markApplicationModified` | 写 | ◻ 声明未实测 | — | — | — |
 | `markGoodsFavoriteTagsRead` | 写 | ◻ 声明未实测 | — | — | — |
+| `moveExhibit` | 写 | ◻ 声明未实测 | — | — | — |
 | `orderEnterpriseTeam` | 写 | ◻ 声明未实测 | — | — | — |
 | `orderExhibits` | 写 | ◻ 声明未实测 | — | — | — |
 | `orderTplShowGoods` | 写 | ◻ 声明未实测 | — | — | — |
@@ -326,12 +352,15 @@
 | `qrshareShare` | 写 | ◻ 声明未实测 | — | — | — |
 | `qrToken` | 写 | ◻ 声明未实测 | — | — | — |
 | `qrTokenRevoke` | 写 | ◻ 声明未实测 | — | — | — |
+| `quitTeam` | 写 | ◻ 声明未实测 | — | — | — |
 | `recommendedHelpAdd` | 写 | ◻ 声明未实测 | — | — | — |
+| `recycleMemberShareAuth` | 写 | ◻ 声明未实测 | — | — | — |
 | `redeemWallet` | 写 | ◻ 声明未实测 | — | — | — |
 | `registerCosVideo` | 写 | ◻ 声明未实测 | — | — | — |
 | `registerOssVideo` | 写 | ◻ 声明未实测 | — | — | — |
 | `registerPhone` | 写 | ◻ 声明未实测 | 账号凭据 | — | — |
 | `removeCustomDomain` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
+| `removeDomainById` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `removeEmail` | 写 | ◻ 声明未实测 | 删除/清空 账号凭据 | — | — |
 | `removeExhibit` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `removeGoodsFavorite` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
@@ -341,43 +370,62 @@
 | `removePublisherIdentity` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `removeShowFromHomeTag` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `removeTeam` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
+| `removeTeamMember` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
 | `renameGoodsFavoriteTag` | 写 | ◻ 声明未实测 | — | — | — |
 | `renameHomeTag` | 写 | ◻ 声明未实测 | — | — | — |
 | `renameTagLegacy` | 写 | ◻ 声明未实测 | — | — | — |
 | `requireInvoice` | 写 | ◻ 声明未实测 | — | — | — |
 | `resetApiKey` | 写 | ◻ 声明未实测 | 删除/清空 账号凭据 | — | — |
 | `resetPartnerAppSecret` | 写 | ◻ 声明未实测 | 删除/清空 账号凭据 | — | — |
+| `resetPartnerAppSecretById` | 写 | ◻ 声明未实测 | 删除/清空 账号凭据 | — | — |
 | `resetPassword` | 写 | ◻ 声明未实测 | 删除/清空 账号凭据 | — | — |
+| `resetSubAccount` | 写 | ◻ 声明未实测 | 删除/清空 | — | — |
+| `revokeAllAuthorizations` | 写 | ◻ 声明未实测 | — | — | — |
 | `revokeApplication` | 写 | ◻ 声明未实测 | — | — | — |
+| `revokeApplicationById` | 写 | ◻ 声明未实测 | — | — | — |
+| `revokeAuthorization` | 写 | ◻ 声明未实测 | — | — | — |
 | `revokeInvoice` | 写 | ◻ 声明未实测 | — | — | — |
 | `saveInlineImageData` | 写 | ◻ 声明未实测 | — | — | — |
 | `saveInvoice` | 写 | ◻ 声明未实测 | — | — | — |
 | `scanImageInfringement` | 写 | ◻ 声明未实测 | — | — | — |
 | `setAssetsTags` | 写 | ◻ 声明未实测 | 修改 | — | — |
 | `setEmail` | 写 | ◻ 声明未实测 | 账号凭据 修改 | — | — |
+| `setEnterpriseMember` | 写 | ◻ 声明未实测 | 修改 | — | — |
 | `setFollow` | 写 | ◻ 声明未实测 | 修改 | — | — |
 | `setGoodsFavoriteTagOrder` | 写 | ◻ 声明未实测 | 修改 | — | — |
 | `setGoodsFavoriteTagOrderPaper` | 写 | ◻ 声明未实测 | 修改 | — | — |
 | `setHomeTagsOrder` | 写 | ◻ 声明未实测 | 修改 | — | — |
+| `setMemberVisibility` | 写 | ◻ 声明未实测 | 修改 | — | — |
+| `setPartnerImageCache` | 写 | ◻ 声明未实测 | 修改 | — | — |
 | `setPhone` | 写 | ◻ 声明未实测 | 账号凭据 修改 | — | — |
 | `setPublisherIdentity` | 写 | ◻ 声明未实测 | 修改 | — | — |
+| `setRightFormClosed` | 写 | ◻ 声明未实测 | 修改 | — | — |
+| `setTeamMemberInfo` | 写 | ◻ 声明未实测 | 修改 | — | — |
+| `setTeamMemberRole` | 写 | ◻ 声明未实测 | 修改 | — | — |
 | `setUserIdentity` | 写 | ◻ 声明未实测 | 修改 | — | — |
+| `shareMemberAuth` | 写 | ◻ 声明未实测 | — | — | — |
 | `stopGoodsSale` | 写 | ◻ 声明未实测 | — | — | — |
 | `submitApplication` | 写 | ◻ 声明未实测 | — | — | — |
 | `submitIssue` | 写 | ◻ 声明未实测 | — | — | — |
 | `submitResetPhone` | 写 | ◻ 声明未实测 | 账号凭据 | — | — |
+| `submitTeamIdentity` | 写 | ◻ 声明未实测 | — | — | — |
+| `submitTeamRenameApplication` | 写 | ◻ 声明未实测 | — | — | — |
 | `templateAllowed` | 写 | ◻ 声明未实测 | — | — | — |
 | `transferCoin` | 写 | ◻ 声明未实测 | 资金 | — | — |
+| `transferTeamOwner` | 写 | ◻ 声明未实测 | 资金 | — | — |
 | `transferTeamWallet` | 写 | ◻ 声明未实测 | 资金 | — | — |
 | `transferWallet` | 写 | ◻ 声明未实测 | 资金 | — | — |
 | `trashCommentRightTeam` | 写 | ◻ 声明未实测 | — | — | — |
 | `trashCommentRightUser` | 写 | ◻ 声明未实测 | — | — | — |
 | `unbindOwnerPartnerApp` | 写 | ◻ 声明未实测 | 账号凭据 | — | — |
+| `unbindOwnerPartnerAppById` | 写 | ◻ 声明未实测 | 账号凭据 | — | — |
 | `unbindPartnerApp` | 写 | ◻ 声明未实测 | 账号凭据 | — | — |
+| `unbindPartnerAppById` | 写 | ◻ 声明未实测 | 账号凭据 | — | — |
 | `unfollow` | 写 | ◻ 声明未实测 | — | — | — |
 | `updateApplication` | 写 | ◻ 声明未实测 | 修改 | — | — |
 | `updateContact` | 写 | ◻ 声明未实测 | 修改 | — | — |
 | `updateCustomDomain` | 写 | ◻ 声明未实测 | 修改 | — | — |
+| `updateDomainById` | 写 | ◻ 声明未实测 | 修改 | — | — |
 | `updateMyHomeInfo` | 写 | ◻ 声明未实测 | 修改 | — | — |
 | `updatePartnerApp` | 写 | ◻ 声明未实测 | 修改 | — | — |
 | `updateTeam` | 写 | ◻ 声明未实测 | 修改 | — | — |
@@ -395,7 +443,6 @@
 | `clearTagFragments` | 写 | ❔ 无记录 | 删除/清空 | — | — |
 | `clearUntagFragments` | 写 | ❔ 无记录 | 删除/清空 | — | — |
 | `createShow` | 写 | ❔ 无记录 | — | — | — |
-| `del` | 写 | ❔ 无记录 | — | — | — |
 | `deleteFormCount` | 写 | ❔ 无记录 | 删除/清空 | — | — |
 | `deleteFormData` | 写 | ❔ 无记录 | 删除/清空 | — | — |
 | `deleteInvoice` | 写 | ❔ 无记录 | 删除/清空 | — | — |
@@ -405,8 +452,6 @@
 | `emailResetPassword` | 写 | ❔ 无记录 | 账号凭据 | — | — |
 | `emailValidate` | 写 | ❔ 无记录 | 账号凭据 | — | — |
 | `importWxArticle` | 写 | ❔ 无记录 | — | — | — |
-| `post` | 写 | ❔ 无记录 | — | — | — |
-| `put` | 写 | ❔ 无记录 | — | — | — |
 | `recommendedHelpRemove` | 写 | ❔ 无记录 | — | — | — |
 | `registerCosObject` | 写 | ❔ 无记录 | — | — | — |
 | `removeFragmentTag` | 写 | ❔ 无记录 | 删除/清空 | — | — |

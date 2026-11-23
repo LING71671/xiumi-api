@@ -1,38 +1,38 @@
 {
-  "generatedAt": "2026-09-21T01:44:36.340Z",
-  "verificationUpdatedAt": "2026-09-21T01:32:19.613Z",
-  "total": 399,
+  "generatedAt": "2026-11-23T13:27:14.330Z",
+  "verificationUpdatedAt": "2026-11-23T13:13:41.338Z",
+  "total": 443,
   "byKind": {
     "read": {
-      "total": 194,
+      "total": 211,
       "verified": 89,
       "accepted": 0,
       "regressed": 0,
       "failed": 0,
       "blocked": 8,
-      "declared": 5,
-      "unknown": 92
+      "declared": 24,
+      "unknown": 90
     },
     "write": {
-      "total": 205,
+      "total": 232,
       "verified": 26,
       "accepted": 2,
       "regressed": 0,
       "failed": 3,
       "blocked": 14,
-      "declared": 108,
-      "unknown": 52
+      "declared": 138,
+      "unknown": 49
     }
   },
   "all": {
-    "total": 399,
+    "total": 443,
     "verified": 115,
     "accepted": 2,
     "regressed": 0,
     "failed": 3,
     "blocked": 22,
-    "declared": 113,
-    "unknown": 144
+    "declared": 162,
+    "unknown": 139
   },
   "counts": {
     "verified": 115,
@@ -40,7 +40,7 @@
     "regressed": 0,
     "failed": 3,
     "blocked": 22,
-    "declared": 113,
-    "unknown": 144
+    "declared": 162,
+    "unknown": 139
   }
 }
