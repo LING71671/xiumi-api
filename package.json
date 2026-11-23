@@ -31,6 +31,7 @@
     "LICENSE"
   ],
   "scripts": {
+    "test": "node --test test/client.test.mjs",
     "scan": "python scripts/misc/secret_scan.py",
     "gen-docs": "node scripts/gen_docs.mjs",
     "capabilities": "node scripts/cli.mjs list --md > docs/CAPABILITIES.md",
