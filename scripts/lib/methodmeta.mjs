@@ -102,14 +102,25 @@ export function parseSource() {
  * 方法全集以**运行时自省**为准，静态解析只负责补签名与注释。
  * 反过来做会漏方法（简写助手、getter、正则覆盖不到的写法），
  * 而「全都做」的前提是目录必须完整。
+ *
+ * 目录口径（2026-11 收紧）：
+ *   - 跳过访问器别名 `get` / `post` / `put` / `del` —— 它们是 `request()` 的语法糖，
+ *     不是接口方法；以前它们被算进「399 个方法」里，还顶着「❔ 无记录」占位。
+ *   - 跳过下划线开头的内部实现（`_send` / `_me`）。
+ * 这样总数 = 真正能调用的接口方法，不含实现细节。
  */
 export async function loadMeta(Xiumi) {
-  const names = [
-    ...Object.getOwnPropertyNames(Xiumi.prototype).filter(
-      (n) => n !== 'constructor' && typeof Xiumi.prototype[n] === 'function'
-    ),
-    ...Object.getOwnPropertyNames(Xiumi).filter((n) => typeof Xiumi[n] === 'function'),
-  ];
+  const names = [];
+  for (const n of Object.getOwnPropertyNames(Xiumi.prototype)) {
+    if (n === 'constructor' || n.startsWith('_')) continue;
+    const d = Object.getOwnPropertyDescriptor(Xiumi.prototype, n);
+    if (!d || typeof d.value !== 'function') continue; // 访问器（get/post/put/del）在此被排除
+    names.push(n);
+  }
+  for (const n of Object.getOwnPropertyNames(Xiumi)) {
+    if (['length', 'name', 'prototype'].includes(n)) continue;
+    if (typeof Xiumi[n] === 'function') names.push(n);
+  }
   const parsed = parseSource();
   return [...new Set(names)].map((name) => {
     const meta = parsed.get(name) || { name, isStatic: false, accessor: null, args: '', doc: '', hintUntested: false, write: false };

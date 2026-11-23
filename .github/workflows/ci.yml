@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 零第三方依赖，直接跑仓库自带的扫描器。
+      # 退出码非 0 即存在 BLOCK 项，构建失败。
+      - name: Scan for credentials and personal data
+        run: python scripts/misc/secret_scan.py
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 客户端零依赖，不需要 npm install。
+      # 这一步锁的是「不连服务器也能证伪」的语义：请求错误码、会话过期识别、
+      # save() 类型路由、包体签名、方法目录口径。
+      - name: Offline unit tests
+        run: npm test
+
+      # 目录与台账必须同步：CAPABILITIES.md 由源码生成，COVERAGE.md 由
+      # verification.json 生成。这里只校验生成器能跑通、且台账没有幽灵条目
+      # （verification.json 里存着源码已不存在的方法会以非 0 退出）。
+      - name: Docs/ledger consistency
+        run: node scripts/coverage.mjs

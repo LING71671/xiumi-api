@@ -31,6 +31,17 @@ function md5(s) {
 const OK_CODES = new Set([0, 1, 2, 3]);
 
 /**
+ * 这些入口**正常就返回 HTML**（OAuth / 邮件登录完成后的浏览器回调页）。
+ * 它们返回 HTML 是成功，不是「会话过期」——不能跟登录页混为一谈。
+ */
+const HTML_PAGE_PATHS = [
+  /^\/auth\/success$/,
+  /^\/auth\/email\/success$/,
+  /^\/auth\/report\/result\//,
+  /^\/auth\/(connect|agreement)\//,
+];
+
+/**
  * 排序类接口（tags/order、tagsorder）的 `order` 字段服务端只认**字符串**，
  * 传数组会报 `Common:Failed: "arguments[2]" must be of type "string | Buffer"`。
  * 这里统一收口：数组 → JSON 字符串，字符串原样透传。
@@ -264,19 +275,69 @@ export function unwrapShowData(encodedData) {
   return JSON.parse(json);
 }
 
+/**
+ * 从作品数据反推类型。
+ *
+ * 只看 `scene` 是不够的 —— TPL 里四种类型两两共用 scene：
+ *   paper / tablet  → flw.vertical.one-page
+ *   booklet / placard → fs.vertical.paging
+ * 必须叠加 `viewport.STAGE_SIZE`（415 flow / 415 board_fit / 750 board_spread）
+ * 与 `targetContext`（wechat / xiumi）才能唯一确定。
+ *
+ * @param {object} showData 作品数据
+ * @returns {'paper'|'tablet'|'booklet'|'placard'}
+ */
+export function inferShowType(showData) {
+  const scene = showData?.scene || '';
+  const stage = showData?.viewport?.STAGE_SIZE || '';
+  const ctx = showData?.targetContext || '';
+
+  if (scene === 'fs.vertical.paging') {
+    if (stage === 'board_spread') return 'booklet';
+    if (stage === 'board_fit' || stage === '') return 'placard';
+    throw new XiumiError(`作品类型无法判定：scene=${scene} 但 STAGE_SIZE=${stage} 不认识；请显式传 { type }`);
+  }
+  if (scene === 'flw.vertical.one-page') {
+    return flowType(ctx, stage);
+  }
+  // scene 缺失时退回 stage（老样本里有只保留 viewport 的）
+  if (stage === 'board_spread') return 'booklet';
+  if (stage === 'board_fit') return 'placard';
+  if (stage === 'flow_scroll') return flowType(ctx, stage);
+  throw new XiumiError('无法从数据判定作品类型（scene/viewport 都不认识），请显式传 { type }');
+}
+
+/**
+ * paper 与 tablet 共用 `flw.vertical.one-page` + `flow_scroll`，
+ * 唯一区分是 `targetContext`（paper = wechat，tablet = xiumi）。
+ * 缺失或未知时**不猜** —— 猜错就是把作品建成另一类，比报错难查得多。
+ */
+function flowType(ctx, stage) {
+  if (ctx === 'wechat') return 'paper';
+  if (ctx === 'xiumi') return 'tablet';
+  throw new XiumiError(
+    `作品类型无法判定：scene=flw.vertical.one-page（STAGE_SIZE=${stage || '空'}）但 targetContext=${ctx || '缺失'}；` +
+    'paper 与 tablet 只能靠它区分，请显式传 { type }'
+  );
+}
+
 export class XiumiError extends Error {
-  constructor(message, { code, status, path } = {}) {
+  constructor(message, { code, status, path, expired = false } = {}) {
     super(message);
     this.name = 'XiumiError';
     this.code = code;
     this.status = status;
     this.path = path;
+    /** 会话无效/过期（302 跳登录页、code -102、返回登录页 HTML）。调用方据此重新登录。 */
+    this.expired = !!expired;
   }
 }
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
 export class Xiumi {
-  /** @param {{sid?: string, user?: string, password?: string}} opts */
-  constructor({ sid, user, password, areaCode = 86, base = BASE, ua = DEFAULT_UA, fetchImpl } = {}) {
+  /** @param {{sid?: string, user?: string, password?: string, timeout?: number, retry?: number}} opts */
+  constructor({ sid, user, password, areaCode = 86, base = BASE, ua = DEFAULT_UA, fetchImpl, timeout = 30000, retry = 2 } = {}) {
     this.sid = sid || null;
     this.user = user || null;
     this.password = password || null;
@@ -285,6 +346,10 @@ export class Xiumi {
     this.ua = ua;
     this._fetch = fetchImpl || globalThis.fetch;
     if (!this._fetch) throw new Error('需要 Node 18+ 的内置 fetch，或传入 fetchImpl');
+    /** 单次请求超时（毫秒），0 表示不设超时 */
+    this.timeout = timeout;
+    /** 幂等请求（GET）遇网络错误/429/5xx 的重试次数 */
+    this.retry = retry;
   }
 
   // ---------------------------------------------------------------- 会话
@@ -354,14 +419,20 @@ export class Xiumi {
    * 调用任意接口。
    * @param {'GET'|'POST'|'PUT'|'DELETE'|'PATCH'} method
    * @param {string} path 形如 '/api/shows'
-   * @param {{query?:object, body?:object, form?:object, raw?:boolean, headers?:object}} [opts]
+   * @param {{query?:object, body?:object, form?:object, raw?:boolean, headers?:object,
+   *          timeout?:number, retry?:number, expectHtml?:boolean}} [opts]
+   *        expectHtml：这个入口正常就返回 HTML（浏览器回调页），别按会话过期处理
    * @returns {Promise<any>} 默认返回 envelope.data；raw=true 时返回 {code,message,data,status}
+   * @throws {XiumiError} 业务错误码、HTTP 错误、会话过期（err.expired === true）、非 JSON 响应
    */
-  async request(method, path, { query, body, form, raw = false, headers = {} } = {}) {
+  async request(method, path, { query, body, form, raw = false, headers = {}, timeout, retry, expectHtml = false } = {}) {
     const url = new URL(path.startsWith('http') ? path : this.base + path);
     if (query) {
       for (const [k, v] of Object.entries(query)) {
-        if (v === undefined || v === null) url.searchParams.append(k, '');
+        // undefined = 这个参数根本不该出现。以前会发成 `?team_id=`，
+        // 把「不按团队筛」变成「按空团队筛」，服务端行为不可控。
+        if (v === undefined) continue;
+        if (v === null) url.searchParams.append(k, '');
         else if (Array.isArray(v)) for (const x of v) url.searchParams.append(k, x);
         else url.searchParams.append(k, String(v));
       }
@@ -372,20 +443,73 @@ export class Xiumi {
     if (form) { payload = new URLSearchParams(form); h['Content-Type'] = 'application/x-www-form-urlencoded'; h.Origin = this.base; h.Referer = this.base + '/'; }
     else if (body !== undefined) { payload = JSON.stringify(body); h['Content-Type'] = 'application/json'; h.Origin = this.base; h.Referer = this.base + '/'; }
 
-    const res = await this._fetch(url.toString(), { method, headers: h, body: payload, redirect: 'manual' });
+    const res = await this._send(method, url.toString(), { headers: h, body: payload, timeout, retry });
     const text = await res.text();
     let json = null;
     try { json = JSON.parse(text); } catch { /* 非 JSON */ }
 
-    // 秀米的 envelope 成功码：0 Common:OK，1 Common:Created，2 Common:Updated
-    if (json && typeof json.code === 'number' && !OK_CODES.has(json.code)) {
-      throw new XiumiError(json.message || 'API 错误', { code: json.code, status: res.status, path });
+    // 3xx：redirect 用的是 'manual'，所以跳转不会被吞掉。
+    // 跳登录页 = 会话失效，必须显式区分出来，不能当业务错误糊过去。
+    if (res.status >= 300 && res.status < 400) {
+      const loc = res.headers.get('location') || '';
+      const toLogin = /(^|\/)auth(\/|$|\?)/.test(loc) || /login/i.test(loc);
+      throw new XiumiError(
+        toLogin ? `会话无效或已过期（跳转 ${loc || '/auth'}）` : `HTTP ${res.status} 跳转 ${loc || '(无 location)'}`,
+        { status: res.status, path, expired: toLogin }
+      );
     }
-    if (!res.ok && res.status !== 302) {
+
+    // 秀米的 envelope 成功码：0 Common:OK，1 Common:Created，2 Common:Updated，3 Common:Deleted
+    if (json && typeof json.code === 'number' && !OK_CODES.has(json.code)) {
+      const err = new XiumiError(json.message || 'API 错误', { code: json.code, status: res.status, path });
+      if (json.code === -102 || json.code === -101) err.expired = true; // Auth:Failed_NotLogin
+      throw err;
+    }
+    if (!res.ok) {
       throw new XiumiError(`HTTP ${res.status}`, { status: res.status, path });
+    }
+    // 200 但返回 HTML：典型是登录页/风控页被当成数据返回（旧版会静默返回 HTML 字符串）。
+    // 但**有些入口本来就返回 HTML**——`/auth/success`、`/auth/email/success`、
+    // `/auth/report/result/*` 是浏览器回调页，HTML 就是正常结果。这两类必须分开：
+    // 前者是「会话没了」，后者是「调用成功但负载是页面」。误判成 expired 会让
+    // 合法的回调页调用直接失败，所以既有路径白名单，也允许调用方用 expectHtml 显式声明。
+    if (json === null && /^\s*</.test(text)) {
+      // 注意：**不能**按 content-type 放行 —— 登录页也是 text/html，
+      // 那样等于把要检测的东西一起放过了。白名单只认已知会返回页面的入口。
+      const htmlExpected = expectHtml === true || HTML_PAGE_PATHS.some((re) => re.test(path));
+      if (!htmlExpected) {
+        throw new XiumiError(
+          `返回了 HTML 而不是 JSON（多半是登录页或风控页）：${path}`,
+          { status: res.status, path, expired: true }
+        );
+      }
     }
     if (raw) return { ...(json || { data: text }), status: res.status };
     return json ? json.data : text;
+  }
+
+  /**
+   * 真正发请求的地方：加超时 + 只对幂等请求做退避重试。
+   * 写请求（POST/PUT/DELETE）不重试 —— 重放一次可能是「重复建作品」。
+   */
+  async _send(method, url, { headers, body, timeout = this.timeout, retry = this.retry } = {}) {
+    const idempotent = method === 'GET';
+    for (let attempt = 0; ; attempt++) {
+      const signal = timeout ? AbortSignal.timeout(timeout) : undefined;
+      let res;
+      try {
+        res = await this._fetch(url, { method, headers, body, redirect: 'manual', signal });
+      } catch (e) {
+        if (idempotent && attempt < retry) { await sleep(300 * 2 ** attempt); continue; }
+        const why = e.name === 'TimeoutError' || e.name === 'AbortError' ? `超时 ${timeout}ms` : e.message;
+        throw new XiumiError(`请求失败：${why}`, { path: url });
+      }
+      if (idempotent && attempt < retry && (res.status === 429 || res.status >= 500)) {
+        await sleep(300 * 2 ** attempt);
+        continue;
+      }
+      return res;
+    }
   }
 
   /**
@@ -403,7 +527,7 @@ export class Xiumi {
       h.Cookie = `sid=${this.sid}`;
       h['X-Requested-With'] = 'XMLHttpRequest';
     }
-    const res = await this._fetch(url, { headers: h, redirect: 'follow' });
+    const res = await this._fetch(url, { headers: h, redirect: 'follow', signal: this.timeout ? AbortSignal.timeout(this.timeout) : undefined });
     const text = await res.text();
     let json = null;
     try { json = JSON.parse(text); } catch { json = null; }
@@ -558,7 +682,9 @@ export class Xiumi {
 
   /**
    * 保存/新建作品（编辑器「保存」的等价动作）。
-   * @param {string} type 作品类型：paper | tablet | booklet | placard | manuscript | poster
+   * @param {string} type 作品类型：paper | tablet | booklet | placard
+   *        （服务端还认 manuscript / poster，但站内没有它们的空模板，
+   *          只能先有现成作品数据再 createShow，不能用 `emptyShow()` 造骨架）
    * @param {object} payload 要么是编辑器生成的 {format,encodedData,signature}，
    *                         要么是作品数据对象（会自动用 wrapShowData 打包）
    * @param {{fromShowId?:number, uniqueUid?:string, toUser?:object}} [opts]
@@ -721,16 +847,23 @@ export class Xiumi {
 
   /**
    * 一步保存：给了 show_id 就 PUT，否则 POST 新建。
+   *
+   * 类型判定不能只看 `scene`：**paper 与 tablet 共用 `flw.vertical.one-page`**，
+   * **booklet 与 placard 共用 `fs.vertical.paging`**。旧版按 scene 二分，
+   * 于是 `save(buildShow('tablet'))` 会建成 paper、`save(buildShow('placard'))` 会建成 booklet。
+   * 现在按「scene + viewport.STAGE_SIZE + targetContext」三条一起判，并允许显式覆盖。
+   *
+   * @param {object} showData 作品数据
+   * @param {number|string} [show_id] 已有作品则走更新
+   * @param {{type?:string}} [opts] 显式指定类型，优先于推断
    * @returns {Promise<object>} 作品的元信息（新建时是创建响应）
    */
-  async save(showData, show_id) {
+  async save(showData, show_id, { type } = {}) {
     if (show_id) {
       const meta = await this.getShow(show_id);
       return this.updateShow(meta, showData);
     }
-    const type = showData.scene === 'flw.vertical.one-page'
-      ? (showData.usageScenario === 'placard' ? 'placard' : 'paper') : 'booklet';
-    return this.createShow(type, showData);
+    return this.createShow(type || inferShowType(showData), showData);
   }
 
   async _me() {
@@ -1179,7 +1312,7 @@ export class Xiumi {
   emailResetPassword(body) { return this.request('POST', '/api/email/reset_password', { body }); }
   emailChange(body) { return this.request('POST', '/api/email/change_email', { body }); }
   /** 邮箱登录后的落地页（OAuth/邮件链接会跳这里） */
-  emailLoginSuccess() { return this.request('GET', '/auth/email/success'); }
+  emailLoginSuccess() { return this.request('GET', '/auth/email/success', { expectHtml: true }); }
 
   // ---------------------------------------------------------------- 第三方绑定 / OAuth 入口
   //
@@ -1219,7 +1352,10 @@ export class Xiumi {
 
   /** 自定义域名列表。bundle 的 `$http` 调用带 `team_id`，个人账号不带会 Failed_InvalidParam。 */
   customDomains({ team_id } = {}) { return this.request('GET', '/api/custom_domains', { query: { team_id } }); }
-  customDomainsForShow(opts = {}) { return this.request('GET', '/api/custom_domains/for/show', { query: opts }); }
+  // 注意：`customDomainsForShow` 已在上面「作品状态」区定义过（path 参数式：
+  // `/api/custom_domains/for/show/{show_id}`，bundle 证据
+  // `customDomainsForShow:function(e){return u.get("/api/custom_domains/for/show/"+e)}`）。
+  // 这里曾有一个同名 query 式实现，把上面那个覆盖掉了 —— 已删除，别再重复定义。
   /** [未实测] 新增自定义域名 */
   addCustomDomain(body) { return this.request('POST', '/api/custom_domains', { body }); }
   /** [未实测] 修改自定义域名 */
@@ -1478,8 +1614,8 @@ export class Xiumi {
   /** [未实测] 提交反馈/工单 */
   submitIssue(body) { return this.request('POST', '/api/issues', { body }); }
   /** 举报处理结果 */
-  reportResult(ok = true) { return this.request('GET', `/auth/report/result/${ok ? 'success' : 'failed'}`); }
-  authSuccess() { return this.request('GET', '/auth/success'); }
+  reportResult(ok = true) { return this.request('GET', `/auth/report/result/${ok ? 'success' : 'failed'}`, { expectHtml: true }); }
+  authSuccess() { return this.request('GET', '/auth/success', { expectHtml: true }); }
 
   // ---------------------------------------------------------------- 团队写操作
 
