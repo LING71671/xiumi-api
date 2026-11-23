@@ -67,8 +67,18 @@ export function loadStore() {
   }
 }
 
-export function saveStore(store) {
-  store.updatedAt = new Date().toISOString();
+/**
+ * 回写存储。
+ *
+ * `touch=false` 用于「不是验证动作的写入」（比如清理幽灵条目）：此时**不更新**
+ * `updatedAt`。那个字段在报告里被渲染成「最近一次验证」，被清理动作推成当前时间
+ * 会制造一条假证据。
+ *
+ * @param {{schema:number, updatedAt:string, methods:object}} store
+ * @param {{touch?: boolean}} [opts]
+ */
+export function saveStore(store, { touch = true } = {}) {
+  if (touch) store.updatedAt = new Date().toISOString();
   fs.mkdirSync(path.dirname(STORE_FILE), { recursive: true });
   fs.writeFileSync(STORE_FILE, JSON.stringify(store, null, 2) + '\n', 'utf8');
 }

@@ -15,7 +15,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ROOT } from './cfg.mjs';
 import { loadMeta } from './lib/methodmeta.mjs';
-import { loadStore, statusOf, summarize, MARK } from './lib/verification.mjs';
+import { loadStore, saveStore, statusOf, summarize, MARK } from './lib/verification.mjs';
 import { Xiumi } from '../client/xiumi.mjs';
 
 const DOCS = path.join(ROOT, 'docs');
@@ -23,6 +23,36 @@ const DATA = path.join(ROOT, 'data');
 
 const metas = await loadMeta(Xiumi);
 const store = loadStore();
+
+// ---------------------------------------------------------------- 台账一致性反向校验
+//
+// verification.json 是**只增不减**的：方法改名或删掉后，旧条目会留在文件里。
+// 这些幽灵条目不会被渲染（渲染以源码方法为准），于是出现
+// 「台账里 4 条失败、报告里只显示 3 条」这种对不上的情况。
+// 这里显式点名，并给出 `--prune` 的清理入口。
+const known = new Set(metas.map((m) => m.name));
+const orphans = Object.keys(store.methods || {}).filter((name) => !known.has(name));
+if (orphans.length) {
+  console.error(`⚠ verification.json 里有 ${orphans.length} 条幽灵记录（客户端已无此方法）：`);
+  for (const o of orphans) {
+    const e = store.methods[o];
+    console.error(`  - ${o}   最近一次：${e.last?.script || '?'} → ${e.last?.error || e.last?.note || 'ok'}`);
+  }
+  if (process.argv.includes('--prune')) {
+    const pruned = [...orphans];
+    for (const o of pruned) delete store.methods[o];
+    // 清理不是「验证」：touch=false 保持 updatedAt 不变，
+    // 否则报告里的「最近一次验证」会被推成刚才 —— 那是假的。
+    saveStore(store, { touch: false });
+    console.error(`已清理 ${pruned.length} 条，verification.json 已回写（updatedAt 保持不变）。`);
+    // 报告要用清理后的状态，否则这一页还会写着「N 条待清理」
+    orphans.length = 0;
+  } else {
+    console.error('确认这些方法确实已删除后，跑 `node scripts/coverage.mjs --prune` 清理。');
+    process.exitCode = 1;
+  }
+}
+
 const sum = summarize(metas, store);
 
 const rows = metas.map((m) => {
@@ -126,6 +156,7 @@ let md = `# 方法验证覆盖率
   （其中 ✅${n('verified')} 🟡${n('accepted')} ❌${n('failed')} ⛔${n('blocked')}）
 - **没有任何证据的**：${n('declared') + n('unknown')} / ${sum.all.total}
   （其中源码声明过未实测的 ◻${n('declared')}，完全无记录的 ❔${n('unknown')}）
+- **台账一致性**：${orphans.length ? `❌ ${orphans.length} 条幽灵记录待清理（${orphans.join(', ')}）` : '✅ 无幽灵记录（存量条目与源码方法一一对应）'}
 
 ## 待修：实测未通过（${n('failed')}）
 
