@@ -10,8 +10,8 @@
 | 面 | 来源 | 规模 |
 |---|---|---|
 | **UI 面** | `capture/routes_raw.json` —— 主页/编辑器 bundle 里的 angular 路由表 | **85** 个页面 |
-| **接口面** | 客户端运行时自省（`Object.getOwnPropertyNames`）+ `docs/API-REFERENCE.md` | **58** 模块 / **399** 方法 |
-| **状态** | `data/verification.json`（**只由验证脚本回写**）→ `docs/COVERAGE.md` | 115 ✅ / 2 🟡 / 3 ❌ / 22 ⛔ / 113 ◻ / 144 ❔ |
+| **接口面** | 客户端运行时自省（`Object.getOwnPropertyNames`）+ `docs/API-REFERENCE.md` | **57** 模块 / **443** 方法 |
+| **状态** | `data/verification.json`（**只由验证脚本回写**）→ `docs/COVERAGE.md` | 115 ✅ / 2 🟡 / 3 ❌ / 22 ⛔ / 162 ◻ / 139 ❔ |
 
 `routes_raw.json` 的复现：从 `edt.xiumius.cn` 的 `views_app_home_*.ng-tpl.min.js` 与
 `views_app_studio_*.ng-tpl.min.js` 里抽 `$routeProvider` 的 state 定义。
@@ -32,7 +32,7 @@
 
 ## 总账
 
-**399 个方法**（数字取自 `data/coverage.json`，由 `coverage.mjs` 自动写入）
+**443 个方法**（数字取自 `data/coverage.json`，由 `coverage.mjs` 自动写入）
 
 | | 读（含 2 个静态） | 写 | 合计 |
 |---|---|---|---|
@@ -40,17 +40,23 @@
 | 🟡 调用被受理、语义未观测 | 0 | 2 | **2** |
 | ❌ 实测不通过（**已知不对**） | 0 | 3 | **3** |
 | ⛔ 环境受限（账号能力/不可逆） | 8 | 14 | **22** |
-| ◻ 源码声明未实测 | 5 | 108 | **113** |
-| ❔ 无任何记录 | 92 | 52 | **144** |
+| ◻ 源码声明未实测 | 24 | 138 | **162** |
+| ❔ 无任何记录 | 90 | 49 | **139** |
 
 **85 个页面** —— 每个页面都有对应的操作方法入口（下面逐域列出）。
 
-> **功能对等成立，验证覆盖还没拉满。** 有脚本证据的 142/399（35.6%）；
-> 没证据的 257 个里，113 个只在源码注释里声明过「未实测」、144 个完全无记录。
+> **功能对等成立，验证覆盖还没拉满。** 有脚本证据的 142/443（32.1%）；
+> 没证据的 301 个里，162 个只在源码注释里声明过「未实测」、139 个完全无记录。
 >
 > 与上一版的关键差别不在数字，而在**数字的来源**：它们现在是脚本算出来的。
 > 上一版靠人记，于是有 222 项既不能说通、也不能说没通；现在同一批方法被明确
 > 分成了「跑通了」「没跑但有声明」「连声明都没有」，并且 ❌ 那 3 项是具体可指的方法。
+>
+> 2026-11 这轮又补了 49 个方法（团队协作、表单导出、第三方授权、合作方应用带 id 的写法等），
+> 全部标 `[未实测]` —— 所以 ◻ 从 113 涨到 162，✅ 一个都没动（净 +44：另剔掉了
+> `get`/`post`/`put`/`del` 四个访问器别名与 `_me`）。
+> 补法是 `scripts/diff_endpoints.mjs`：只信 bundle 里的字面量路径，与客户端已封装的路径做
+> 段级比对，谁没封装就点名谁。
 
 ## 逐域对账
 
@@ -91,7 +97,7 @@
 | 列表 / 计数 / 搜索 | `listShows` `showsCount` | ✅ |
 | 改名 | `renameShow` | ❔ |
 | 删除 → 回收站 | `deleteShow` | ✅ |
-| 回收站列表 / 恢复 | `deletedShows` `deletedShowsRaw` `recoverShow` `restoreShow` `recoverableShows` | ✅ |
+| 回收站列表 / 恢复 | `deletedShows` `deletedShowsRaw` `recoverShow` `restoreShow` | ✅ |
 | 拷贝 / 发给别人 | `copyShow` `sendShow` | ✅ / ❔ |
 | 历史版本 | `showHistories` | ✅ |
 | 打标签 / 改标签 / 清空 / 排序 | `listTags` `addTag` `renameTag` `removeTag` `clearTag` `clearTagAll` `setTagsOrder` `tagsOrder` `tagsAndOrder` | 读 ✅ / 写 部分 🟡 |
@@ -204,7 +210,7 @@
 | API Key：查看 / 新建 / 停用 / 启用 / 删除 / 重置 | `apiKey` `createApiKey` `disableApiKey` `enableApiKey` `deleteApiKey` `resetApiKey` | 读 ✅ / 写 🟡 |
 | 联系人 | `contacts` `addContact` `updateContact` `deleteContact` | 读 ❔ / 写 🟡 |
 | 合作方应用 | `partnerBind` `partnerInfo` `partnerAppBind` `partnerAppBindList` `partnerAppApplications` `ownerPartnerApp` `ownerPartnerAppDetail` `addPartnerApp` `updatePartnerApp` `deletePartnerApp` `unbindPartnerApp` `unbindOwnerPartnerApp` `resetPartnerAppSecret` | 读 ❔ / 写 🟡 |
-| 消息静音开关 | `setMute` `setMuteLegacy` | 🟡 |
+| 消息静音开关 | `setMute`（`POST /api/messages/setting/{kind}/{0|1}`） | 🟡 |
 | 登录设备历史 | `loginHistory` | ❔ |
 | 邀请码 | `invitation` `userInvitation` | ❔ |
 | 实名 / 发布者身份 / 原创作者资质 | `userIdentity` `setUserIdentity` `publisherIdentity` `setPublisherIdentity` `removePublisherIdentity` `authorState` `applyAuthor` `myApplications` `applications` `submitApplication` `updateApplication` `revokeApplication` `revokeApplicationDelete` `originalityUploadUrl` `deleteCertFile` | 🟡 |
@@ -265,7 +271,7 @@
 | 浏览器里能做的 | 对应方法 | 状态 |
 |---|---|---|
 | 导入公众号文章 | `importWxArticle` `wxArticleData` | ⚠️ 未实测（需可访问的文章链接） |
-| 微信授权入口 | `mobileWechatUrl` `bindWechat` `unbindWechat` | 🌐 / ❔ |
+| 微信授权入口 | `mobileWechatUrl` `bindUrl('wechat')` `unbindWechat` | 🌐 / ❔ |
 
 ### 17. 帮助 / 反馈 / 工单
 
