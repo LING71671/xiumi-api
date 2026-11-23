@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-09-21T01:32:19.613Z",
+  "updatedAt": "2026-11-23T13:13:41.338Z",
   "methods": {
     "me": {
       "kind": "read",
@@ -6386,28 +6386,6 @@
         "ok": false,
         "blocked": true,
         "error": "需要表单型作品做载体；form 型作品无法由 /api/shows/v5/form 创建（InvalidParam），本轮造不出载体"
-      }
-    },
-    "recoverableShows": {
-      "kind": "read",
-      "everVerified": false,
-      "runs": [
-        {
-          "at": "2026-09-21T01:25:06.183Z",
-          "script": "verify_ops.mjs",
-          "case": "recoverableShows",
-          "ok": false,
-          "ms": 233,
-          "error": "Common:Failed_NotFound"
-        }
-      ],
-      "last": {
-        "at": "2026-09-21T01:25:06.183Z",
-        "script": "verify_ops.mjs",
-        "case": "recoverableShows",
-        "ok": false,
-        "ms": 233,
-        "error": "Common:Failed_NotFound"
       }
     },
     "homeTagShows": {
